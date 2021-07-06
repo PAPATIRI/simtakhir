@@ -2,7 +2,7 @@ const mainColor = {
   green1: '#00BF9F',
   blue1: '#0059B2',
   white1: '#F2F9FF',
-  black1: ' #212121',
+  black1: '#212121',
   black2: '#757575',
   black3: '#9E9E9E',
   red1: '#FF6455',
@@ -14,6 +14,7 @@ export const colors = {
   secondary: mainColor.blue1,
   error: mainColor.red1,
   warning: mainColor.orange1,
+  accent: mainColor.green1,
   text: {
     primary: mainColor.black1,
     secondary: mainColor.black2,

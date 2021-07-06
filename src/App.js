@@ -1,19 +1,14 @@
+import 'react-native-gesture-handler';
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-import {fonts} from './utils';
+import {NavigationContainer} from '@react-navigation/native';
+import Router from './router';
 
 const App = () => {
   return (
-    <View>
-      <Text style={styles.text}>hello react</Text>
-    </View>
+    <NavigationContainer>
+      <Router />
+    </NavigationContainer>
   );
 };
 
-const styles = StyleSheet.create({
-  text: {
-    fontSize: 24,
-    fontFamily: fonts.primary[400],
-  },
-});
 export default App;
