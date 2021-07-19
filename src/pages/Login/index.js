@@ -4,12 +4,13 @@ import {BgGraduate} from '../../assets';
 import {colors, fonts} from '../../utils';
 import {TextInput, Gap, Button} from '../../components';
 
-const Login = () => {
+const Login = ({navigation}) => {
   return (
     <View style={styles.page}>
       <ImageBackground
         source={BgGraduate}
         style={styles.imageBg}></ImageBackground>
+      <View style={styles.overlay}></View>
       <View style={styles.content}>
         <View style={styles.topPage}></View>
         <View style={styles.bottomPage}>
@@ -24,7 +25,10 @@ const Login = () => {
             />
           </View>
           <View>
-            <Button label="Masuk" />
+            <Button
+              label="Masuk"
+              onPress={() => navigation.replace('MainApp')}
+            />
             <Gap height={15} />
             <Text style={styles.textFooter}>
               masuk aplikasi SIMTAKHIR menggunakan
@@ -34,7 +38,6 @@ const Login = () => {
           </View>
         </View>
       </View>
-      <View style={styles.overlay}></View>
     </View>
   );
 };

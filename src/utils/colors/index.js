@@ -7,6 +7,9 @@ const mainColor = {
   black3: '#9E9E9E',
   red1: '#FF6455',
   orange1: '#FFA555',
+  choco1: '#744E58',
+  green2: '#7BF6E2',
+  pink1: '#F7BACE',
 };
 
 export const colors = {
@@ -39,6 +42,13 @@ export const colors = {
     },
     danger: {
       background: mainColor.red1,
+    },
+  },
+  icon: {
+    primary: {
+      iconPink: mainColor.pink1,
+      iconChoco: mainColor.choco1,
+      iconGreen: mainColor.green2,
     },
   },
 };
