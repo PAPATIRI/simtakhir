@@ -11,17 +11,16 @@ import {
   IcHamburgerMenu,
   IcLogBook,
   IcTopikSkripsi,
-} from '../../assets';
-import {colors} from '../../utils';
-import {CardProfile, Gap, Menu} from '../../components';
+} from '../../../assets';
+import {colors} from '../../../utils';
+import {CardProfile, Gap, Menu, TopNavbar} from '../../../components';
 
 const Home = () => {
   return (
     <View style={styles.page}>
-      <View style={styles.topNav}>
-        <TouchableOpacity activeOpacity={0.7}>
-          <IcHamburgerMenu />
-        </TouchableOpacity>
+      <View style={styles.topNavWrapper}>
+        <TopNavbar />
+        <View style={styles.emptyView}></View>
       </View>
       <View style={styles.content}>
         <View style={styles.cardWrapper}>
@@ -62,12 +61,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.secondary,
   },
-  topNav: {
+  topNavWrapper: {
     flex: 1,
-    paddingHorizontal: 20,
-    alignItems: 'flex-end',
-    paddingVertical: 8,
-    height: 56,
+  },
+  emptyView: {
+    flex: 1,
   },
   content: {
     flex: 3,

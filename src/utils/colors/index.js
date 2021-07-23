@@ -25,6 +25,7 @@ export const colors = {
     error: mainColor.red1,
     warning: mainColor.orange1,
     accent: mainColor.green1,
+    white: mainColor.white1,
   },
   button: {
     text: mainColor.white1,
