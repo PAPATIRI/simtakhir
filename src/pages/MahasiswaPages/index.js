@@ -1,6 +1,7 @@
 import Login from '../Login';
-import Home from './Home';
+import MhsHome from './MhsHome';
 import Notification from './Notification';
 import Profile from './Profile';
+import MhsTopikSkripsi from './MhsTopikSkripsi';
 
-export {Login, Home, Notification, Profile};
+export {Login, MhsHome, Notification, Profile, MhsTopikSkripsi};

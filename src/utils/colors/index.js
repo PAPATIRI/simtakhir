@@ -7,7 +7,7 @@ const mainColor = {
   black3: '#9E9E9E',
   red1: '#FF6455',
   orange1: '#FFA555',
-  choco1: '#744E58',
+  choco1: '#855964',
   green2: '#7BF6E2',
   pink1: '#F7BACE',
 };
@@ -18,6 +18,9 @@ export const colors = {
   error: mainColor.red1,
   warning: mainColor.orange1,
   accent: mainColor.green1,
+  pink: mainColor.pink1,
+  green: mainColor.green2,
+  choco: mainColor.choco1,
   text: {
     primary: mainColor.black1,
     secondary: mainColor.black2,

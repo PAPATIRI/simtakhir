@@ -3,15 +3,23 @@ import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {IcHamburgerMenu} from '../../../assets';
 import {colors, fonts} from '../../../utils';
 
-const TopNavbar = ({titleBar}) => {
+const TopNavbar = ({titleBar, iconLeft, iconRight, onPress}) => {
   return (
     <View style={styles.topNavContent}>
-      <View style={styles.iconLeft}>{/* <IcHamburgerMenu /> */}</View>
+      <TouchableOpacity
+        activeOpacity={0.7}
+        style={styles.iconLeft}
+        onPress={onPress}>
+        {iconLeft}
+      </TouchableOpacity>
       <View style={styles.descTopNav}>
         <Text style={styles.titleBar}>{titleBar}</Text>
       </View>
-      <TouchableOpacity activeOpacity={0.7} style={styles.iconRight}>
-        <IcHamburgerMenu />
+      <TouchableOpacity
+        activeOpacity={0.7}
+        style={styles.iconRight}
+        onPress={onPress}>
+        {iconRight}
       </TouchableOpacity>
     </View>
   );
@@ -22,7 +30,6 @@ export default TopNavbar;
 const styles = StyleSheet.create({
   iconLeft: {
     flex: 1,
-    backgroundColor: 'orange',
   },
   descTopNav: {
     flex: 4,
@@ -41,7 +48,7 @@ const styles = StyleSheet.create({
   },
   topNavContent: {
     height: 56,
-    paddingHorizontal: 20,
+    paddingHorizontal: 6,
     flexDirection: 'row',
     alignItems: 'center',
   },

@@ -1,10 +1,27 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {StyleSheet, Text, View, ImageBackground} from 'react-native';
 import {BgGraduate} from '../../assets';
 import {colors, fonts} from '../../utils';
 import {TextInput, Gap, Button} from '../../components';
 
+const dataUser = {
+  mahasiswa: {
+    email: 'mahasiswa@gmail.com',
+    password: 12345678,
+  },
+  dosen: {
+    email: 'dosen@gmail.com',
+    password: 12345678,
+  },
+};
+
 const Login = ({navigation}) => {
+  const [enteredEmail, setEnteredEmail] = useState('');
+  const [enteredPassword, setEnteredPassword] = useState('');
+
+  function onLogin(enteredEmail) {
+    alert(enteredEmail);
+  }
   return (
     <View style={styles.page}>
       <ImageBackground
@@ -17,17 +34,23 @@ const Login = ({navigation}) => {
           <View>
             <Text style={styles.title}>Masuk Akun</Text>
             <Gap height={30} />
-            <TextInput label="Email" placeholder="masukan email akun anda" />
+            <TextInput
+              label="Email"
+              placeholder="masukan email akun anda"
+              onChangeText={setEnteredEmail}
+            />
             <Gap height={25} />
             <TextInput
               label="Kata Sandi"
               placeholder="masukan kata sandi akun anda"
+              onChangeText={setEnteredPassword}
             />
           </View>
           <View>
             <Button
               label="Masuk"
               onPress={() => navigation.replace('MainApp')}
+              // onPress={() => onLogin(enteredEmail)}
             />
             <Gap height={15} />
             <Text style={styles.textFooter}>

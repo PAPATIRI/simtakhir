@@ -3,10 +3,10 @@ import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {colors, fonts} from '../../../utils';
 import Gap from '../Gap';
 
-const Menu = ({icon, menuName, color, border, padding}) => {
+const Menu = ({icon, menuName, color, border, padding, onPress}) => {
   return (
     <View>
-      <TouchableOpacity activeOpacity={0.7}>
+      <TouchableOpacity activeOpacity={0.7} onPress={onPress}>
         <View style={styles.iconMenu(color, border, padding)}>{icon}</View>
         <Gap height={5} />
       </TouchableOpacity>

@@ -31,18 +31,11 @@ const CardProfile = () => {
                 <Text style={styles.subTitle}>status</Text>
                 <Text style={styles.status}>MetoPen</Text>
               </View>
+              <Gap height={10} />
               <View>
                 <Text style={styles.subTitle}>jadwal sidang</Text>
                 <Text style={styles.status}>belum ada</Text>
               </View>
-            </View>
-          </View>
-          <View style={styles.btnWrapper}>
-            <View></View>
-            <View>
-              <TouchableOpacity activeOpacity={0.7} style={styles.btnCard}>
-                <Text style={styles.btnCardText}>selengkapnya</Text>
-              </TouchableOpacity>
             </View>
           </View>
         </View>
@@ -67,7 +60,7 @@ const styles = StyleSheet.create({
   },
   profileImg: {
     flex: 1,
-    width: 100,
+    width: 120,
     borderBottomRightRadius: 40,
     borderTopLeftRadius: 10,
     borderBottomLeftRadius: 10,
@@ -77,7 +70,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   cardContent: {
-    padding: 15,
+    paddingHorizontal: 20,
+    paddingVertical: 15,
   },
   cardImg: {
     borderRadius: 10,
@@ -85,7 +79,7 @@ const styles = StyleSheet.create({
   nameCard: {
     color: colors.primary,
     fontFamily: fonts.primary[600],
-    fontSize: 16,
+    fontSize: 18,
   },
   subTitle: {
     color: colors.primary,
@@ -96,25 +90,5 @@ const styles = StyleSheet.create({
     color: colors.primary,
     fontFamily: fonts.primary[400],
     fontSize: 16,
-  },
-  dataCard: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  btnWrapper: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  btnCard: {
-    backgroundColor: colors.primary,
-    paddingVertical: 10,
-    paddingHorizontal: 15,
-    borderTopLeftRadius: 20,
-  },
-  btnCardText: {
-    color: colors.accent,
-    fontFamily: fonts.primary[400],
-    fontSize: 14,
-    textAlign: 'center',
   },
 });

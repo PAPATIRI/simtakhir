@@ -10,6 +10,10 @@ import IcUserOn from './ic-user-on.svg';
 import IcUserOff from './ic-user-off.svg';
 import IcArrowUp from './ic-arrow-up.svg';
 import IcArrowDown from './ic-arrow-down.svg';
+import IcArrowBack from './ic-arrow-back.svg';
+import IcEdit from './ic-edit.svg';
+import IcTopikFile from './ic-topik-file.svg';
+import IcAnnouncement from './ic-announcement.svg';
 
 export {
   IcCalender,
@@ -24,4 +28,8 @@ export {
   IcUserOn,
   IcArrowDown,
   IcArrowUp,
+  IcArrowBack,
+  IcEdit,
+  IcTopikFile,
+  IcAnnouncement,
 };

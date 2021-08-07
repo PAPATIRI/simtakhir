@@ -1,7 +1,13 @@
 import React from 'react';
 import {View, Text} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
-import {Home, Login, Notification, Profile} from '../pages/MahasiswaPages';
+import {
+  MhsHome,
+  Login,
+  MhsTopikSkripsi,
+  Notification,
+  Profile,
+} from '../pages/MahasiswaPages';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {BottomNavigator} from '../components';
 
@@ -10,9 +16,11 @@ const Tab = createBottomTabNavigator();
 
 const MainApp = () => {
   return (
-    <Tab.Navigator tabBar={props => <BottomNavigator {...props} />}>
+    <Tab.Navigator
+      initialRouteName="MhsHome"
+      tabBar={props => <BottomNavigator {...props} />}>
       <Tab.Screen name="Notification" component={Notification} />
-      <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen name="MhsHome" component={MhsHome} />
       <Tab.Screen name="Profile" component={Profile} />
     </Tab.Navigator>
   );
@@ -27,13 +35,18 @@ const Router = () => {
         options={{headerShown: false}}
       />
       <Stack.Screen
-        name="Home"
-        component={Home}
+        name="MhsHome"
+        component={MhsHome}
         options={{headerShown: false}}
       />
       <Stack.Screen
         name="MainApp"
         component={MainApp}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="MhsTopikSkripsi"
+        component={MhsTopikSkripsi}
         options={{headerShown: false}}
       />
     </Stack.Navigator>
