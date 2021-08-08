@@ -29,11 +29,12 @@ const MhsHome = ({navigation}) => {
         </View>
         <View style={styles.menuWrapper}>
           <Menu
-            menuName="jadwal sidang"
+            menuName="daftar sidang"
             icon={<IcCalender />}
             color={colors.icon.primary.iconPink}
             border={10}
             padding={10}
+            onPress={() => navigation.navigate('MhsDaftarSidang')}
           />
           <Menu
             menuName="logbook"

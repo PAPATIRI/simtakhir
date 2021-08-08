@@ -1,41 +1,28 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
-import {
-  IcArrowBack,
-  IlAjukanTopik,
-  IlAnnouncement,
-  IlFileAjuan,
-} from '../../../assets';
+import {StyleSheet, Text, View} from 'react-native';
+import {IcArrowBack, IlPendadaran, IlSempro} from '../../../assets';
 import {CardMenu, Gap, TopNavbar} from '../../../components';
 import {colors} from '../../../utils';
 
-const MhsTopikSkripsi = ({navigation}) => {
+const MhsDaftarSidang = ({navigation}) => {
   return (
     <View style={styles.page}>
       <TopNavbar
-        titleBar="Topik Skripsi"
         iconLeft={<IcArrowBack />}
+        titleBar="Daftar Sidang"
         onPress={() => navigation.navigate('MainApp')}
       />
       <View style={styles.content}>
         <View style={styles.topContent}>
           <CardMenu
-            iconCard={<IlAjukanTopik />}
-            title="Ajukan Topik ke Dosen"
+            iconCard={<IlSempro />}
+            title="Daftar Seminar Proposal"
             bgCardColor={colors.pink}
           />
           <Gap width={20} />
           <CardMenu
-            iconCard={<IlFileAjuan />}
-            title="Ambil Topik dari Dosen"
-            bgCardColor={colors.green}
-          />
-        </View>
-        <Gap height={20} />
-        <View style={styles.bottomContent}>
-          <CardMenu
-            iconCard={<IlAnnouncement />}
-            title="Hasil Ajuan Topikmu"
+            iconCard={<IlPendadaran />}
+            title="Daftar Sidang Skripsi"
             bgCardColor={colors.choco}
           />
         </View>
@@ -44,7 +31,7 @@ const MhsTopikSkripsi = ({navigation}) => {
   );
 };
 
-export default MhsTopikSkripsi;
+export default MhsDaftarSidang;
 
 const styles = StyleSheet.create({
   page: {
@@ -52,17 +39,14 @@ const styles = StyleSheet.create({
     backgroundColor: colors.secondary,
   },
   content: {
-    flex: 3,
+    flex: 1,
     backgroundColor: colors.primary,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
-    padding: 40,
+    padding: 20,
   },
   topContent: {
     flexDirection: 'row',
     justifyContent: 'center',
-  },
-  bottomContent: {
-    alignItems: 'flex-end',
   },
 });

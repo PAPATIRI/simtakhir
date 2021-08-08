@@ -15,7 +15,7 @@ const MhsLogbook = ({navigation}) => {
       <TopNavbar
         iconLeft={<IcArrowBack />}
         titleBar="Logbook"
-        onPress={() => navigation.navigate('MhsHome')}
+        onPress={() => navigation.navigate('MainApp')}
       />
       <View style={styles.content}>
         <View style={styles.topContent}>

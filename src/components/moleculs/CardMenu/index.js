@@ -25,12 +25,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     elevation: 2,
   }),
-  iconWrapper: {
-    backgroundColor: colors.primary,
-    borderRadius: 100,
-    width: 60,
-    padding: 5,
-  },
   title: {
     fontFamily: fonts.primary[600],
     fontSize: 18,
