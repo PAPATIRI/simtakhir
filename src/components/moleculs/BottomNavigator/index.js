@@ -21,7 +21,7 @@ const Icon = ({label, focus}) => {
         <IcNotifOff />
       );
     //
-    case 'Home':
+    case 'MhsHome':
       return focus ? (
         <View style={styles.bgBtnIcon}>
           <IcHomeOn />

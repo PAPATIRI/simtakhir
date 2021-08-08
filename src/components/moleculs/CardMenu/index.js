@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 15,
     justifyContent: 'space-between',
+    elevation: 2,
   }),
   iconWrapper: {
     backgroundColor: colors.primary,

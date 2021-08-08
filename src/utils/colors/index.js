@@ -2,6 +2,7 @@ const mainColor = {
   green1: '#00BF9F',
   blue1: '#0059B2',
   white1: '#F2F9FF',
+  white2: '#fefefe',
   black1: '#212121',
   black2: '#757575',
   black3: '#9E9E9E',
@@ -21,6 +22,9 @@ export const colors = {
   pink: mainColor.pink1,
   green: mainColor.green2,
   choco: mainColor.choco1,
+  blackPrimary: mainColor.black1,
+  blackSecondary: mainColor.black2,
+  blackDisabled: mainColor.black3,
   text: {
     primary: mainColor.black1,
     secondary: mainColor.black2,
@@ -28,7 +32,7 @@ export const colors = {
     error: mainColor.red1,
     warning: mainColor.orange1,
     accent: mainColor.green1,
-    white: mainColor.white1,
+    white: mainColor.white2,
   },
   button: {
     text: mainColor.white1,

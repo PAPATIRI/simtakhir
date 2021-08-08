@@ -14,6 +14,11 @@ import IcArrowBack from './ic-arrow-back.svg';
 import IcEdit from './ic-edit.svg';
 import IcTopikFile from './ic-topik-file.svg';
 import IcAnnouncement from './ic-announcement.svg';
+import IcAcceptedLogbook from './ic-accepted-logbook.svg';
+import IcWaitingLogbook from './ic-waiting-logbook.svg';
+import IcDropDownUp from './ic-dropdownup.svg';
+import IcDropDown from './ic-dropdown.svg';
+import IcArrowRightGreen from './ic-arrow-right-green.svg';
 
 export {
   IcCalender,
@@ -32,4 +37,9 @@ export {
   IcEdit,
   IcTopikFile,
   IcAnnouncement,
+  IcAcceptedLogbook,
+  IcWaitingLogbook,
+  IcDropDown,
+  IcDropDownUp,
+  IcArrowRightGreen,
 };

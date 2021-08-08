@@ -41,6 +41,7 @@ const MhsHome = ({navigation}) => {
             color={colors.icon.primary.iconGreen}
             border={10}
             padding={10}
+            onPress={() => navigation.navigate('MhsLogbook')}
           />
           <Menu
             menuName="topik skripsi"

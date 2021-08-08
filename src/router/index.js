@@ -7,6 +7,7 @@ import {
   MhsTopikSkripsi,
   Notification,
   Profile,
+  MhsLogbook,
 } from '../pages/MahasiswaPages';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {BottomNavigator} from '../components';
@@ -47,6 +48,11 @@ const Router = () => {
       <Stack.Screen
         name="MhsTopikSkripsi"
         component={MhsTopikSkripsi}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="MhsLogbook"
+        component={MhsLogbook}
         options={{headerShown: false}}
       />
     </Stack.Navigator>
