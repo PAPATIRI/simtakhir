@@ -18,7 +18,6 @@ const Menu = ({icon, menuName, color, border, padding, onPress}) => {
 export default Menu;
 
 const styles = StyleSheet.create({
-  body: {},
   iconMenu: (color, border, padding) => ({
     padding: padding,
     borderRadius: border,

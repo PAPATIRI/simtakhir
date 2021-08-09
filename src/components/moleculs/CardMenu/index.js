@@ -2,9 +2,9 @@ import React from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {colors, fonts} from '../../../utils';
 
-const CardMenu = ({iconCard, title, bgCardColor}) => {
+const CardMenu = ({iconCard, title, bgCardColor, onPress}) => {
   return (
-    <TouchableOpacity activeOpacity={0.7}>
+    <TouchableOpacity activeOpacity={0.7} onPress={onPress}>
       <View style={styles.cardWrapper(bgCardColor)}>
         <View style={styles.iconWrapper}>{iconCard}</View>
         <Text style={styles.title}>{title}</Text>

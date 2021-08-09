@@ -23,6 +23,7 @@ const MhsTopikSkripsi = ({navigation}) => {
             iconCard={<IlAjukanTopik />}
             title="Ajukan Topik ke Dosen"
             bgCardColor={colors.pink}
+            onPress={() => navigation.navigate('MhsAjukanTopik')}
           />
           <Gap width={20} />
           <CardMenu
