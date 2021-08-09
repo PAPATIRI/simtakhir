@@ -10,6 +10,8 @@ import {
   MhsLogbook,
   MhsDaftarSidang,
   MhsAjukanTopik,
+  MhsAjukanTopikNext,
+  MhsHasilAjuanTopik,
 } from '../pages/MahasiswaPages';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {BottomNavigator} from '../components';
@@ -65,6 +67,16 @@ const Router = () => {
       <Stack.Screen
         name="MhsAjukanTopik"
         component={MhsAjukanTopik}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="MhsAjukanTopikNext"
+        component={MhsAjukanTopikNext}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="MhsHasilAjuanTopik"
+        component={MhsHasilAjuanTopik}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

@@ -38,6 +38,7 @@ const MhsTopikSkripsi = ({navigation}) => {
             iconCard={<IlAnnouncement />}
             title="Hasil Ajuan Topikmu"
             bgCardColor={colors.choco}
+            onPress={() => navigation.navigate('MhsHasilAjuanTopik')}
           />
         </View>
       </View>

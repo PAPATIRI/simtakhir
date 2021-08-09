@@ -25,7 +25,10 @@ const MhsAjukanTopik = ({navigation}) => {
           />
         </View>
         <View>
-          <Button label="Selanjutnya" />
+          <Button
+            label="Selanjutnya"
+            onPress={() => navigation.navigate('MhsAjukanTopikNext')}
+          />
         </View>
       </View>
     </View>
