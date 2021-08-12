@@ -19,6 +19,7 @@ import IcWaitingLogbook from './ic-waiting-logbook.svg';
 import IcDropDownUp from './ic-dropdownup.svg';
 import IcDropDown from './ic-dropdown.svg';
 import IcArrowRightGreen from './ic-arrow-right-green.svg';
+import IcFilter from './ic-filter.svg';
 
 export {
   IcCalender,
@@ -42,4 +43,5 @@ export {
   IcDropDown,
   IcDropDownUp,
   IcArrowRightGreen,
+  IcFilter,
 };

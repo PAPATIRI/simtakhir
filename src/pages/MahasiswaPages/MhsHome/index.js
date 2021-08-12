@@ -1,20 +1,13 @@
 import React from 'react';
-import {
-  ColorPropType,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {
   IcCalender,
   IcHamburgerMenu,
   IcLogBook,
   IcTopikSkripsi,
 } from '../../../assets';
+import {CardProfile, Menu, TopNavbar} from '../../../components';
 import {colors} from '../../../utils';
-import {CardProfile, Gap, Menu, TopNavbar} from '../../../components';
-import {NavigationContainer} from '@react-navigation/native';
 
 const MhsHome = ({navigation}) => {
   return (

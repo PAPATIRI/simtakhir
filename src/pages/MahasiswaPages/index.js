@@ -8,6 +8,7 @@ import MhsDaftarSidang from './MhsDaftarSidang';
 import MhsAjukanTopik from './MhsAjukanTopik';
 import MhsAjukanTopikNext from './MhsAjukanTopikNext';
 import MhsHasilAjuanTopik from './MhsHasilAjuanTopik';
+import MhsTopikDosen from './MhsTopikDosen';
 
 export {
   Login,
@@ -20,4 +21,5 @@ export {
   MhsAjukanTopik,
   MhsAjukanTopikNext,
   MhsHasilAjuanTopik,
+  MhsTopikDosen,
 };

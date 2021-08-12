@@ -19,7 +19,7 @@ const MhsAjukanTopik = ({navigation}) => {
           <TextInput
             label="deskripsi"
             placeholder="masukkan deskripsi topik"
-            height={80}
+            height={96}
             multiline={true}
             textAlignVertical="top"
           />

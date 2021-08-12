@@ -30,6 +30,7 @@ const MhsTopikSkripsi = ({navigation}) => {
             iconCard={<IlFileAjuan />}
             title="Ambil Topik dari Dosen"
             bgCardColor={colors.green}
+            onPress={() => navigation.navigate('MhsTopikDosen')}
           />
         </View>
         <Gap height={20} />
