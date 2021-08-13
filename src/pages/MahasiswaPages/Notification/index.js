@@ -7,12 +7,9 @@ import {colors, fonts} from '../../../utils';
 const CardNotification = ({judul, deskripsi, waktu}) => {
   return (
     <View style={styles.cardNotifWrapper}>
-      <View style={styles.iconCardNotif}>
-        <IcLogBook />
-      </View>
       <View style={styles.cardContent}>
-        <Text style={styles.cardTitle}>{judul.slice(0, 30)}..</Text>
-        <Text style={styles.cardDesc}>{deskripsi.slice(0, 35)}..</Text>
+        <Text style={styles.cardTitle}>{judul.slice(0, 40)}..</Text>
+        <Text style={styles.cardDesc}>{deskripsi.slice(0, 40)}..</Text>
         <View style={styles.cardTimeWrapper}>
           <Text style={styles.cardTime}>{waktu}</Text>
         </View>
@@ -67,9 +64,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 10,
-    padding: 10,
-    elevation: 3,
-    borderRadius: 10,
+    paddingHorizontal: 15,
+    paddingVertical: 10,
+    elevation: 1,
+    borderRadius: 5,
     backgroundColor: colors.primary,
   },
   iconCardNotif: {
