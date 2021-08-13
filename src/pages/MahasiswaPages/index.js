@@ -9,6 +9,7 @@ import MhsAjukanTopik from './MhsAjukanTopik';
 import MhsAjukanTopikNext from './MhsAjukanTopikNext';
 import MhsHasilAjuanTopik from './MhsHasilAjuanTopik';
 import MhsTopikDosen from './MhsTopikDosen';
+import MhsDetailLogbook from './MhsDetailLogbook';
 
 export {
   Login,
@@ -22,4 +23,5 @@ export {
   MhsAjukanTopikNext,
   MhsHasilAjuanTopik,
   MhsTopikDosen,
+  MhsDetailLogbook,
 };

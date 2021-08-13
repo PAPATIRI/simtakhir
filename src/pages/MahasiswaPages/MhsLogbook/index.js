@@ -35,6 +35,7 @@ const MhsLogbook = ({navigation}) => {
             titleLogbook="bimbingan mengenai judul tugas akhir yang akan diambil"
             dateLogbook="2 desember 2021"
             iconStatus={<IcAcceptedLogbook />}
+            onPress={() => navigation.navigate('MhsDetailLogbook')}
           />
 
           <LogbookList

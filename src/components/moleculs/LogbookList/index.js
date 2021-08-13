@@ -1,22 +1,24 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {IcArrowRightGreen} from '../../../assets';
 import {colors, fonts} from '../../../utils';
 import {Gap} from '../../atoms';
 
-const LogbookList = ({iconStatus, titleLogbook, dateLogbook}) => {
+const LogbookList = ({iconStatus, titleLogbook, dateLogbook, onPress}) => {
   return (
-    <View style={styles.logbookWrapper}>
-      <View style={styles.contentItem}>
-        <Text style={styles.titleItem}>{titleLogbook.slice(0, 35)}..</Text>
-        <Gap height={5} />
-        <Text style={styles.dateItem}>{dateLogbook}</Text>
+    <TouchableOpacity activeOpacity={0.7} onPress={onPress}>
+      <View style={styles.logbookWrapper}>
+        <View style={styles.contentItem}>
+          <Text style={styles.titleItem}>{titleLogbook.slice(0, 35)}..</Text>
+          <Gap height={5} />
+          <Text style={styles.dateItem}>{dateLogbook}</Text>
+        </View>
+        <View style={styles.iconItem}>
+          {iconStatus}
+          <IcArrowRightGreen />
+        </View>
       </View>
-      <View style={styles.iconItem}>
-        {iconStatus}
-        <IcArrowRightGreen />
-      </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
