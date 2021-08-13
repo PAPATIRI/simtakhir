@@ -3,6 +3,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import {IcLogBook} from '../../../assets';
 import {TopNavbar} from '../../../components';
 import {colors, fonts} from '../../../utils';
+import {IcHamburgerMenu} from '../../../assets';
 
 const CardNotification = ({judul, deskripsi, waktu}) => {
   return (
@@ -21,7 +22,7 @@ const CardNotification = ({judul, deskripsi, waktu}) => {
 const Notification = () => {
   return (
     <View style={styles.page}>
-      <TopNavbar />
+      <TopNavbar iconRight={<IcHamburgerMenu />} />
       <View style={styles.content}>
         <Text style={styles.subTitle}>Pemberitahuan</Text>
         <CardNotification

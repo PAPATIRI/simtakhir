@@ -1,13 +1,20 @@
 import React, {useState} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import {TopNavbar, CardProfile} from '../../../components';
-import {colors} from '../../../utils';
+import {
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import {IcArrowDown, IcHamburgerMenu} from '../../../assets';
+import {TopNavbar, CardProfile, Gap} from '../../../components';
+import {colors, fonts} from '../../../utils';
 
 const Profile = () => {
   return (
     <View style={styles.page}>
       <View style={styles.topNavWrapper}>
-        <TopNavbar />
+        <TopNavbar iconRight={<IcHamburgerMenu />} />
         <View style={styles.emptyView}></View>
       </View>
       <View style={styles.content}>
@@ -15,7 +22,26 @@ const Profile = () => {
           <CardProfile />
         </View>
         <View style={styles.menuList}>
-          <Text>text content</Text>
+          <TouchableOpacity activeOpacity={0.7}>
+            <View style={styles.cardContent}>
+              <Text style={styles.textContent}>Detail Tugas Akhir</Text>
+              <IcArrowDown />
+            </View>
+          </TouchableOpacity>
+          <Gap height={10} />
+          <TouchableOpacity activeOpacity={0.7}>
+            <View style={styles.cardContent}>
+              <Text style={styles.textContent}>Jadwal Sidang</Text>
+              <IcArrowDown />
+            </View>
+          </TouchableOpacity>
+          <Gap height={10} />
+          <TouchableOpacity activeOpacity={0.7}>
+            <View style={styles.cardContent}>
+              <Text style={styles.textContent}>Logbook</Text>
+              <IcArrowDown />
+            </View>
+          </TouchableOpacity>
         </View>
       </View>
     </View>
@@ -49,5 +75,19 @@ const styles = StyleSheet.create({
   menuList: {
     flex: 2,
     paddingHorizontal: 20,
+  },
+  cardContent: {
+    paddingHorizontal: 20,
+    paddingVertical: 12,
+    borderRadius: 5,
+    flexDirection: 'row',
+    backgroundColor: colors.primary,
+    justifyContent: 'space-between',
+    elevation: 1,
+  },
+  textContent: {
+    fontFamily: fonts.primary[400],
+    fontSize: 18,
+    color: colors.text.accent,
   },
 });
