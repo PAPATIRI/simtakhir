@@ -3,11 +3,14 @@ import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {
   IcAcceptedLogbook,
   IcArrowBack,
+  IcDownload,
   IcDropDown,
+  IcPlus,
   IcWaitingLogbook,
 } from '../../../assets';
 import {Gap, LogbookList, TopNavbar} from '../../../components';
 import {colors} from '../../../utils';
+import ActionButton from '@logvinme/react-native-action-button';
 
 const MhsLogbook = ({navigation}) => {
   return (
@@ -64,6 +67,22 @@ const MhsLogbook = ({navigation}) => {
             iconStatus={<IcWaitingLogbook />}
           />
         </View>
+        <ActionButton buttonColor={colors.accent}>
+          <ActionButton.Item
+            onPress={() => {}}
+            title="download logbook"
+            textStyle={{
+              color: colors.text.accent,
+            }}>
+            <IcDownload />
+          </ActionButton.Item>
+          <ActionButton.Item
+            onPress={() => {}}
+            title="tambah logbook"
+            textStyle={{color: colors.text.accent}}>
+            <IcPlus style={styles.icon} />
+          </ActionButton.Item>
+        </ActionButton>
       </View>
     </View>
   );

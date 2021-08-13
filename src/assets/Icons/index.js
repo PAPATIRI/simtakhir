@@ -20,6 +20,9 @@ import IcDropDownUp from './ic-dropdownup.svg';
 import IcDropDown from './ic-dropdown.svg';
 import IcArrowRightGreen from './ic-arrow-right-green.svg';
 import IcFilter from './ic-filter.svg';
+import IcPlus from './ic-plus.svg';
+import IcPlusSmall from './ic-plus-small.svg';
+import IcDownload from './ic-download.svg';
 
 export {
   IcCalender,
@@ -44,4 +47,7 @@ export {
   IcDropDownUp,
   IcArrowRightGreen,
   IcFilter,
+  IcPlus,
+  IcPlusSmall,
+  IcDownload,
 };
