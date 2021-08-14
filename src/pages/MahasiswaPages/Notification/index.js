@@ -9,8 +9,12 @@ const CardNotification = ({judul, deskripsi, waktu}) => {
   return (
     <View style={styles.cardNotifWrapper}>
       <View style={styles.cardContent}>
-        <Text style={styles.cardTitle}>{judul.slice(0, 40)}..</Text>
-        <Text style={styles.cardDesc}>{deskripsi.slice(0, 40)}..</Text>
+        <Text numberOfLines={1} style={styles.cardTitle}>
+          {judul}..
+        </Text>
+        <Text numberOfLines={1} style={styles.cardDesc}>
+          {deskripsi}..
+        </Text>
         <View style={styles.cardTimeWrapper}>
           <Text style={styles.cardTime}>{waktu}</Text>
         </View>

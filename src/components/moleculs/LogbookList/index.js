@@ -9,7 +9,9 @@ const LogbookList = ({iconStatus, titleLogbook, dateLogbook, onPress}) => {
     <TouchableOpacity activeOpacity={0.7} onPress={onPress}>
       <View style={styles.logbookWrapper}>
         <View style={styles.contentItem}>
-          <Text style={styles.titleItem}>{titleLogbook.slice(0, 35)}..</Text>
+          <Text numberOfLines={1} style={styles.titleItem}>
+            {titleLogbook}..
+          </Text>
           <Gap height={5} />
           <Text style={styles.dateItem}>{dateLogbook}</Text>
         </View>
@@ -31,6 +33,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   contentItem: {
+    flex: 4,
     marginRight: 22,
   },
   titleItem: {

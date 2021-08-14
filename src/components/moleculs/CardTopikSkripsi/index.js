@@ -18,7 +18,9 @@ const CardTopikSkripsi = ({
         <Image source={imgDosen} style={styles.cardImg} />
         <View style={styles.content}>
           <View style={styles.topCard}>
-            <Text style={styles.title}>{title.slice(0, 35)}..</Text>
+            <Text numberOfLines={2} style={styles.title}>
+              {title}..
+            </Text>
             <Gap height={5} />
             <Text style={styles.dosen}>{dosen}</Text>
           </View>

@@ -25,7 +25,6 @@ const MhsTopikSkripsi = ({navigation}) => {
             bgCardColor={colors.pink}
             onPress={() => navigation.navigate('MhsAjukanTopik')}
           />
-          <Gap width={20} />
           <CardMenu
             iconCard={<IlFileAjuan />}
             title="Ambil Topik dari Dosen"
@@ -63,7 +62,7 @@ const styles = StyleSheet.create({
   },
   topContent: {
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
   },
   bottomContent: {
     alignItems: 'flex-end',
