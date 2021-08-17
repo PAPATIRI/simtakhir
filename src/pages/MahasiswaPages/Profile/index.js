@@ -1,16 +1,59 @@
 import React, {useState} from 'react';
 import {
+  ScrollView,
   StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
   View,
 } from 'react-native';
-import {IcArrowDown, IcHamburgerMenu} from '../../../assets';
+import {IcArrowDown, IcDropDown, IcHamburgerMenu} from '../../../assets';
 import {TopNavbar, CardProfile, Gap} from '../../../components';
 import {colors, fonts} from '../../../utils';
 
+let dataSkripsi = [
+  {
+    title: 'Detail Tugas Akhir',
+    dataDetail: [
+      {
+        label: 'judul',
+        judul:
+          'pengembangan aplikasi mobile berbasis android untuk sistem pengelolaan tugas akhir mahasiswaa',
+      },
+      {
+        label: 'deskripsi',
+        judul:
+          'merupakan pengembangan sistem berbasis mobile yang merupakan alternatif dari sistem berbasis web dengan memanfaatkan api',
+      },
+    ],
+  },
+  {
+    title: 'Jadwal Sidang',
+    dataDetail: [
+      {
+        label: 'ruang',
+        judul: 'kampus 4 R.4.6.01',
+      },
+      {
+        label: 'waktu',
+        judul: '21 september 2021 10.30',
+      },
+    ],
+  },
+  {
+    title: 'Logbook',
+    dataDetail: [
+      {
+        label: 'keterangan',
+        judul: 'terakhir ditambahkan 7 hari yang lalu',
+      },
+    ],
+  },
+];
+
 const Profile = () => {
+  const [currentIndex, setCurrentIndex] = React.useState(null);
+
   return (
     <View style={styles.page}>
       <View style={styles.topNavWrapper}>
@@ -22,26 +65,38 @@ const Profile = () => {
           <CardProfile />
         </View>
         <View style={styles.menuList}>
-          <TouchableOpacity activeOpacity={0.7}>
-            <View style={styles.cardContent}>
-              <Text style={styles.textContent}>Detail Tugas Akhir</Text>
-              <IcArrowDown />
-            </View>
-          </TouchableOpacity>
-          <Gap height={10} />
-          <TouchableOpacity activeOpacity={0.7}>
-            <View style={styles.cardContent}>
-              <Text style={styles.textContent}>Jadwal Sidang</Text>
-              <IcArrowDown />
-            </View>
-          </TouchableOpacity>
-          <Gap height={10} />
-          <TouchableOpacity activeOpacity={0.7}>
-            <View style={styles.cardContent}>
-              <Text style={styles.textContent}>Logbook</Text>
-              <IcArrowDown />
-            </View>
-          </TouchableOpacity>
+          {dataSkripsi.map(({title, dataDetail}, index) => {
+            return (
+              <TouchableOpacity
+                key={title}
+                activeOpacity={0.7}
+                onPress={() => {
+                  setCurrentIndex(index === currentIndex ? null : index);
+                }}
+                style={styles.dropDownWrapper}>
+                <View style={styles.dropDown}>
+                  <View style={styles.heading}>
+                    <Text style={styles.titleDropDown}>{title}</Text>
+                    <IcArrowDown />
+                  </View>
+                  <View style={styles.subCategoryList}>
+                    {index === currentIndex &&
+                      dataDetail.map((data, label, judul) => (
+                        <View>
+                          <Text style={styles.subtitle} key={label}>
+                            {data.label}
+                          </Text>
+                          <Gap height={5} />
+                          <Text style={styles.dropDownContent} key={judul}>
+                            {data.judul}
+                          </Text>
+                        </View>
+                      ))}
+                  </View>
+                </View>
+              </TouchableOpacity>
+            );
+          })}
         </View>
       </View>
     </View>
@@ -76,18 +131,36 @@ const styles = StyleSheet.create({
     flex: 2,
     paddingHorizontal: 20,
   },
-  cardContent: {
+  dropDownWrapper: {},
+
+  dropDown: {
     paddingHorizontal: 20,
-    paddingVertical: 12,
-    borderRadius: 5,
-    flexDirection: 'row',
+    paddingTop: 12,
+    marginBottom: 10,
     backgroundColor: colors.primary,
-    justifyContent: 'space-between',
     elevation: 1,
+    borderRadius: 5,
   },
-  textContent: {
-    fontFamily: fonts.primary[400],
+  heading: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 20,
+  },
+  titleDropDown: {
+    fontFamily: fonts.primary[500],
     fontSize: 18,
     color: colors.text.accent,
+  },
+  subtitle: {
+    fontFamily: fonts.primary[400],
+    fontSize: 16,
+    color: colors.text.primary,
+  },
+  dropDownContent: {
+    fontFamily: fonts.primary[300],
+    fontSize: 16,
+    color: colors.text.primary,
+    marginBottom: 15,
+    lineHeight: 16 * 1.5,
   },
 });
