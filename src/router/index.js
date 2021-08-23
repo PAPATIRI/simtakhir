@@ -18,6 +18,9 @@ import {
 } from '../pages/MahasiswaPages';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {BottomNavigator} from '../components';
+import MhsDaftarSidangSempro from '../pages/MahasiswaPages/MhsDaftarSidangSempro';
+import MhsDaftarSidangSemproNext from '../pages/MahasiswaPages/MhsDaftarSidangSemproNext';
+import MhsSuccess from '../pages/MahasiswaPages/MhsSuccess';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -95,6 +98,21 @@ const Router = () => {
       <Stack.Screen
         name="MhsTambahLogbook"
         component={MhsTambahLogbook}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="MhsDaftarSidangSempro"
+        component={MhsDaftarSidangSempro}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="MhsDaftarSidangSemproNext"
+        component={MhsDaftarSidangSemproNext}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="MhsSuccess"
+        component={MhsSuccess}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

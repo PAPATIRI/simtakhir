@@ -18,6 +18,9 @@ const MhsDaftarSidang = ({navigation}) => {
             iconCard={<IlSempro />}
             title="Daftar Seminar Proposal"
             bgCardColor={colors.pink}
+            onPress={() => {
+              navigation.navigate('MhsDaftarSidangSempro');
+            }}
           />
           <Gap width={20} />
           <CardMenu
