@@ -23,7 +23,7 @@ const MhsDaftarSidang = ({navigation}) => {
           <CardMenu
             iconCard={<IlPendadaran />}
             title="Daftar Sidang Skripsi"
-            bgCardColor={colors.choco}
+            bgCardColor={colors.blue2}
           />
         </View>
       </View>

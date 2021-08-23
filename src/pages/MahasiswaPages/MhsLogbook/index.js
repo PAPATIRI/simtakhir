@@ -78,7 +78,7 @@ const MhsLogbook = ({navigation}) => {
             <IcDownload />
           </ActionButton.Item>
           <ActionButton.Item
-            onPress={() => {}}
+            onPress={() => navigation.navigate('MhsTambahLogbook')}
             title="tambah logbook"
             textStyle={{color: colors.text.accent}}>
             <IcPlus style={styles.icon} />

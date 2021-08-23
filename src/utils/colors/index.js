@@ -1,6 +1,7 @@
 const mainColor = {
   green1: '#00BF9F',
   blue1: '#0059B2',
+  blue2: '#94EDFF',
   white1: '#F2F9FF',
   white2: '#fefefe',
   black1: '#212121',
@@ -22,6 +23,7 @@ export const colors = {
   pink: mainColor.pink1,
   green: mainColor.green2,
   choco: mainColor.choco1,
+  blue2: mainColor.blue2,
   blackPrimary: mainColor.black1,
   blackSecondary: mainColor.black2,
   blackDisabled: mainColor.black3,
