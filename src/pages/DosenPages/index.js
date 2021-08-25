@@ -1,5 +1,5 @@
-import DosenHome from './Home';
-import DosenNotif from './Notification';
-import DosenProfil from './Profile';
+import DosenHome from './DsnHome';
+import DosenNotif from './DsnNotification';
+import DosenProfil from './DsnProfile';
 
 export {DosenHome, DosenProfil, DosenNotif};

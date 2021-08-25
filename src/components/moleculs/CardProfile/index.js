@@ -11,7 +11,7 @@ import {colors, fonts} from '../../../utils';
 import {BgCard, ProfilImg} from '../../../assets';
 import {Gap} from '../../atoms';
 
-const CardProfile = () => {
+const CardProfile = ({image, name, label1, label2, data1, data2}) => {
   return (
     <View style={styles.body}>
       <ImageBackground
@@ -20,21 +20,21 @@ const CardProfile = () => {
         imageStyle={{borderRadius: 10}}
         resizeMode="cover">
         <View style={styles.cardImg}>
-          <Image source={ProfilImg} style={styles.profileImg} />
+          <Image source={image} style={styles.profileImg} />
         </View>
         <View style={styles.cardContentWrapper}>
           <View style={styles.cardContent}>
-            <Text style={styles.nameCard}>Siska Amelia</Text>
+            <Text style={styles.nameCard}>{name}</Text>
             <Gap height={15} />
             <View style={styles.dataCard}>
               <View>
-                <Text style={styles.subTitle}>status</Text>
-                <Text style={styles.status}>MetoPen</Text>
+                <Text style={styles.subTitle}>{label1}</Text>
+                <Text style={styles.status}>{data1}</Text>
               </View>
               <Gap height={10} />
               <View>
-                <Text style={styles.subTitle}>jadwal sidang</Text>
-                <Text style={styles.status}>belum ada</Text>
+                <Text style={styles.subTitle}>{label2}</Text>
+                <Text style={styles.status}>{data2}</Text>
               </View>
             </View>
           </View>

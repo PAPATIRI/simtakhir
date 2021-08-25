@@ -7,46 +7,49 @@ import {
   View,
 } from 'react-native';
 import {
+  ArdiansyahImg,
+  IcBimbingan,
   IcCalender,
   IcHamburgerMenu,
   IcLogBook,
+  IcSkripsi,
   IcTopikSkripsi,
 } from '../../../assets';
-import {colors} from '../../../utils';
-import {CardProfile, Gap, Menu, TopNavbar} from '../../../components';
+import {colors, fonts} from '../../../utils';
+import {CardMenu, CardProfile, Gap, Menu, TopNavbar} from '../../../components';
 
-const Home = () => {
+const DsnHome = () => {
   return (
     <View style={styles.page}>
       <View style={styles.topNavWrapper}>
-        <TopNavbar />
+        <TopNavbar iconRight={<IcHamburgerMenu />} />
         <View style={styles.emptyView}></View>
       </View>
       <View style={styles.content}>
         <View style={styles.cardWrapper}>
-          <CardProfile />
+          <CardProfile
+            image={ArdiansyahImg}
+            name="Ardiansyah S.T.,M.Cs"
+            label1="total topik"
+            data1="10 topik"
+            label2="total mahasiswa bimbingan"
+            data2="10 Mahasiswa"
+          />
         </View>
         <View style={styles.menuWrapper}>
-          <Menu
-            menuName="jadwal sidang"
-            icon={<IcCalender />}
-            color={colors.icon.primary.iconPink}
-            border={10}
-            padding={10}
+          <CardMenu
+            title="Bimbingan    ku"
+            bgCardColor={colors.pink}
+            iconCard={<IcBimbingan />}
+            fontsfamily={fonts.primary[600]}
+            fontsize={20}
           />
-          <Menu
-            menuName="logbook"
-            icon={<IcLogBook />}
-            color={colors.icon.primary.iconGreen}
-            border={10}
-            padding={10}
-          />
-          <Menu
-            menuName="topik skripsi"
-            icon={<IcTopikSkripsi />}
-            color={colors.icon.primary.iconChoco}
-            border={10}
-            padding={10}
+          <CardMenu
+            title="Topik    Skripsi"
+            bgCardColor={colors.choco}
+            iconCard={<IcSkripsi />}
+            fontsfamily={fonts.primary[600]}
+            fontsize={20}
           />
         </View>
       </View>
@@ -54,7 +57,7 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default DsnHome;
 
 const styles = StyleSheet.create({
   page: {
@@ -80,7 +83,7 @@ const styles = StyleSheet.create({
   },
   menuWrapper: {
     flex: 2,
-    paddingVertical: 40,
+    paddingVertical: 20,
     paddingHorizontal: 25,
     flexDirection: 'row',
     justifyContent: 'space-around',

@@ -11,36 +11,32 @@ import {
 import {colors} from '../../../utils';
 
 const Icon = ({label, focus}) => {
-  switch (label) {
-    case 'Notification':
-      return focus ? (
-        <View style={styles.bgBtnIcon}>
-          <IcNotifOn />
-        </View>
-      ) : (
-        <IcNotifOff />
-      );
-    //
-    case 'MhsHome':
-      return focus ? (
-        <View style={styles.bgBtnIcon}>
-          <IcHomeOn />
-        </View>
-      ) : (
-        <IcHomeOff />
-      );
-    //
-    case 'Profile':
-      return focus ? (
-        <View style={styles.bgBtnIcon}>
-          <IcUserOn />
-        </View>
-      ) : (
-        <IcUserOff />
-      );
-    //
-    default:
-      return <IcHomeOn />;
+  if (label == 'Notification' || label == 'DosenNotif') {
+    return focus ? (
+      <View style={styles.bgBtnIcon}>
+        <IcNotifOn />
+      </View>
+    ) : (
+      <IcNotifOff />
+    );
+  } else if (label == 'MhsHome' || label == 'DosenHome') {
+    return focus ? (
+      <View style={styles.bgBtnIcon}>
+        <IcHomeOn />
+      </View>
+    ) : (
+      <IcHomeOff />
+    );
+  } else if (label == 'Profile' || label == 'DosenProfil') {
+    return focus ? (
+      <View style={styles.bgBtnIcon}>
+        <IcUserOn />
+      </View>
+    ) : (
+      <IcUserOff />
+    );
+  } else {
+    return <IcHomeOn />;
   }
 };
 

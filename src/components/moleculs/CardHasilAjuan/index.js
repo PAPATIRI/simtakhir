@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
   status: {
-    backgroundColor: colors.green,
+    backgroundColor: colors.secondary,
     padding: 5,
     borderRadius: 5,
   },

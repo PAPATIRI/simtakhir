@@ -3,7 +3,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import {TopNavbar, CardProfile} from '../../../components';
 import {colors} from '../../../utils';
 
-const Profile = () => {
+const DsnProfile = () => {
   return (
     <View style={styles.page}>
       <View style={styles.topNavWrapper}>
@@ -22,7 +22,7 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default DsnProfile;
 
 const styles = StyleSheet.create({
   page: {

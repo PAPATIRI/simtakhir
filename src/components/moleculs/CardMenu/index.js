@@ -2,12 +2,19 @@ import React from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {colors, fonts} from '../../../utils';
 
-const CardMenu = ({iconCard, title, bgCardColor, onPress}) => {
+const CardMenu = ({
+  iconCard,
+  title,
+  bgCardColor,
+  onPress,
+  fontsize,
+  fontsfamily,
+}) => {
   return (
     <TouchableOpacity activeOpacity={0.7} onPress={onPress}>
       <View style={styles.cardWrapper(bgCardColor)}>
         <View style={styles.iconWrapper}>{iconCard}</View>
-        <Text style={styles.title}>{title}</Text>
+        <Text style={styles.title(fontsize, fontsfamily)}>{title}</Text>
       </View>
     </TouchableOpacity>
   );
@@ -25,9 +32,9 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     elevation: 2,
   }),
-  title: {
-    fontFamily: fonts.primary[600],
-    fontSize: 18,
+  title: (fontsize, fontsfamily) => ({
+    fontFamily: fontsfamily,
+    fontSize: fontsize,
     color: colors.text.white,
-  },
+  }),
 });

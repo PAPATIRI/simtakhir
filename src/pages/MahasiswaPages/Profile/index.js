@@ -76,7 +76,9 @@ const Profile = () => {
                 style={styles.dropDownWrapper}>
                 <View style={styles.dropDown}>
                   <View style={styles.heading}>
-                    <Text style={styles.titleDropDown}>{title}</Text>
+                    <Text style={styles.titleDropDown} key={title}>
+                      {title}
+                    </Text>
                     <IcArrowDown />
                   </View>
                   <View style={styles.subCategoryList}>

@@ -21,7 +21,7 @@ const CardNotification = ({judul, deskripsi, waktu}) => {
   );
 };
 
-const Notification = () => {
+const DsnNotification = () => {
   return (
     <View style={styles.page}>
       <TopNavbar />
@@ -42,7 +42,7 @@ const Notification = () => {
   );
 };
 
-export default Notification;
+export default DsnNotification;
 
 const styles = StyleSheet.create({
   page: {

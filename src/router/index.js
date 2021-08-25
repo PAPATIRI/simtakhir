@@ -21,6 +21,7 @@ import {BottomNavigator} from '../components';
 import MhsDaftarSidangSempro from '../pages/MahasiswaPages/MhsDaftarSidangSempro';
 import MhsDaftarSidangSemproNext from '../pages/MahasiswaPages/MhsDaftarSidangSemproNext';
 import MhsSuccess from '../pages/MahasiswaPages/MhsSuccess';
+import {DosenHome, DosenNotif, DosenProfil} from '../pages';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -33,6 +34,18 @@ const MainApp = () => {
       <Tab.Screen name="Notification" component={Notification} />
       <Tab.Screen name="MhsHome" component={MhsHome} />
       <Tab.Screen name="Profile" component={Profile} />
+    </Tab.Navigator>
+  );
+};
+
+const DosenMainApp = () => {
+  return (
+    <Tab.Navigator
+      initialRouteName="DosenHome"
+      tabBar={props => <BottomNavigator {...props} />}>
+      <Tab.Screen name="DosenNotif" component={DosenNotif} />
+      <Tab.Screen name="DosenHome" component={DosenHome} />
+      <Tab.Screen name="DosenProfil" component={DosenProfil} />
     </Tab.Navigator>
   );
 };
@@ -113,6 +126,29 @@ const Router = () => {
       <Stack.Screen
         name="MhsSuccess"
         component={MhsSuccess}
+        options={{headerShown: false}}
+      />
+      {/* dosen stack navigation */}
+      <Stack.Screen
+        name="DosenMainApp"
+        component={DosenMainApp}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="DosenHome"
+        component={DosenHome}
+        options={{headerShown: false}}
+      />
+
+      <Stack.Screen
+        name="DosenNotif"
+        component={DosenNotif}
+        options={{headerShown: false}}
+      />
+
+      <Stack.Screen
+        name="DosenProfil"
+        component={DosenProfil}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

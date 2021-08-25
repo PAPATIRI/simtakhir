@@ -23,6 +23,8 @@ import IcFilter from './ic-filter.svg';
 import IcPlus from './ic-plus.svg';
 import IcPlusSmall from './ic-plus-small.svg';
 import IcDownload from './ic-download.svg';
+import IcBimbingan from './ic-bimbingan.svg';
+import IcSkripsi from './ic-skripsi.svg';
 
 export {
   IcCalender,
@@ -50,4 +52,6 @@ export {
   IcPlus,
   IcPlusSmall,
   IcDownload,
+  IcBimbingan,
+  IcSkripsi,
 };

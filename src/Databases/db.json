@@ -1,0 +1,85 @@
+[
+  {
+    "staticdata": [
+      {
+        "bidang": [
+          "kebutuhan perangkat lunak",
+          "artificial inteligence",
+          "augmented reality"
+        ]
+      }
+    ]
+  },
+  {
+    "user": [
+      {
+        "email": "dosen@gmail.com",
+        "password": "12345678",
+        "data": [
+          {
+            "bimbingan": [
+              {
+                "namaMhs": "syarif tufik hidayat",
+                "nim": 1700018192,
+                "status": "skripsi",
+                "periode": "2020 / 2021"
+              },
+              {
+                "namaMhs": "syarif tufik hidayat",
+                "nim": 1700018192,
+                "status": "skripsi",
+                "periode": "2020 / 2021"
+              }
+            ]
+          },
+          {
+            "topik": [
+              {
+                "topiksaya": [
+                  {
+                    "idtopik": 1,
+                    "judultopik": "judul blah blah",
+                    "deskripsi": "deskripsi blah blah",
+                    "periode": "2020 / 2021"
+                  },
+                  {
+                    "idtopik": 2,
+                    "judultopik": "judul 2 blah blah",
+                    "deskripsi": "deskripsi 2 blah blah",
+                    "periode": "2020 / 2021"
+                  }
+                ],
+                "topikajuan": [
+                  {
+                    "idajuan": 1,
+                    "namapengaju": "syarif tofik hidayat",
+                    "judultopikajuan": "judul topik ajuan",
+                    "deskripsitopikajuan": "deskripsi topik ajuan",
+                    "bidang": "kebutuhan perangkat lunak",
+                    "periode": "2020 / 2021"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "email": "mahasiswa@gmail.com",
+        "password": "12345678",
+        "data": [
+          {
+            "topik": [
+              {
+                "judul": "pengembangan blah blah",
+                "deskripsi": "deskripsi blah blah",
+                "dospem": "Ardiansyah",
+                "status": "skripsi"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
