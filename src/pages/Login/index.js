@@ -49,6 +49,7 @@ const Login = ({navigation}) => {
           <View>
             <Button
               label="Masuk"
+              // onPress={() => navigation.replace('MainApp')}
               onPress={() => navigation.replace('DosenMainApp')}
               // onPress={() => onLogin(enteredEmail)}
             />

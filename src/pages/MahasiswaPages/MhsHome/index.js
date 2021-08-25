@@ -5,6 +5,7 @@ import {
   IcHamburgerMenu,
   IcLogBook,
   IcTopikSkripsi,
+  ProfilImg,
 } from '../../../assets';
 import {CardProfile, Menu, TopNavbar} from '../../../components';
 import {colors} from '../../../utils';
@@ -18,7 +19,14 @@ const MhsHome = ({navigation}) => {
       </View>
       <View style={styles.content}>
         <View style={styles.cardWrapper}>
-          <CardProfile />
+          <CardProfile
+            image={ProfilImg}
+            name="Siska Ameli"
+            label1="status"
+            data1="Metopen"
+            label2="jadwal sidang"
+            data2="belum ada"
+          />
         </View>
         <View style={styles.menuWrapper}>
           <Menu

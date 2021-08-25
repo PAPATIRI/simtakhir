@@ -1,50 +1,57 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import {
   IcArrowBack,
-  IlAjukanTopik,
-  IlAnnouncement,
-  IlFileAjuan,
+  IlRequest,
+  IlTambahTopik,
+  IlTopikSaya,
 } from '../../../assets';
-import {CardMenu, Gap, TopNavbar} from '../../../components';
+import {TopNavbar, CardMenu} from '../../../components';
 import {colors, fonts} from '../../../utils';
 
-const MhsTopikSkripsi = ({navigation}) => {
+const DsnTopikSkripsi = ({navigation}) => {
   return (
     <View style={styles.page}>
       <TopNavbar
-        titleBar="Topik Skripsi"
         iconLeft={<IcArrowBack />}
-        onPress={() => navigation.navigate('MainApp')}
+        titleBar="Topik Skripsi"
+        onPress={() => {
+          navigation.navigate('DosenMainApp');
+        }}
       />
       <View style={styles.content}>
         <View style={styles.topContent}>
           <CardMenu
-            iconCard={<IlAjukanTopik />}
-            title="Ajukan Topik ke Dosen"
+            title="Tambah     Topik Skripsi"
             bgCardColor={colors.pink}
+            iconCard={<IlTambahTopik />}
             fontsfamily={fonts.primary[600]}
             fontsize={20}
-            onPress={() => navigation.navigate('MhsAjukanTopik')}
+            onPress={() => {
+              navigation.navigate('DsnTopikSkripsi');
+            }}
           />
           <CardMenu
-            iconCard={<IlFileAjuan />}
-            title="Ambil Topik dari Dosen"
-            bgCardColor={colors.green}
+            title="Request Mahasiswa"
+            bgCardColor={colors.choco}
+            iconCard={<IlRequest />}
             fontsfamily={fonts.primary[600]}
             fontsize={20}
-            onPress={() => navigation.navigate('MhsTopikDosen')}
+            onPress={() => {
+              navigation.navigate('DsnTopikSkripsi');
+            }}
           />
         </View>
-        <Gap height={20} />
         <View style={styles.bottomContent}>
           <CardMenu
-            iconCard={<IlAnnouncement />}
-            title="Hasil Ajuan Topikmu"
-            bgCardColor={colors.choco}
+            title="Topik     Skripsi Saya"
+            bgCardColor={colors.green}
+            iconCard={<IlTopikSaya />}
             fontsfamily={fonts.primary[600]}
             fontsize={20}
-            onPress={() => navigation.navigate('MhsHasilAjuanTopik')}
+            onPress={() => {
+              navigation.navigate('DsnTopikSkripsi');
+            }}
           />
         </View>
       </View>
@@ -52,7 +59,7 @@ const MhsTopikSkripsi = ({navigation}) => {
   );
 };
 
-export default MhsTopikSkripsi;
+export default DsnTopikSkripsi;
 
 const styles = StyleSheet.create({
   page: {
@@ -60,7 +67,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.secondary,
   },
   content: {
-    flex: 3,
+    flex: 1,
     backgroundColor: colors.primary,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
@@ -70,8 +77,10 @@ const styles = StyleSheet.create({
   topContent: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    marginBottom: 20,
   },
   bottomContent: {
-    alignItems: 'flex-end',
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
   },
 });

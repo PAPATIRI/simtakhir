@@ -7,7 +7,12 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import {IcArrowDown, IcDropDown, IcHamburgerMenu} from '../../../assets';
+import {
+  IcArrowDown,
+  IcDropDown,
+  IcHamburgerMenu,
+  ProfilImg,
+} from '../../../assets';
 import {TopNavbar, CardProfile, Gap} from '../../../components';
 import {colors, fonts} from '../../../utils';
 
@@ -62,7 +67,14 @@ const Profile = () => {
       </View>
       <View style={styles.content}>
         <View style={styles.cardWrapper}>
-          <CardProfile />
+          <CardProfile
+            image={ProfilImg}
+            name="Siska Ameli"
+            label1="status"
+            data1="Metopen"
+            label2="dosen pembimbing"
+            data2="Ardiansyah S.T.,M.Cs"
+          />
         </View>
         <View style={styles.menuList}>
           {dataSkripsi.map(({title, dataDetail}, index) => {

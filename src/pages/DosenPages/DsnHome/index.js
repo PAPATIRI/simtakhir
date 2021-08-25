@@ -53,6 +53,9 @@ const DsnHome = ({navigation}) => {
             iconCard={<IcSkripsi />}
             fontsfamily={fonts.primary[600]}
             fontsize={20}
+            onPress={() => {
+              navigation.navigate('DsnTopikSkripsi');
+            }}
           />
         </View>
       </View>

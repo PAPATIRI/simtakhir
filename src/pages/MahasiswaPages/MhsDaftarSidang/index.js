@@ -2,7 +2,7 @@ import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {IcArrowBack, IlPendadaran, IlSempro} from '../../../assets';
 import {CardMenu, Gap, TopNavbar} from '../../../components';
-import {colors} from '../../../utils';
+import {colors, fonts} from '../../../utils';
 
 const MhsDaftarSidang = ({navigation}) => {
   return (
@@ -18,6 +18,8 @@ const MhsDaftarSidang = ({navigation}) => {
             iconCard={<IlSempro />}
             title="Daftar Seminar Proposal"
             bgCardColor={colors.pink}
+            fontsfamily={fonts.primary[600]}
+            fontsize={18}
             onPress={() => {
               navigation.navigate('MhsDaftarSidangSempro');
             }}
@@ -27,6 +29,8 @@ const MhsDaftarSidang = ({navigation}) => {
             iconCard={<IlPendadaran />}
             title="Daftar Sidang Skripsi"
             bgCardColor={colors.blue2}
+            fontsfamily={fonts.primary[600]}
+            fontsize={18}
           />
         </View>
       </View>

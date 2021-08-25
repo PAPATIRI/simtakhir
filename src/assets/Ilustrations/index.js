@@ -5,6 +5,9 @@ import IlAjukanTopik from './il-edit.svg';
 import IlFileAjuan from './il-file.svg';
 import IlAnnouncement from './il-announcement.svg';
 import IlSucessDaftarSidang from './il-success-daftar-sidang.svg';
+import IlRequest from './il-request.svg';
+import IlTambahTopik from './il-tambah-topik.svg';
+import IlTopikSaya from './il-topik-saya.svg';
 
 export {
   BgCard,
@@ -14,4 +17,7 @@ export {
   IlFileAjuan,
   IlAnnouncement,
   IlSucessDaftarSidang,
+  IlRequest,
+  IlTambahTopik,
+  IlTopikSaya,
 };

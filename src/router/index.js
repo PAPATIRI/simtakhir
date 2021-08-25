@@ -22,6 +22,7 @@ import MhsDaftarSidangSempro from '../pages/MahasiswaPages/MhsDaftarSidangSempro
 import MhsDaftarSidangSemproNext from '../pages/MahasiswaPages/MhsDaftarSidangSemproNext';
 import MhsSuccess from '../pages/MahasiswaPages/MhsSuccess';
 import {DosenHome, DosenNotif, DosenProfil, DsnBimbingan} from '../pages';
+import DsnTopikSkripsi from '../pages/DosenPages/DsnTopikSkripsi';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -153,6 +154,11 @@ const Router = () => {
       <Stack.Screen
         name="DsnBimbingan"
         component={DsnBimbingan}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="DsnTopikSkripsi"
+        component={DsnTopikSkripsi}
         options={{headerShown: false}}
       />
     </Stack.Navigator>
