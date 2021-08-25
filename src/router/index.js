@@ -21,7 +21,7 @@ import {BottomNavigator} from '../components';
 import MhsDaftarSidangSempro from '../pages/MahasiswaPages/MhsDaftarSidangSempro';
 import MhsDaftarSidangSemproNext from '../pages/MahasiswaPages/MhsDaftarSidangSemproNext';
 import MhsSuccess from '../pages/MahasiswaPages/MhsSuccess';
-import {DosenHome, DosenNotif, DosenProfil} from '../pages';
+import {DosenHome, DosenNotif, DosenProfil, DsnBimbingan} from '../pages';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -128,6 +128,7 @@ const Router = () => {
         component={MhsSuccess}
         options={{headerShown: false}}
       />
+
       {/* dosen stack navigation */}
       <Stack.Screen
         name="DosenMainApp"
@@ -139,16 +140,19 @@ const Router = () => {
         component={DosenHome}
         options={{headerShown: false}}
       />
-
       <Stack.Screen
         name="DosenNotif"
         component={DosenNotif}
         options={{headerShown: false}}
       />
-
       <Stack.Screen
         name="DosenProfil"
         component={DosenProfil}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="DsnBimbingan"
+        component={DsnBimbingan}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

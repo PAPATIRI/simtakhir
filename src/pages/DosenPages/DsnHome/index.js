@@ -18,7 +18,7 @@ import {
 import {colors, fonts} from '../../../utils';
 import {CardMenu, CardProfile, Gap, Menu, TopNavbar} from '../../../components';
 
-const DsnHome = () => {
+const DsnHome = ({navigation}) => {
   return (
     <View style={styles.page}>
       <View style={styles.topNavWrapper}>
@@ -43,6 +43,9 @@ const DsnHome = () => {
             iconCard={<IcBimbingan />}
             fontsfamily={fonts.primary[600]}
             fontsize={20}
+            onPress={() => {
+              navigation.navigate('DsnBimbingan');
+            }}
           />
           <CardMenu
             title="Topik    Skripsi"
