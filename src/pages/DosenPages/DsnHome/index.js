@@ -17,6 +17,7 @@ import {
 } from '../../../assets';
 import {colors, fonts} from '../../../utils';
 import {CardMenu, CardProfile, Gap, Menu, TopNavbar} from '../../../components';
+import CardMenuDosen from '../../../components/moleculs/CardMenuDosen';
 
 const DsnHome = ({navigation}) => {
   return (
@@ -37,22 +38,24 @@ const DsnHome = ({navigation}) => {
           />
         </View>
         <View style={styles.menuWrapper}>
-          <CardMenu
+          <CardMenuDosen
             title="Bimbingan    ku"
             bgCardColor={colors.pink}
             iconCard={<IcBimbingan />}
             fontsfamily={fonts.primary[600]}
             fontsize={20}
+            color={colors.pink}
             onPress={() => {
               navigation.navigate('DsnBimbingan');
             }}
           />
-          <CardMenu
+          <CardMenuDosen
             title="Topik    Skripsi"
             bgCardColor={colors.choco}
             iconCard={<IcSkripsi />}
             fontsfamily={fonts.primary[600]}
             fontsize={20}
+            color={colors.choco}
             onPress={() => {
               navigation.navigate('DsnTopikSkripsi');
             }}

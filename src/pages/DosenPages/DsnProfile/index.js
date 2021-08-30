@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
+import {ArdiansyahImg, IcHamburgerMenu} from '../../../assets';
 import {TopNavbar, CardProfile} from '../../../components';
 import {colors} from '../../../utils';
 
@@ -7,12 +8,19 @@ const DsnProfile = () => {
   return (
     <View style={styles.page}>
       <View style={styles.topNavWrapper}>
-        <TopNavbar />
+        <TopNavbar iconRight={<IcHamburgerMenu />} />
         <View style={styles.emptyView}></View>
       </View>
       <View style={styles.content}>
         <View style={styles.cardWrapper}>
-          <CardProfile />
+          <CardProfile
+            image={ArdiansyahImg}
+            name="Ardiansyah S.T.,M.Cs"
+            label1="total topik"
+            data1="10 topik"
+            label2="total mahasiswa bimbingan"
+            data2="10 Mahasiswa"
+          />
         </View>
         <View style={styles.menuList}>
           <Text>text content</Text>

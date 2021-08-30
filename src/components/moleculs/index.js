@@ -6,6 +6,7 @@ import LogbookList from './LogbookList';
 import TopNavbarSearch from './TopNavbarSearch';
 import CardTopikSkripsi from './CardTopikSkripsi';
 import CardMhsBimbingan from './CardMhsBimbingan';
+import CardTopikSkripsiDsn from './CardTopikSkripsiDsn';
 
 export {
   CardProfile,
@@ -16,4 +17,5 @@ export {
   TopNavbarSearch,
   CardTopikSkripsi,
   CardMhsBimbingan,
+  CardTopikSkripsiDsn,
 };

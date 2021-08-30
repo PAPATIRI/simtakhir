@@ -1,18 +1,19 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {IcLogBook} from '../../../assets';
+import {IcHamburgerMenu, IcLogBook} from '../../../assets';
 import {TopNavbar} from '../../../components';
 import {colors, fonts} from '../../../utils';
 
 const CardNotification = ({judul, deskripsi, waktu}) => {
   return (
     <View style={styles.cardNotifWrapper}>
-      <View style={styles.iconCardNotif}>
-        <IcLogBook />
-      </View>
       <View style={styles.cardContent}>
-        <Text style={styles.cardTitle}>{judul.slice(0, 30)}..</Text>
-        <Text style={styles.cardDesc}>{deskripsi.slice(0, 35)}..</Text>
+        <Text numberOfLines={1} style={styles.cardTitle}>
+          {judul}..
+        </Text>
+        <Text numberOfLines={1} style={styles.cardDesc}>
+          {deskripsi}..
+        </Text>
         <View style={styles.cardTimeWrapper}>
           <Text style={styles.cardTime}>{waktu}</Text>
         </View>
@@ -24,16 +25,16 @@ const CardNotification = ({judul, deskripsi, waktu}) => {
 const DsnNotification = () => {
   return (
     <View style={styles.page}>
-      <TopNavbar />
+      <TopNavbar iconRight={<IcHamburgerMenu />} />
       <View style={styles.content}>
         <Text style={styles.subTitle}>Pemberitahuan</Text>
         <CardNotification
-          judul="jadwal sidang mu sudah keluar! ayo persiapkan diri"
-          deskripsi="jadwal sidangmu telah keluar, sidangmu akan di"
+          judul="pendaftar baru untuk topik skripsi kamu!"
+          deskripsi="topik skripsi 'pengembangan perangkat lunak menggunakan metode'"
           waktu="12:09 Mei 2021"
         />
         <CardNotification
-          judul="kamu terpilih untuk topik skripsi yang kamu pilih"
+          judul="ajuan topik baru dari M andika risky"
           deskripsi="selamat, kamu terpilih sebagai mahasiswa yang akan mengerjakan topik tugas akhir ini"
           waktu="12:09 Mei 2021"
         />
@@ -53,12 +54,11 @@ const styles = StyleSheet.create({
     fontFamily: fonts.primary[400],
     fontSize: 18,
     color: colors.text.primary,
-    marginBottom: 20,
+    marginBottom: 15,
   },
   content: {
     flex: 3,
-    paddingVertical: 20,
-    paddingHorizontal: 20,
+    padding: 20,
     backgroundColor: colors.primary,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
@@ -67,17 +67,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 10,
-    padding: 10,
-    elevation: 3,
+    padding: 15,
+    elevation: 1,
     borderRadius: 10,
     backgroundColor: colors.primary,
-  },
-  iconCardNotif: {
-    backgroundColor: colors.accent,
-    height: 50,
-    width: 50,
-    borderRadius: 50,
-    marginRight: 11,
   },
   cardContent: {
     flex: 1,

@@ -27,6 +27,7 @@ export const colors = {
   blackPrimary: mainColor.black1,
   blackSecondary: mainColor.black2,
   blackDisabled: mainColor.black3,
+  white: mainColor.white1,
   text: {
     primary: mainColor.black1,
     secondary: mainColor.black2,
@@ -35,6 +36,7 @@ export const colors = {
     warning: mainColor.orange1,
     accent: mainColor.green1,
     white: mainColor.white2,
+    danger: mainColor.red1,
   },
   button: {
     text: mainColor.white1,

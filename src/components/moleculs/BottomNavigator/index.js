@@ -82,6 +82,7 @@ const BottomNavigator = ({state, descriptors, navigation}) => {
         return (
           <TouchableOpacity
             key={index}
+            style={styles.btnWrapper}
             accessibilityRole="button"
             accessibilityState={isFocused ? {selected: true} : {}}
             accessibilityLabel={options.tabBarAccessibilityLabel}
@@ -104,7 +105,6 @@ const styles = StyleSheet.create({
     height: 56,
     backgroundColor: colors.secondary,
     paddingVertical: 16,
-    paddingHorizontal: 35,
     justifyContent: 'space-between',
     alignItems: 'center',
     marginHorizontal: 20,
@@ -114,7 +114,10 @@ const styles = StyleSheet.create({
   bgBtnIcon: {
     backgroundColor: colors.primary,
     borderRadius: 5,
-    padding: 10,
+    padding: 8,
     alignItems: 'center',
+  },
+  btnWrapper: {
+    marginHorizontal: 20,
   },
 });
