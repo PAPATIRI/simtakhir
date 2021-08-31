@@ -3,7 +3,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import {IcArrowBack} from '../../../assets';
 import {CardMhsBimbingan, TopNavbar} from '../../../components';
-import {colors} from '../../../utils';
+import {colors, fonts} from '../../../utils';
 
 const DsnBimbingan = ({navigation}) => {
   return (
@@ -16,6 +16,7 @@ const DsnBimbingan = ({navigation}) => {
         }}
       />
       <View style={styles.content}>
+        <Text style={styles.title}>daftar mahasiswa bimbingan</Text>
         <ScrollView
           contentContainerStyle={styles.scroll}
           showsVerticalScrollIndicator={false}>
@@ -95,6 +96,13 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     paddingBottom: 20,
     paddingHorizontal: 20,
+  },
+  title: {
+    fontFamily: fonts.primary[400],
+    fontSize: 16,
+    color: colors.text.primary,
+    lineHeight: 16 * 1.5,
+    marginBottom: 5,
   },
   scroll: {
     flexDirection: 'row',
