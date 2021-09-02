@@ -7,6 +7,7 @@ import TopNavbarSearch from './TopNavbarSearch';
 import CardTopikSkripsi from './CardTopikSkripsi';
 import CardMhsBimbingan from './CardMhsBimbingan';
 import CardTopikSkripsiDsn from './CardTopikSkripsiDsn';
+import CardTopikAjuan from './CardTopikAjuan';
 
 export {
   CardProfile,
@@ -18,4 +19,5 @@ export {
   CardTopikSkripsi,
   CardMhsBimbingan,
   CardTopikSkripsiDsn,
+  CardTopikAjuan,
 };

@@ -23,9 +23,9 @@ const Login = ({navigation}) => {
     console.log('email: ', email);
     console.log('password: ', password);
     if (email === dataUser.mahasiswa.email) {
-      return navigation.navigate('MhsHome');
+      return navigation.navigate('MainApp');
     } else if (email === dataUser.dosen.email) {
-      return navigation.navigate('DosenHome');
+      return navigation.navigate('DosenMainApp');
     } else {
       return alert('email yang kamu masukan tidak sesuai');
     }

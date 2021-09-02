@@ -21,9 +21,16 @@ import {BottomNavigator} from '../components';
 import MhsDaftarSidangSempro from '../pages/MahasiswaPages/MhsDaftarSidangSempro';
 import MhsDaftarSidangSemproNext from '../pages/MahasiswaPages/MhsDaftarSidangSemproNext';
 import MhsSuccess from '../pages/MahasiswaPages/MhsSuccess';
-import {DosenHome, DosenNotif, DosenProfil, DsnBimbingan} from '../pages';
+import {
+  DosenHome,
+  DosenNotif,
+  DosenProfil,
+  DsnBimbingan,
+  DsnRequestMhs,
+} from '../pages';
 import DsnTopikSkripsi from '../pages/DosenPages/DsnTopikSkripsi';
 import DsnTopikSkripsiSaya from '../pages/DosenPages/DsnTopikSkripsiSaya';
+import DrawerNav from '../pages/DrawerNav';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -130,6 +137,12 @@ const Router = () => {
         component={MhsSuccess}
         options={{headerShown: false}}
       />
+      {/* drawer */}
+      <Stack.Screen
+        name="DrawerNav"
+        component={DrawerNav}
+        options={{headerShown: false}}
+      />
 
       {/* dosen stack navigation */}
       <Stack.Screen
@@ -165,6 +178,11 @@ const Router = () => {
       <Stack.Screen
         name="DsnTopikSkripsiSaya"
         component={DsnTopikSkripsiSaya}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="DsnRequestMhs"
+        component={DsnRequestMhs}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

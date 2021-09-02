@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {SafeAreaView, StyleSheet, View} from 'react-native';
 import {
   IcCalender,
   IcHamburgerMenu,
@@ -12,9 +12,12 @@ import {colors} from '../../../utils';
 
 const MhsHome = ({navigation}) => {
   return (
-    <View style={styles.page}>
+    <SafeAreaView style={styles.page}>
       <View style={styles.topNavWrapper}>
-        <TopNavbar iconRight={<IcHamburgerMenu />} />
+        <TopNavbar
+          titleBar="HomePage"
+          iconRight={<IcHamburgerMenu onPress={() => {}} />}
+        />
         <View style={styles.emptyView}></View>
       </View>
       <View style={styles.content}>
@@ -55,7 +58,7 @@ const MhsHome = ({navigation}) => {
           />
         </View>
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
