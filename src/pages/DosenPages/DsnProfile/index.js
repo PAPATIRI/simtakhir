@@ -17,7 +17,7 @@ const screenWidth = Dimensions.get('window').width;
 const dataStatusMahasiswa = [
   {
     name: 'Metopen',
-    jumlahMahasiswaa: 8,
+    jumlahMahasiswaa: 7,
     color: '#F7BACE',
     legendFontColor: '#7f7f7f',
     legendFontSize: 12,
@@ -182,7 +182,7 @@ const styles = StyleSheet.create({
     fontFamily: fonts.primary[400],
     fontSize: 16,
     color: colors.text.primary,
-    marginBottom: 15,
+    marginBottom: 5,
     paddingLeft: 20,
   },
   menuList: {

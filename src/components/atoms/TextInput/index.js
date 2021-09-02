@@ -9,6 +9,7 @@ const TextInput = ({
   height,
   multiline,
   textAlignVertical,
+  ...restProps
 }) => {
   return (
     <View>
@@ -19,6 +20,7 @@ const TextInput = ({
         placeholder={placeholder}
         multiline={multiline}
         textAlignVertical={textAlignVertical}
+        {...restProps}
       />
     </View>
   );

@@ -16,12 +16,20 @@ const dataUser = {
 };
 
 const Login = ({navigation}) => {
-  const [enteredEmail, setEnteredEmail] = useState('');
-  const [enteredPassword, setEnteredPassword] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  function onLogin(enteredEmail) {
-    alert(enteredEmail);
-  }
+  const onLogin = () => {
+    console.log('email: ', email);
+    console.log('password: ', password);
+    if (email === dataUser.mahasiswa.email) {
+      return navigation.navigate('MhsHome');
+    } else if (email === dataUser.dosen.email) {
+      return navigation.navigate('DosenHome');
+    } else {
+      return alert('email yang kamu masukan tidak sesuai');
+    }
+  };
   return (
     <View style={styles.page}>
       <ImageBackground
@@ -37,22 +45,20 @@ const Login = ({navigation}) => {
             <TextInput
               label="Email"
               placeholder="masukan email akun anda"
-              onChangeText={setEnteredEmail}
+              onChangeText={value => setEmail(value)}
+              value={email}
             />
             <Gap height={25} />
             <TextInput
               label="Kata Sandi"
-              placeholder="masukan kata sandi akun anda"
-              onChangeText={setEnteredPassword}
+              placeholder="masun kata sandi akun anda"
+              onChangeText={value => setPassword(value)}
+              value={password}
+              secureTextEntry
             />
           </View>
           <View>
-            <Button
-              label="Masuk"
-              // onPress={() => navigation.replace('MainApp')}
-              onPress={() => navigation.replace('DosenMainApp')}
-              // onPress={() => onLogin(enteredEmail)}
-            />
+            <Button label="Masuk" onPress={onLogin} />
             <Gap height={15} />
             <Text style={styles.textFooter}>
               masuk aplikasi SIMTAKHIR menggunakan
