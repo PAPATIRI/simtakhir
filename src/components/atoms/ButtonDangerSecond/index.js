@@ -18,22 +18,22 @@ export default Button;
 const styles = StyleSheet.create({
   buttonWrapper: type => ({
     backgroundColor:
-      type === 'secondaryAccent'
-        ? colors.button.secondaryAccent.background
-        : colors.button.primary.background,
+      type === 'secondary'
+        ? colors.button.secondary.background
+        : colors.button.danger.background,
     paddingVertical: 14,
     borderRadius: 5,
-    borderWidth: 2,
+    borderWidth: 1,
     borderColor:
-      type === 'secondaryAccent'
-        ? colors.button.secondaryAccent.border
-        : colors.button.primary.border,
+      type === 'secondary'
+        ? colors.button.secondary.border
+        : colors.button.danger.border,
   }),
   label: type => ({
     color:
-      type === 'secondaryAccent'
-        ? colors.button.secondaryAccent.text
-        : colors.button.primary.text,
+      type === 'secondary'
+        ? colors.button.secondary.text
+        : colors.button.danger.text,
     textAlign: 'center',
     fontSize: 16,
     fontFamily: fonts.primary[600],

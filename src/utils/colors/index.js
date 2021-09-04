@@ -43,17 +43,22 @@ export const colors = {
     primary: {
       background: mainColor.green1,
       text: mainColor.white1,
+      border: mainColor.green1,
     },
     secondary: {
       background: mainColor.white1,
       border: mainColor.black2,
       text: mainColor.black2,
     },
-    warning: {
-      background: mainColor.orange1,
+    secondaryAccent: {
+      background: mainColor.white1,
+      border: mainColor.green1,
+      text: mainColor.green1,
     },
     danger: {
-      background: mainColor.red1,
+      background: mainColor.white1,
+      text: mainColor.red1,
+      border: mainColor.red1,
     },
   },
   icon: {

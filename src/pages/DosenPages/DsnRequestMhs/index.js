@@ -20,6 +20,7 @@ const DsnRequestMhs = ({navigation}) => {
             name="m andika risky"
             periode="genap 2020 / 2021"
             status="menunggu"
+            onPress={() => navigation.navigate('DsnDetailRequestMhs')}
           />
           <CardTopikAjuan
             imageCard={Mhs1}

@@ -26,6 +26,7 @@ import {
   DosenNotif,
   DosenProfil,
   DsnBimbingan,
+  DsnDetailRequestMhs,
   DsnRequestMhs,
 } from '../pages';
 import DsnTopikSkripsi from '../pages/DosenPages/DsnTopikSkripsi';
@@ -183,6 +184,11 @@ const Router = () => {
       <Stack.Screen
         name="DsnRequestMhs"
         component={DsnRequestMhs}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="DsnDetailRequestMhs"
+        component={DsnDetailRequestMhs}
         options={{headerShown: false}}
       />
     </Stack.Navigator>
