@@ -25,9 +25,8 @@ const CardNotification = ({judul, deskripsi, waktu}) => {
 const DsnNotification = () => {
   return (
     <View style={styles.page}>
-      <TopNavbar iconRight={<IcHamburgerMenu />} />
+      <TopNavbar titleBar="Pemberitahuan" />
       <View style={styles.content}>
-        <Text style={styles.subTitle}>Pemberitahuan</Text>
         <CardNotification
           judul="pendaftar baru untuk topik skripsi kamu!"
           deskripsi="topik skripsi 'pengembangan perangkat lunak menggunakan metode'"

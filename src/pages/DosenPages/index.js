@@ -4,6 +4,8 @@ import DosenProfil from './DsnProfile';
 import DsnBimbingan from './DsnBimbingan';
 import DsnRequestMhs from './DsnRequestMhs';
 import DsnDetailRequestMhs from './DsnDetailRequestMhs';
+import DsnTambahTopik from './DsnTambahTopik';
+import DsnDetailTambahTopik from './DsnDetailTambahTopik';
 
 export {
   DosenHome,
@@ -12,4 +14,6 @@ export {
   DsnBimbingan,
   DsnRequestMhs,
   DsnDetailRequestMhs,
+  DsnTambahTopik,
+  DsnDetailTambahTopik,
 };

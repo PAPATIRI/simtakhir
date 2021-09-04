@@ -13,13 +13,7 @@ import {colors} from '../../../utils';
 const MhsHome = ({navigation}) => {
   return (
     <SafeAreaView style={styles.page}>
-      <View style={styles.topNavWrapper}>
-        <TopNavbar
-          titleBar="HomePage"
-          iconRight={<IcHamburgerMenu onPress={() => {}} />}
-        />
-        <View style={styles.emptyView}></View>
-      </View>
+      <View style={styles.topNavWrapper}></View>
       <View style={styles.content}>
         <View style={styles.cardWrapper}>
           <CardProfile
@@ -70,9 +64,6 @@ const styles = StyleSheet.create({
     backgroundColor: colors.secondary,
   },
   topNavWrapper: {
-    flex: 1,
-  },
-  emptyView: {
     flex: 1,
   },
   content: {

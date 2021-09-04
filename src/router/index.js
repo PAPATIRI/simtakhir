@@ -28,6 +28,8 @@ import {
   DsnBimbingan,
   DsnDetailRequestMhs,
   DsnRequestMhs,
+  DsnTambahTopik,
+  DsnDetailTambahTopik,
 } from '../pages';
 import DsnTopikSkripsi from '../pages/DosenPages/DsnTopikSkripsi';
 import DsnTopikSkripsiSaya from '../pages/DosenPages/DsnTopikSkripsiSaya';
@@ -189,6 +191,16 @@ const Router = () => {
       <Stack.Screen
         name="DsnDetailRequestMhs"
         component={DsnDetailRequestMhs}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="DsnTambahTopik"
+        component={DsnTambahTopik}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="DsnDetailTambahTopik"
+        component={DsnDetailTambahTopik}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

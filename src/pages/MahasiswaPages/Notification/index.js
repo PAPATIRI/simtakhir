@@ -26,9 +26,8 @@ const CardNotification = ({judul, deskripsi, waktu}) => {
 const Notification = () => {
   return (
     <View style={styles.page}>
-      <TopNavbar iconRight={<IcHamburgerMenu />} />
+      <TopNavbar titleBar="Pemberitahuan" />
       <View style={styles.content}>
-        <Text style={styles.subTitle}>Pemberitahuan</Text>
         <CardNotification
           judul="jadwal sidang mu sudah keluar! ayo persiapkan diri"
           deskripsi="jadwal sidangmu telah keluar, sidangmu akan di"
@@ -50,12 +49,6 @@ const styles = StyleSheet.create({
   page: {
     flex: 1,
     backgroundColor: colors.secondary,
-  },
-  subTitle: {
-    fontFamily: fonts.primary[400],
-    fontSize: 18,
-    color: colors.text.primary,
-    marginBottom: 15,
   },
   content: {
     flex: 3,

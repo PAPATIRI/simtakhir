@@ -59,7 +59,7 @@ const DsnProfile = ({navigation}) => {
   return (
     <View style={styles.page}>
       <View style={styles.topNavWrapper}>
-        <TopNavbar iconRight={<IcHamburgerMenu />} />
+        <TopNavbar titleBar="Profil Anda" />
         <View style={styles.emptyView}></View>
       </View>
       <View style={styles.content}>

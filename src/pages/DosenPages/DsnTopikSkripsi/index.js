@@ -28,7 +28,7 @@ const DsnTopikSkripsi = ({navigation}) => {
             fontsfamily={fonts.primary[600]}
             fontsize={20}
             onPress={() => {
-              navigation.navigate('DsnTopikSkripsi');
+              navigation.navigate('DsnTambahTopik');
             }}
           />
           <CardMenu

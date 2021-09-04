@@ -23,7 +23,7 @@ const DsnHome = ({navigation}) => {
   return (
     <View style={styles.page}>
       <View style={styles.topNavWrapper}>
-        <TopNavbar iconRight={<IcHamburgerMenu />} />
+        <TopNavbar />
         <View style={styles.emptyView}></View>
       </View>
       <View style={styles.content}>
