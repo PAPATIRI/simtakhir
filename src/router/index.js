@@ -33,6 +33,8 @@ import {
   DsnDetailTopikSaya,
   DsnDetailBimbingan,
   DsnSuksesTambahTopik,
+  DsnSuksesTerimaAjuan,
+  DsnSuksesEditTopik,
 } from '../pages';
 import DsnTopikSkripsi from '../pages/DosenPages/DsnTopikSkripsi';
 import DsnTopikSkripsiSaya from '../pages/DosenPages/DsnTopikSkripsiSaya';
@@ -220,6 +222,16 @@ const Router = () => {
       <Stack.Screen
         name="DsnSuksesTambahTopik"
         component={DsnSuksesTambahTopik}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="DsnSuksesTerimaAjuan"
+        component={DsnSuksesTerimaAjuan}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="DsnSuksesEditTopik"
+        component={DsnSuksesEditTopik}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

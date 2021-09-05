@@ -48,7 +48,12 @@ const DsnDetailRequestMhs = ({navigation}) => {
             </View>
           </ScrollView>
           <Gap height={10} />
-          <Button label="Terima Ajuan" />
+          <Button
+            label="Terima Ajuan"
+            onPress={() => {
+              navigation.navigate('DsnSuksesTerimaAjuan');
+            }}
+          />
           <Gap height={10} />
           <ButtonDangerSedond label="Tolak Ajuan" />
         </View>

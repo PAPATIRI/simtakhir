@@ -1,5 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
+import {IlSuksesTambah} from '../../../assets';
 import {Button, ButtonDangerSedond, Gap} from '../../../components';
 import Result from '../../../components/moleculs/Result';
 import {colors} from '../../../utils';
@@ -7,7 +8,11 @@ import {colors} from '../../../utils';
 const DsnSuksesTambahTopik = ({navigation}) => {
   return (
     <View style={styles.page}>
-      <Result />
+      <Result
+        title="Yeay! Berhasil"
+        desc="kamu berhasil menambahkan topik tugas akhir untuk diambil mahasiswa"
+        ilustration={<IlSuksesTambah />}
+      />
       <Button
         label="OK"
         onPress={() => {

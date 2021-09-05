@@ -4,20 +4,16 @@ import {Button, Gap} from '../..';
 import {IlSuksesTambah} from '../../../assets';
 import {colors, fonts} from '../../../utils';
 
-const Result = () => {
+const Result = ({title, desc, ilustration}) => {
   return (
     <View style={styles.resultWrapper}>
       <Gap height={40} />
-      <View style={styles.ilusWrapper}>
-        <IlSuksesTambah />
-      </View>
+      <View style={styles.ilusWrapper}>{ilustration}</View>
       <View style={styles.detail}>
         <View style={styles.textWrapper}>
-          <Text style={styles.title}>Yeay Berhasil</Text>
+          <Text style={styles.title}>{title}</Text>
           <Gap height={10} />
-          <Text style={styles.desc}>
-            kamu berhasil menambah topik tugas akhir untuk mahasiswamu
-          </Text>
+          <Text style={styles.desc}>{desc}</Text>
         </View>
         <Gap height={30} />
       </View>

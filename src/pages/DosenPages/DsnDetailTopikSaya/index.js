@@ -82,7 +82,10 @@ const DsnDetailTopikSaya = ({navigation}) => {
             </View>
           </ScrollView>
           <View>
-            <Button label="Edit Topik" />
+            <Button
+              label="Edit Topik"
+              onPress={() => navigation.navigate('DsnSuksesEditTopik')}
+            />
             <Gap height={10} />
             <ButtonDangerSedond label="Hapus Topik" />
           </View>
