@@ -59,7 +59,10 @@ const MhsAjukanTopikNext = ({navigation}) => {
             </View>
           </View>
         </View>
-        <Button label="Selanjutnya" />
+        <Button
+          label="Selanjutnya"
+          onPress={() => navigation.navigate('MhsDetailAjuanTopik')}
+        />
       </View>
     </View>
   );

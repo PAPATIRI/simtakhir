@@ -1,26 +1,8 @@
 import React from 'react';
 import {View, Text} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
-import {
-  MhsHome,
-  Login,
-  MhsTopikSkripsi,
-  Notification,
-  Profile,
-  MhsLogbook,
-  MhsDaftarSidang,
-  MhsAjukanTopik,
-  MhsAjukanTopikNext,
-  MhsHasilAjuanTopik,
-  MhsTopikDosen,
-  MhsDetailLogbook,
-  MhsTambahLogbook,
-} from '../pages/MahasiswaPages';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {BottomNavigator} from '../components';
-import MhsDaftarSidangSempro from '../pages/MahasiswaPages/MhsDaftarSidangSempro';
-import MhsDaftarSidangSemproNext from '../pages/MahasiswaPages/MhsDaftarSidangSemproNext';
-import MhsSuccess from '../pages/MahasiswaPages/MhsSuccess';
 import {
   DosenHome,
   DosenNotif,
@@ -37,8 +19,25 @@ import {
   DsnSuksesEditTopik,
   DsnPendaftarTopikSaya,
   DsnSuksesTerimaPendaftar,
+  MhsHome,
+  Login,
+  MhsTopikSkripsi,
+  Notification,
+  Profile,
+  MhsLogbook,
+  MhsDaftarSidang,
+  MhsAjukanTopik,
+  MhsAjukanTopikNext,
+  MhsHasilAjuanTopik,
+  MhsTopikDosen,
+  MhsDetailLogbook,
+  MhsTambahLogbook,
   MhsSuksesDaftarSidang,
   MhsSuksesTambahLogbook,
+  MhsDetailAjuanTopik,
+  MhsDaftarSidangSempro,
+  MhsDaftarSidangSemproNext,
+  MhsSuksesAjukanTopik,
 } from '../pages';
 import DsnTopikSkripsi from '../pages/DosenPages/DsnTopikSkripsi';
 import DsnTopikSkripsiSaya from '../pages/DosenPages/DsnTopikSkripsiSaya';
@@ -144,11 +143,12 @@ const Router = () => {
         options={{headerShown: false}}
       />
       <Stack.Screen
-        name="MhsSuccess"
-        component={MhsSuccess}
+        name="MhsDetailAjuanTopik"
+        component={MhsDetailAjuanTopik}
         options={{headerShown: false}}
       />
       {/* dosen stack navigation */}
+
       <Stack.Screen
         name="DosenMainApp"
         component={DosenMainApp}
@@ -248,6 +248,11 @@ const Router = () => {
       <Stack.Screen
         name="MhsSuksesTambahLogbook"
         component={MhsSuksesTambahLogbook}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="MhsSuksesAjukanTopik"
+        component={MhsSuksesAjukanTopik}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

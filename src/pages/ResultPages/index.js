@@ -4,6 +4,7 @@ import DsnSuksesEditTopik from './DsnSuksesEditTopik';
 import DsnSuksesTerimaPendaftar from './DsnSuksesTerimaPendaftar';
 import MhsSuksesDaftarSidang from './MhsSuksesDaftarSidang';
 import MhsSuksesTambahLogbook from './MhsSuksesTambahLogbook';
+import MhsSuksesAjukanTopik from './MhsSuksesAjukanTopik';
 
 export {
   DsnSuksesTambahTopik,
@@ -12,4 +13,5 @@ export {
   DsnSuksesTerimaPendaftar,
   MhsSuksesDaftarSidang,
   MhsSuksesTambahLogbook,
+  MhsSuksesAjukanTopik,
 };
