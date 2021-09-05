@@ -1,3 +1,3 @@
 export * from './MahasiswaPages';
 export * from './DosenPages';
-export * from './DrawerNav';
+export * from './ResultPages';

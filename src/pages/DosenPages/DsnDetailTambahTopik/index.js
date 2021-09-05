@@ -48,7 +48,10 @@ const DsnDetailTambahTopik = ({navigation}) => {
         </ScrollView>
         <Gap height={15} />
         <View>
-          <Button label="Konfirmasi & Kirim" />
+          <Button
+            label="Konfirmasi & Kirim"
+            onPress={() => navigation.navigate('DsnSuksesTambahTopik')}
+          />
           <Gap height={10} />
           <ButtonDangerSedond
             type="secondary"
