@@ -8,6 +8,7 @@ import CardTopikSkripsi from './CardTopikSkripsi';
 import CardMhsBimbingan from './CardMhsBimbingan';
 import CardTopikSkripsiDsn from './CardTopikSkripsiDsn';
 import CardTopikAjuan from './CardTopikAjuan';
+import ModalPicker from './ModalPicker';
 
 export {
   CardProfile,
@@ -20,4 +21,5 @@ export {
   CardMhsBimbingan,
   CardTopikSkripsiDsn,
   CardTopikAjuan,
+  ModalPicker,
 };

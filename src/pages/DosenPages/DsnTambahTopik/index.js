@@ -1,10 +1,26 @@
-import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import {IcArrowBack} from '../../../assets';
-import {Button, Gap, TextInput, TopNavbar} from '../../../components';
-import {colors} from '../../../utils';
+import React, {useState} from 'react';
+import {StyleSheet, Text, View, Modal, alert, Alert} from 'react-native';
+import {TouchableOpacity} from 'react-native-gesture-handler';
+import {IcArrowBack, IcArrowDown, ProfilImg} from '../../../assets';
+import {
+  Button,
+  Gap,
+  ModalPicker,
+  TextInput,
+  TopNavbar,
+} from '../../../components';
+import {colors, fonts} from '../../../utils';
+import {Picker} from '@react-native-picker/picker';
+import {
+  bidang,
+  bidang as dataBidang,
+  periode as dataPeriode,
+} from '../../../Databases/dropdownData';
 
 const DsnTambahTopik = ({navigation}) => {
+  const [bidang, setBidang] = useState('');
+  const [periode, setPeriode] = useState('');
+
   return (
     <View style={styles.page}>
       <TopNavbar
@@ -25,6 +41,30 @@ const DsnTambahTopik = ({navigation}) => {
             multiline={true}
             textAlignVertical="top"
           />
+          <Gap height={20} />
+          <Text style={styles.labelDropdown}>Bidang Topik</Text>
+          <View>
+            <Gap height={5} />
+            <View style={styles.dropDownWrapper}>
+              <ModalPicker
+                items={dataBidang}
+                value={bidang}
+                setValue={setBidang}
+              />
+            </View>
+          </View>
+          <Gap height={20} />
+          <Text style={styles.labelDropdown}>Bidang Topik</Text>
+          <View>
+            <Gap height={5} />
+            <View style={styles.dropDownWrapper}>
+              <ModalPicker
+                items={dataPeriode}
+                value={periode}
+                setValue={setPeriode}
+              />
+            </View>
+          </View>
         </View>
         <Button
           label="Selanjutnya"
@@ -49,5 +89,25 @@ const styles = StyleSheet.create({
     padding: 20,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
+  },
+  labelDropdown: {
+    fontFamily: fonts.primary[400],
+    fontSize: 16,
+    color: colors.text.primary,
+    lineHeight: 16 * 1.5,
+  },
+  dropDownWrapper: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    borderRadius: 5,
+    overflow: 'hidden',
+    borderColor: colors.borderColor,
+    borderWidth: 1,
+  },
+  textDropdown: {
+    fontFamily: fonts.primary[400],
+    fontSize: 14,
+    color: colors.blackSecondary,
   },
 });

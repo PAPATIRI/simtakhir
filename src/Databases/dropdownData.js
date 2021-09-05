@@ -1,0 +1,30 @@
+export const bidang = [
+  '--- pilih bidang topik ---',
+  'Pengolahan Citra',
+  'Sistem Pakar',
+  'Pengolahan Teks',
+  'Media Pembelajaran',
+  'Estimasi Effort Perangkat Lunak',
+  'Sistem Informasi',
+  'Kebutuhan Perangkat Lunak',
+  'Augmented dan Virtual Reality',
+  'Interaksi Manusia dan Komputer',
+  'Social Network and Graph',
+  'Multimedia dan Grafika',
+  'Forensik Digital',
+  'Kriptografi',
+  'Keamanan Komputer',
+  'Sistem Pendukung Keputusan',
+  'Machine Learning dan Data Mining',
+  'Network dan Sistem Terdistribusi',
+];
+
+export const periode = [
+  '--- pilih periode kamu ---',
+  'ganjil 2019 / 2020',
+  'genap 2019 / 2020',
+  'ganjil 2020 / 2021',
+  'genap 2020 / 2021',
+  'ganjil 2021 / 2022',
+  'genap 2021 / 2022',
+];
