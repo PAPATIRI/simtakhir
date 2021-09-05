@@ -1,7 +1,13 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {IcArrowBack} from '../../../assets';
-import {Button, Gap, TextInput, TopNavbar} from '../../../components';
+import {
+  Button,
+  Gap,
+  ModalPicker,
+  TextInput,
+  TopNavbar,
+} from '../../../components';
 import {colors} from '../../../utils';
 
 const MhsAjukanTopik = ({navigation}) => {

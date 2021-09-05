@@ -28,3 +28,19 @@ export const periode = [
   'ganjil 2021 / 2022',
   'genap 2021 / 2022',
 ];
+
+export const dospem = [
+  '--- pilih dosen pembimbing ---',
+  'Adhi Prahara, S.Si., M.Cs',
+  'Ahmad Azhari, S.Kom., M.Eng',
+  'Ali Tarmuji, S.T., M. Cs',
+  'Anna Hendri Soleliza Jones, S. Kom, M.Cs.',
+  'Ir. Ardi Pujiyanta, M. T.',
+  'Andri Pranolo, S.Kom., M. Cs',
+  'Arfiani Nur Khusna, S.T., M.Kom.',
+  'Dewi Pramudi Ismi, S.T., M.CompSc',
+  'Dewi Soyusiawaty, S.T., M.T',
+  'Dinan Yulianto, S.T., M.Eng.',
+  'Dwi Normawati, S.T., M.Eng.',
+  'Eko Aribowo, S.T., M.Kom',
+];

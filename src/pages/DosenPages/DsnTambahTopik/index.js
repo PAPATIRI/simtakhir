@@ -12,7 +12,6 @@ import {
 import {colors, fonts} from '../../../utils';
 import {Picker} from '@react-native-picker/picker';
 import {
-  bidang,
   bidang as dataBidang,
   periode as dataPeriode,
 } from '../../../Databases/dropdownData';
