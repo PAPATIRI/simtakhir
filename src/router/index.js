@@ -35,6 +35,8 @@ import {
   DsnSuksesTambahTopik,
   DsnSuksesTerimaAjuan,
   DsnSuksesEditTopik,
+  DsnPendaftarTopikSaya,
+  DsnSuksesTerimaPendaftar,
 } from '../pages';
 import DsnTopikSkripsi from '../pages/DosenPages/DsnTopikSkripsi';
 import DsnTopikSkripsiSaya from '../pages/DosenPages/DsnTopikSkripsiSaya';
@@ -218,6 +220,11 @@ const Router = () => {
         component={DsnDetailBimbingan}
         options={{headerShown: false}}
       />
+      <Stack.Screen
+        name="DsnPendaftarTopikSaya"
+        component={DsnPendaftarTopikSaya}
+        options={{headerShown: false}}
+      />
       {/* result pages router */}
       <Stack.Screen
         name="DsnSuksesTambahTopik"
@@ -232,6 +239,11 @@ const Router = () => {
       <Stack.Screen
         name="DsnSuksesEditTopik"
         component={DsnSuksesEditTopik}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="DsnSuksesTerimaPendaftar"
+        component={DsnSuksesTerimaPendaftar}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

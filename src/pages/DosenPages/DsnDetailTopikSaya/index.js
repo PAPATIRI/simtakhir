@@ -26,7 +26,11 @@ const DsnDetailTopikSaya = ({navigation}) => {
             <Text style={styles.label}>Pendaftar Topik</Text>
             <Text style={styles.data}>3 Mahasiswa</Text>
           </View>
-          <TouchableOpacity activeOpacity={0.7} onPress={() => {}}>
+          <TouchableOpacity
+            activeOpacity={0.7}
+            onPress={() => {
+              navigation.navigate('DsnPendaftarTopikSaya');
+            }}>
             <View style={styles.btnHeader}>
               <Text style={styles.textBtnHeader}>lihat pendaftar</Text>
             </View>
