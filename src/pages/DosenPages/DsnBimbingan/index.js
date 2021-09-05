@@ -21,9 +21,10 @@ const DsnBimbingan = ({navigation}) => {
           contentContainerStyle={styles.scroll}
           showsVerticalScrollIndicator={false}>
           <CardMhsBimbingan
-            nama="Siska Amelia"
+            nama="Siska "
             status="Metopen"
             periode="genap 2020 / 2021"
+            onPress={() => navigation.navigate('DsnDetailBimbingan')}
           />
           <CardMhsBimbingan
             nama="Siska Amelia"

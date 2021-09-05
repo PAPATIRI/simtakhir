@@ -7,12 +7,13 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import {Gap} from '../..';
 import {ProfilImg} from '../../../assets';
 import {colors, fonts} from '../../../utils';
 
-const CardMhsBimbingan = ({nama, status, periode}) => {
+const CardMhsBimbingan = ({nama, status, periode, onPress}) => {
   return (
-    <TouchableOpacity activeOpacity={0.9}>
+    <TouchableOpacity activeOpacity={0.9} onPress={onPress}>
       <View style={styles.cardWrapper}>
         {/* <Image source={ProfilImg} style={styles.image} /> */}
         <ImageBackground
@@ -38,7 +39,7 @@ export default CardMhsBimbingan;
 const styles = StyleSheet.create({
   cardWrapper: {
     backgroundColor: colors.primary,
-    height: 150,
+    height: 220,
     width: 150,
     elevation: 2,
     borderRadius: 10,
@@ -49,7 +50,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     padding: 15,
     backgroundColor: colors.primary,
-    marginTop: '30%',
+    marginTop: '85%',
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
     borderTopRightRadius: 40,

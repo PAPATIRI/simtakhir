@@ -7,6 +7,7 @@ import DsnDetailRequestMhs from './DsnDetailRequestMhs';
 import DsnTambahTopik from './DsnTambahTopik';
 import DsnDetailTambahTopik from './DsnDetailTambahTopik';
 import DsnDetailTopikSaya from './DsnDetailTopikSaya';
+import DsnDetailBimbingan from './DsnDetailBimbingan';
 
 export {
   DosenHome,
@@ -18,4 +19,5 @@ export {
   DsnTambahTopik,
   DsnDetailTambahTopik,
   DsnDetailTopikSaya,
+  DsnDetailBimbingan,
 };
