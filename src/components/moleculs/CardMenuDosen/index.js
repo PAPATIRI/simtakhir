@@ -12,14 +12,13 @@ const CardMenuDosen = ({
   color,
 }) => {
   return (
-    <TouchableOpacity activeOpacity={0.7} onPress={onPress}>
-      <View style={styles.cardWrapper(bgCardColor)}>
-        <View style={styles.iconWrapper}>{iconCard}</View>
-        <View style={styles.titleWrapper}>
-          <Text style={styles.title(fontsize, fontsfamily, color)}>
-            {title}
-          </Text>
-        </View>
+    <TouchableOpacity
+      activeOpacity={0.7}
+      onPress={onPress}
+      style={styles.cardWrapper(bgCardColor)}>
+      <View style={styles.iconWrapper}>{iconCard}</View>
+      <View style={styles.titleWrapper}>
+        <Text style={styles.title(fontsize, fontsfamily, color)}>{title}</Text>
       </View>
     </TouchableOpacity>
   );

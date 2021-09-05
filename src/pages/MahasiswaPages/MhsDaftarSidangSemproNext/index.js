@@ -24,7 +24,7 @@ const MhsDaftarSidangSemproNext = ({navigation}) => {
           <Button
             label="Daftar"
             onPress={() => {
-              navigation.navigate('MhsSuccess');
+              navigation.navigate('MhsSuksesDaftarSidang');
             }}
           />
         </View>

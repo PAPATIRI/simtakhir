@@ -33,7 +33,10 @@ const MhsTambahLogbook = ({navigation}) => {
           <FileInput label="File Tambahan" />
         </View>
         <View>
-          <Button label="Tambah Logbook" />
+          <Button
+            label="Tambah Logbook"
+            onPress={() => navigation.navigate('MhsSuksesTambahLogbook')}
+          />
         </View>
       </View>
     </View>

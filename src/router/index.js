@@ -37,10 +37,11 @@ import {
   DsnSuksesEditTopik,
   DsnPendaftarTopikSaya,
   DsnSuksesTerimaPendaftar,
+  MhsSuksesDaftarSidang,
+  MhsSuksesTambahLogbook,
 } from '../pages';
 import DsnTopikSkripsi from '../pages/DosenPages/DsnTopikSkripsi';
 import DsnTopikSkripsiSaya from '../pages/DosenPages/DsnTopikSkripsiSaya';
-import DrawerNav from '../pages/DrawerNav';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -147,13 +148,6 @@ const Router = () => {
         component={MhsSuccess}
         options={{headerShown: false}}
       />
-      {/* drawer */}
-      <Stack.Screen
-        name="DrawerNav"
-        component={DrawerNav}
-        options={{headerShown: false}}
-      />
-
       {/* dosen stack navigation */}
       <Stack.Screen
         name="DosenMainApp"
@@ -244,6 +238,16 @@ const Router = () => {
       <Stack.Screen
         name="DsnSuksesTerimaPendaftar"
         component={DsnSuksesTerimaPendaftar}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="MhsSuksesDaftarSidang"
+        component={MhsSuksesDaftarSidang}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="MhsSuksesTambahLogbook"
+        component={MhsSuksesTambahLogbook}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

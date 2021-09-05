@@ -62,6 +62,7 @@ const Login = ({navigation}) => {
             <Button
               label="Masuk"
               onPress={() => navigation.navigate('DosenMainApp')}
+              onPress={() => navigation.navigate('MainApp')}
             />
             <Gap height={15} />
             <Text style={styles.textFooter}>

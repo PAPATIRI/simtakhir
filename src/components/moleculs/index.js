@@ -10,6 +10,7 @@ import CardTopikSkripsiDsn from './CardTopikSkripsiDsn';
 import CardTopikAjuan from './CardTopikAjuan';
 import ModalPicker from './ModalPicker';
 import CardPendaftarTopik from './CardPendaftarTopik';
+import Result from './Result';
 
 export {
   CardProfile,
@@ -24,4 +25,5 @@ export {
   CardTopikAjuan,
   ModalPicker,
   CardPendaftarTopik,
+  Result,
 };
