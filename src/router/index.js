@@ -30,6 +30,7 @@ import {
   DsnRequestMhs,
   DsnTambahTopik,
   DsnDetailTambahTopik,
+  DsnDetailTopikSaya,
 } from '../pages';
 import DsnTopikSkripsi from '../pages/DosenPages/DsnTopikSkripsi';
 import DsnTopikSkripsiSaya from '../pages/DosenPages/DsnTopikSkripsiSaya';
@@ -201,6 +202,11 @@ const Router = () => {
       <Stack.Screen
         name="DsnDetailTambahTopik"
         component={DsnDetailTambahTopik}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="DsnDetailTopikSaya"
+        component={DsnDetailTopikSaya}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

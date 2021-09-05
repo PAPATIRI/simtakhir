@@ -7,7 +7,7 @@ import {
   TopNavbar,
   TopNavbarSearch,
 } from '../../../components';
-import {colors} from '../../../utils';
+import {colors, fonts} from '../../../utils';
 
 const DsnTopikSkripsiSaya = ({navigation}) => {
   return (
@@ -18,7 +18,7 @@ const DsnTopikSkripsiSaya = ({navigation}) => {
         }}
       />
       <View style={styles.content}>
-        <Text>daftar penawaran topik anda</Text>
+        <Text style={styles.title}>daftar penawaran topik anda</Text>
         <Gap height={10} />
         <ScrollView
           showsVerticalScrollIndicator={false}
@@ -30,6 +30,7 @@ const DsnTopikSkripsiSaya = ({navigation}) => {
             tanggal="21 september 2021"
             pendaftar={2}
             status="open"
+            onPress={() => navigation.navigate('DsnDetailTopikSaya')}
           />
           <CardTopikSkripsiDsn
             color={colors.text.danger}
@@ -86,6 +87,7 @@ const styles = StyleSheet.create({
   },
   scrollist: {
     paddingHorizontal: 5,
+    paddingVertical: 5,
   },
 
   content: {
@@ -95,5 +97,11 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 20,
     paddingHorizontal: 15,
     paddingVertical: 20,
+  },
+  title: {
+    fontFamily: fonts.primary[400],
+    fontSize: 16,
+    color: colors.text.primary,
+    lineHeight: 16 * 1.5,
   },
 });

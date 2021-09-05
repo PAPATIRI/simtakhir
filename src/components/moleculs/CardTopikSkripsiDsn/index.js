@@ -53,9 +53,9 @@ const styles = StyleSheet.create({
     lineHeight: 18 * 1.5,
   },
   bidang: {
-    fontFamily: fonts.primary[400],
+    fontFamily: fonts.primary[300],
     fontSize: 16,
-    color: colors.text.secondary,
+    color: colors.text.primary,
   },
   bottomContent: {
     flexDirection: 'row',
@@ -65,16 +65,16 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   tanggal: {
-    fontFamily: fonts.primary[400],
+    fontFamily: fonts.primary[300],
     fontSize: 14,
     lineHeight: 14 * 1.5,
-    color: colors.text.secondary,
+    color: colors.text.primary,
   },
   pendaftar: {
-    fontFamily: fonts.primary[400],
+    fontFamily: fonts.primary[300],
     fontSize: 14,
     lineHeight: 14 * 1.5,
-    color: colors.text.secondary,
+    color: colors.text.primary,
   },
   status: color => ({
     fontFamily: fonts.primary[400],

@@ -1,7 +1,7 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import {IcArrowBack} from '../../../assets';
-import {Button, Gap, TopNavbar} from '../../../components';
+import {Button, ButtonDangerSedond, Gap, TopNavbar} from '../../../components';
 import {colors, fonts} from '../../../utils';
 
 const DsnDetailTambahTopik = ({navigation}) => {
@@ -15,7 +15,7 @@ const DsnDetailTambahTopik = ({navigation}) => {
         }}
       />
       <View style={styles.content}>
-        <View>
+        <ScrollView showsVerticalScrollIndicator={false}>
           <View>
             <Text style={styles.labelData}>Judul Topik</Text>
             <Gap height={5} />
@@ -45,8 +45,17 @@ const DsnDetailTambahTopik = ({navigation}) => {
             <Text style={styles.descData}>2020 / 2021</Text>
             <Gap height={20} />
           </View>
+        </ScrollView>
+        <Gap height={15} />
+        <View>
+          <Button label="Konfirmasi & Kirim" />
+          <Gap height={10} />
+          <ButtonDangerSedond
+            type="secondary"
+            label="batal"
+            onPress={() => navigation.navigate('DsnTopikSkripsi')}
+          />
         </View>
-        <Button label="Konfirmasi & Kirim" />
       </View>
     </View>
   );
