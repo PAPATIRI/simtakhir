@@ -1,35 +1,29 @@
 import React, {useState} from 'react';
 import {StyleSheet, Text, View, ImageBackground} from 'react-native';
 import {BgGraduate} from '../../assets';
-import {colors, fonts} from '../../utils';
+import {colors, fonts, useForm} from '../../utils';
 import {TextInput, Gap, Button} from '../../components';
-
-const dataUser = {
-  mahasiswa: {
-    email: 'mahasiswa@gmail.com',
-    password: 12345678,
-  },
-  dosen: {
-    email: 'dosen@gmail.com',
-    password: 12345678,
-  },
-};
+import Axios from 'axios';
 
 const Login = ({navigation}) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  // const [email, setEmail] = useState('');
+  // const [password, setPassword] = useState('');
+  const [form, setForm] = useForm({
+    identifier: '',
+    password: '',
+  });
 
-  const onLogin = () => {
-    console.log('email: ', email);
-    console.log('password: ', password);
-    if (email === dataUser.mahasiswa.email) {
-      return navigation.navigate('MainApp');
-    } else if (email === dataUser.dosen.email) {
-      return navigation.navigate('DosenMainApp');
-    } else {
-      return alert('email yang kamu masukan tidak sesuai');
-    }
+  const onSubmit = () => {
+    console.log('form: ', form);
+    Axios.post('http://192.168.43.193:1337/auth/local', form)
+      .then(res => {
+        console.log('success: ', res);
+      })
+      .catch(err => {
+        console.log('error: ', err);
+      });
   };
+
   return (
     <View style={styles.page}>
       <ImageBackground
@@ -45,23 +39,23 @@ const Login = ({navigation}) => {
             <TextInput
               label="Email"
               placeholder="masukan email akun anda"
-              onChangeText={value => setEmail(value)}
-              value={email}
+              onChangeText={value => setForm('identifier', value)}
+              value={form.identifier}
             />
             <Gap height={25} />
             <TextInput
               label="Kata Sandi"
               placeholder="masun kata sandi akun anda"
-              onChangeText={value => setPassword(value)}
-              value={password}
+              onChangeText={value => setForm('password', value)}
+              value={form.password}
               secureTextEntry
             />
           </View>
           <View>
-            {/* <Button label="Masuk" onPress={onLogin} /> */}
+            {/* <Button label="Masuk" onPress={onSubmit} /> */}
             <Button
               label="Masuk"
-              onPress={() => navigation.navigate('DosenMainApp')}
+              // onPress={() => navigation.navigate('DosenMainApp')}
               onPress={() => navigation.navigate('MainApp')}
             />
             <Gap height={15} />
