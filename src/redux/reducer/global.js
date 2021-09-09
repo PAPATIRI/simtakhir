@@ -3,7 +3,7 @@ const initGlobalState = {
   message: 'Error',
 };
 
-export const globalReducer = (state, action) => {
+export const globalReducer = (state = initGlobalState, action) => {
   if (action.type === 'SET_ERROR') {
     return {
       ...state,

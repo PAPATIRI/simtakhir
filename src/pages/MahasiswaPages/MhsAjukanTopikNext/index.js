@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {IcArrowBack} from '../../../assets';
 import {Button, Gap, ModalPicker, TopNavbar} from '../../../components';
-import {colors, fonts} from '../../../utils';
+import {colors, fonts, useForm} from '../../../utils';
 import {
   bidang as dataBidang,
   dospem as dataDospem,
@@ -10,9 +10,15 @@ import {
 } from '../../../Databases/dropdownData';
 
 const MhsAjukanTopikNext = ({navigation}) => {
-  const [bidang, setBidang] = useState('');
-  const [dospem, setDospem] = useState('');
-  const [periode, setPeriode] = useState('');
+  // const [bidang, setBidang] = useState('');
+  // const [dospem, setDospem] = useState('');
+  // const [periode, setPeriode] = useState('');
+
+  const [form, setForm] = useForm({
+    bidangtopik: '',
+    dosenpembimbing: '',
+    periode: '',
+  });
 
   return (
     <View style={styles.page}>
@@ -28,8 +34,9 @@ const MhsAjukanTopikNext = ({navigation}) => {
             <Gap height={5} />
             <View style={styles.dropdownWrapper}>
               <ModalPicker
-                value={bidang}
-                setValue={setBidang}
+                value={form.bidangtopik}
+                onSelectChange={value => setForm('bidangtopik', value)}
+                // setValue={setBidang}
                 items={dataBidang}
               />
             </View>
@@ -40,8 +47,9 @@ const MhsAjukanTopikNext = ({navigation}) => {
             <Gap height={5} />
             <View style={styles.dropdownWrapper}>
               <ModalPicker
-                value={dospem}
-                setValue={setDospem}
+                value={form.dosenpembimbing}
+                onSelectChange={value => setForm('dosenpembimbing', value)}
+                // setValue={setDospem}
                 items={dataDospem}
               />
             </View>
@@ -52,8 +60,9 @@ const MhsAjukanTopikNext = ({navigation}) => {
             <Gap height={5} />
             <View style={styles.dropdownWrapper}>
               <ModalPicker
-                value={periode}
-                setValue={setPeriode}
+                value={form.periode}
+                onSelectChange={value => setForm('periode', value)}
+                // setValue={setPeriode}
                 items={dataPeriode}
               />
             </View>

@@ -3,7 +3,7 @@ import React from 'react';
 import {StyleSheet, Text, View, Modal, TouchableOpacity} from 'react-native';
 import {colors} from '../../../utils';
 
-const ModalPicker = ({value, setValue, items}) => {
+const ModalPicker = ({value, setValue, items, onSelectChange}) => {
   const pickerData = data => {
     return (
       data?.length > 0 &&
@@ -18,7 +18,7 @@ const ModalPicker = ({value, setValue, items}) => {
       selectedValue={value}
       mode="dialog"
       style={styles.picker}
-      onValueChange={(itemValue, itemIndex) => setValue(itemValue)}>
+      onValueChange={itemValue => onSelectChange(itemValue)}>
       {pickerData(items)}
     </Picker>
   );

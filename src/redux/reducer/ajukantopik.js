@@ -6,7 +6,7 @@ const initStateAjukanTopik = {
   dosenpembimbing: '',
 };
 
-export const ajukanTopikReducer = (state, action) => {
+export const ajukanTopikReducer = (state = initStateAjukanTopik, action) => {
   if (action.type === 'SET_JUDUL') {
     return {
       ...state,
