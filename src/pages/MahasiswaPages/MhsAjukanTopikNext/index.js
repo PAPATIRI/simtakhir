@@ -1,24 +1,32 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
 import {IcArrowBack} from '../../../assets';
 import {Button, Gap, ModalPicker, TopNavbar} from '../../../components';
-import {colors, fonts, useForm} from '../../../utils';
 import {
   bidang as dataBidang,
   dospem as dataDospem,
   periode as dataPeriode,
 } from '../../../Databases/dropdownData';
+import {colors, fonts, useForm} from '../../../utils';
+import {showMessage, hideMessage} from 'react-native-flash-message';
 
 const MhsAjukanTopikNext = ({navigation}) => {
-  // const [bidang, setBidang] = useState('');
-  // const [dospem, setDospem] = useState('');
-  // const [periode, setPeriode] = useState('');
-
   const [form, setForm] = useForm({
     bidangtopik: '',
     dosenpembimbing: '',
     periode: '',
   });
+
+  const dispatch = useDispatch();
+  const ajukanTopikReducer = useSelector(state => state.ajukanTopikReducer);
+
+  const onSubmit = () => {
+    console.log('form', form);
+    dispatch({type: 'SET_DETAILTOPIK', value: form});
+    // const dataAjuanTopik = {...form, ...ajukanTopikReducer};
+    navigation.navigate('MhsDetailAjuanTopik');
+  };
 
   return (
     <View style={styles.page}>
@@ -68,10 +76,7 @@ const MhsAjukanTopikNext = ({navigation}) => {
             </View>
           </View>
         </View>
-        <Button
-          label="Selanjutnya"
-          onPress={() => navigation.navigate('MhsDetailAjuanTopik')}
-        />
+        <Button label="Selanjutnya" onPress={onSubmit} />
       </View>
     </View>
   );

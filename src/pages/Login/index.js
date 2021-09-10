@@ -4,24 +4,20 @@ import {BgGraduate} from '../../assets';
 import {colors, fonts, useForm} from '../../utils';
 import {TextInput, Gap, Button} from '../../components';
 import Axios from 'axios';
+import {useDispatch} from 'react-redux';
+import {signInAction} from '../../redux/action';
 
 const Login = ({navigation}) => {
-  // const [email, setEmail] = useState('');
-  // const [password, setPassword] = useState('');
   const [form, setForm] = useForm({
     identifier: '',
     password: '',
   });
 
+  const dispatch = useDispatch();
+
   const onSubmit = () => {
     console.log('form: ', form);
-    Axios.post('http://192.168.43.193:1337/auth/local', form)
-      .then(res => {
-        console.log('success: ', res);
-      })
-      .catch(err => {
-        console.log('error: ', err);
-      });
+    dispatch(signInAction(navigation, form));
   };
 
   return (
@@ -52,12 +48,12 @@ const Login = ({navigation}) => {
             />
           </View>
           <View>
-            {/* <Button label="Masuk" onPress={onSubmit} /> */}
-            <Button
+            <Button label="Masuk" onPress={onSubmit} />
+            {/* <Button
               label="Masuk"
               // onPress={() => navigation.navigate('DosenMainApp')}
               onPress={() => navigation.navigate('MainApp')}
-            />
+            /> */}
             <Gap height={15} />
             <Text style={styles.textFooter}>
               masuk aplikasi SIMTAKHIR menggunakan

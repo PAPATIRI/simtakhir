@@ -3,14 +3,32 @@ import {StyleSheet, Text, View, ScrollView} from 'react-native';
 import {IcArrowBack} from '../../../assets';
 import {TopNavbar, Gap, Button, ButtonDangerSedond} from '../../../components';
 import {colors, fonts} from '../../../utils';
+import {useDispatch, useSelector} from 'react-redux';
+import axios from 'axios';
 
 const MhsDetailAjuanTopik = ({navigation}) => {
+  const ajukanTopikReducer = useSelector(state => state.ajukanTopikReducer);
+  console.log(ajukanTopikReducer);
+
+  const onSubmit = () => {
+    console.log('form data: ', ajukanTopikReducer);
+    axios
+      .post('https://simtakhirapi.herokuapp.com/topikajuan', ajukanTopikReducer)
+      .then(res => {
+        console.log('data success: ', res.data);
+        navigation.replace('MhsSuksesAjukanTopik');
+      })
+      .catch(err => {
+        console.log('gagal mengajukan topik');
+      });
+  };
+
   return (
     <View style={styles.page}>
       <TopNavbar
         titleBar="Konfirmasi Data Topik"
         iconLeft={<IcArrowBack />}
-        onPress={() => navigation.navigate('DsnRequestMhs')}
+        onPress={() => navigation.navigate('MhsAjukanTopikNext')}
       />
       <View style={styles.content}>
         <View style={styles.dataDetail}>
@@ -18,32 +36,34 @@ const MhsDetailAjuanTopik = ({navigation}) => {
             <View>
               <Text style={styles.labelData}>Judul Topik</Text>
               <Text style={styles.descData}>
-                pengembangan aplikasi mobile e-learning dengan consume api
-                portal uad dan elearning uad
+                {ajukanTopikReducer.judultopik}
               </Text>
             </View>
             <Gap height={20} />
             <View>
               <Text style={styles.labelData}>Deskripsi Topik</Text>
               <Text style={styles.descData}>
-                pengembangan aplikasi mobile e-learning dengan consume api
-                portal uad dan elearning uad
+                {ajukanTopikReducer.deskripsitopik}
               </Text>
             </View>
             <Gap height={20} />
             <View>
               <Text style={styles.labelData}>Bidang Topik</Text>
-              <Text style={styles.descData}>Kebutuhan Perangkat Lunak</Text>
+              <Text style={styles.descData}>
+                {ajukanTopikReducer.bidangtopik}
+              </Text>
             </View>
             <Gap height={20} />
             <View>
               <Text style={styles.labelData}>Dosen Pembimbing</Text>
-              <Text style={styles.descData}>Ardiansyah, S.T.,M.Cs.</Text>
+              <Text style={styles.descData}>
+                {ajukanTopikReducer.dosenpembimbing}
+              </Text>
             </View>
             <Gap height={20} />
             <View>
               <Text style={styles.labelData}>Periode</Text>
-              <Text style={styles.descData}>genap 2020 / 2021</Text>
+              <Text style={styles.descData}>{ajukanTopikReducer.periode}</Text>
             </View>
           </ScrollView>
           <Gap height={10} />
@@ -54,7 +74,11 @@ const MhsDetailAjuanTopik = ({navigation}) => {
             }}
           />
           <Gap height={10} />
-          <ButtonDangerSedond type="secondary" label="batal" />
+          <ButtonDangerSedond
+            type="secondary"
+            label="batal"
+            onPress={onSubmit}
+          />
         </View>
       </View>
     </View>
