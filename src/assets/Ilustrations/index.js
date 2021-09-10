@@ -15,6 +15,7 @@ import IlListKosong from './il-list-kosong.svg';
 import IlTerhapus from './il-terhapus.svg';
 import IlYakinHapus from './il-yakin-hapus.svg';
 import IlBerhasilKirim from './il-berhasil-kirim.svg';
+import IlLogo from './il-logo.svg';
 
 export {
   BgCard,
@@ -34,4 +35,5 @@ export {
   IlTerhapus,
   IlYakinHapus,
   IlBerhasilKirim,
+  IlLogo,
 };
