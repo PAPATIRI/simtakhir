@@ -1,11 +1,11 @@
-import React, {useState} from 'react';
-import {StyleSheet, Text, View, ImageBackground} from 'react-native';
-import {BgGraduate} from '../../assets';
-import {colors, fonts, useForm} from '../../utils';
-import {TextInput, Gap, Button} from '../../components';
-import Axios from 'axios';
+import React from 'react';
+import {ImageBackground, StyleSheet, Text, View} from 'react-native';
 import {useDispatch} from 'react-redux';
-import {signInAction} from '../../redux/action';
+import {BgGraduate} from '../../assets';
+import {Button, Gap, TextInput} from '../../components';
+import {setLoading, signInAction} from '../../redux/action';
+import {colors, fonts, useForm} from '../../utils';
+import {showMessage, hideMessage} from 'react-native-flash-message';
 
 const Login = ({navigation}) => {
   const [form, setForm] = useForm({
@@ -16,7 +16,7 @@ const Login = ({navigation}) => {
   const dispatch = useDispatch();
 
   const onSubmit = () => {
-    dispatch({type: 'SET_LOADING', value: true});
+    dispatch(setLoading(true));
     dispatch(signInAction(navigation, form));
   };
 
