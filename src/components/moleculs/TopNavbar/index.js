@@ -30,6 +30,8 @@ export default TopNavbar;
 const styles = StyleSheet.create({
   iconLeft: {
     flex: 1,
+    alignItems: 'flex-start',
+    justifyContent: 'center',
   },
   descTopNav: {
     flex: 4,
@@ -43,12 +45,13 @@ const styles = StyleSheet.create({
   iconRight: {
     flex: 1,
     alignItems: 'flex-end',
+    justifyContent: 'center',
     paddingVertical: 8,
     height: 56,
   },
   topNavContent: {
     height: 56,
-    paddingHorizontal: 6,
+    paddingHorizontal: 10,
     flexDirection: 'row',
     alignItems: 'center',
   },

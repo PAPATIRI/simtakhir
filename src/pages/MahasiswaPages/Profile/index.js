@@ -1,19 +1,20 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, {useState} from 'react';
 import {
-  ScrollView,
+  Modal,
+  Pressable,
   StyleSheet,
   Text,
-  TextInput,
   TouchableOpacity,
   View,
 } from 'react-native';
+import {IcArrowDown, IcSignOut, ProfilImg} from '../../../assets';
 import {
-  IcArrowDown,
-  IcDropDown,
-  IcHamburgerMenu,
-  ProfilImg,
-} from '../../../assets';
-import {TopNavbar, CardProfile, Gap} from '../../../components';
+  ButtonDangerSedond,
+  CardProfile,
+  Gap,
+  TopNavbar,
+} from '../../../components';
 import {colors, fonts} from '../../../utils';
 
 let dataSkripsi = [
@@ -56,13 +57,57 @@ let dataSkripsi = [
   },
 ];
 
-const Profile = () => {
+const Profile = ({navigation}) => {
+  const [modalVisible, setModalVisible] = useState(false);
   const [currentIndex, setCurrentIndex] = React.useState(null);
+
+  const signOut = () => {
+    AsyncStorage.multiRemove(['userProfile', 'token']).then(() => {
+      navigation.reset({index: 0, routes: [{name: 'Login'}]});
+    });
+  };
 
   return (
     <View style={styles.page}>
+      <View>
+        <Modal
+          animationType="fade"
+          transparent={true}
+          visible={modalVisible}
+          onRequestClose={() => {
+            setModalVisible(!modalVisible);
+          }}>
+          <View style={styles.Wrapper}>
+            <View style={styles.modalWrapper}>
+              <Pressable
+                style={styles.btnCloseModal}
+                onPress={() => {
+                  setModalVisible(false);
+                }}>
+                <Text style={styles.textBtnClose}>batal</Text>
+              </Pressable>
+              <View style={styles.contentModal}>
+                <Text style={styles.textModal}>
+                  apakah kamu yakin ingin keluar akun ?
+                </Text>
+                <ButtonDangerSedond
+                  type="danger"
+                  label="Yakin"
+                  onPress={signOut}
+                />
+              </View>
+            </View>
+          </View>
+        </Modal>
+      </View>
       <View style={styles.topNavWrapper}>
-        <TopNavbar titleBar="Profil" />
+        <TopNavbar
+          titleBar="Profil"
+          iconRight={<IcSignOut />}
+          onPress={() => {
+            setModalVisible(true);
+          }}
+        />
         <View style={styles.emptyView}></View>
       </View>
       <View style={styles.content}>
@@ -145,8 +190,6 @@ const styles = StyleSheet.create({
     flex: 2,
     paddingHorizontal: 20,
   },
-  dropDownWrapper: {},
-
   dropDown: {
     paddingHorizontal: 20,
     paddingTop: 12,
@@ -176,5 +219,43 @@ const styles = StyleSheet.create({
     color: colors.text.primary,
     marginBottom: 15,
     lineHeight: 16 * 1.5,
+  },
+  btnCloseModal: {
+    flexDirection: 'row',
+    width: '30%',
+    paddingVertical: 2,
+    justifyContent: 'center',
+    marginHorizontal: '35%',
+  },
+  textBtnClose: {
+    fontFamily: fonts.primary[400],
+    fontSize: 14,
+    lineHeight: 14 * 1.5,
+    color: colors.text.primary,
+  },
+  Wrapper: {
+    padding: 20,
+    height: '100%',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.4)',
+  },
+  modalWrapper: {
+    backgroundColor: 'yellow',
+    justifyContent: 'space-between',
+    padding: 20,
+    height: '40%',
+    backgroundColor: colors.primary,
+    borderRadius: 10,
+  },
+  contentModal: {
+    height: '70%',
+    justifyContent: 'space-between',
+  },
+  textModal: {
+    fontSize: 20,
+    textAlign: 'center',
+    fontFamily: fonts.primary[600],
+    lineHeight: 20 * 1.5,
+    color: colors.text.danger,
   },
 });

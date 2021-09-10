@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {ImageBackground, StyleSheet, Text, View} from 'react-native';
 import {useDispatch} from 'react-redux';
 import {BgGraduate} from '../../assets';
 import {Button, Gap, TextInput} from '../../components';
 import {setLoading, signInAction} from '../../redux/action';
-import {colors, fonts, useForm} from '../../utils';
+import {colors, getData, fonts, useForm} from '../../utils';
 import {showMessage, hideMessage} from 'react-native-flash-message';
 
 const Login = ({navigation}) => {

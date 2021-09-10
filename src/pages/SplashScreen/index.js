@@ -1,12 +1,32 @@
 import React, {useEffect} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {IlLogo} from '../../assets';
-import {colors} from '../../utils';
+import {colors, getData} from '../../utils';
 
 const SplashScreen = ({navigation}) => {
   useEffect(() => {
     setTimeout(() => {
-      navigation.replace('Login');
+      getData('token').then(res => {
+        console.log('token: ', res);
+        if (res) {
+          getData('userProfile').then(res => {
+            console.log(res);
+            if (res.value.role.type == 'mahasiswa') {
+              navigation.reset({
+                index: 0,
+                routes: [{name: 'MainApp'}],
+              });
+            } else {
+              navigation.reset({
+                index: 0,
+                routes: [{name: 'DosenMainApp'}],
+              });
+            }
+          });
+        } else {
+          navigation.replace('Login');
+        }
+      });
     }, 2000);
   }, []);
 

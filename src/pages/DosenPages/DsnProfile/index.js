@@ -6,11 +6,19 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Modal,
+  Pressable,
 } from 'react-native';
 import {PieChart} from 'react-native-chart-kit';
-import {ArdiansyahImg, IcHamburgerMenu} from '../../../assets';
-import {TopNavbar, CardProfile, Gap} from '../../../components';
+import {ArdiansyahImg, IcHamburgerMenu, IcSignOut} from '../../../assets';
+import {
+  TopNavbar,
+  CardProfile,
+  Gap,
+  ButtonDangerSedond,
+} from '../../../components';
 import {colors, fonts} from '../../../utils';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const screenWidth = Dimensions.get('window').width;
 
@@ -56,10 +64,24 @@ const dataMahasiswa = [
 ];
 
 const DsnProfile = ({navigation}) => {
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const signOut = () => {
+    AsyncStorage.multiRemove(['userProfile', 'token']).then(() => {
+      navigation.reset({index: 0, routes: [{name: 'Login'}]});
+    });
+  };
+
   return (
     <View style={styles.page}>
       <View style={styles.topNavWrapper}>
-        <TopNavbar titleBar="Profil Anda" />
+        <TopNavbar
+          titleBar="Profil Anda"
+          iconRight={<IcSignOut />}
+          onPress={() => {
+            setModalVisible(true);
+          }}
+        />
         <View style={styles.emptyView}></View>
       </View>
       <View style={styles.content}>
@@ -148,6 +170,38 @@ const DsnProfile = ({navigation}) => {
           </View>
         </View>
       </View>
+      {/* MODAL LOG OUT */}
+      <View>
+        <Modal
+          animationType="fade"
+          transparent={true}
+          visible={modalVisible}
+          onRequestClose={() => {
+            setModalVisible(!modalVisible);
+          }}>
+          <View style={styles.Wrapper}>
+            <View style={styles.modalWrapper}>
+              <Pressable
+                style={styles.btnCloseModal}
+                onPress={() => {
+                  setModalVisible(false);
+                }}>
+                <Text style={styles.textBtnClose}>batal</Text>
+              </Pressable>
+              <View style={styles.contentModal}>
+                <Text style={styles.textModal}>
+                  apakah kamu yakin ingin keluar akun ?
+                </Text>
+                <ButtonDangerSedond
+                  type="danger"
+                  label="Yakin"
+                  onPress={signOut}
+                />
+              </View>
+            </View>
+          </View>
+        </Modal>
+      </View>
     </View>
   );
 };
@@ -218,5 +272,43 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 14 * 1.5,
     color: colors.text.white,
+  },
+  btnCloseModal: {
+    flexDirection: 'row',
+    width: '30%',
+    paddingVertical: 2,
+    justifyContent: 'center',
+    marginHorizontal: '35%',
+  },
+  textBtnClose: {
+    fontFamily: fonts.primary[400],
+    fontSize: 14,
+    lineHeight: 14 * 1.5,
+    color: colors.text.primary,
+  },
+  Wrapper: {
+    padding: 20,
+    height: '100%',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.4)',
+  },
+  modalWrapper: {
+    backgroundColor: 'yellow',
+    justifyContent: 'space-between',
+    padding: 20,
+    height: '40%',
+    backgroundColor: colors.primary,
+    borderRadius: 10,
+  },
+  contentModal: {
+    height: '70%',
+    justifyContent: 'space-between',
+  },
+  textModal: {
+    fontSize: 20,
+    textAlign: 'center',
+    fontFamily: fonts.primary[600],
+    lineHeight: 20 * 1.5,
+    color: colors.text.danger,
   },
 });

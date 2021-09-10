@@ -25,6 +25,7 @@ import IcPlusSmall from './ic-plus-small.svg';
 import IcDownload from './ic-download.svg';
 import IcBimbingan from './ic-bimbingan.svg';
 import IcSkripsi from './ic-skripsi.svg';
+import IcSignOut from './ic-sign-out.svg';
 
 export {
   IcCalender,
@@ -54,4 +55,5 @@ export {
   IcDownload,
   IcBimbingan,
   IcSkripsi,
+  IcSignOut,
 };
