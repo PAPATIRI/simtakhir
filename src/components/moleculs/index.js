@@ -11,6 +11,7 @@ import CardTopikAjuan from './CardTopikAjuan';
 import ModalPicker from './ModalPicker';
 import CardPendaftarTopik from './CardPendaftarTopik';
 import Result from './Result';
+import Loading from './Loading';
 
 export {
   CardProfile,
@@ -26,4 +27,5 @@ export {
   ModalPicker,
   CardPendaftarTopik,
   Result,
+  Loading,
 };

@@ -12,18 +12,16 @@ export const signInAction = (navigation, form) => dispatch => {
       const token = `${res.data.jwt}`;
       const profile = res.data.user;
 
-      console.log(token);
-      console.log(profile);
-
       storeData('token', {value: token});
       storeData('userProfile', {value: profile});
+      dispatch({type: 'SET_LOADING', value: false});
 
-      console.log(profile.role.type);
       profile.role.type == 'mahasiswa'
         ? navigation.reset({index: 0, routes: [{name: 'MainApp'}]})
         : navigation.reset({index: 0, routes: [{name: 'DosenMainApp'}]});
     })
     .catch(err => {
+      dispatch({type: 'SET_LOADING', value: false});
       console.log('error: ', err);
     });
 };

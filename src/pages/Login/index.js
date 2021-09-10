@@ -16,7 +16,7 @@ const Login = ({navigation}) => {
   const dispatch = useDispatch();
 
   const onSubmit = () => {
-    console.log('form: ', form);
+    dispatch({type: 'SET_LOADING', value: true});
     dispatch(signInAction(navigation, form));
   };
 
