@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   },
   dateItem: {
     fontFamily: fonts.primary[300],
-    fontSize: 12,
+    fontSize: 14,
   },
   iconItem: {
     flex: 1,

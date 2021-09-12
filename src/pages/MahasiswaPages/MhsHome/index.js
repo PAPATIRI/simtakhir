@@ -8,9 +8,15 @@ import {
   ProfilImg,
 } from '../../../assets';
 import {CardProfile, Menu, TopNavbar} from '../../../components';
-import {colors} from '../../../utils';
+import {colors, getData} from '../../../utils';
 
 const MhsHome = ({navigation}) => {
+  getData('userProfile').then(res => {
+    console.log(res);
+  });
+  getData('token').then(res => {
+    console.log(res.value);
+  });
   return (
     <SafeAreaView style={styles.page}>
       <View style={styles.topNavWrapper}></View>

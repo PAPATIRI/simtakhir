@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {
   IcAcceptedLogbook,
@@ -11,8 +11,23 @@ import {
 import {Gap, LogbookList, TopNavbar} from '../../../components';
 import {colors} from '../../../utils';
 import ActionButton from '@logvinme/react-native-action-button';
+import {useDispatch, useSelector} from 'react-redux';
+import {getLogbookData} from '../../../redux/action';
 
 const MhsLogbook = ({navigation}) => {
+  const dispatch = useDispatch();
+  const {logbook} = useSelector(state => state.logbookReducer);
+  const options = {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  };
+
+  useEffect(() => {
+    dispatch(getLogbookData());
+  }, []);
+
   return (
     <View style={styles.page}>
       <TopNavbar
@@ -31,42 +46,25 @@ const MhsLogbook = ({navigation}) => {
         </View>
         <Gap height={20} />
         <View style={styles.bottomContent}>
-          <LogbookList
-            titleLogbook="bimbingan mengenai judul tugas akhir yang akan diambil"
-            dateLogbook="2 desember 2021"
-            iconStatus={<IcAcceptedLogbook />}
-            onPress={() => navigation.navigate('MhsDetailLogbook')}
-          />
-
-          <LogbookList
-            titleLogbook="bimbingan mengenai judul tugas akhir yang akan diambil"
-            dateLogbook="2 desember 2021"
-            iconStatus={<IcAcceptedLogbook />}
-          />
-
-          <LogbookList
-            titleLogbook="bimbingan mengenai judul tugas akhir yang akan diambil"
-            dateLogbook="2 desember 2021"
-            iconStatus={<IcAcceptedLogbook />}
-          />
-
-          <LogbookList
-            titleLogbook="bimbingan mengenai judul tugas akhir yang akan diambil"
-            dateLogbook="2 desember 2021"
-            iconStatus={<IcAcceptedLogbook />}
-          />
-
-          <LogbookList
-            titleLogbook="bimbingan mengenai judul tugas akhir yang akan diambil"
-            dateLogbook="2 desember 2021"
-            iconStatus={<IcWaitingLogbook />}
-          />
-
-          <LogbookList
-            titleLogbook="bimbingan mengenai judul tugas akhir yang akan diambil"
-            dateLogbook="2 desember 2021"
-            iconStatus={<IcWaitingLogbook />}
-          />
+          {logbook.map(itemLogbook => {
+            return (
+              <LogbookList
+                titleLogbook={itemLogbook.kegiatan}
+                key={itemLogbook.kegiatan}
+                dateLogbook={new Date(itemLogbook.updated_at).toDateString()}
+                iconStatus={
+                  itemLogbook.status == 'menunggu' ? (
+                    <IcWaitingLogbook />
+                  ) : (
+                    <IcAcceptedLogbook />
+                  )
+                }
+                onPress={() =>
+                  navigation.navigate('MhsDetailLogbook', itemLogbook)
+                }
+              />
+            );
+          })}
         </View>
         <ActionButton buttonColor={colors.accent}>
           <ActionButton.Item

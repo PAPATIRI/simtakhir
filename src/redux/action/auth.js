@@ -1,15 +1,13 @@
 import axios from 'axios';
 import {setLoading} from '.';
 import {showMessage, storeData} from '../../utils';
-
-const API_HOST = {
-  url: 'https://simtakhirapi.herokuapp.com',
-};
+import {API_HOST} from '../../config';
 
 export const signInAction = (navigation, form) => dispatch => {
   axios
     .post(`${API_HOST.url}/auth/local`, form)
     .then(res => {
+      // console.log(res.data);
       const token = `${res.data.jwt}`;
       const profile = res.data.user;
 

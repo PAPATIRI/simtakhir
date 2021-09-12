@@ -1,38 +1,45 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {IcArrowBack} from '../../../assets';
+import {
+  IcAcceptedLogbook,
+  IcArrowBack,
+  IcWaitingLogbook,
+} from '../../../assets';
 import {Gap, TopNavbar} from '../../../components';
 import {colors, fonts} from '../../../utils';
 
-const MhsDetailLogbook = ({navigation}) => {
+const MhsDetailLogbook = ({navigation, route}) => {
+  const {kegiatan, catatankemajuan, updated_at, status} = route.params;
+  const optionsDate = {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  };
   return (
     <View style={styles.page}>
       <TopNavbar
         iconLeft={<IcArrowBack />}
         titleBar="Detail Logbook"
-        onPress={() => navigation.navigate('MhsLogbook')}
+        onPress={() => navigation.goBack()}
       />
       <View style={styles.content}>
         <View style={styles.date}>
-          <Text style={styles.dateText}>12 desember 2020</Text>
+          <Text style={styles.dateText}>
+            {new Date(updated_at).toDateString()}
+          </Text>
         </View>
         <Gap height={20} />
         <View>
           <Text style={styles.judulTopik}>Kegiatan</Text>
           <Gap height={5} />
-          <Text style={styles.descTopik}>
-            bimbingan mengenai judul tugas akhir
-          </Text>
+          <Text style={styles.descTopik}>{kegiatan}</Text>
         </View>
         <Gap height={20} />
         <View>
           <Text style={styles.judulTopik}>Catatan Kemajuan</Text>
           <Gap height={5} />
-          <Text style={styles.descTopik}>
-            mendapatkan pandangan mengenai ruang lingkup topik tugas akhir yang
-            diambil, dan dapat memutuskan mengenai teknologi apa yang akan
-            digunakan pada tugas akhir
-          </Text>
+          <Text style={styles.descTopik}>{catatankemajuan}</Text>
         </View>
         <Gap height={20} />
         <View>
@@ -45,7 +52,12 @@ const MhsDetailLogbook = ({navigation}) => {
           <Text style={styles.judulTopik}>Paraf Dosen Pembimbing</Text>
           <Gap height={5} />
           <View style={styles.paraf}>
-            <Text style={styles.parafText}>terverifikasi</Text>
+            {status == 'menunggu' ? (
+              <IcWaitingLogbook />
+            ) : (
+              <IcAcceptedLogbook />
+            )}
+            <Text style={styles.parafText}>{status}</Text>
           </View>
         </View>
       </View>
@@ -87,15 +99,15 @@ const styles = StyleSheet.create({
     color: colors.text.primary,
   },
   paraf: {
-    width: '50%',
-    backgroundColor: colors.accent,
-    padding: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
     borderRadius: 5,
   },
   parafText: {
-    color: colors.text.white,
+    color: colors.text.primary,
     fontFamily: fonts.primary[400],
+    textTransform: 'capitalize',
     fontSize: 16,
-    textAlign: 'center',
+    marginLeft: 10,
   },
 });
