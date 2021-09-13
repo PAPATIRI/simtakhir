@@ -1,3 +1,25 @@
+import axios from 'axios';
+import {API_HOST} from '../config';
+import {getData} from '../utils';
+
+// export const bidang = () => {
+//   getData('token').then(res => {
+//     axios
+//       .get(`${API_HOST.url}/topikajuans`, {
+//         headers: {
+//           Authorization: `Bearer ${res.value}`,
+//         },
+//       })
+//       .then(res => {
+//         res.data;
+//         console.log(res.data);
+//       })
+//       .catch(err => {
+//         console.log('error bidang fetch: ', err);
+//       });
+//   });
+// };
+
 export const bidang = [
   '--- pilih bidang topik ---',
   'Pengolahan Citra',

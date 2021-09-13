@@ -5,8 +5,10 @@ import {colors, fonts} from '../../../utils';
 const Loading = () => {
   return (
     <View style={styles.container}>
-      <ActivityIndicator size="large" color={colors.accent} />
-      <Text style={styles.loadingText}>loading...</Text>
+      <View style={styles.loadingWrapper}>
+        <ActivityIndicator size="large" color={colors.accent} />
+        <Text style={styles.loadingText}>loading...</Text>
+      </View>
     </View>
   );
 };
@@ -19,9 +21,14 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.4)',
     width: '100%',
     height: '100%',
+    borderRadius: 20,
+  },
+  loadingWrapper: {
+    backgroundColor: 'rgba(0, 0, 0, 0.4)',
+    padding: 50,
+    borderRadius: 20,
   },
   loadingText: {
     fontFamily: fonts.primary[500],

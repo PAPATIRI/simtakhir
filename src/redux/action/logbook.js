@@ -10,6 +10,7 @@ export const getLogbookData = () => dispatch => {
       },
     })
       .then(res => {
+        console.log(res.data);
         dispatch({type: 'SET_LOGBOOK', value: res.data});
       })
       .catch(err => {

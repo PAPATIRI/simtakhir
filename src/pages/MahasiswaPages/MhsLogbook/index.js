@@ -17,12 +17,6 @@ import {getLogbookData} from '../../../redux/action';
 const MhsLogbook = ({navigation}) => {
   const dispatch = useDispatch();
   const {logbook} = useSelector(state => state.logbookReducer);
-  const options = {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-  };
 
   useEffect(() => {
     dispatch(getLogbookData());

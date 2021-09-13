@@ -29,7 +29,7 @@ const CardTopikSkripsi = ({
             <Gap height={2} />
             <View style={styles.bottom}>
               <Text style={styles.periode}>{periode}</Text>
-              <Text style={styles.periode}>{pendaftar}</Text>
+              <Text style={styles.periode}>{pendaftar} pendaftar</Text>
             </View>
           </View>
         </View>
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   title: {
-    fontFamily: fonts.primary[500],
+    fontFamily: fonts.primary[400],
     fontSize: 16,
     color: colors.text.accent,
   },

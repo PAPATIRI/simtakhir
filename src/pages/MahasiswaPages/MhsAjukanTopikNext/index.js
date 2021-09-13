@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {IcArrowBack} from '../../../assets';
@@ -10,6 +10,7 @@ import {
 } from '../../../Databases/dropdownData';
 import {colors, fonts, useForm} from '../../../utils';
 import {showMessage, hideMessage} from 'react-native-flash-message';
+import {getBidangTopikAction} from '../../../redux/action/ajukantopik';
 
 const MhsAjukanTopikNext = ({navigation}) => {
   const [form, setForm] = useForm({
@@ -19,12 +20,16 @@ const MhsAjukanTopikNext = ({navigation}) => {
   });
 
   const dispatch = useDispatch();
+  // const {bidangtopik} = useSelector(state => state.ajukanTopikReducer);
   const ajukanTopikReducer = useSelector(state => state.ajukanTopikReducer);
+
+  // useEffect(() => {
+  //   dispatch(getBidangTopikAction());
+  // }, []);
 
   const onSubmit = () => {
     console.log('form', form);
     dispatch({type: 'SET_DETAILTOPIK', value: form});
-    // const dataAjuanTopik = {...form, ...ajukanTopikReducer};
     navigation.navigate('MhsDetailAjuanTopik');
   };
 
@@ -44,7 +49,6 @@ const MhsAjukanTopikNext = ({navigation}) => {
               <ModalPicker
                 value={form.bidangtopik}
                 onSelectChange={value => setForm('bidangtopik', value)}
-                // setValue={setBidang}
                 items={dataBidang}
               />
             </View>
@@ -57,7 +61,6 @@ const MhsAjukanTopikNext = ({navigation}) => {
               <ModalPicker
                 value={form.dosenpembimbing}
                 onSelectChange={value => setForm('dosenpembimbing', value)}
-                // setValue={setDospem}
                 items={dataDospem}
               />
             </View>

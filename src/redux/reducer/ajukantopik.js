@@ -23,5 +23,12 @@ export const ajukanTopikReducer = (state = initStateAjukanTopik, action) => {
       dosenpembimbing: action.value.dosenpembimbing,
     };
   }
+
+  if (action.type === 'SET_BIDANGTOPIK') {
+    return {
+      ...state,
+      bidangtopik: action.value,
+    };
+  }
   return state;
 };

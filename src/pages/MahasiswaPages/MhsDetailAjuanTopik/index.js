@@ -5,22 +5,16 @@ import {TopNavbar, Gap, Button, ButtonDangerSedond} from '../../../components';
 import {colors, fonts} from '../../../utils';
 import {useDispatch, useSelector} from 'react-redux';
 import axios from 'axios';
+import {ajukanTopikAction} from '../../../redux/action/ajukantopik';
 
 const MhsDetailAjuanTopik = ({navigation}) => {
   const ajukanTopikReducer = useSelector(state => state.ajukanTopikReducer);
   console.log(ajukanTopikReducer);
+  const dispatch = useDispatch();
 
   const onSubmit = () => {
     console.log('form data: ', ajukanTopikReducer);
-    axios
-      .post('https://simtakhirapi.herokuapp.com/topikajuan', ajukanTopikReducer)
-      .then(res => {
-        console.log('data success: ', res.data);
-        navigation.replace('MhsSuksesAjukanTopik');
-      })
-      .catch(err => {
-        console.log('gagal mengajukan topik');
-      });
+    dispatch(ajukanTopikAction(navigation, ajukanTopikReducer));
   };
 
   return (
@@ -67,17 +61,12 @@ const MhsDetailAjuanTopik = ({navigation}) => {
             </View>
           </ScrollView>
           <Gap height={10} />
-          <Button
-            label="Konfirmasi & ajukan"
-            onPress={() => {
-              navigation.navigate('MhsSuksesAjukanTopik');
-            }}
-          />
+          <Button label="Konfirmasi & ajukan" onPress={onSubmit} />
           <Gap height={10} />
           <ButtonDangerSedond
             type="secondary"
             label="batal"
-            onPress={onSubmit}
+            // onPress={navigation.navigate('MhsAjukanTopik')}
           />
         </View>
       </View>

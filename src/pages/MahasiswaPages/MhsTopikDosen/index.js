@@ -1,41 +1,46 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import CardTopikSkripsi from '../../../components/moleculs/CardTopikSkripsi';
 import {colors, fonts} from '../../../utils';
 import {Gap, TopNavbarSearch} from '../../../components';
-import {ArdiansyahImg, EkoImg, SupriyantoImg} from '../../../assets';
+import {
+  ArdiansyahImg,
+  EkoImg,
+  IlUserDefault,
+  SupriyantoImg,
+} from '../../../assets';
+import {useDispatch, useSelector} from 'react-redux';
+import {getTopikDosenAction} from '../../../redux/action/topikdosen';
+import {setLoading} from '../../../redux/action';
 
 const MhsTopikDosen = ({navigation}) => {
+  const dispatch = useDispatch();
+  const {topikdosens} = useSelector(state => state.topikDosenReducer);
+
+  useEffect(() => {
+    dispatch(setLoading(true));
+    dispatch(getTopikDosenAction());
+  }, []);
+
   return (
     <View style={styles.page}>
       <TopNavbarSearch onPress={() => navigation.navigate('MhsTopikSkripsi')} />
       <View style={styles.content}>
         <Text style={styles.title}>Daftar Topik Tugas Akhir</Text>
         <Gap height={10} />
-        <CardTopikSkripsi
-          title="Refaktor dan Pengembangan Test Suite Otomatis"
-          dosen="Ardiansyah S.T.,M.Cs"
-          bidang="Machine Learning & Data Mining"
-          periode="genap 2020 / 2021"
-          pendaftar="1 pendaftar"
-          imgDosen={ArdiansyahImg}
-        />
-        <CardTopikSkripsi
-          title="Sistem Pelaporan Perguruan Tinggi Muhammadiyah"
-          dosen="Supriyanto, S.T., M.T."
-          bidang="Machine Learning & Data Mining"
-          periode="genap 2020 / 2021"
-          pendaftar="1 pendaftar"
-          imgDosen={SupriyantoImg}
-        />
-        <CardTopikSkripsi
-          title="Text Mining dan Klasifikasi Trend Topik Tugas Akhir"
-          dosen="Eko Aribowo S.T.,M.Kom"
-          bidang="Machine Learning & Data Mining"
-          periode="genap 2020 / 2021"
-          pendaftar="1 pendaftar"
-          imgDosen={EkoImg}
-        />
+        {topikdosens.map(itemtopik => {
+          return (
+            <CardTopikSkripsi
+              key={itemtopik.id}
+              title={itemtopik.judultopik}
+              dosen={itemtopik.dosen.nidn}
+              bidang={itemtopik.bidangtopik.namabidang}
+              periode={itemtopik.periode.tahunperiode}
+              pendaftar="0"
+              imgDosen={<IlUserDefault />}
+            />
+          );
+        })}
       </View>
     </View>
   );
