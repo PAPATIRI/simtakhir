@@ -4,6 +4,7 @@ import ArdiansyahImg from './Ardiansyah.jpg';
 import AdhiImg from './adhi.jpg';
 import SupriyantoImg from './Supriyanto.jpg';
 import EkoImg from './Eko-edit.jpg';
+import AhmadAzhari from './Ahmad-Azhari.jpg';
 import Mhs1 from './mhs1.jpg';
 import Mhs2 from './mhs2.jpg';
 import Mhs3 from './mhs3.jpg';
@@ -16,6 +17,7 @@ export {
   ArdiansyahImg,
   AdhiImg,
   SupriyantoImg,
+  AhmadAzhari,
   EkoImg,
   Mhs1,
   Mhs2,

@@ -11,9 +11,10 @@ const CardTopikSkripsi = ({
   dosen,
   bidang,
   pendaftar,
+  onPress,
 }) => {
   return (
-    <TouchableOpacity activeOpacity={0.7}>
+    <TouchableOpacity activeOpacity={0.7} onPress={onPress}>
       <View style={styles.cardWrapper}>
         <Image source={imgDosen} style={styles.cardImg} />
         <View style={styles.content}>
@@ -43,7 +44,7 @@ export default CardTopikSkripsi;
 const styles = StyleSheet.create({
   cardWrapper: {
     flexDirection: 'row',
-    height: 150,
+    height: 170,
     backgroundColor: colors.primary,
     borderRadius: 10,
     elevation: 1,
@@ -55,29 +56,37 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 10,
     borderBottomLeftRadius: 10,
     width: 120,
-    height: 150,
+    height: 170,
   },
   content: {
     flex: 1,
-    padding: 15,
+    paddingHorizontal: 15,
+    paddingVertical: 10,
     justifyContent: 'space-between',
   },
   title: {
     fontFamily: fonts.primary[400],
     fontSize: 16,
     color: colors.text.accent,
+    lineHeight: 16 * 1.5,
   },
   dosen: {
     fontFamily: fonts.primary[300],
+    fontSize: 12,
+    lineHeight: 12 * 1.5,
     color: colors.blackSecondary,
   },
   bidang: {
     fontFamily: fonts.primary[400],
-    fontSize: 12,
+    fontSize: 14,
+    lineHeight: 14 * 1.5,
+    color: colors.text.primary,
   },
   periode: {
     fontFamily: fonts.primary[300],
-    fontSize: 12,
+    fontSize: 14,
+    lineHeight: 14 * 1.5,
+    color: colors.text.primary,
   },
   bottomCard: {
     justifyContent: 'space-between',

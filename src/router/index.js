@@ -38,6 +38,7 @@ import {
   MhsDaftarSidangSempro,
   MhsDaftarSidangSemproNext,
   MhsSuksesAjukanTopik,
+  MhsDetailTopikDosen,
 } from '../pages';
 import DsnTopikSkripsi from '../pages/DosenPages/DsnTopikSkripsi';
 import DsnTopikSkripsiSaya from '../pages/DosenPages/DsnTopikSkripsiSaya';
@@ -153,8 +154,13 @@ const Router = () => {
         component={MhsDetailAjuanTopik}
         options={{headerShown: false}}
       />
-      {/* dosen stack navigation */}
+      <Stack.Screen
+        name="MhsDetailTopikDosen"
+        component={MhsDetailTopikDosen}
+        options={{headerShown: false}}
+      />
 
+      {/* dosen stack navigation */}
       <Stack.Screen
         name="DosenMainApp"
         component={DosenMainApp}

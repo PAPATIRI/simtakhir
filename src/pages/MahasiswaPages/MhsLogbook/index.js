@@ -12,14 +12,15 @@ import {Gap, LogbookList, TopNavbar} from '../../../components';
 import {colors} from '../../../utils';
 import ActionButton from '@logvinme/react-native-action-button';
 import {useDispatch, useSelector} from 'react-redux';
-import {getLogbookData} from '../../../redux/action';
+import {getLogbookDataAction, setLoading} from '../../../redux/action';
 
 const MhsLogbook = ({navigation}) => {
   const dispatch = useDispatch();
   const {logbook} = useSelector(state => state.logbookReducer);
 
   useEffect(() => {
-    dispatch(getLogbookData());
+    // dispatch(setLoading(true));
+    dispatch(getLogbookDataAction());
   }, []);
 
   return (
@@ -44,7 +45,7 @@ const MhsLogbook = ({navigation}) => {
             return (
               <LogbookList
                 titleLogbook={itemLogbook.kegiatan}
-                key={itemLogbook.kegiatan}
+                key={itemLogbook.id}
                 dateLogbook={new Date(itemLogbook.updated_at).toDateString()}
                 iconStatus={
                   itemLogbook.status == 'menunggu' ? (

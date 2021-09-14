@@ -1,5 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
 import {IcArrowBack} from '../../../assets';
 import {
   Button,
@@ -8,9 +9,24 @@ import {
   TextInput,
   TopNavbar,
 } from '../../../components';
-import {colors} from '../../../utils';
+import {addLogbookAction} from '../../../redux/action';
+import {colors, useForm} from '../../../utils';
 
 const MhsTambahLogbook = ({navigation}) => {
+  const [form, setForm] = useForm({
+    kegiatan: '',
+    catatankemajuan: '',
+    filetambahan: '',
+  });
+
+  const dispatch = useDispatch();
+  const logbookReducer = useSelector(state => state.logbookReducer);
+
+  const onsubmit = () => {
+    console.log('form data: ', form);
+    dispatch(addLogbookAction(navigation, form));
+  };
+
   return (
     <View style={styles.page}>
       <TopNavbar
@@ -20,23 +36,27 @@ const MhsTambahLogbook = ({navigation}) => {
       />
       <View style={styles.content}>
         <View>
-          <TextInput label="Kegiatan" placeholder="masukkan kegiatan" />
+          <TextInput
+            label="Kegiatan"
+            placeholder="masukkan kegiatan"
+            value={form.kegiatn}
+            onChangeText={value => setForm('kegiatan', value)}
+          />
           <Gap height={20} />
           <TextInput
             label="Catatan Kemajuan"
             placeholder="masukkan catatan kemajuan"
             height={96}
+            value={form.catatankemajuan}
+            onChangeText={value => setForm('catatankemajuan', value)}
             multiline={true}
             textAlignVertical="top"
           />
           <Gap height={20} />
-          <FileInput label="File Tambahan" />
+          <FileInput label="File Tambahan (optional)" />
         </View>
         <View>
-          <Button
-            label="Tambah Logbook"
-            onPress={() => navigation.navigate('MhsSuksesTambahLogbook')}
-          />
+          <Button label="Tambah Logbook" onPress={onsubmit} />
         </View>
       </View>
     </View>

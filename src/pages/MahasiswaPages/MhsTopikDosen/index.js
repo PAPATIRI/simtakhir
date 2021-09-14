@@ -1,17 +1,13 @@
 import React, {useEffect} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import CardTopikSkripsi from '../../../components/moleculs/CardTopikSkripsi';
-import {colors, fonts} from '../../../utils';
-import {Gap, TopNavbarSearch} from '../../../components';
-import {
-  ArdiansyahImg,
-  EkoImg,
-  IlUserDefault,
-  SupriyantoImg,
-} from '../../../assets';
 import {useDispatch, useSelector} from 'react-redux';
-import {getTopikDosenAction} from '../../../redux/action/topikdosen';
+import {IlUserDefault} from '../../../assets';
+import {Gap, TopNavbarSearch} from '../../../components';
+import CardTopikSkripsi from '../../../components/moleculs/CardTopikSkripsi';
 import {setLoading} from '../../../redux/action';
+import {getTopikDosenAction} from '../../../redux/action/topikdosen';
+import {colors, fonts} from '../../../utils';
+import {dosenImg} from './dosenImg';
 
 const MhsTopikDosen = ({navigation}) => {
   const dispatch = useDispatch();
@@ -37,7 +33,10 @@ const MhsTopikDosen = ({navigation}) => {
               bidang={itemtopik.bidangtopik.namabidang}
               periode={itemtopik.periode.tahunperiode}
               pendaftar="0"
-              imgDosen={<IlUserDefault />}
+              imgDosen={dosenImg(itemtopik.dosen.nidn)}
+              onPress={() =>
+                navigation.navigate('MhsDetailTopikDosen', itemtopik)
+              }
             />
           );
         })}

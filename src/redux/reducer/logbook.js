@@ -9,5 +9,14 @@ export const logbookReducer = (state = initLogbook, action) => {
       logbook: action.value,
     };
   }
+
+  if (action.type === 'SET_TAMBAHLOGBOOK') {
+    return {
+      ...state,
+      kegiatan: action.value.kegiatan,
+      catatankemajuan: action.value.catatankemajuan,
+      filetambahan: action.value.filetambahan,
+    };
+  }
   return state;
 };

@@ -27,7 +27,7 @@ const CardProfile = ({image, name, label1, label2, data1, data2}) => {
             <Text style={styles.nameCard}>{name}</Text>
             <Gap height={15} />
             <View style={styles.dataCard}>
-              <View>
+              <View style={styles.leftData}>
                 <Text style={styles.subTitle}>{label1}</Text>
                 <Text style={styles.status}>{data1}</Text>
               </View>
@@ -70,8 +70,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   cardContent: {
-    paddingHorizontal: 20,
-    paddingVertical: 15,
+    paddingHorizontal: 15,
+    paddingVertical: 10,
   },
   cardImg: {
     borderRadius: 10,
@@ -79,16 +79,25 @@ const styles = StyleSheet.create({
   nameCard: {
     color: colors.primary,
     fontFamily: fonts.primary[600],
-    fontSize: 18,
+    fontSize: 16,
+    lineHeight: 16 * 1.5,
+  },
+  dataCard: {
+    flexDirection: 'row',
   },
   subTitle: {
     color: colors.primary,
     fontFamily: fonts.primary[400],
     fontSize: 12,
+    lineHeight: 12 * 1.5,
   },
   status: {
     color: colors.primary,
     fontFamily: fonts.primary[400],
     fontSize: 16,
+    lineHeight: 16 * 1.5,
+  },
+  leftData: {
+    marginRight: 25,
   },
 });

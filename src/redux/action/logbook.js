@@ -1,20 +1,45 @@
-import Axios from 'axios';
+import axios from 'axios';
+import {setLoading} from '.';
 import {API_HOST} from '../../config';
-import {getData} from '../../utils';
+import {getData, showMessage} from '../../utils';
 
-export const getLogbookData = () => dispatch => {
+export const getLogbookDataAction = () => dispatch => {
   getData('token').then(res => {
-    Axios.get(`${API_HOST.url}/logbooks`, {
-      headers: {
-        Authorization: `Bearer ${res.value}`,
-      },
-    })
+    axios
+      .get(`${API_HOST.url}/logbooks`, {
+        headers: {
+          Authorization: `Bearer ${res.value}`,
+        },
+      })
       .then(res => {
         console.log(res.data);
         dispatch({type: 'SET_LOGBOOK', value: res.data});
+        // despatch(setLoading(false));
       })
       .catch(err => {
         console.log('err: ', err);
+        // despatch(setLoading(false));
+      });
+  });
+};
+
+export const addLogbookAction = (navigation, form) => dispatch => {
+  getData('token').then(res => {
+    axios
+      .post(`${API_HOST.url}/logbooks`, {
+        headers: {
+          Authorization: `Bearer ${res.value}`,
+        },
+      })
+      .then(res => {
+        console.log(res.data);
+        dispatch({type: 'SET_TAMBAHLOGBOOK', value: res.data});
+        navigation.navigate('MhsSuksesTambahLogbook');
+        showMessage('berhasil tambah logbook', 'success');
+      })
+      .catch(err => {
+        console.log('err', err);
+        showMessage('gagal tambah logbook', 'danger');
       });
   });
 };

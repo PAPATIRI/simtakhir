@@ -14,6 +14,7 @@ import MhsTambahLogbook from './MhsTambahLogbook';
 import MhsDetailAjuanTopik from './MhsDetailAjuanTopik';
 import MhsDaftarSidangSempro from './MhsDaftarSidangSempro';
 import MhsDaftarSidangSemproNext from './MhsDaftarSidangSemproNext';
+import MhsDetailTopikDosen from './MhsDetailTopikDosen';
 
 export {
   Login,
@@ -32,4 +33,5 @@ export {
   MhsDetailAjuanTopik,
   MhsDaftarSidangSempro,
   MhsDaftarSidangSemproNext,
+  MhsDetailTopikDosen,
 };
