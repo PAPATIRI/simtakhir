@@ -12,7 +12,6 @@ export const getLogbookDataAction = () => dispatch => {
         },
       })
       .then(res => {
-        console.log(res.data);
         dispatch({type: 'SET_LOGBOOK', value: res.data});
         // despatch(setLoading(false));
       })

@@ -13,7 +13,6 @@ export const getBidangTopikAction = () => dispatch => {
         },
       })
       .then(res => {
-        console.log(res.data);
         dispatch({type: 'SET_BIDANGTOPIK', value: res.data});
       })
       .catch(err => {

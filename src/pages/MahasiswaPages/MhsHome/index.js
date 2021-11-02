@@ -1,32 +1,52 @@
-import React from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, {useEffect, useState} from 'react';
 import {SafeAreaView, StyleSheet, View} from 'react-native';
 import {
   IcCalender,
   IcHamburgerMenu,
   IcLogBook,
   IcTopikSkripsi,
+  Mhs1,
   ProfilImg,
 } from '../../../assets';
 import {CardProfile, Menu, TopNavbar} from '../../../components';
+import {API_HOST} from '../../../config/API';
 import {colors, getData} from '../../../utils';
 
 const MhsHome = ({navigation}) => {
-  getData('userProfile').then(res => {
-    console.log(res);
-  });
-  getData('token').then(res => {
-    console.log(res.value);
-  });
+  const [userName, setUserName] = useState('');
+  const [status, setStatus] = useState('');
+  const [imgProfile, setImageProfile] = useState(null);
+  const getDataUser = async () => {
+    try {
+      const name = await AsyncStorage.getItem('userProfile');
+      console.log('data user: ', name);
+      const data = JSON.parse(name);
+
+      if (data != null) {
+        // setStatus(data.value.mahasiswas[0].status);
+        setUserName(data.value.username);
+        setImageProfile(data.value.mahasiswa.avatar.url);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    getDataUser();
+  }, []);
+
   return (
     <SafeAreaView style={styles.page}>
       <View style={styles.topNavWrapper}></View>
       <View style={styles.content}>
         <View style={styles.cardWrapper}>
           <CardProfile
-            image={ProfilImg}
-            name="Siska Ameli"
+            image={imgProfile}
+            name={userName}
             label1="status"
-            data1="Metopen"
+            data1={status}
             label2="jadwal sidang"
             data2="belum ada"
           />

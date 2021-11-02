@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {colors, fonts} from '../../../utils';
-import {BgCard, ProfilImg} from '../../../assets';
+import {BgCard, IlUserDefault, ProfilImg} from '../../../assets';
 import {Gap} from '../../atoms';
 
 const CardProfile = ({image, name, label1, label2, data1, data2}) => {
@@ -20,7 +20,7 @@ const CardProfile = ({image, name, label1, label2, data1, data2}) => {
         imageStyle={{borderRadius: 10}}
         resizeMode="cover">
         <View style={styles.cardImg}>
-          <Image source={image} style={styles.profileImg} />
+          <Image source={{uri: image}} style={styles.profileImg} />
         </View>
         <View style={styles.cardContentWrapper}>
           <View style={styles.cardContent}>

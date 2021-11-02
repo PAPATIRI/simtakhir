@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   Modal,
   Pressable,
@@ -7,59 +7,53 @@ import {
   Text,
   TouchableOpacity,
   View,
+  useWindowDimensions,
 } from 'react-native';
-import {IcArrowDown, IcSignOut, ProfilImg} from '../../../assets';
+import {IcArrowDown, IcSignOut, Mhs1, ProfilImg} from '../../../assets';
 import {
   ButtonDangerSedond,
   CardProfile,
+  CardUserProfile,
   Gap,
   TopNavbar,
 } from '../../../components';
 import {colors, fonts} from '../../../utils';
+import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
 
-let dataSkripsi = [
-  {
-    title: 'Detail Tugas Akhir',
-    dataDetail: [
-      {
-        label: 'judul',
-        judul:
-          'pengembangan aplikasi mobile berbasis android untuk sistem pengelolaan tugas akhir mahasiswaa',
-      },
-      {
-        label: 'deskripsi',
-        judul:
-          'merupakan pengembangan sistem berbasis mobile yang merupakan alternatif dari sistem berbasis web dengan memanfaatkan api',
-      },
-    ],
-  },
-  {
-    title: 'Jadwal Sidang',
-    dataDetail: [
-      {
-        label: 'ruang',
-        judul: 'kampus 4 R.4.6.01',
-      },
-      {
-        label: 'waktu',
-        judul: '21 september 2021 10.30',
-      },
-    ],
-  },
-  {
-    title: 'Logbook',
-    dataDetail: [
-      {
-        label: 'keterangan',
-        judul: 'terakhir ditambahkan 7 hari yang lalu',
-      },
-    ],
-  },
-];
+const FirstRoute = () => (
+  <View style={{flex: 1, backgroundColor: colors.primary}} />
+);
+
+const SecondRoute = () => (
+  <View style={{flex: 1, backgroundColor: colors.primary}} />
+);
+const ThirdRoute = () => (
+  <View style={{flex: 1, backgroundColor: colors.primary}} />
+);
+
+const renderTabBar = props => (
+  <TabBar
+    {...props}
+    indicatorStyle={{backgroundColor: colors.accent}}
+    style={styles.customTabBar}
+    labelStyle={{color: colors.text.primary}}
+    activeColor={{color: colors.text.accent}}
+  />
+);
+
+const renderScene = SceneMap({
+  first: FirstRoute,
+  second: SecondRoute,
+  third: ThirdRoute,
+});
 
 const Profile = ({navigation}) => {
   const [modalVisible, setModalVisible] = useState(false);
-  const [currentIndex, setCurrentIndex] = React.useState(null);
+  const [index, setIndex] = React.useState(0);
+  const [userName, setUserName] = useState('');
+  const [imgProfile, setImageProfile] = useState(null);
+  const [userNim, setUserNim] = useState('');
+  const layout = useWindowDimensions();
 
   const signOut = () => {
     AsyncStorage.multiRemove(['userProfile', 'token']).then(() => {
@@ -67,8 +61,55 @@ const Profile = ({navigation}) => {
     });
   };
 
+  const [routes] = React.useState([
+    {key: 'first', title: 'Topik'},
+    {key: 'second', title: 'Sidang'},
+    {key: 'third', title: 'Logbook'},
+  ]);
+
+  const getDataUser = async () => {
+    try {
+      const name = await AsyncStorage.getItem('userProfile');
+      const data = JSON.parse(name);
+      console.log(data.value.mahasiswa.avatar.formats.small.url);
+
+      if (data != null) {
+        setUserNim(data.value.mahasiswa.nim);
+        setUserName(data.value.username);
+        setImageProfile(data.value.mahasiswa.avatar.formats.small.url);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    getDataUser();
+  }, []);
+
   return (
     <View style={styles.page}>
+      <TopNavbar titleBar="Profil" />
+      <View style={styles.content}>
+        <CardUserProfile
+          nama={userName}
+          nim={userNim}
+          image={imgProfile}
+          onPress={() => {
+            setModalVisible(true);
+          }}
+        />
+        <Gap height={35} />
+        <View style={styles.tabDetail}>
+          <TabView
+            navigationState={{index, routes}}
+            renderTabBar={renderTabBar}
+            renderScene={renderScene}
+            onIndexChange={setIndex}
+            initialLayout={{width: layout.width}}
+          />
+        </View>
+      </View>
       <View>
         <Modal
           animationType="fade"
@@ -100,64 +141,6 @@ const Profile = ({navigation}) => {
           </View>
         </Modal>
       </View>
-      <View style={styles.topNavWrapper}>
-        <TopNavbar
-          titleBar="Profil"
-          iconRight={<IcSignOut />}
-          onPress={() => {
-            setModalVisible(true);
-          }}
-        />
-        <View style={styles.emptyView}></View>
-      </View>
-      <View style={styles.content}>
-        <View style={styles.cardWrapper}>
-          <CardProfile
-            image={ProfilImg}
-            name="Siska Ameli"
-            label1="status"
-            data1="Metopen"
-            label2="dosen pembimbing"
-            data2="Ardiansyah S.T.,M.Cs"
-          />
-        </View>
-        <View style={styles.menuList}>
-          {dataSkripsi.map(({title, dataDetail}, index) => {
-            return (
-              <TouchableOpacity
-                key={title}
-                activeOpacity={0.7}
-                onPress={() => {
-                  setCurrentIndex(index === currentIndex ? null : index);
-                }}
-                style={styles.dropDownWrapper}>
-                <View style={styles.dropDown}>
-                  <View style={styles.heading}>
-                    <Text style={styles.titleDropDown} key={title}>
-                      {title}
-                    </Text>
-                    <IcArrowDown />
-                  </View>
-                  <View style={styles.subCategoryList}>
-                    {index === currentIndex &&
-                      dataDetail.map((data, label, judul) => (
-                        <View>
-                          <Text style={styles.subtitle} key={label}>
-                            {data.label}
-                          </Text>
-                          <Gap height={5} />
-                          <Text style={styles.dropDownContent} key={judul}>
-                            {data.judul}
-                          </Text>
-                        </View>
-                      ))}
-                  </View>
-                </View>
-              </TouchableOpacity>
-            );
-          })}
-        </View>
-      </View>
     </View>
   );
 };
@@ -170,55 +153,14 @@ const styles = StyleSheet.create({
     backgroundColor: colors.secondary,
   },
   content: {
-    flex: 3,
+    flex: 1,
+    padding: 20,
     backgroundColor: colors.primary,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
   },
-  cardWrapper: {
-    marginTop: -75,
+  tabDetail: {
     flex: 1,
-    paddingHorizontal: 20,
-  },
-  topNavWrapper: {
-    flex: 1,
-  },
-  emptyView: {
-    flex: 1,
-  },
-  menuList: {
-    flex: 2,
-    paddingHorizontal: 20,
-  },
-  dropDown: {
-    paddingHorizontal: 20,
-    paddingTop: 12,
-    marginBottom: 10,
-    backgroundColor: colors.primary,
-    elevation: 1,
-    borderRadius: 5,
-  },
-  heading: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 20,
-  },
-  titleDropDown: {
-    fontFamily: fonts.primary[500],
-    fontSize: 18,
-    color: colors.text.accent,
-  },
-  subtitle: {
-    fontFamily: fonts.primary[400],
-    fontSize: 16,
-    color: colors.text.primary,
-  },
-  dropDownContent: {
-    fontFamily: fonts.primary[300],
-    fontSize: 16,
-    color: colors.text.primary,
-    marginBottom: 15,
-    lineHeight: 16 * 1.5,
   },
   btnCloseModal: {
     flexDirection: 'row',
@@ -231,7 +173,11 @@ const styles = StyleSheet.create({
     fontFamily: fonts.primary[400],
     fontSize: 14,
     lineHeight: 14 * 1.5,
-    color: colors.text.primary,
+    color: colors.text.white,
+    backgroundColor: colors.blackSecondary,
+    paddingHorizontal: 12,
+    paddingVertical: 4,
+    borderRadius: 4,
   },
   Wrapper: {
     padding: 20,
@@ -254,8 +200,11 @@ const styles = StyleSheet.create({
   textModal: {
     fontSize: 20,
     textAlign: 'center',
-    fontFamily: fonts.primary[600],
+    fontFamily: fonts.primary[400],
     lineHeight: 20 * 1.5,
-    color: colors.text.danger,
+    color: colors.text.primary,
+  },
+  customTabBar: {
+    backgroundColor: colors.primary,
   },
 });

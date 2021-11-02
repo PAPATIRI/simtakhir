@@ -12,7 +12,6 @@ export const getTopikDosenAction = () => dispatch => {
         },
       })
       .then(res => {
-        console.log(res.data);
         dispatch({type: 'SET_TOPIKDOSEN', value: res.data});
         dispatch(setLoading(false));
       })
