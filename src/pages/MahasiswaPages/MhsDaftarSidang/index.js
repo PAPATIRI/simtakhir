@@ -1,6 +1,12 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {IcArrowBack, IlPendadaran, IlSempro} from '../../../assets';
+import {
+  IcArrowBack,
+  IcPendadaran,
+  IcSempro,
+  IlPendadaran,
+  IlSempro,
+} from '../../../assets';
 import {CardMenu, Gap, TopNavbar} from '../../../components';
 import {colors, fonts} from '../../../utils';
 
@@ -15,22 +21,23 @@ const MhsDaftarSidang = ({navigation}) => {
       <View style={styles.content}>
         <View style={styles.topContent}>
           <CardMenu
-            iconCard={<IlSempro />}
-            title="Daftar Seminar Proposal"
-            bgCardColor={colors.pink}
-            fontsfamily={fonts.primary[600]}
-            fontsize={18}
+            iconCard={<IcSempro />}
+            title="Daftar Sempro"
+            bgCardColor={colors.primary}
+            fontsfamily={fonts.primary[400]}
+            fontsize={20}
+            lineheight={30}
             onPress={() => {
               navigation.navigate('MhsDaftarSidangSempro');
             }}
           />
-          <Gap width={20} />
           <CardMenu
-            iconCard={<IlPendadaran />}
-            title="Daftar Sidang Skripsi"
-            bgCardColor={colors.blue2}
-            fontsfamily={fonts.primary[600]}
-            fontsize={18}
+            iconCard={<IcPendadaran />}
+            title="Daftar Pendadaran"
+            bgCardColor={colors.primary}
+            fontsfamily={fonts.primary[400]}
+            fontsize={20}
+            lineheight={30}
           />
         </View>
       </View>
@@ -50,10 +57,11 @@ const styles = StyleSheet.create({
     backgroundColor: colors.primary,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
-    padding: 20,
+    paddingVertical: 40,
+    paddingHorizontal: 40,
   },
   topContent: {
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
   },
 });

@@ -9,12 +9,15 @@ const CardMenu = ({
   onPress,
   fontsize,
   fontsfamily,
+  lineheight,
 }) => {
   return (
     <TouchableOpacity activeOpacity={0.7} onPress={onPress}>
       <View style={styles.cardWrapper(bgCardColor)}>
         <View style={styles.iconWrapper}>{iconCard}</View>
-        <Text style={styles.title(fontsize, fontsfamily)}>{title}</Text>
+        <Text style={styles.title(fontsize, fontsfamily, lineheight)}>
+          {title}
+        </Text>
       </View>
     </TouchableOpacity>
   );
@@ -25,16 +28,25 @@ export default CardMenu;
 const styles = StyleSheet.create({
   cardWrapper: bgCardColor => ({
     backgroundColor: bgCardColor,
-    height: 190,
-    width: 150,
-    borderRadius: 10,
-    padding: 15,
+    height: 200,
+    width: 145,
+    borderRadius: 8,
+    padding: 12,
     justifyContent: 'space-between',
-    elevation: 2,
+    elevation: 3,
   }),
-  title: (fontsize, fontsfamily) => ({
+  title: (fontsize, fontsfamily, lineheight) => ({
     fontFamily: fontsfamily,
     fontSize: fontsize,
-    color: colors.text.white,
+    color: colors.text.primary,
+    lineHeight: lineheight,
   }),
+  iconWrapper: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: colors.icon.primary.iconBlue,
+    height: 80,
+    width: 80,
+    borderRadius: 100,
+  },
 });

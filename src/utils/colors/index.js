@@ -66,6 +66,8 @@ export const colors = {
       iconPink: mainColor.pink1,
       iconChoco: mainColor.choco1,
       iconGreen: mainColor.green2,
+      iconBlue: mainColor.blue1,
+      iconBlue2: mainColor.blue2,
     },
   },
 };

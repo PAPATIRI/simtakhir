@@ -56,24 +56,18 @@ const MhsHome = ({navigation}) => {
             menuName="daftar sidang"
             icon={<IcCalender />}
             color={colors.icon.primary.iconPink}
-            border={10}
-            padding={10}
             onPress={() => navigation.navigate('MhsDaftarSidang')}
           />
           <Menu
             menuName="logbook"
             icon={<IcLogBook />}
-            color={colors.icon.primary.iconGreen}
-            border={10}
-            padding={10}
+            color={colors.icon.primary.iconBlue2}
             onPress={() => navigation.navigate('MhsLogbook')}
           />
           <Menu
             menuName="topik skripsi"
             icon={<IcTopikSkripsi />}
             color={colors.icon.primary.iconChoco}
-            border={10}
-            padding={10}
             onPress={() => navigation.navigate('MhsTopikSkripsi')}
           />
         </View>

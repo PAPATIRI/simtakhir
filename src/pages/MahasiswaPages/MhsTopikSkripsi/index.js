@@ -1,9 +1,10 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import {
+  IcAjukanTopik,
+  IcAmbilTopik,
   IcArrowBack,
-  IlAjukanTopik,
-  IlAnnouncement,
+  IcHasilAjuan,
   IlFileAjuan,
 } from '../../../assets';
 import {CardMenu, Gap, TopNavbar} from '../../../components';
@@ -20,30 +21,34 @@ const MhsTopikSkripsi = ({navigation}) => {
       <View style={styles.content}>
         <View style={styles.topContent}>
           <CardMenu
-            iconCard={<IlAjukanTopik />}
+            iconCard={<IcAjukanTopik />}
             title="Ajukan Topik ke Dosen"
-            bgCardColor={colors.pink}
-            fontsfamily={fonts.primary[600]}
+            bgCardColor={colors.primary}
+            fontsfamily={fonts.primary[400]}
             fontsize={20}
+            lineheight={30}
             onPress={() => navigation.navigate('MhsAjukanTopik')}
           />
+          <Gap width={20} />
           <CardMenu
-            iconCard={<IlFileAjuan />}
+            iconCard={<IcAmbilTopik />}
             title="Ambil Topik dari Dosen"
-            bgCardColor={colors.green}
-            fontsfamily={fonts.primary[600]}
+            bgCardColor={colors.primary}
+            fontsfamily={fonts.primary[400]}
             fontsize={20}
+            lineheight={30}
             onPress={() => navigation.navigate('MhsTopikDosen')}
           />
         </View>
         <Gap height={20} />
         <View style={styles.bottomContent}>
           <CardMenu
-            iconCard={<IlAnnouncement />}
-            title="Hasil Ajuan Topikmu"
-            bgCardColor={colors.choco}
-            fontsfamily={fonts.primary[600]}
+            iconCard={<IcHasilAjuan />}
+            title="Hasil Ajuan Topik"
+            bgCardColor={colors.primary}
+            fontsfamily={fonts.primary[400]}
             fontsize={20}
+            lineheight={30}
             onPress={() => navigation.navigate('MhsHasilAjuanTopik')}
           />
         </View>
@@ -64,8 +69,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.primary,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
-    paddingVertical: 20,
-    paddingHorizontal: 30,
+    paddingVertical: 40,
+    paddingHorizontal: 40,
   },
   topContent: {
     flexDirection: 'row',

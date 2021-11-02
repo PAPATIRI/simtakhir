@@ -3,13 +3,16 @@ import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {colors, fonts} from '../../../utils';
 import Gap from '../Gap';
 
-const Menu = ({icon, menuName, color, border, padding, onPress}) => {
+const Menu = ({icon, menuName, color, onPress}) => {
   return (
     <View>
-      <TouchableOpacity activeOpacity={0.7} onPress={onPress}>
-        <View style={styles.iconMenu(color, border, padding)}>{icon}</View>
-        <Gap height={5} />
+      <TouchableOpacity
+        style={styles.iconMenu(color)}
+        activeOpacity={0.7}
+        onPress={onPress}>
+        <View>{icon}</View>
       </TouchableOpacity>
+      <Gap height={5} />
       <Text style={styles.iconName}>{menuName}</Text>
     </View>
   );
@@ -18,15 +21,18 @@ const Menu = ({icon, menuName, color, border, padding, onPress}) => {
 export default Menu;
 
 const styles = StyleSheet.create({
-  iconMenu: (color, border, padding) => ({
-    padding: padding,
-    borderRadius: border,
+  iconMenu: color => ({
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 100,
     backgroundColor: color,
+    height: 80,
+    width: 80,
   }),
   iconName: {
     fontFamily: fonts.primary[400],
     textAlign: 'center',
-    fontSize: 12,
+    fontSize: 14,
     color: colors.text.secondary,
   },
 });
