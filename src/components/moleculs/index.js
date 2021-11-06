@@ -13,6 +13,7 @@ import CardPendaftarTopik from './CardPendaftarTopik';
 import Result from './Result';
 import Loading from './Loading';
 import CardUserProfile from './CardUserProfile';
+import ModalLogout from './ModalLogout';
 
 export {
   CardProfile,
@@ -30,4 +31,5 @@ export {
   Result,
   Loading,
   CardUserProfile,
+  ModalLogout,
 };

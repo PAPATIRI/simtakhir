@@ -17,6 +17,10 @@ const MhsHome = ({navigation}) => {
   const [userName, setUserName] = useState('');
   const [status, setStatus] = useState('');
   const [imgProfile, setImageProfile] = useState(null);
+  const [email, setEmail] = useState('');
+  const [role, setRole] = useState('');
+  const [idUser, setIdUser] = useState('');
+
   const getDataUser = async () => {
     try {
       const name = await AsyncStorage.getItem('userProfile');
@@ -24,9 +28,11 @@ const MhsHome = ({navigation}) => {
       const data = JSON.parse(name);
 
       if (data != null) {
-        // setStatus(data.value.mahasiswas[0].status);
         setUserName(data.value.username);
+        setEmail(data.value.email);
         setImageProfile(data.value.mahasiswa.avatar.url);
+        setRole(data.value.role.name);
+        setIdUser(data.value.mahasiswa.nim);
       }
     } catch (err) {
       console.log(err);
@@ -39,35 +45,42 @@ const MhsHome = ({navigation}) => {
 
   return (
     <SafeAreaView style={styles.page}>
-      <View style={styles.topNavWrapper}></View>
+      <View style={styles.topNavWrapper}>
+        <TopNavbar
+          iconRight={<IcHamburgerMenu />}
+          onPress={() => navigation.toggleDrawer()}
+        />
+      </View>
+
       <View style={styles.content}>
         <View style={styles.cardWrapper}>
           <CardProfile
             image={imgProfile}
+            email={email}
             name={userName}
-            label1="status"
-            data1={status}
-            label2="jadwal sidang"
-            data2="belum ada"
+            label1="Role"
+            data1={role}
+            label2="NIM"
+            data2={idUser}
           />
         </View>
         <View style={styles.menuWrapper}>
           <Menu
             menuName="daftar sidang"
             icon={<IcCalender />}
-            color={colors.icon.primary.iconPink}
+            color={colors.secondary}
             onPress={() => navigation.navigate('MhsDaftarSidang')}
           />
           <Menu
             menuName="logbook"
             icon={<IcLogBook />}
-            color={colors.icon.primary.iconBlue2}
+            color={colors.secondary}
             onPress={() => navigation.navigate('MhsLogbook')}
           />
           <Menu
             menuName="topik skripsi"
             icon={<IcTopikSkripsi />}
-            color={colors.icon.primary.iconChoco}
+            color={colors.secondary}
             onPress={() => navigation.navigate('MhsTopikSkripsi')}
           />
         </View>

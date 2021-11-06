@@ -24,8 +24,8 @@ const MhsDetailTopikDosen = ({navigation, route}) => {
       />
       <View style={styles.content}>
         <CardProfile
-          image={dosenImg(dosen.nidn)}
-          name={dosen.nidn}
+          image={dosen.avatar.url}
+          name={dosen.nama}
           label1="pendaftar"
           data1="2 mahasiswa"
           label2="status"
@@ -46,12 +46,12 @@ const MhsDetailTopikDosen = ({navigation, route}) => {
             </View>
             <View>
               <Text style={styles.labelData}>Bidang</Text>
-              <Text style={styles.data}>{bidangtopik.namabidang}</Text>
+              <Text style={styles.data}>{bidangtopik}</Text>
               <Gap height={20} />
             </View>
             <View>
               <Text style={styles.labelData}>Periode</Text>
-              <Text style={styles.data}>{periode.tahunperiode}</Text>
+              <Text style={styles.data}>{periode}</Text>
               <Gap height={20} />
             </View>
           </ScrollView>
@@ -88,14 +88,14 @@ const styles = StyleSheet.create({
   },
   labelData: {
     fontFamily: fonts.primary[400],
-    fontSize: 16,
+    fontSize: 18,
     color: colors.text.primary,
-    lineHeight: 16 * 1.5,
+    lineHeight: 18 * 1.5,
   },
   data: {
     fontFamily: fonts.primary[300],
-    fontSize: 16,
+    fontSize: 18,
     color: colors.text.primary,
-    lineHeight: 16 * 1.5,
+    lineHeight: 18 * 1.5,
   },
 });

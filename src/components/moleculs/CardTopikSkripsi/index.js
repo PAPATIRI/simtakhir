@@ -16,7 +16,7 @@ const CardTopikSkripsi = ({
   return (
     <TouchableOpacity activeOpacity={0.7} onPress={onPress}>
       <View style={styles.cardWrapper}>
-        <Image source={imgDosen} style={styles.cardImg} />
+        <Image source={{uri: imgDosen}} style={styles.cardImg} />
         <View style={styles.content}>
           <View style={styles.topCard}>
             <Text numberOfLines={2} style={styles.title}>

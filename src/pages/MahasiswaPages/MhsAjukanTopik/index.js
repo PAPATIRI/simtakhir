@@ -37,6 +37,9 @@ const MhsAjukanTopik = ({navigation}) => {
           <TextInput
             label="Judul Topik"
             placeholder="masukkan judul topik"
+            height={96}
+            multiline={true}
+            textAlignVertical="top"
             value={form.judultopik}
             onChangeText={value => setForm('judultopik', value)}
           />

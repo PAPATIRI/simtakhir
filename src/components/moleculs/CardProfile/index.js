@@ -11,7 +11,7 @@ import {colors, fonts} from '../../../utils';
 import {BgCard, IlUserDefault, ProfilImg} from '../../../assets';
 import {Gap} from '../../atoms';
 
-const CardProfile = ({image, name, label1, label2, data1, data2}) => {
+const CardProfile = ({image, name, email, label1, label2, data1, data2}) => {
   return (
     <View style={styles.body}>
       <ImageBackground
@@ -25,6 +25,7 @@ const CardProfile = ({image, name, label1, label2, data1, data2}) => {
         <View style={styles.cardContentWrapper}>
           <View style={styles.cardContent}>
             <Text style={styles.nameCard}>{name}</Text>
+            <Text style={styles.status}>{email}</Text>
             <Gap height={15} />
             <View style={styles.dataCard}>
               <View style={styles.leftData}>
@@ -94,8 +95,8 @@ const styles = StyleSheet.create({
   status: {
     color: colors.primary,
     fontFamily: fonts.primary[400],
-    fontSize: 16,
-    lineHeight: 16 * 1.5,
+    fontSize: 14,
+    lineHeight: 14 * 1.5,
   },
   leftData: {
     marginRight: 25,

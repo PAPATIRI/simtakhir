@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   Dimensions,
   ScrollView,
@@ -16,6 +16,7 @@ import {
   CardProfile,
   Gap,
   ButtonDangerSedond,
+  CardUserProfile,
 } from '../../../components';
 import {colors, fonts} from '../../../utils';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -65,6 +66,9 @@ const dataMahasiswa = [
 
 const DsnProfile = ({navigation}) => {
   const [modalVisible, setModalVisible] = useState(false);
+  const [username, setUsername] = useState('');
+  const [nidn, setNidn] = useState('');
+  const [imageProfile, setImageProfile] = useState(null);
 
   const signOut = () => {
     AsyncStorage.multiRemove(['userProfile', 'token']).then(() => {
@@ -72,30 +76,44 @@ const DsnProfile = ({navigation}) => {
     });
   };
 
+  const getDataUser = async () => {
+    try {
+      const name = await AsyncStorage.getItem('userProfile');
+      const data = JSON.parse(name);
+
+      if (data != null) {
+        setNidn(data.value.dosen.nidy);
+        setUsername(data.value.username);
+        setImageProfile(data.value.dosen.avatar.formats.thumbnail.url);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    getDataUser();
+  }, []);
+
   return (
     <View style={styles.page}>
-      <View style={styles.topNavWrapper}>
-        <TopNavbar
-          titleBar="Profil Anda"
-          iconRight={<IcSignOut />}
+      <TopNavbar
+        iconRight={<IcHamburgerMenu />}
+        onPress={() => {
+          navigation.openDrawer();
+        }}
+      />
+      <View style={styles.content}>
+        <CardUserProfile
+          nama={username}
+          nim={nidn}
+          image={imageProfile}
           onPress={() => {
             setModalVisible(true);
           }}
         />
-        <View style={styles.emptyView}></View>
-      </View>
-      <View style={styles.content}>
-        <View style={styles.cardWrapper}>
-          <CardProfile
-            image={ArdiansyahImg}
-            name="Ardiansyah S.T.,M.Cs"
-            label1="total topik"
-            data1="10 topik"
-            label2="total mahasiswa bimbingan"
-            data2="10 Mahasiswa"
-          />
-        </View>
-        <View style={styles.chart}>
+        <Gap height={20} />
+        <View>
           <ScrollView
             showsHorizontalScrollIndicator={true}
             horizontal
@@ -214,23 +232,12 @@ const styles = StyleSheet.create({
     backgroundColor: colors.secondary,
   },
   content: {
-    flex: 3,
+    flex: 1,
+    paddingHorizontal: 20,
+    paddingVertical: 20,
     backgroundColor: colors.primary,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
-  },
-  cardWrapper: {
-    marginTop: -75,
-    paddingHorizontal: 20,
-  },
-  topNavWrapper: {
-    flex: 1,
-  },
-  emptyView: {
-    flex: 1,
-  },
-  chart: {
-    paddingVertical: 20,
   },
   chartTitle: {
     fontFamily: fonts.primary[400],
@@ -284,7 +291,11 @@ const styles = StyleSheet.create({
     fontFamily: fonts.primary[400],
     fontSize: 14,
     lineHeight: 14 * 1.5,
-    color: colors.text.primary,
+    color: colors.text.white,
+    backgroundColor: colors.blackSecondary,
+    paddingHorizontal: 12,
+    paddingVertical: 4,
+    borderRadius: 4,
   },
   Wrapper: {
     padding: 20,
@@ -307,8 +318,8 @@ const styles = StyleSheet.create({
   textModal: {
     fontSize: 20,
     textAlign: 'center',
-    fontFamily: fonts.primary[600],
+    fontFamily: fonts.primary[400],
     lineHeight: 20 * 1.5,
-    color: colors.text.danger,
+    color: colors.text.primary,
   },
 });

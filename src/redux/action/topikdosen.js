@@ -6,7 +6,7 @@ import {getData} from '../../utils';
 export const getTopikDosenAction = () => dispatch => {
   getData('token').then(res => {
     axios
-      .get(`${API_HOST.url}/topikskripsis`, {
+      .get(`${API_HOST.url}/topikskripsis?_sort=published_at:DESC`, {
         headers: {
           Authorization: `Bearer ${res.value}`,
         },

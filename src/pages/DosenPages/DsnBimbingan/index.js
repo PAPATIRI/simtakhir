@@ -12,7 +12,7 @@ const DsnBimbingan = ({navigation}) => {
         iconLeft={<IcArrowBack />}
         titleBar="Mahasiswa Bimbingan"
         onPress={() => {
-          navigation.navigate('DosenMainApp');
+          navigation.navigate('DsnDrawer');
         }}
       />
       <View style={styles.content}>

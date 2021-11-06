@@ -2,6 +2,9 @@ import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {
   IcArrowBack,
+  IcRequestMhs,
+  IcTambahTopikDosen,
+  IcTopikSayaDosen,
   IlRequest,
   IlTambahTopik,
   IlTopikSaya,
@@ -16,27 +19,29 @@ const DsnTopikSkripsi = ({navigation}) => {
         iconLeft={<IcArrowBack />}
         titleBar="Topik Skripsi"
         onPress={() => {
-          navigation.navigate('DosenMainApp');
+          navigation.navigate('DsnDrawer');
         }}
       />
       <View style={styles.content}>
         <View style={styles.topContent}>
           <CardMenu
-            title="Tambah     Topik Skripsi"
-            bgCardColor={colors.pink}
-            iconCard={<IlTambahTopik />}
+            title="Tambah Topik Skripsi"
+            bgCardColor={colors.white}
+            iconCard={<IcTambahTopikDosen />}
             fontsfamily={fonts.primary[600]}
             fontsize={20}
+            lineheight={30}
             onPress={() => {
               navigation.navigate('DsnTambahTopik');
             }}
           />
           <CardMenu
             title="Request Mahasiswa"
-            bgCardColor={colors.choco}
-            iconCard={<IlRequest />}
+            bgCardColor={colors.white}
+            iconCard={<IcRequestMhs />}
             fontsfamily={fonts.primary[600]}
             fontsize={20}
+            lineheight={30}
             onPress={() => {
               navigation.navigate('DsnRequestMhs');
             }}
@@ -44,11 +49,12 @@ const DsnTopikSkripsi = ({navigation}) => {
         </View>
         <View style={styles.bottomContent}>
           <CardMenu
-            title="Topik     Skripsi Saya"
-            bgCardColor={colors.green}
-            iconCard={<IlTopikSaya />}
+            title="Topik Skripsi Saya"
+            bgCardColor={colors.white}
+            iconCard={<IcTopikSayaDosen />}
             fontsfamily={fonts.primary[600]}
             fontsize={20}
+            lineheight={30}
             onPress={() => {
               navigation.navigate('DsnTopikSkripsiSaya');
             }}
@@ -72,7 +78,8 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     paddingVertical: 20,
-    paddingHorizontal: 30,
+    paddingHorizontal: 40,
+    paddingVertical: 40,
   },
   topContent: {
     flexDirection: 'row',

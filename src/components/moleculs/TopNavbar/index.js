@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
   },
   topNavContent: {
     height: 56,
-    paddingHorizontal: 10,
+    paddingHorizontal: 20,
     flexDirection: 'row',
     alignItems: 'center',
   },

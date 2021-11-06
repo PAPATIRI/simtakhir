@@ -1,7 +1,7 @@
-import IcCalender from './calendar.svg';
+import IcCalender from './calender2.svg';
 import IcHamburgerMenu from './menu.svg';
 import IcLogBook from './logbook.svg';
-import IcTopikSkripsi from './skripsi.svg';
+import IcTopikSkripsi from './topikskripsi2.svg';
 import IcHomeOn from './ic-home-on.svg';
 import IcHomeOff from './ic-home-off.svg';
 import IcNotifOn from './ic-notif-on.svg';
@@ -23,14 +23,17 @@ import IcFilter from './ic-filter.svg';
 import IcPlus from './ic-plus.svg';
 import IcPlusSmall from './ic-plus-small.svg';
 import IcDownload from './ic-download.svg';
-import IcBimbingan from './ic-bimbingan.svg';
-import IcSkripsi from './skripsi.svg';
+import IcBimbingan from './bimbinganku2.svg';
+import IcSkripsi from './topikskripsi2.svg';
 import IcSignOut from './signout.svg';
-import IcAmbilTopik from './ambil-topik.svg';
-import IcAjukanTopik from './ajukan-topik.svg';
-import IcHasilAjuan from './announcement.svg';
+import IcAmbilTopik from './ambiltopik2.svg';
+import IcAjukanTopik from './ajukantopik2.svg';
+import IcHasilAjuan from './hasilajuan2.svg';
 import IcPendadaran from './pendadaran.svg';
 import IcSempro from './sempro.svg';
+import IcTambahTopikDosen from './tambahtopik2.svg';
+import IcRequestMhs from './hasilajuan2.svg';
+import IcTopikSayaDosen from './topiksaya2.svg';
 
 export {
   IcCalender,
@@ -66,4 +69,7 @@ export {
   IcHasilAjuan,
   IcPendadaran,
   IcSempro,
+  IcTambahTopikDosen,
+  IcRequestMhs,
+  IcTopikSayaDosen,
 };

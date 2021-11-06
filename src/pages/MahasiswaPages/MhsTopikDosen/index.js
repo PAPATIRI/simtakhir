@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
+import {ScrollView} from 'react-native-gesture-handler';
 import {useDispatch, useSelector} from 'react-redux';
 import {IlUserDefault} from '../../../assets';
 import {Gap, TopNavbarSearch} from '../../../components';
@@ -24,22 +25,24 @@ const MhsTopikDosen = ({navigation}) => {
       <View style={styles.content}>
         <Text style={styles.title}>Daftar Topik Tugas Akhir</Text>
         <Gap height={10} />
-        {topikdosens.map(itemtopik => {
-          return (
-            <CardTopikSkripsi
-              key={itemtopik.id}
-              title={itemtopik.judultopik}
-              dosen={itemtopik.dosen.nidn}
-              bidang={itemtopik.bidangtopik.namabidang}
-              periode={itemtopik.periode.tahunperiode}
-              pendaftar="0"
-              imgDosen={dosenImg(itemtopik.dosen.nidn)}
-              onPress={() =>
-                navigation.navigate('MhsDetailTopikDosen', itemtopik)
-              }
-            />
-          );
-        })}
+        <ScrollView showsVerticalScrollIndicator={false}>
+          {topikdosens.map(itemtopik => {
+            return (
+              <CardTopikSkripsi
+                key={itemtopik.id}
+                title={itemtopik.judultopik}
+                dosen={itemtopik.dosen.nama}
+                bidang={itemtopik.bidangtopik}
+                periode={itemtopik.periode}
+                imgDosen={itemtopik.dosen.avatar.url}
+                pendaftar="0"
+                onPress={() =>
+                  navigation.navigate('MhsDetailTopikDosen', itemtopik)
+                }
+              />
+            );
+          })}
+        </ScrollView>
       </View>
     </View>
   );

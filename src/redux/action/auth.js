@@ -16,8 +16,8 @@ export const signInAction = (navigation, form) => dispatch => {
       dispatch(setLoading(false));
 
       profile.role.type == 'mahasiswa'
-        ? navigation.reset({index: 0, routes: [{name: 'MainApp'}]})
-        : navigation.reset({index: 0, routes: [{name: 'DosenMainApp'}]});
+        ? navigation.reset({index: 0, routes: [{name: 'MhsDrawer'}]})
+        : navigation.reset({index: 0, routes: [{name: 'DsnDrawer'}]});
       showMessage('berhasil login', 'success');
     })
     .catch(err => {

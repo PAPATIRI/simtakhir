@@ -9,7 +9,13 @@ import {
   View,
   useWindowDimensions,
 } from 'react-native';
-import {IcArrowDown, IcSignOut, Mhs1, ProfilImg} from '../../../assets';
+import {
+  IcArrowDown,
+  IcHamburgerMenu,
+  IcSignOut,
+  Mhs1,
+  ProfilImg,
+} from '../../../assets';
 import {
   ButtonDangerSedond,
   CardProfile,
@@ -71,7 +77,6 @@ const Profile = ({navigation}) => {
     try {
       const name = await AsyncStorage.getItem('userProfile');
       const data = JSON.parse(name);
-      console.log(data.value.mahasiswa.avatar.formats.small.url);
 
       if (data != null) {
         setUserNim(data.value.mahasiswa.nim);
@@ -89,7 +94,10 @@ const Profile = ({navigation}) => {
 
   return (
     <View style={styles.page}>
-      <TopNavbar titleBar="Profil" />
+      <TopNavbar
+        iconRight={<IcHamburgerMenu />}
+        onPress={() => navigation.toggleDrawer()}
+      />
       <View style={styles.content}>
         <CardUserProfile
           nama={userName}

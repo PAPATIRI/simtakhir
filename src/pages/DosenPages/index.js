@@ -1,6 +1,5 @@
-import DosenHome from './DsnHome';
-import DosenNotif from './DsnNotification';
-import DosenProfil from './DsnProfile';
+import DsnHome from './DsnHome';
+import DsnProfile from './DsnProfile';
 import DsnBimbingan from './DsnBimbingan';
 import DsnRequestMhs from './DsnRequestMhs';
 import DsnDetailRequestMhs from './DsnDetailRequestMhs';
@@ -11,9 +10,8 @@ import DsnDetailBimbingan from './DsnDetailBimbingan';
 import DsnPendaftarTopikSaya from './DsnPendaftarTopikSaya';
 
 export {
-  DosenHome,
-  DosenProfil,
-  DosenNotif,
+  DsnHome,
+  DsnProfile,
   DsnBimbingan,
   DsnRequestMhs,
   DsnDetailRequestMhs,

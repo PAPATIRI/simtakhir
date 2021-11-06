@@ -16,7 +16,7 @@ const MhsDaftarSidang = ({navigation}) => {
       <TopNavbar
         iconLeft={<IcArrowBack />}
         titleBar="Daftar Sidang"
-        onPress={() => navigation.navigate('MainApp')}
+        onPress={() => navigation.goBack()}
       />
       <View style={styles.content}>
         <View style={styles.topContent}>

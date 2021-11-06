@@ -16,7 +16,7 @@ const MhsTopikSkripsi = ({navigation}) => {
       <TopNavbar
         titleBar="Topik Skripsi"
         iconLeft={<IcArrowBack />}
-        onPress={() => navigation.navigate('MainApp')}
+        onPress={() => navigation.goBack()}
       />
       <View style={styles.content}>
         <View style={styles.topContent}>

@@ -10,6 +10,7 @@ const CardMenuDosen = ({
   fontsize,
   fontsfamily,
   color,
+  lineheight,
 }) => {
   return (
     <TouchableOpacity
@@ -18,7 +19,9 @@ const CardMenuDosen = ({
       style={styles.cardWrapper(bgCardColor)}>
       <View style={styles.iconWrapper}>{iconCard}</View>
       <View style={styles.titleWrapper}>
-        <Text style={styles.title(fontsize, fontsfamily, color)}>{title}</Text>
+        <Text style={styles.title(fontsize, fontsfamily, color, lineheight)}>
+          {title}
+        </Text>
       </View>
     </TouchableOpacity>
   );
@@ -30,18 +33,19 @@ const styles = StyleSheet.create({
   cardWrapper: bgCardColor => ({
     backgroundColor: bgCardColor,
     height: 190,
-    width: 150,
-    borderRadius: 10,
+    width: 130,
+    borderRadius: 8,
     justifyContent: 'space-between',
     elevation: 2,
   }),
   iconWrapper: {
     padding: 15,
   },
-  title: (fontsize, fontsfamily, color) => ({
+  title: (fontsize, fontsfamily, color, lineheight) => ({
     fontFamily: fontsfamily,
     fontSize: fontsize,
     color: color,
+    lineHeight: lineheight,
   }),
   titleWrapper: {
     backgroundColor: colors.white,
@@ -49,7 +53,7 @@ const styles = StyleSheet.create({
     paddingBottom: 15,
     paddingTop: 25,
     borderTopRightRadius: 40,
-    borderBottomLeftRadius: 10,
-    borderBottomRightRadius: 10,
+    borderBottomLeftRadius: 8,
+    borderBottomRightRadius: 8,
   },
 });

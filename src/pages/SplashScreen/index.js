@@ -14,12 +14,12 @@ const SplashScreen = ({navigation}) => {
             if (res.value.role.type == 'mahasiswa') {
               navigation.reset({
                 index: 0,
-                routes: [{name: 'MainApp'}],
+                routes: [{name: 'MhsDrawer'}],
               });
             } else {
               navigation.reset({
                 index: 0,
-                routes: [{name: 'DosenMainApp'}],
+                routes: [{name: 'DsnDrawer'}],
               });
             }
           });

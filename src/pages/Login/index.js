@@ -49,11 +49,6 @@ const Login = ({navigation}) => {
           </View>
           <View>
             <Button label="Masuk" onPress={onSubmit} />
-            {/* <Button
-              label="Masuk"
-              // onPress={() => navigation.navigate('DosenMainApp')}
-              onPress={() => navigation.navigate('MainApp')}
-            /> */}
             <Gap height={15} />
             <Text style={styles.textFooter}>
               masuk aplikasi SIMTAKHIR menggunakan

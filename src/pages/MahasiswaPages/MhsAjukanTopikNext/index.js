@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 5,
     overflow: 'hidden',
-    borderColor: colors.borderColor,
+    borderColor: colors.blackSecondary,
     borderWidth: 1,
   },
 });
