@@ -1,10 +1,54 @@
-import React from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from 'axios';
+import React, {useEffect, useState} from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {useDispatch} from 'react-redux';
 import {IcArrowBack, Mhs1} from '../../../assets';
 import {CardTopikAjuan, TopNavbar} from '../../../components';
-import {colors} from '../../../utils';
+import {API_HOST} from '../../../config';
+import {setLoading} from '../../../redux/action';
+import {colors, getData} from '../../../utils';
 
 const DsnRequestMhs = ({navigation}) => {
+  const [data, setData] = useState([]);
+  const [idDosen, setIdDosen] = useState('');
+  const dispatch = useDispatch();
+
+  const getIdDosen = async () => {
+    try {
+      const id = await AsyncStorage.getItem('userProfile');
+      const dataId = JSON.parse(id);
+
+      dataId ? setIdDosen(dataId.value.email) : 'error user id';
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const getTopikAjuan = async () => {
+    await getData('token').then(async res => {
+      await axios
+        .get(`${API_HOST.url}/ajukantopiks`, {
+          headers: {
+            Authorization: `Bearer ${res.value}`,
+          },
+        })
+        .then(res => {
+          setData(res.data);
+          dispatch(setLoading(false));
+        })
+        .catch(err => {
+          console.log(err);
+          dispatch(setLoading(false));
+        });
+    });
+  };
+
+  useEffect(() => {
+    dispatch(setLoading(true));
+    getIdDosen();
+    getTopikAjuan();
+  }, []);
   return (
     <View style={styles.page}>
       <TopNavbar
@@ -14,42 +58,23 @@ const DsnRequestMhs = ({navigation}) => {
       />
       <View style={styles.content}>
         <ScrollView showsVerticalScrollIndicator={false}>
-          <CardTopikAjuan
-            imageCard={Mhs1}
-            titleCard="pengembangan aplikasi mobile sistem Elearnig dengan mengkonsumsi API portal UAD"
-            name="m andika risky"
-            periode="genap 2020 / 2021"
-            status="menunggu"
-            onPress={() => navigation.navigate('DsnDetailRequestMhs')}
-          />
-          <CardTopikAjuan
-            imageCard={Mhs1}
-            titleCard="pengembangan aplikasi mobile sistem Elearnig dengan mengkonsumsi API portal UAD"
-            name="m andika risky"
-            periode="genap 2020 / 2021"
-            status="menunggu"
-          />
-          <CardTopikAjuan
-            imageCard={Mhs1}
-            titleCard="pengembangan aplikasi mobile sistem Elearnig dengan mengkonsumsi API portal UAD"
-            name="m andika risky"
-            periode="genap 2020 / 2021"
-            status="menunggu"
-          />
-          <CardTopikAjuan
-            imageCard={Mhs1}
-            titleCard="pengembangan aplikasi mobile sistem Elearnig dengan mengkonsumsi API portal UAD"
-            name="m andika risky"
-            periode="genap 2020 / 2021"
-            status="menunggu"
-          />
-          <CardTopikAjuan
-            imageCard={Mhs1}
-            titleCard="pengembangan aplikasi mobile sistem Elearnig dengan mengkonsumsi API portal UAD"
-            name="m andika risky"
-            periode="genap 2020 / 2021"
-            status="menunggu"
-          />
+          {data.map(itemtopik => {
+            if (itemtopik.dosentujuan === idDosen) {
+              return (
+                <CardTopikAjuan
+                  imageCard={Mhs1}
+                  key={itemtopik.id}
+                  titleCard={itemtopik.judultopik}
+                  name={itemtopik.mahasiswapengaju}
+                  periode="genap 2020 / 2021"
+                  status={itemtopik.status}
+                  onPress={() =>
+                    navigation.navigate('DsnDetailRequestMhs', itemtopik)
+                  }
+                />
+              );
+            }
+          })}
         </ScrollView>
       </View>
     </View>

@@ -10,12 +10,7 @@ import {colors, fonts} from '../../../utils';
 
 const MhsDetailLogbook = ({navigation, route}) => {
   const {kegiatan, catatankemajuan, updated_at, status} = route.params;
-  const optionsDate = {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  };
+
   return (
     <View style={styles.page}>
       <TopNavbar

@@ -9,7 +9,13 @@ import {
 import {IcArrowBack, IcFilter} from '../../../assets';
 import {colors} from '../../../utils';
 
-const TopNavbarSearch = ({onPress}) => {
+const searchFilter = text => {
+  if (text) {
+    const newData = '';
+  }
+};
+
+const TopNavbarSearch = ({onPress, valuesearch}) => {
   return (
     <View style={styles.navWrapper}>
       <TouchableOpacity
@@ -18,7 +24,12 @@ const TopNavbarSearch = ({onPress}) => {
         onPress={onPress}>
         <IcArrowBack />
       </TouchableOpacity>
-      <TextInput style={styles.input} placeholder="cari topik dosen" />
+      <TextInput
+        style={styles.input}
+        placeholder="cari topik dosen"
+        value={valuesearch}
+        onChangeText={text => searchFilter(text)}
+      />
     </View>
   );
 };
@@ -29,9 +40,10 @@ const styles = StyleSheet.create({
   navWrapper: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 10,
     paddingLeft: 6,
     paddingRight: 16,
+    height: 56,
+    paddingVertical: 8,
     justifyContent: 'space-between',
   },
   iconLeft: {
@@ -41,7 +53,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.primary,
     borderRadius: 5,
-    height: 35,
     paddingHorizontal: 10,
     marginHorizontal: 10,
   },

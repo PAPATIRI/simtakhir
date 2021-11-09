@@ -37,6 +37,7 @@ export const colors = {
     accent: mainColor.green1,
     white: mainColor.white2,
     danger: mainColor.red1,
+    blue: mainColor.blue1,
   },
   button: {
     text: mainColor.white1,

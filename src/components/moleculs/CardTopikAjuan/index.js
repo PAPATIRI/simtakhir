@@ -13,21 +13,21 @@ const CardTopikAjuan = ({
   onPress,
 }) => {
   return (
-    <TouchableOpacity activeOpacity={0.7} onPress={onPress}>
-      <View style={styles.cardWrapper}>
-        <Image source={imageCard} style={styles.imageCard}></Image>
-        <View style={styles.cardContent}>
-          <View>
-            <Text style={styles.titleCard} numberOfLines={2}>
-              {titleCard}
-            </Text>
-            <Gap height={8} />
-            <Text style={styles.dataText}>{name}</Text>
-          </View>
-          <View style={styles.bottomContent}>
-            <Text style={styles.dataText}>{periode}</Text>
-            <Text style={styles.status}>{status}</Text>
-          </View>
+    <TouchableOpacity
+      activeOpacity={0.7}
+      style={styles.cardWrapper}
+      onPress={onPress}>
+      <View style={styles.cardContent}>
+        <View>
+          <Text style={styles.titleCard} numberOfLines={2}>
+            {titleCard}
+          </Text>
+          <Gap height={5} />
+          <Text style={styles.dataText}>{name}</Text>
+        </View>
+        <View style={styles.bottomContent}>
+          <Text style={styles.dataText}>{periode}</Text>
+          <Text style={styles.status}>{status}</Text>
         </View>
       </View>
     </TouchableOpacity>
@@ -41,16 +41,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     height: 150,
     backgroundColor: colors.primary,
-    elevation: 1,
     borderRadius: 10,
     marginBottom: 10,
-  },
-  imageCard: {
-    borderTopLeftRadius: 10,
-    borderBottomLeftRadius: 10,
-    width: 120,
-    height: 150,
-    borderBottomRightRadius: 45,
+    elevation: 2,
   },
   cardContent: {
     flex: 1,
@@ -65,7 +58,7 @@ const styles = StyleSheet.create({
   titleCard: {
     fontFamily: fonts.primary[400],
     fontSize: 16,
-    color: colors.text.accent,
+    color: colors.text.blue,
     lineHeight: 16 * 1.5,
     textTransform: 'capitalize',
   },

@@ -32,7 +32,6 @@ const DsnHome = ({navigation}) => {
     try {
       const name = await AsyncStorage.getItem('userProfile');
       const data = JSON.parse(name);
-      console.log('data async user : ', data);
 
       if (data != null) {
         setUserName(data.value.username);

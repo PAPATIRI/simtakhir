@@ -4,21 +4,32 @@ import {IcArrowBack} from '../../../assets';
 import {TopNavbar, Gap, Button, ButtonDangerSedond} from '../../../components';
 import {colors, fonts} from '../../../utils';
 
-const DsnDetailRequestMhs = ({navigation}) => {
+const DsnDetailRequestMhs = ({navigation, route}) => {
+  const {
+    judultopik,
+    dekripsitopik,
+    bidangtopik,
+    mahasiswapengaju,
+    updated_at,
+    status,
+    periode,
+  } = route.params;
   return (
     <View style={styles.page}>
       <TopNavbar
         titleBar="Detail Topik Ajuan"
         iconLeft={<IcArrowBack />}
-        onPress={() => navigation.navigate('DsnRequestMhs')}
+        onPress={() => navigation.goBack()}
       />
       <View style={styles.content}>
         <View style={styles.header}>
           <Text style={styles.labelTitle}>Pengaju Topik</Text>
           <Gap height={5} />
           <View style={styles.botHeader}>
-            <Text style={styles.nameDate}>M Andika Risky</Text>
-            <Text style={styles.nameDate}>12 desember 2021</Text>
+            <Text style={styles.descData}>{mahasiswapengaju}</Text>
+            <Text style={styles.descData}>
+              {new Date(updated_at).toDateString()}
+            </Text>
           </View>
           <Gap height={15} />
         </View>
@@ -28,23 +39,22 @@ const DsnDetailRequestMhs = ({navigation}) => {
           <ScrollView showsVerticalScrollIndicator={false}>
             <View>
               <Text style={styles.labelData}>Judul Topik</Text>
-              <Text style={styles.descData}>
-                pengembangan aplikasi mobile e-learning dengan consume api
-                portal uad dan elearning uad
-              </Text>
+              <Text style={styles.descData}>{judultopik}</Text>
             </View>
             <Gap height={20} />
             <View>
               <Text style={styles.labelData}>Deskripsi Topik</Text>
-              <Text style={styles.descData}>
-                pengembangan aplikasi mobile e-learning dengan consume api
-                portal uad dan elearning uad
-              </Text>
+              <Text style={styles.descData}>{dekripsitopik}</Text>
             </View>
             <Gap height={20} />
             <View>
               <Text style={styles.labelData}>Bidang Topik</Text>
-              <Text style={styles.descData}>Kebutuhan Perangkat Lunak</Text>
+              <Text style={styles.descData}>{bidangtopik}</Text>
+            </View>
+            <Gap height={20} />
+            <View>
+              <Text style={styles.labelData}>status</Text>
+              <Text style={styles.descData}>{status}</Text>
             </View>
           </ScrollView>
           <Gap height={10} />
@@ -79,19 +89,13 @@ const styles = StyleSheet.create({
   labelTitle: {
     fontFamily: fonts.primary[400],
     fontSize: 16,
-    color: colors.text.primary,
+    color: colors.text.blue,
     lineHeight: 16 * 1.5,
   },
   botHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-  },
-  nameDate: {
-    fontFamily: fonts.primary[300],
-    fontSize: 16,
-    color: colors.text.primary,
-    lineHeight: 16 * 1.5,
   },
   divider: {
     backgroundColor: colors.blackPrimary,
@@ -104,11 +108,12 @@ const styles = StyleSheet.create({
   labelData: {
     fontFamily: fonts.primary[400],
     fontSize: 16,
-    color: colors.text.primary,
+    textTransform: 'capitalize',
+    color: colors.text.blue,
     lineHeight: 16 * 1.5,
   },
   descData: {
-    fontFamily: fonts.primary[300],
+    fontFamily: fonts.primary[400],
     fontSize: 16,
     color: colors.text.primary,
     lineHeight: 16 * 1.5,

@@ -10,7 +10,17 @@ import {colors, fonts} from '../../../utils';
 import {Button, ButtonDangerSedond, Gap, TopNavbar} from '../../../components';
 import {IcArrowBack} from '../../../assets';
 
-const DsnDetailTopikSaya = ({navigation}) => {
+const DsnDetailTopikSaya = ({navigation, route}) => {
+  const {
+    judultopik,
+    bidangtopik,
+    deskripsitopik,
+    periode,
+    mahasiswa,
+    penguji1,
+    penguji2,
+  } = route.params;
+
   return (
     <View style={styles.page}>
       <TopNavbar
@@ -24,7 +34,7 @@ const DsnDetailTopikSaya = ({navigation}) => {
         <View style={styles.header}>
           <View style={styles.leftHeader}>
             <Text style={styles.label}>Pendaftar Topik</Text>
-            <Text style={styles.data}>3 Mahasiswa</Text>
+            <Text style={styles.data}>0 Mahasiswa</Text>
           </View>
           <TouchableOpacity
             activeOpacity={0.7}
@@ -42,31 +52,26 @@ const DsnDetailTopikSaya = ({navigation}) => {
             <View>
               <Text style={styles.labelData}>Judul</Text>
               <Gap height={5} />
-              <Text style={styles.descData}>
-                sistem informasi data organisasi berbasis web
-              </Text>
+              <Text style={styles.descData}>{judultopik}</Text>
               <Gap height={16} />
             </View>
             <View>
-              <Text style={styles.labelData}>Judul</Text>
+              <Text style={styles.labelData}>deskripsi topik</Text>
               <Gap height={5} />
-              <Text style={styles.descData}>
-                tugas akhir ini merupakan pembangunan sistem berbasis web untuk
-                data organisasi dengan menggunakan framework Laravel
-              </Text>
+              <Text style={styles.descData}>{deskripsitopik}</Text>
               <Gap height={16} />
             </View>
             <View style={styles.dataDouble}>
               <View style={styles.dataDoubleLeft}>
                 <Text style={styles.labelData}>Bidang Topik</Text>
                 <Gap height={5} />
-                <Text style={styles.descData}>sistem informasi</Text>
+                <Text style={styles.descData}>{bidangtopik}</Text>
                 <Gap height={16} />
               </View>
               <View style={styles.dataDoubleRight}>
                 <Text style={styles.labelData}>Periode</Text>
                 <Gap height={5} />
-                <Text style={styles.descData}>genap 2020/2021</Text>
+                <Text style={styles.descData}>{periode}</Text>
                 <Gap height={16} />
               </View>
             </View>
@@ -74,13 +79,22 @@ const DsnDetailTopikSaya = ({navigation}) => {
               <View style={styles.dataDoubleLeft}>
                 <Text style={styles.labelData}>Mahasiswa Terpilih</Text>
                 <Gap height={5} />
-                <Text style={styles.descData}>belum ada</Text>
+                <Text style={styles.descData}>
+                  {mahasiswa ? mahasiswa : 'belum ada'}
+                </Text>
                 <Gap height={16} />
               </View>
               <View style={styles.dataDoubleRight}>
                 <Text style={styles.labelData}>Penguji 1 & 2</Text>
                 <Gap height={5} />
-                <Text style={styles.descData}>belum ada</Text>
+                <Text style={styles.descData}>
+                  {
+                    (penguji1 && penguji2
+                      ? `${penguji1} ${penguji2}`
+                      : 'belum ada',
+                    penguji2 ? penguji2 : 'belum ada')
+                  }
+                </Text>
                 <Gap height={16} />
               </View>
             </View>
@@ -147,13 +161,14 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   labelData: {
-    fontFamily: fonts.primary[400],
+    fontFamily: fonts.primary[600],
     fontSize: 16,
+    textTransform: 'capitalize',
     color: colors.text.primary,
     lineHeight: 16 * 1.5,
   },
   descData: {
-    fontFamily: fonts.primary[300],
+    fontFamily: fonts.primary[400],
     fontSize: 16,
     color: colors.text.primary,
     lineHeight: 16 * 1.5,
