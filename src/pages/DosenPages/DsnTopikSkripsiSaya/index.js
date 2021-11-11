@@ -29,7 +29,6 @@ const DsnTopikSkripsiSaya = ({navigation}) => {
     try {
       const id = await AsyncStorage.getItem('userProfile');
       const dataId = JSON.parse(id);
-      console.log('data get user: ', dataId);
 
       dataId ? setIdDosen(dataId.value.dosen.nama) : 'error id';
     } catch (err) {
@@ -100,7 +99,7 @@ const DsnTopikSkripsiSaya = ({navigation}) => {
         />
       </View>
       <View style={styles.content}>
-        <Text style={styles.title}>daftar penawaran topik anda</Text>
+        <Text style={styles.title}>daftar tawaran topik kamu</Text>
         <Gap height={10} />
         <ScrollView
           showsVerticalScrollIndicator={false}
@@ -170,6 +169,8 @@ const styles = StyleSheet.create({
   title: {
     fontFamily: fonts.primary[400],
     fontSize: 16,
+    paddingLeft: 20,
+    textTransform: 'capitalize',
     color: colors.text.primary,
     lineHeight: 16 * 1.5,
   },

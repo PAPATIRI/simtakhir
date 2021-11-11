@@ -47,14 +47,15 @@ const styles = StyleSheet.create({
     elevation: 1,
   },
   title: {
-    fontFamily: fonts.primary[400],
+    fontFamily: fonts.primary[600],
     fontSize: 16,
     color: colors.text.blue,
     lineHeight: 16 * 1.5,
   },
   bidang: {
-    fontFamily: fonts.primary[300],
-    fontSize: 16,
+    fontFamily: fonts.primary[400],
+    fontSize: 14,
+    lineHeight: 14 * 1.5,
     color: colors.text.primary,
   },
   bottomContent: {
@@ -65,13 +66,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   tanggal: {
-    fontFamily: fonts.primary[300],
+    fontFamily: fonts.primary[400],
     fontSize: 14,
     lineHeight: 14 * 1.5,
     color: colors.text.primary,
   },
   pendaftar: {
-    fontFamily: fonts.primary[300],
+    fontFamily: fonts.primary[400],
     fontSize: 14,
     lineHeight: 14 * 1.5,
     color: colors.text.primary,

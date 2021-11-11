@@ -43,62 +43,46 @@ const DsnDetailTopikSaya = ({navigation, route}) => {
         }}
       />
       <View style={styles.content}>
-        <View style={styles.header}>
-          <View style={styles.leftHeader}>
-            <Text style={styles.label}>Pendaftar Topik</Text>
-            <Text style={styles.data}>0 Mahasiswa</Text>
-          </View>
-          <TouchableOpacity
-            activeOpacity={0.7}
-            onPress={() => {
-              navigation.navigate('DsnPendaftarTopikSaya');
-            }}>
-            <View style={styles.btnHeader}>
-              <Text style={styles.textBtnHeader}>lihat pendaftar</Text>
-            </View>
-          </TouchableOpacity>
-        </View>
-        <Gap height={20} />
         <View style={styles.detailData}>
           <ScrollView showsVerticalScrollIndicator={false}>
             <View>
               <Text style={styles.labelData}>Judul</Text>
-              <Gap height={5} />
+              <Gap height={2} />
               <Text style={styles.descData}>{judultopik}</Text>
-              <Gap height={16} />
+              <Gap height={20} />
             </View>
             <View>
               <Text style={styles.labelData}>deskripsi topik</Text>
-              <Gap height={5} />
+              <Gap height={2} />
               <Text style={styles.descData}>{deskripsitopik}</Text>
-              <Gap height={16} />
+              <Gap height={20} />
             </View>
             <View style={styles.dataDouble}>
               <View style={styles.dataDoubleLeft}>
                 <Text style={styles.labelData}>Bidang Topik</Text>
-                <Gap height={5} />
+                <Gap height={2} />
                 <Text style={styles.descData}>{bidangtopik}</Text>
-                <Gap height={16} />
+                <Gap height={20} />
               </View>
               <View style={styles.dataDoubleRight}>
                 <Text style={styles.labelData}>Periode</Text>
-                <Gap height={5} />
+                <Gap height={2} />
                 <Text style={styles.descData}>{periode}</Text>
-                <Gap height={16} />
+                <Gap height={20} />
               </View>
             </View>
             <View style={styles.dataDouble}>
               <View style={styles.dataDoubleLeft}>
                 <Text style={styles.labelData}>Mahasiswa Terpilih</Text>
-                <Gap height={5} />
+                <Gap height={2} />
                 <Text style={styles.descData}>
                   {mahasiswa ? mahasiswa : 'belum ada'}
                 </Text>
-                <Gap height={16} />
+                <Gap height={20} />
               </View>
               <View style={styles.dataDoubleRight}>
                 <Text style={styles.labelData}>Penguji 1 & 2</Text>
-                <Gap height={5} />
+                <Gap height={2} />
                 <Text style={styles.descData}>
                   {
                     (penguji1 && penguji2
@@ -107,8 +91,20 @@ const DsnDetailTopikSaya = ({navigation, route}) => {
                     penguji2 ? penguji2 : 'belum ada')
                   }
                 </Text>
-                <Gap height={16} />
+                <Gap height={20} />
               </View>
+            </View>
+            <Gap height={40} />
+            <View style={styles.header}>
+              <TouchableOpacity
+                activeOpacity={0.7}
+                onPress={() => {
+                  navigation.navigate('DsnPendaftarTopikSaya');
+                }}>
+                <View style={styles.btnHeader}>
+                  <Text style={styles.textBtnHeader}>lihat pendaftar</Text>
+                </View>
+              </TouchableOpacity>
             </View>
           </ScrollView>
           <View>
@@ -162,7 +158,6 @@ const styles = StyleSheet.create({
   },
   header: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
     alignItems: 'center',
   },
   label: {

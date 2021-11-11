@@ -1,8 +1,12 @@
-import React from 'react';
+import axios from 'axios';
+import React, {useState} from 'react';
 import {StyleSheet, Text, View, ScrollView} from 'react-native';
+import {useDispatch} from 'react-redux';
 import {IcArrowBack} from '../../../assets';
 import {TopNavbar, Gap, Button, ButtonDangerSedond} from '../../../components';
-import {colors, fonts} from '../../../utils';
+import {API_HOST} from '../../../config';
+import {setLoading} from '../../../redux/action';
+import {colors, fonts, getData, showMessage} from '../../../utils';
 
 const DsnDetailRequestMhs = ({navigation, route}) => {
   const {
@@ -13,7 +17,64 @@ const DsnDetailRequestMhs = ({navigation, route}) => {
     updated_at,
     status,
     periode,
+    id,
   } = route.params;
+  const [updateId, setUpdateId] = useState(id);
+
+  const dispatch = useDispatch();
+
+  const tolakTopik = async () => {
+    const updateStatus = {status: 'ditolak'};
+
+    await getData('token').then(async res => {
+      await axios
+        .put(`${API_HOST.url}/ajukantopiks/${id}`, updateStatus, {
+          headers: {
+            Authorization: `Bearer ${res.value}`,
+          },
+        })
+        .then(res => {
+          dispatch(setLoading(false));
+          navigation.navigate('DsnRequestMhs');
+        })
+        .catch(err => {
+          console.log(err);
+          dispatch(setLoading(false));
+        });
+    });
+  };
+
+  const terimaTopik = async () => {
+    const updateStatus = {status: 'diterima'};
+
+    await getData('token').then(async res => {
+      await axios
+        .put(`${API_HOST.url}/ajukantopiks/${id}`, updateStatus, {
+          headers: {
+            Authorization: `Bearer ${res.value}`,
+          },
+        })
+        .then(res => {
+          dispatch(setLoading(false));
+          navigation.navigate('DsnRequestMhs');
+        })
+        .catch(err => {
+          console.log(err);
+          dispatch(setLoading(false));
+        });
+    });
+  };
+
+  const onTolak = () => {
+    dispatch(setLoading(true));
+    tolakTopik();
+  };
+
+  const onTerima = () => {
+    dispatch(setLoading(true));
+    terimaTopik();
+  };
+
   return (
     <View style={styles.page}>
       <TopNavbar
@@ -39,33 +100,32 @@ const DsnDetailRequestMhs = ({navigation, route}) => {
           <ScrollView showsVerticalScrollIndicator={false}>
             <View>
               <Text style={styles.labelData}>Judul Topik</Text>
+              <Gap height={2} />
               <Text style={styles.descData}>{judultopik}</Text>
             </View>
             <Gap height={20} />
             <View>
               <Text style={styles.labelData}>Deskripsi Topik</Text>
+              <Gap height={2} />
               <Text style={styles.descData}>{dekripsitopik}</Text>
             </View>
             <Gap height={20} />
             <View>
               <Text style={styles.labelData}>Bidang Topik</Text>
+              <Gap height={2} />
               <Text style={styles.descData}>{bidangtopik}</Text>
             </View>
             <Gap height={20} />
             <View>
               <Text style={styles.labelData}>status</Text>
+              <Gap height={2} />
               <Text style={styles.descData}>{status}</Text>
             </View>
           </ScrollView>
           <Gap height={10} />
-          <Button
-            label="Terima Ajuan"
-            onPress={() => {
-              navigation.navigate('DsnSuksesTerimaAjuan');
-            }}
-          />
+          <Button label="Terima Ajuan" onPress={onTerima} />
           <Gap height={10} />
-          <ButtonDangerSedond label="Tolak Ajuan" />
+          <ButtonDangerSedond label="Tolak Ajuan" onPress={onTolak} />
         </View>
       </View>
     </View>
@@ -106,10 +166,10 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   labelData: {
-    fontFamily: fonts.primary[400],
+    fontFamily: fonts.primary[600],
     fontSize: 16,
     textTransform: 'capitalize',
-    color: colors.text.blue,
+    color: colors.text.primary,
     lineHeight: 16 * 1.5,
   },
   descData: {

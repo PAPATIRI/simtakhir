@@ -34,7 +34,7 @@ const DsnRequestMhs = ({navigation}) => {
   const getTopikAjuan = async () => {
     await getData('token').then(async res => {
       await axios
-        .get(`${API_HOST.url}/ajukantopiks`, {
+        .get(`${API_HOST.url}/ajukantopiks?_sort=created_at:DESC`, {
           headers: {
             Authorization: `Bearer ${res.value}`,
           },
@@ -52,6 +52,9 @@ const DsnRequestMhs = ({navigation}) => {
 
   useEffect(() => {
     dispatch(setLoading(true));
+    const willFocusSubscription = navigation.addListener('focus', () => {
+      getTopikAjuan();
+    });
     getIdDosen();
     getTopikAjuan();
   }, []);

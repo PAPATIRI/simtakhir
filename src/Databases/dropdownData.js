@@ -1,5 +1,5 @@
 export const bidang = [
-  '--- pilih bidang topik ---',
+  '-',
   'Pengolahan Citra',
   'Sistem Pakar',
   'Pengolahan Teks',
@@ -20,7 +20,7 @@ export const bidang = [
 ];
 
 export const periode = [
-  '--- pilih periode kamu ---',
+  '-',
   'ganjil 2019 / 2020',
   'genap 2019 / 2020',
   'ganjil 2020 / 2021',
@@ -30,7 +30,7 @@ export const periode = [
 ];
 
 export const dospem = [
-  '--- pilih dosen pembimbing ---',
+  '-',
   'Ardiansyah, S.T., M.Cs',
   'Adhi Prahara, S.Si., M.Cs',
   'Ahmad Azhari, S.Kom., M.Eng',
@@ -47,7 +47,7 @@ export const dospem = [
 ];
 
 export const dosenpengaju = [
-  '--- pilih dosen penawar topik ---',
+  '-',
   'Ardiansyah, S.T., M.Cs',
   'Adhi Prahara, S.Si., M.Cs',
   'Ahmad Azhari, S.Kom., M.Eng',

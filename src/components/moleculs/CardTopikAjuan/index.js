@@ -27,7 +27,7 @@ const CardTopikAjuan = ({
         </View>
         <View style={styles.bottomContent}>
           <Text style={styles.dataText}>{periode}</Text>
-          <Text style={styles.status}>{status}</Text>
+          <Text style={styles.stylestatus(status)}>{status}</Text>
         </View>
       </View>
     </TouchableOpacity>
@@ -58,22 +58,22 @@ const styles = StyleSheet.create({
   titleCard: {
     fontFamily: fonts.primary[400],
     fontSize: 16,
-    color: colors.text.blue,
+    color: colors.text.accent,
     lineHeight: 16 * 1.5,
     textTransform: 'capitalize',
   },
   dataText: {
-    fontFamily: fonts.primary[300],
+    fontFamily: fonts.primary[400],
     fontSize: 14,
     color: colors.text.primary,
     lineHeight: 14 * 1.5,
     textTransform: 'capitalize',
   },
-  status: {
+  stylestatus: status => ({
     fontFamily: fonts.primary[400],
     fontSize: 14,
-    color: colors.text.warning,
+    color: status == 'ditolak' ? colors.text.danger : colors.text.primary,
     lineHeight: 14 * 1.5,
     textTransform: 'lowercase',
-  },
+  }),
 });
