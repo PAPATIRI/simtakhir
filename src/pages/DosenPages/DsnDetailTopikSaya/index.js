@@ -5,10 +5,13 @@ import {
   View,
   TouchableOpacity,
   ScrollView,
+  Alert,
 } from 'react-native';
 import {colors, fonts} from '../../../utils';
 import {Button, ButtonDangerSedond, Gap, TopNavbar} from '../../../components';
 import {IcArrowBack} from '../../../assets';
+import {useDispatch} from 'react-redux';
+import {hapusTopikAction, setLoading} from '../../../redux/action';
 
 const DsnDetailTopikSaya = ({navigation, route}) => {
   const {
@@ -19,7 +22,16 @@ const DsnDetailTopikSaya = ({navigation, route}) => {
     mahasiswa,
     penguji1,
     penguji2,
+    id,
   } = route.params;
+
+  const dispatch = useDispatch();
+
+  const onSubmit = () => {
+    console.log('id topik: ', id);
+    dispatch(setLoading(true));
+    dispatch(hapusTopikAction(navigation, id));
+  };
 
   return (
     <View style={styles.page}>
@@ -105,7 +117,28 @@ const DsnDetailTopikSaya = ({navigation, route}) => {
               onPress={() => navigation.navigate('DsnSuksesEditTopik')}
             />
             <Gap height={10} />
-            <ButtonDangerSedond label="Hapus Topik" />
+            <ButtonDangerSedond
+              label="Hapus Topik"
+              onPress={() => {
+                Alert.alert(
+                  'Hapus Topik Skripsi',
+                  'Apakah Kamu Yakin Ingin menghapus topik ini?',
+                  [
+                    {
+                      text: 'batal',
+                      style: 'cancel',
+                    },
+                    {
+                      text: 'yakin',
+                      onPress: () => {
+                        onSubmit();
+                      },
+                    },
+                  ],
+                  {cancelable: false},
+                );
+              }}
+            />
           </View>
         </View>
       </View>

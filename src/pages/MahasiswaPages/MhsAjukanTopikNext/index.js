@@ -73,7 +73,6 @@ const MhsAjukanTopikNext = ({navigation}) => {
               <ModalPicker
                 value={form.periode}
                 onSelectChange={value => setForm('periode', value)}
-                // setValue={setPeriode}
                 items={dataPeriode}
               />
             </View>

@@ -1,25 +1,3 @@
-import axios from 'axios';
-import {API_HOST} from '../config';
-import {getData} from '../utils';
-
-// export const bidang = () => {
-//   getData('token').then(res => {
-//     axios
-//       .get(`${API_HOST.url}/topikajuans`, {
-//         headers: {
-//           Authorization: `Bearer ${res.value}`,
-//         },
-//       })
-//       .then(res => {
-//         res.data;
-//         console.log(res.data);
-//       })
-//       .catch(err => {
-//         console.log('error bidang fetch: ', err);
-//       });
-//   });
-// };
-
 export const bidang = [
   '--- pilih bidang topik ---',
   'Pengolahan Citra',
@@ -53,6 +31,24 @@ export const periode = [
 
 export const dospem = [
   '--- pilih dosen pembimbing ---',
+  'Ardiansyah, S.T., M.Cs',
+  'Adhi Prahara, S.Si., M.Cs',
+  'Ahmad Azhari, S.Kom., M.Eng',
+  'Ali Tarmuji, S.T., M. Cs',
+  'Anna Hendri Soleliza Jones, S. Kom, M.Cs.',
+  'Ir. Ardi Pujiyanta, M. T.',
+  'Andri Pranolo, S.Kom., M. Cs',
+  'Arfiani Nur Khusna, S.T., M.Kom.',
+  'Dewi Pramudi Ismi, S.T., M.CompSc',
+  'Dewi Soyusiawaty, S.T., M.T',
+  'Dinan Yulianto, S.T., M.Eng.',
+  'Dwi Normawati, S.T., M.Eng.',
+  'Eko Aribowo, S.T., M.Kom',
+];
+
+export const dosenpengaju = [
+  '--- pilih dosen penawar topik ---',
+  'Ardiansyah, S.T., M.Cs',
   'Adhi Prahara, S.Si., M.Cs',
   'Ahmad Azhari, S.Kom., M.Eng',
   'Ali Tarmuji, S.T., M. Cs',

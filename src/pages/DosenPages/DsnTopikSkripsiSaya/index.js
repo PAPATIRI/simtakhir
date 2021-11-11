@@ -31,7 +31,7 @@ const DsnTopikSkripsiSaya = ({navigation}) => {
       const dataId = JSON.parse(id);
       console.log('data get user: ', dataId);
 
-      dataId ? setIdDosen(dataId.value.dosen.id) : 'error id';
+      dataId ? setIdDosen(dataId.value.dosen.nama) : 'error id';
     } catch (err) {
       console.log(err);
     }
@@ -40,17 +40,14 @@ const DsnTopikSkripsiSaya = ({navigation}) => {
   const getDataTopik = async () => {
     await getData('token').then(async res => {
       await axios
-        .get(`${API_HOST.url}/topikskripsis`, {
+        .get(`${API_HOST.url}/topikskripsis?_sort=created_at:DESC`, {
           headers: {
             Authorization: `Bearer ${res.value}`,
           },
         })
         .then(res => {
-          console.log('data topik: ', res.data);
-          console.log('data id dosen: ', idDosen);
           setData(res.data);
           setFilteredData(res.data);
-          setMasterData(res.data);
           dispatch(setLoading(false));
         })
         .catch(err => {
@@ -76,9 +73,14 @@ const DsnTopikSkripsiSaya = ({navigation}) => {
   };
 
   useEffect(() => {
+    const willFocusSubscription = navigation.addListener('focus', () => {
+      getDataTopik();
+    });
     dispatch(setLoading(true));
     getIdDosen();
     getDataTopik();
+
+    return willFocusSubscription;
   }, []);
 
   return (
@@ -104,7 +106,7 @@ const DsnTopikSkripsiSaya = ({navigation}) => {
           showsVerticalScrollIndicator={false}
           contentContainerStyle={styles.scrollist}>
           {filteredData.map(data => {
-            if (data.dosen.id == idDosen) {
+            if (data.dosenpenawar == idDosen) {
               return (
                 <CardTopikSkripsiDsn
                   color={colors.text.accent}

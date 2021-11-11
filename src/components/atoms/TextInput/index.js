@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text, View, TextInput as TextInputRN} from 'react-native';
-import {colors} from '../../../utils';
+import {colors, fonts} from '../../../utils';
 import {Gap} from '..';
 
 const TextInput = ({
@@ -30,7 +30,10 @@ export default TextInput;
 
 const styles = StyleSheet.create({
   label: {
+    fontFamily: fonts.primary[400],
     fontSize: 16,
+    textTransform: 'capitalize',
+    lineHeight: 16 * 1.5,
     color: colors.text.primary,
   },
   input: height => ({
