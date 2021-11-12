@@ -1,19 +1,21 @@
 import React from 'react';
-import {StyleSheet, Text, View, ScrollView} from 'react-native';
+import {StyleSheet, Text, View, ScrollView, Alert} from 'react-native';
 import {IcArrowBack} from '../../../assets';
 import {TopNavbar, Gap, Button, ButtonDangerSedond} from '../../../components';
 import {colors, fonts} from '../../../utils';
 import {useDispatch, useSelector} from 'react-redux';
 import axios from 'axios';
 import {ajukanTopikAction} from '../../../redux/action/ajukantopik';
+import {setLoading} from '../../../redux/action';
 
 const MhsDetailAjuanTopik = ({navigation}) => {
   const ajukanTopikReducer = useSelector(state => state.ajukanTopikReducer);
-  console.log(ajukanTopikReducer);
+  console.log('data form all: ', ajukanTopikReducer);
   const dispatch = useDispatch();
 
   const onSubmit = () => {
     console.log('form data: ', ajukanTopikReducer);
+    dispatch(setLoading(true));
     dispatch(ajukanTopikAction(navigation, ajukanTopikReducer));
   };
 
@@ -22,11 +24,18 @@ const MhsDetailAjuanTopik = ({navigation}) => {
       <TopNavbar
         titleBar="Konfirmasi Data Topik"
         iconLeft={<IcArrowBack />}
-        onPress={() => navigation.navigate('MhsAjukanTopikNext')}
+        onPress={() => navigation.goBack()}
       />
       <View style={styles.content}>
         <View style={styles.dataDetail}>
           <ScrollView showsVerticalScrollIndicator={false}>
+            <View>
+              <Text style={styles.labelData}>mahasiswa pengaju</Text>
+              <Text style={styles.descData}>
+                {ajukanTopikReducer.mahasiswapengaju}
+              </Text>
+            </View>
+            <Gap height={20} />
             <View>
               <Text style={styles.labelData}>Judul Topik</Text>
               <Text style={styles.descData}>
@@ -37,7 +46,7 @@ const MhsDetailAjuanTopik = ({navigation}) => {
             <View>
               <Text style={styles.labelData}>Deskripsi Topik</Text>
               <Text style={styles.descData}>
-                {ajukanTopikReducer.deskripsitopik}
+                {ajukanTopikReducer.dekripsitopik}
               </Text>
             </View>
             <Gap height={20} />
@@ -51,7 +60,7 @@ const MhsDetailAjuanTopik = ({navigation}) => {
             <View>
               <Text style={styles.labelData}>Dosen Pembimbing</Text>
               <Text style={styles.descData}>
-                {ajukanTopikReducer.dosenpembimbing}
+                {ajukanTopikReducer.dosentujuan}
               </Text>
             </View>
             <Gap height={20} />
@@ -67,6 +76,25 @@ const MhsDetailAjuanTopik = ({navigation}) => {
             type="secondary"
             label="batal"
             // onPress={navigation.navigate('MhsAjukanTopik')}
+            onPress={() => {
+              Alert.alert(
+                'Batal Mengajukan Topik',
+                'Apakah Kamu Yakin Ingin Membatalkan Pengajuan Topik?',
+                [
+                  {
+                    text: 'batal',
+                    style: 'cancel',
+                  },
+                  {
+                    text: 'ya',
+                    onPress: () => {
+                      navigation.navigate('MhsTopikSkripsi');
+                    },
+                  },
+                ],
+                {cancelable: false},
+              );
+            }}
           />
         </View>
       </View>
@@ -101,6 +129,7 @@ const styles = StyleSheet.create({
   labelData: {
     fontFamily: fonts.primary[400],
     fontSize: 16,
+    textTransform: 'capitalize',
     color: colors.text.primary,
     lineHeight: 16 * 1.5,
   },

@@ -72,10 +72,10 @@ const DsnTopikSkripsiSaya = ({navigation}) => {
   };
 
   useEffect(() => {
+    dispatch(setLoading(true));
     const willFocusSubscription = navigation.addListener('focus', () => {
       getDataTopik();
     });
-    dispatch(setLoading(true));
     getIdDosen();
     getDataTopik();
 

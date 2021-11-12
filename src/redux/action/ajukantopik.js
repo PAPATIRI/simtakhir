@@ -24,13 +24,14 @@ export const getBidangTopikAction = () => dispatch => {
 export const ajukanTopikAction = (navigation, form) => dispatch => {
   getData('token').then(res => {
     axios
-      .post(`${API_HOST.url}/topikajuans`, form, {
+      .post(`${API_HOST.url}/ajukantopiks`, form, {
         headers: {
           Authorization: `Bearer ${res.value}`,
         },
       })
       .then(res => {
         console.log('data success: ', res.data);
+        dispatch(setLoading(false));
         navigation.navigate('MhsSuksesAjukanTopik');
       })
       .catch(err => {

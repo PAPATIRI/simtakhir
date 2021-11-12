@@ -4,6 +4,7 @@ const initStateTambahTopik = {
   bidangtopik: '',
   periode: '',
   dosenpenawar: '',
+  status: 'open',
 };
 
 export const tambahTopikReducer = (state = initStateTambahTopik, action) => {

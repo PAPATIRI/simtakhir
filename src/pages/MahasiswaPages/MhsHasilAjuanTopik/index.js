@@ -1,11 +1,58 @@
-import React from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from 'axios';
+import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
+import {useDispatch} from 'react-redux';
 import {IcArrowBack} from '../../../assets';
 import {TopNavbar} from '../../../components';
 import CardHasilAjuan from '../../../components/moleculs/CardHasilAjuan';
-import {colors} from '../../../utils';
+import {API_HOST} from '../../../config';
+import {setLoading} from '../../../redux/action';
+import {colors, getData} from '../../../utils';
 
 const MhsHasilAjuanTopik = ({navigation}) => {
+  const [data, setData] = useState([]);
+  const [idMhs, setIdMhs] = useState('');
+
+  const dispatch = useDispatch();
+
+  const getIdMhs = async () => {
+    try {
+      const id = await AsyncStorage.getItem('userProfile');
+      const dataId = JSON.parse(id);
+
+      dataId ? setIdMhs(dataId.value.email) : 'error id';
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const getDataTopikAjuan = async () => {
+    await getData('token').then(async res => {
+      await axios
+        .get(`${API_HOST.url}/ajukantopiks?_sort=created_at:DESC`, {
+          headers: {
+            Authorization: `Bearer ${res.value}`,
+          },
+        })
+        .then(res => {
+          console.log('data ajuan: ', res.data);
+          setData(res.data);
+          dispatch(setLoading(false));
+        })
+        .catch(err => {
+          console.log(err);
+          dispatch(setLoading(false));
+        });
+    });
+  };
+
+  useEffect(() => {
+    dispatch(setLoading(true));
+    getIdMhs();
+    getDataTopikAjuan();
+  }, []);
+
   return (
     <View style={styles.page}>
       <TopNavbar
@@ -14,26 +61,20 @@ const MhsHasilAjuanTopik = ({navigation}) => {
         onPress={() => navigation.navigate('MhsTopikSkripsi')}
       />
       <View style={styles.content}>
-        <CardHasilAjuan
-          titleCard="pengembangan aplikasi mobile sistem manajemen tugas akhir web"
-          descCard="topik ini berfokus pada pengembangan aplikasi mible yaitu android"
-          dosenName="Ardiansyah S.T., M.Cs"
-          status="accepted"
-        />
-
-        <CardHasilAjuan
-          titleCard="pengembangan aplikasi mobile sistem manajemen tugas akhir web"
-          descCard="topik ini berfokus pada pengembangan aplikasi mible yaitu android"
-          dosenName="Ardiansyah S.T., M.Cs"
-          status="accepted"
-        />
-
-        <CardHasilAjuan
-          titleCard="pengembangan aplikasi mobile sistem manajemen tugas akhir web"
-          descCard="topik ini berfokus pada pengembangan aplikasi mible yaitu android"
-          dosenName="Ardiansyah S.T., M.Cs"
-          status="accepted"
-        />
+        {data.map(item => {
+          if (item.mahasiswapengaju == idMhs) {
+            return (
+              <CardHasilAjuan
+                key={item.id}
+                titleCard={item.judultopik}
+                descCard={item.bidangtopik}
+                dosenName={item.dosentujuan}
+                status={item.status}
+                onPress={() => navigation.navigate('MhsDetailHasilAjuan', item)}
+              />
+            );
+          }
+        })}
       </View>
     </View>
   );

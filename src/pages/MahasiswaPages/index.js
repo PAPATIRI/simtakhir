@@ -15,6 +15,7 @@ import MhsDetailAjuanTopik from './MhsDetailAjuanTopik';
 import MhsDaftarSidangSempro from './MhsDaftarSidangSempro';
 import MhsDaftarSidangSemproNext from './MhsDaftarSidangSemproNext';
 import MhsDetailTopikDosen from './MhsDetailTopikDosen';
+import MhsDetailHasilAjuan from './MhsDetailHasilAjuan';
 
 export {
   Login,
@@ -34,4 +35,5 @@ export {
   MhsDaftarSidangSempro,
   MhsDaftarSidangSemproNext,
   MhsDetailTopikDosen,
+  MhsDetailHasilAjuan,
 };

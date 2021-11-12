@@ -14,9 +14,9 @@ import {useSelector, useDispatch} from 'react-redux';
 const MhsAjukanTopik = ({navigation}) => {
   const [form, setForm] = useForm({
     judultopik: '',
-    deskripsitopik: '',
+    dekripsitopik: '',
+    mahasiswapengaju: '',
   });
-  //dispatch function
   const dispatch = useDispatch();
 
   const onSubmit = () => {
@@ -30,7 +30,7 @@ const MhsAjukanTopik = ({navigation}) => {
       <TopNavbar
         titleBar="Ajukan Topik"
         iconLeft={<IcArrowBack />}
-        onPress={() => navigation.navigate('MhsTopikSkripsi')}
+        onPress={() => navigation.goBack()}
       />
       <View style={styles.content}>
         <View>
@@ -50,8 +50,15 @@ const MhsAjukanTopik = ({navigation}) => {
             height={96}
             multiline={true}
             textAlignVertical="top"
-            value={form.deskripsi}
-            onChangeText={value => setForm('deskripsitopik', value)}
+            value={form.dekripsitopik}
+            onChangeText={value => setForm('dekripsitopik', value)}
+          />
+          <Gap height={20} />
+          <TextInput
+            label="email mahasiswa pengaju"
+            placeholder="masukkan email pengaju"
+            value={form.mahasiswapengaju}
+            onChangeText={value => setForm('mahasiswapengaju', value)}
           />
         </View>
         <View>

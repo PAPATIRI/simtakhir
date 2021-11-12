@@ -1,6 +1,9 @@
-import React from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from 'axios';
+import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
+import {useDispatch} from 'react-redux';
 import {ArdiansyahImg, IcArrowBack} from '../../../assets';
 import {
   Button,
@@ -9,12 +12,56 @@ import {
   Gap,
   TopNavbar,
 } from '../../../components';
-import {colors, fonts} from '../../../utils';
+import {API_HOST} from '../../../config';
+import {setLoading} from '../../../redux/action';
+import {colors, fonts, getData} from '../../../utils';
 import {dosenImg} from '../MhsTopikDosen/dosenImg';
 
 const MhsDetailTopikDosen = ({navigation, route}) => {
-  const {judultopik, deskripsitopik, bidangtopik, periode, dosen} =
-    route.params;
+  const {
+    judultopik,
+    deskripsitopik,
+    bidangtopik,
+    periode,
+    dosen,
+    dosenpenawar,
+    status,
+  } = route.params;
+  const [imageDosen, setImageDosen] = useState(null);
+  const [namaDosen, setNamaDosen] = useState('');
+  const [emailDosen, setEmailDosen] = useState('');
+  const [nidn, setNidn] = useState('');
+
+  const dispatch = useDispatch();
+
+  const getDataTopik = async () => {
+    await getData('token').then(async res => {
+      await axios
+        .get(`${API_HOST.url}/dosens?nama_eq=${dosenpenawar}`, {
+          headers: {
+            Authorization: `Bearer ${res.value}`,
+          },
+        })
+        .then(res => {
+          console.log('data dosen: ', res.data);
+          setImageDosen(res.data[0].avatar.url);
+          setNamaDosen(res.data[0].nama);
+          setEmailDosen(res.data[0].user.email);
+          setNidn(res.data[0].nidy);
+          dispatch(setLoading(false));
+        })
+        .catch(err => {
+          console.log(err);
+          dispatch(setLoading(false));
+        });
+    });
+  };
+
+  useEffect(() => {
+    dispatch(setLoading(true));
+    getDataTopik();
+  });
+
   return (
     <View style={styles.page}>
       <TopNavbar
@@ -24,19 +71,20 @@ const MhsDetailTopikDosen = ({navigation, route}) => {
       />
       <View style={styles.content}>
         <CardProfile
-          image={dosen.avatar.url}
-          name={dosen.nama}
-          label1="pendaftar"
-          data1="2 mahasiswa"
+          image={imageDosen}
+          name={namaDosen}
+          email={emailDosen}
+          label1="NIDN"
+          data1={nidn}
           label2="status"
-          data2="open"
+          data2={status}
         />
         <Gap height={20} />
         <View style={styles.dataWrapper}>
           <ScrollView>
             <View>
               <Text style={styles.labelData}>judul</Text>
-              <Text style={styles.data}>{judultopik}</Text>
+              <Text style={styles.data}>{dosenpenawar}</Text>
               <Gap height={20} />
             </View>
             <View>
@@ -56,11 +104,17 @@ const MhsDetailTopikDosen = ({navigation, route}) => {
             </View>
           </ScrollView>
           <Gap height={15} />
-          <Button label="Ambil Topik" />
+          {status == 'open' ? (
+            <Button label="Ambil Topik" />
+          ) : (
+            <Text style={styles.anounctext}>
+              topik ini sudah tidak bisa diambil!
+            </Text>
+          )}
           <Gap height={10} />
-          <ButtonDangerSedond
+          <Button
             label="Cari Topik Lainnya"
-            type="secondary"
+            type="secondaryAccent"
             onPress={() => navigation.navigate('MhsTopikDosen')}
           />
         </View>
@@ -87,15 +141,24 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   labelData: {
-    fontFamily: fonts.primary[400],
-    fontSize: 18,
+    fontFamily: fonts.primary[600],
+    fontSize: 16,
+    textTransform: 'capitalize',
     color: colors.text.primary,
-    lineHeight: 18 * 1.5,
+    lineHeight: 16 * 1.5,
   },
   data: {
-    fontFamily: fonts.primary[300],
-    fontSize: 18,
+    fontFamily: fonts.primary[400],
+    fontSize: 16,
     color: colors.text.primary,
-    lineHeight: 18 * 1.5,
+    lineHeight: 16 * 1.5,
+  },
+  anounctext: {
+    fontFamily: fonts.primary[400],
+    fontSize: 16,
+    lineHeight: 16 * 1.5,
+    textTransform: 'capitalize',
+    color: colors.text.danger,
+    textAlign: 'center',
   },
 });

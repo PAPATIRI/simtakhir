@@ -30,6 +30,7 @@ import {
   MhsDaftarSidangSempro,
   MhsDaftarSidangSemproNext,
   MhsDetailAjuanTopik,
+  MhsDetailHasilAjuan,
   MhsDetailLogbook,
   MhsDetailTopikDosen,
   MhsHasilAjuanTopik,
@@ -326,6 +327,13 @@ const Router = () => {
         component={MhsDetailTopikDosen}
         options={{headerShown: false}}
       />
+      <Stack.Screen
+        name="MhsDetailHasilAjuan"
+        component={MhsDetailHasilAjuan}
+        options={{headerShown: false}}
+      />
+
+      {/* dosen stack navigation */}
       <Stack.Screen
         name="DsnDrawer"
         component={DsnDrawer}

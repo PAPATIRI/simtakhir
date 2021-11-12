@@ -1,9 +1,11 @@
 const initStateAjukanTopik = {
   judultopik: '',
-  deskripsitopik: '',
+  dekripsitopik: '',
   bidangtopik: '',
   periode: '',
-  dosenpembimbing: '',
+  dosentujuan: '',
+  mahasiswapengaju: '',
+  status: 'menunggu',
 };
 
 export const ajukanTopikReducer = (state = initStateAjukanTopik, action) => {
@@ -11,7 +13,8 @@ export const ajukanTopikReducer = (state = initStateAjukanTopik, action) => {
     return {
       ...state,
       judultopik: action.value.judultopik,
-      deskripsitopik: action.value.deskripsitopik,
+      dekripsitopik: action.value.dekripsitopik,
+      mahasiswapengaju: action.value.mahasiswapengaju,
     };
   }
 
@@ -20,7 +23,7 @@ export const ajukanTopikReducer = (state = initStateAjukanTopik, action) => {
       ...state,
       bidangtopik: action.value.bidangtopik,
       periode: action.value.periode,
-      dosenpembimbing: action.value.dosenpembimbing,
+      dosentujuan: action.value.dosentujuan,
     };
   }
 

@@ -20,12 +20,7 @@ const MhsAjukanTopikNext = ({navigation}) => {
   });
 
   const dispatch = useDispatch();
-  // const {bidangtopik} = useSelector(state => state.ajukanTopikReducer);
   const ajukanTopikReducer = useSelector(state => state.ajukanTopikReducer);
-
-  // useEffect(() => {
-  //   dispatch(getBidangTopikAction());
-  // }, []);
 
   const onSubmit = () => {
     console.log('form', form);
@@ -38,7 +33,7 @@ const MhsAjukanTopikNext = ({navigation}) => {
       <TopNavbar
         iconLeft={<IcArrowBack />}
         titleBar="Ajukan Topik"
-        onPress={() => navigation.navigate('MhsAjukanTopik')}
+        onPress={() => navigation.goBack()}
       />
       <View style={styles.content}>
         <View>
@@ -59,8 +54,8 @@ const MhsAjukanTopikNext = ({navigation}) => {
             <Gap height={5} />
             <View style={styles.dropdownWrapper}>
               <ModalPicker
-                value={form.dosenpembimbing}
-                onSelectChange={value => setForm('dosenpembimbing', value)}
+                value={form.dosentujuan}
+                onSelectChange={value => setForm('dosentujuan', value)}
                 items={dataDospem}
               />
             </View>

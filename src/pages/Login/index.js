@@ -1,5 +1,11 @@
 import React, {useEffect} from 'react';
-import {ImageBackground, StyleSheet, Text, View} from 'react-native';
+import {
+  ImageBackground,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 import {useDispatch} from 'react-redux';
 import {BgGraduate} from '../../assets';
 import {Button, Gap, TextInput} from '../../components';
@@ -38,7 +44,7 @@ const Login = ({navigation}) => {
               onChangeText={value => setForm('identifier', value)}
               value={form.identifier}
             />
-            <Gap height={25} />
+            <Gap height={20} />
             <TextInput
               label="Kata Sandi"
               placeholder="masun kata sandi akun anda"
@@ -47,14 +53,9 @@ const Login = ({navigation}) => {
               secureTextEntry
             />
           </View>
-          <View>
+          <Gap height={20} />
+          <View style={styles.buttonWrapper}>
             <Button label="Masuk" onPress={onSubmit} />
-            <Gap height={15} />
-            <Text style={styles.textFooter}>
-              masuk aplikasi SIMTAKHIR menggunakan
-              <Text style={styles.link}> akun portal</Text>
-            </Text>
-            <Text style={styles.textFooter}>Universitas Ahmad Dahlan</Text>
           </View>
         </View>
       </View>
@@ -76,17 +77,20 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   bottomPage: {
-    flex: 2,
+    flex: 3,
     backgroundColor: colors.primary,
     borderTopRightRadius: 80,
     paddingHorizontal: 40,
-    paddingVertical: 40,
+    paddingBottom: 40,
+    paddingTop: 30,
     fontFamily: fonts.primary[600],
     justifyContent: 'space-between',
   },
   title: {
     fontSize: 28,
-    color: colors.text.accent,
+    color: colors.text.primary,
+    fontFamily: fonts.primary[600],
+    lineHeight: 28 * 1.5,
   },
   overlay: {
     ...StyleSheet.absoluteFillObject,
@@ -96,14 +100,7 @@ const styles = StyleSheet.create({
     ...StyleSheet.absoluteFillObject,
     zIndex: 1,
   },
-  textFooter: {
-    fontSize: 12,
-    fontFamily: fonts.primary[400],
-    lineHeight: 15,
-    color: colors.text.secondary,
-    textAlign: 'center',
-  },
-  link: {
-    color: colors.text.primary,
+  buttonWrapper: {
+    margin: 0,
   },
 });

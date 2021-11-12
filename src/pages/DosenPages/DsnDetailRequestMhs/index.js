@@ -19,7 +19,6 @@ const DsnDetailRequestMhs = ({navigation, route}) => {
     periode,
     id,
   } = route.params;
-  const [updateId, setUpdateId] = useState(id);
 
   const dispatch = useDispatch();
 

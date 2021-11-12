@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
       type === 'secondaryAccent'
         ? colors.button.secondaryAccent.background
         : colors.button.primary.background,
-    paddingVertical: 14,
+    paddingVertical: 10,
     borderRadius: 5,
     borderWidth: 2,
     borderColor:
@@ -36,6 +36,8 @@ const styles = StyleSheet.create({
         : colors.button.primary.text,
     textAlign: 'center',
     fontSize: 16,
+    lineHeight: 16 * 1.5,
+    textTransform: 'capitalize',
     fontFamily: fonts.primary[600],
   }),
 });

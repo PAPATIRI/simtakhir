@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
   iconMenu: color => ({
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 100,
+    borderRadius: 20,
     backgroundColor: color,
     height: 80,
     width: 80,

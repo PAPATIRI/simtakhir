@@ -10,29 +10,26 @@ const CardTopikSkripsi = ({
   periode,
   dosen,
   bidang,
-  pendaftar,
+  status,
   onPress,
 }) => {
   return (
-    <TouchableOpacity activeOpacity={0.7} onPress={onPress}>
-      <View style={styles.cardWrapper}>
-        <Image source={{uri: imgDosen}} style={styles.cardImg} />
-        <View style={styles.content}>
-          <View style={styles.topCard}>
-            <Text numberOfLines={2} style={styles.title}>
-              {title}..
-            </Text>
-            <Gap height={5} />
-            <Text style={styles.dosen}>{dosen}</Text>
-          </View>
-          <View style={styles.bottomCard}>
-            <Text style={styles.bidang}>{bidang}</Text>
-            <Gap height={2} />
-            <View style={styles.bottom}>
-              <Text style={styles.periode}>{periode}</Text>
-              <Text style={styles.periode}>{pendaftar} pendaftar</Text>
-            </View>
-          </View>
+    <TouchableOpacity
+      activeOpacity={0.7}
+      style={styles.cardWrapper}
+      onPress={onPress}>
+      <Text numberOfLines={2} style={styles.title}>
+        {title}..
+      </Text>
+      <Gap height={2} />
+      <Text style={styles.dosen}>{dosen}</Text>
+      <Gap height={20} />
+      <View style={styles.bottomCard}>
+        <Text style={styles.bidang}>{bidang}</Text>
+        <Gap height={2} />
+        <View style={styles.bottom}>
+          <Text style={styles.periode}>{periode}</Text>
+          <Text style={styles.status(status)}>{status}</Text>
         </View>
       </View>
     </TouchableOpacity>
@@ -43,51 +40,43 @@ export default CardTopikSkripsi;
 
 const styles = StyleSheet.create({
   cardWrapper: {
-    flexDirection: 'row',
-    height: 170,
+    padding: 15,
     backgroundColor: colors.primary,
     borderRadius: 10,
-    elevation: 1,
-    padding: 2,
+    elevation: 2,
     marginBottom: 10,
   },
-  cardImg: {
-    borderBottomRightRadius: 40,
-    borderTopLeftRadius: 10,
-    borderBottomLeftRadius: 10,
-    width: 120,
-    height: 170,
-  },
-  content: {
-    flex: 1,
-    paddingHorizontal: 15,
-    paddingVertical: 10,
-    justifyContent: 'space-between',
-  },
   title: {
-    fontFamily: fonts.primary[400],
+    fontFamily: fonts.primary[600],
     fontSize: 16,
-    color: colors.text.accent,
+    textTransform: 'capitalize',
+    color: colors.text.blue,
     lineHeight: 16 * 1.5,
   },
   dosen: {
-    fontFamily: fonts.primary[300],
-    fontSize: 12,
-    lineHeight: 12 * 1.5,
-    color: colors.blackSecondary,
+    fontFamily: fonts.primary[400],
+    fontSize: 14,
+    lineHeight: 14 * 1.5,
+    color: colors.text.primary,
   },
   bidang: {
     fontFamily: fonts.primary[400],
     fontSize: 14,
     lineHeight: 14 * 1.5,
-    color: colors.text.primary,
+    color: colors.text.secondary,
   },
   periode: {
-    fontFamily: fonts.primary[300],
+    fontFamily: fonts.primary[400],
     fontSize: 14,
     lineHeight: 14 * 1.5,
-    color: colors.text.primary,
+    color: colors.text.secondary,
   },
+  status: status => ({
+    fontFamily: fonts.primary[400],
+    fontSize: 16,
+    lineHeight: 16 * 1.5,
+    color: status == 'open' ? colors.text.accent : colors.text.danger,
+  }),
   bottomCard: {
     justifyContent: 'space-between',
   },

@@ -1,17 +1,9 @@
 import React from 'react';
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {ArdiansyahImg, Mhs1} from '../../../assets';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {colors, fonts} from '../../../utils';
 import {Gap} from '../../atoms';
 
-const CardTopikAjuan = ({
-  imageCard,
-  titleCard,
-  name,
-  periode,
-  status,
-  onPress,
-}) => {
+const CardTopikAjuan = ({titleCard, name, periode, status, onPress}) => {
   return (
     <TouchableOpacity
       activeOpacity={0.7}
@@ -58,7 +50,7 @@ const styles = StyleSheet.create({
   titleCard: {
     fontFamily: fonts.primary[400],
     fontSize: 16,
-    color: colors.text.accent,
+    color: colors.text.blue,
     lineHeight: 16 * 1.5,
     textTransform: 'capitalize',
   },

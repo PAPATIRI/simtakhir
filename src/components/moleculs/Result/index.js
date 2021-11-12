@@ -41,11 +41,11 @@ const styles = StyleSheet.create({
   title: {
     fontFamily: fonts.primary[400],
     fontSize: 24,
-    color: colors.text.accent,
+    color: colors.text.blue,
     lineHeight: 24 * 1.5,
   },
   desc: {
-    fontFamily: fonts.primary[300],
+    fontFamily: fonts.primary[400],
     fontSize: 16,
     color: colors.text.primary,
     lineHeight: 16 * 1.5,

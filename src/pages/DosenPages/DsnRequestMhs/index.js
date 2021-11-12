@@ -1,5 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
+import QueryString from 'qs';
 import React, {useEffect, useState} from 'react';
 import {
   ActivityIndicator,
@@ -24,40 +25,51 @@ const DsnRequestMhs = ({navigation}) => {
     try {
       const id = await AsyncStorage.getItem('userProfile');
       const dataId = JSON.parse(id);
+      console.log('data user: ', dataId.value.dosen.nama);
 
-      dataId ? setIdDosen(dataId.value.email) : 'error user id';
+      dataId ? setIdDosen(dataId.value.dosen.nama) : 'error id';
+      console.log('data id dosen: ', idDosen);
     } catch (err) {
       console.log(err);
     }
   };
 
   const getTopikAjuan = async () => {
-    await getData('token').then(async res => {
-      await axios
-        .get(`${API_HOST.url}/ajukantopiks?_sort=created_at:DESC`, {
-          headers: {
-            Authorization: `Bearer ${res.value}`,
-          },
-        })
-        .then(res => {
-          setData(res.data);
-          dispatch(setLoading(false));
-        })
-        .catch(err => {
-          console.log(err);
-          dispatch(setLoading(false));
-        });
-    });
+    await getData('token')
+      .then(async res => {
+        await axios
+          .get(`${API_HOST.url}/ajukantopiks?_sort=created_at:DESC`, {
+            headers: {
+              Authorization: `Bearer ${res.value}`,
+            },
+          })
+          .then(res => {
+            setData(res.data);
+            console.log('data ajuan: ', res.data);
+            dispatch(setLoading(false));
+          })
+          .catch(err => {
+            console.log(err);
+            dispatch(setLoading(false));
+          });
+      })
+      .catch(err => {
+        console.log(err);
+        dispatch(setLoading(false));
+      });
   };
 
   useEffect(() => {
-    dispatch(setLoading(true));
     const willFocusSubscription = navigation.addListener('focus', () => {
       getTopikAjuan();
     });
+    dispatch(setLoading(true));
     getIdDosen();
     getTopikAjuan();
+
+    return willFocusSubscription;
   }, []);
+
   return (
     <View style={styles.page}>
       <TopNavbar
@@ -68,14 +80,13 @@ const DsnRequestMhs = ({navigation}) => {
       <View style={styles.content}>
         <ScrollView showsVerticalScrollIndicator={false}>
           {data.map(itemtopik => {
-            if (itemtopik.dosentujuan === idDosen) {
+            if (itemtopik.dosentujuan == idDosen) {
               return (
                 <CardTopikAjuan
-                  imageCard={Mhs1}
                   key={itemtopik.id}
                   titleCard={itemtopik.judultopik}
                   name={itemtopik.mahasiswapengaju}
-                  periode="genap 2020 / 2021"
+                  periode={itemtopik.periode}
                   status={itemtopik.status}
                   onPress={() =>
                     navigation.navigate('DsnDetailRequestMhs', itemtopik)
