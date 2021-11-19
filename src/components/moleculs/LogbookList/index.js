@@ -31,19 +31,26 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 20,
+    paddingBottom: 4,
+    borderRadius: 4,
+    borderBottomWidth: 2,
+    borderBottomColor: colors.blackDisabled,
   },
   contentItem: {
     flex: 4,
     marginRight: 22,
   },
   titleItem: {
-    fontFamily: fonts.primary[400],
+    fontFamily: fonts.primary[600],
     fontSize: 16,
+    lineHeight: 16 * 1.5,
     color: colors.text.primary,
   },
   dateItem: {
-    fontFamily: fonts.primary[300],
+    fontFamily: fonts.primary[400],
+    lineHeight: 16 * 1.5,
     fontSize: 14,
+    color: colors.text.secondary,
   },
   iconItem: {
     flex: 1,

@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, Image, View} from 'react-native';
 import {
   IcAcceptedLogbook,
   IcArrowBack,
@@ -9,7 +9,10 @@ import {Gap, TopNavbar} from '../../../components';
 import {colors, fonts} from '../../../utils';
 
 const MhsDetailLogbook = ({navigation, route}) => {
-  const {kegiatan, catatankemajuan, updated_at, status} = route.params;
+  const {bimbingan, catatankemajuan, updated_at, status, filetambahan, path} =
+    route.params;
+  const prefixUrl =
+    'https://project.syaripedia.net/apiuploadfile/storage/app/public/';
 
   return (
     <View style={styles.page}>
@@ -24,28 +27,30 @@ const MhsDetailLogbook = ({navigation, route}) => {
             {new Date(updated_at).toDateString()}
           </Text>
         </View>
-        <Gap height={20} />
+        <Gap height={16} />
         <View>
-          <Text style={styles.judulTopik}>Kegiatan</Text>
-          <Gap height={5} />
-          <Text style={styles.descTopik}>{kegiatan}</Text>
+          <Text style={styles.labelData}>Kegiatan</Text>
+          <Gap height={2} />
+          <Text style={styles.descData}>{bimbingan}</Text>
         </View>
-        <Gap height={20} />
+        <Gap height={16} />
         <View>
-          <Text style={styles.judulTopik}>Catatan Kemajuan</Text>
-          <Gap height={5} />
-          <Text style={styles.descTopik}>{catatankemajuan}</Text>
+          <Text style={styles.labelData}>Catatan Kemajuan</Text>
+          <Gap height={2} />
+          <Text style={styles.descData}>{catatankemajuan}</Text>
         </View>
-        <Gap height={20} />
+        <Gap height={16} />
         <View>
-          <Text style={styles.judulTopik}>File Tambahan</Text>
-          <Gap height={5} />
-          <Text style={styles.descTopik}>-</Text>
+          <Text style={styles.labelData}>File Tambahan</Text>
+          <Gap height={2} />
+          <Text style={styles.descData}>{filetambahan}</Text>
+          <Gap height={2} />
+          <Image source={{uri: `${prefixUrl}${path}`}} style={styles.image} />
         </View>
-        <Gap height={20} />
+        <Gap height={16} />
         <View>
-          <Text style={styles.judulTopik}>Paraf Dosen Pembimbing</Text>
-          <Gap height={5} />
+          <Text style={styles.labelData}>Paraf Dosen Pembimbing</Text>
+          <Gap height={2} />
           <View style={styles.paraf}>
             {status == 'menunggu' ? (
               <IcWaitingLogbook />
@@ -83,14 +88,16 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: colors.text.accent,
   },
-  judulTopik: {
-    fontFamily: fonts.primary[400],
+  labelData: {
+    fontFamily: fonts.primary[600],
     fontSize: 16,
+    lineHeight: 16 * 1.5,
     color: colors.text.primary,
   },
-  descTopik: {
-    fontFamily: fonts.primary[300],
+  descData: {
+    fontFamily: fonts.primary[400],
     fontSize: 16,
+    lineHeight: 16 * 1.5,
     color: colors.text.primary,
   },
   paraf: {
@@ -104,5 +111,10 @@ const styles = StyleSheet.create({
     textTransform: 'capitalize',
     fontSize: 16,
     marginLeft: 10,
+  },
+  image: {
+    height: 200,
+    width: 200,
+    borderRadius: 20,
   },
 });

@@ -11,7 +11,7 @@ import {
 import {ScrollView} from 'react-native-gesture-handler';
 import {useDispatch, useSelector} from 'react-redux';
 import {IcArrowBack, IlUserDefault} from '../../../assets';
-import {Gap, TopNavbarSearch} from '../../../components';
+import {Gap, LoadingSpinner, TopNavbarSearch} from '../../../components';
 import CardTopikSkripsi from '../../../components/moleculs/CardTopikSkripsi';
 import {API_HOST} from '../../../config';
 import {setLoading} from '../../../redux/action';
@@ -22,6 +22,7 @@ import {dosenImg} from './dosenImg';
 const MhsTopikDosen = ({navigation}) => {
   const dispatch = useDispatch();
   const {topikdosens} = useSelector(state => state.topikDosenReducer);
+  const [isLoading, setIsLoading] = useState(true);
   //new
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
@@ -36,13 +37,13 @@ const MhsTopikDosen = ({navigation}) => {
           },
         })
         .then(res => {
+          setIsLoading(false);
           setData(res.data);
           setFilteredData(res.data);
-          dispatch(setLoading(false));
         })
         .catch(err => {
+          setIsLoading(false);
           console.log(err);
-          dispatch(setLoading(false));
         });
     });
   };
@@ -66,7 +67,6 @@ const MhsTopikDosen = ({navigation}) => {
     const willFocusSubscription = navigation.addListener('focus', () => {
       getDataTopik();
     });
-    dispatch(setLoading(true));
     getDataTopik();
 
     return willFocusSubscription;
@@ -92,22 +92,26 @@ const MhsTopikDosen = ({navigation}) => {
         <Text style={styles.title}>Daftar Topik Tugas Akhir</Text>
         <Gap height={10} />
         <ScrollView showsVerticalScrollIndicator={false}>
-          {filteredData.map(itemtopik => {
-            return (
-              <CardTopikSkripsi
-                key={itemtopik.id}
-                title={itemtopik.judultopik}
-                dosen={itemtopik.dosenpenawar}
-                bidang={itemtopik.bidangtopik}
-                status={itemtopik.status}
-                periode={itemtopik.periode}
-                status={itemtopik.status}
-                onPress={() =>
-                  navigation.navigate('MhsDetailTopikDosen', itemtopik)
-                }
-              />
-            );
-          })}
+          {isLoading ? (
+            <LoadingSpinner />
+          ) : (
+            filteredData.map(itemtopik => {
+              return (
+                <CardTopikSkripsi
+                  key={itemtopik.id}
+                  title={itemtopik.judultopik}
+                  dosen={itemtopik.dosenpenawar}
+                  bidang={itemtopik.bidangtopik}
+                  status={itemtopik.status}
+                  periode={itemtopik.periode}
+                  status={itemtopik.status}
+                  onPress={() =>
+                    navigation.navigate('MhsDetailTopikDosen', itemtopik)
+                  }
+                />
+              );
+            })
+          )}
         </ScrollView>
       </View>
     </View>

@@ -4,7 +4,7 @@ import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {useDispatch} from 'react-redux';
 import {IcArrowBack} from '../../../assets';
-import {TopNavbar} from '../../../components';
+import {LoadingSpinner, TopNavbar} from '../../../components';
 import CardHasilAjuan from '../../../components/moleculs/CardHasilAjuan';
 import {API_HOST} from '../../../config';
 import {setLoading} from '../../../redux/action';
@@ -13,8 +13,7 @@ import {colors, getData} from '../../../utils';
 const MhsHasilAjuanTopik = ({navigation}) => {
   const [data, setData] = useState([]);
   const [idMhs, setIdMhs] = useState('');
-
-  const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(true);
 
   const getIdMhs = async () => {
     try {
@@ -37,18 +36,17 @@ const MhsHasilAjuanTopik = ({navigation}) => {
         })
         .then(res => {
           console.log('data ajuan: ', res.data);
+          setIsLoading(false);
           setData(res.data);
-          dispatch(setLoading(false));
         })
         .catch(err => {
+          setIsLoading(false);
           console.log(err);
-          dispatch(setLoading(false));
         });
     });
   };
 
   useEffect(() => {
-    dispatch(setLoading(true));
     getIdMhs();
     getDataTopikAjuan();
   }, []);
@@ -61,20 +59,26 @@ const MhsHasilAjuanTopik = ({navigation}) => {
         onPress={() => navigation.navigate('MhsTopikSkripsi')}
       />
       <View style={styles.content}>
-        {data.map(item => {
-          if (item.mahasiswapengaju == idMhs) {
-            return (
-              <CardHasilAjuan
-                key={item.id}
-                titleCard={item.judultopik}
-                descCard={item.bidangtopik}
-                dosenName={item.dosentujuan}
-                status={item.status}
-                onPress={() => navigation.navigate('MhsDetailHasilAjuan', item)}
-              />
-            );
-          }
-        })}
+        {isLoading ? (
+          <LoadingSpinner />
+        ) : (
+          data.map(item => {
+            if (item.mahasiswapengaju == idMhs) {
+              return (
+                <CardHasilAjuan
+                  key={item.id}
+                  titleCard={item.judultopik}
+                  descCard={item.bidangtopik}
+                  dosenName={item.dosentujuan}
+                  status={item.status}
+                  onPress={() =>
+                    navigation.navigate('MhsDetailHasilAjuan', item)
+                  }
+                />
+              );
+            }
+          })
+        )}
       </View>
     </View>
   );

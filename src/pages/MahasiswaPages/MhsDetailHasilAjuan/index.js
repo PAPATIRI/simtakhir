@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {IcArrowBack} from '../../../assets';
 import {Gap, TopNavbar} from '../../../components';

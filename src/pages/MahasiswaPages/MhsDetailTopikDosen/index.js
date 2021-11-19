@@ -10,6 +10,7 @@ import {
   ButtonDangerSedond,
   CardProfile,
   Gap,
+  LoadingSpinner,
   TopNavbar,
 } from '../../../components';
 import {API_HOST} from '../../../config';
@@ -32,8 +33,6 @@ const MhsDetailTopikDosen = ({navigation, route}) => {
   const [emailDosen, setEmailDosen] = useState('');
   const [nidn, setNidn] = useState('');
 
-  const dispatch = useDispatch();
-
   const getDataTopik = async () => {
     await getData('token').then(async res => {
       await axios
@@ -48,17 +47,14 @@ const MhsDetailTopikDosen = ({navigation, route}) => {
           setNamaDosen(res.data[0].nama);
           setEmailDosen(res.data[0].user.email);
           setNidn(res.data[0].nidy);
-          dispatch(setLoading(false));
         })
         .catch(err => {
           console.log(err);
-          dispatch(setLoading(false));
         });
     });
   };
 
   useEffect(() => {
-    dispatch(setLoading(true));
     getDataTopik();
   });
 
