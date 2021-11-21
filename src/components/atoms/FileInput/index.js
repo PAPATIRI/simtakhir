@@ -5,73 +5,25 @@ import {IcDownload} from '../../../assets';
 import {colors, fonts} from '../../../utils';
 import Gap from '../Gap';
 
-const FileInput = ({label}) => {
-  const [singleFile, setSingleFile] = useState(null);
-
-  const uploadImage = async () => {
-    //check jika ada file terseleksi atau belum
-    if (singleFile != null) {
-      //jika ada yang terseleksi maka buat FormData
-      const fileToUpload = singleFile;
-      const data = new FormData();
-      data.append('name', 'Image Upload');
-      data.append('file_attachment', fileToUpload);
-      //upload ke url api
-      let res = await fetch('http://localhost/upload.php', {
-        method: 'post',
-        body: data,
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
-
-      let responseJson = await res.json();
-      if (responseJson.status == 1) {
-        alert('Upload Succesfull');
-      } else {
-        alert('pilih dahulu file yang akan diupload');
-      }
-    }
-  };
-
-  //selecting file
-  const selectFile = async () => {
-    //membuka document picker untuk memilih satu
-    try {
-      const res = await DocumentPicker.pick({
-        type: [DocumentPicker.types.allFiles],
-      });
-      //print log realted to the file
-      console.log('res: ' + JSON.stringify(res));
-      //setting state untuk memampilkan atribut single file
-      setSingleFile(res);
-    } catch (err) {
-      setSingleFile(null);
-      //menghandle exception lain
-      if (DocumentPicker.isCancel(err)) {
-        alert('dibatalkan');
-      } else {
-        alert('Unknown Error: ' + JSON.stringify(err));
-        throw err;
-      }
-    }
-  };
+const FileInput = ({label, onPress, namefile}) => {
+  // console.log(namefile[0].name);
   return (
     <View style={styles.inputWrapper}>
       <Text style={styles.label}>{label}</Text>
       <Gap height={5} />
       <View style={styles.formInputWrapper}>
-        <TouchableOpacity activeOpacity={0.7} onPress={selectFile}>
+        <TouchableOpacity activeOpacity={0.7} onPress={onPress}>
           <View style={styles.buttonWrapper}>
             <IcDownload />
           </View>
         </TouchableOpacity>
-        {singleFile != null ? (
+        {namefile != null ? (
           <View style={styles.descFile}>
-            <Text>{singleFile.uri}</Text>
-            <Text> {singleFile.type}</Text>
+            <Text style={styles.textNameFile}>{namefile[0].name}</Text>
           </View>
-        ) : null}
+        ) : (
+          <Text style={styles.textNameFile}>pilih file</Text>
+        )}
       </View>
     </View>
   );
@@ -102,5 +54,12 @@ const styles = StyleSheet.create({
   descFile: {
     alignItems: 'center',
     marginTop: 5,
+  },
+  textNameFile: {
+    fontFamily: fonts.primary[400],
+    fontSize: 16,
+    marginTop: 5,
+    lineHeight: 16 * 1.5,
+    color: colors.text.primary,
   },
 });

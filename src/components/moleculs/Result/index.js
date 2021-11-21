@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   title: {
-    fontFamily: fonts.primary[400],
+    fontFamily: fonts.primary[600],
     fontSize: 24,
     color: colors.text.blue,
     lineHeight: 24 * 1.5,
@@ -50,6 +50,6 @@ const styles = StyleSheet.create({
     color: colors.text.primary,
     lineHeight: 16 * 1.5,
     textAlign: 'center',
-    paddingHorizontal: 20,
+    paddingHorizontal: 40,
   },
 });

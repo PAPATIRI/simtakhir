@@ -10,9 +10,10 @@ import {
 } from '../../../assets';
 import {Gap, LoadingSpinner, LogbookList, TopNavbar} from '../../../components';
 import {colors} from '../../../utils';
-// import ActionButton from '@logvinme/react-native-action-button';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+// import ActionButton from 'react-native-simple-action-button';
+import ActionButton from 'react-native-action-button';
 
 const MhsLogbook = ({navigation}) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -85,6 +86,22 @@ const MhsLogbook = ({navigation}) => {
             })
           )}
         </View>
+        <View style={styles.actionbutton}>
+          <ActionButton buttonColor="rgba(231,76,60,1)">
+            <ActionButton.Item
+              buttonColor="#9b59b6"
+              title="New Task"
+              onPress={() => console.log('notes tapped!')}>
+              <IcDownload />
+            </ActionButton.Item>
+            <ActionButton.Item
+              buttonColor="#3498db"
+              title="Notifications"
+              onPress={() => {}}>
+              <IcPlus />
+            </ActionButton.Item>
+          </ActionButton>
+        </View>
       </View>
     </View>
   );
@@ -105,6 +122,9 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   bottomContent: {
+    flex: 1,
+  },
+  actionbutton: {
     flex: 1,
   },
 });

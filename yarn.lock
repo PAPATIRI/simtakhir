@@ -954,14 +954,6 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
-"@logvinme/react-native-action-button@^2.9.1":
-  version "2.9.1"
-  resolved "https://registry.yarnpkg.com/@logvinme/react-native-action-button/-/react-native-action-button-2.9.1.tgz#0356ad03f5b4f08407d7081269bf2ada1fef27d8"
-  integrity sha512-ZB3zeCIh3LDXHP2V0PAmdGhSeo04NyIGxnkGqro60yuxIqR6tmpHaO8eimeui8WHLGcHrVrza00sCC5D8B3eYg==
-  dependencies:
-    my-package "0.0.0"
-    prop-types "^15.5.10"
-
 "@react-native-async-storage/async-storage@^1.15.7":
   version "1.15.7"
   resolved "https://registry.yarnpkg.com/@react-native-async-storage/async-storage/-/async-storage-1.15.7.tgz#736ac5cfe211b081e70389e80c237398d1451f08"
@@ -5004,11 +4996,6 @@ ms@2.1.2:
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.1.2.tgz#d09d1f357b443f493382a8eb3ccd183872ae6009"
   integrity sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==
 
-my-package@0.0.0:
-  version "0.0.0"
-  resolved "https://registry.yarnpkg.com/my-package/-/my-package-0.0.0.tgz#029020f27fcf2aed4754c5059ab1b09e5107a9de"
-  integrity sha1-ApAg8n/PKu1HVMUFmrGwnlEHqd4=
-
 nanoid@^3.1.15:
   version "3.1.23"
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.1.23.tgz#f744086ce7c2bc47ee0a8472574d5c78e4183a81"
@@ -5631,6 +5618,13 @@ react-is@^16.13.0, react-is@^16.13.1, react-is@^16.7.0, react-is@^16.8.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
+react-native-action-button@^2.8.5:
+  version "2.8.5"
+  resolved "https://registry.yarnpkg.com/react-native-action-button/-/react-native-action-button-2.8.5.tgz#4152a50323a8a6b3468e6f161f9a9071f2f0739a"
+  integrity sha512-BvGZpzuGeuFR2Y6j93+vKiSqDhsF87VHvNXFs/qEYKfzT4b1ASAT/GQbgS6gNt4jRJCUnJWYrIwlBzRjesZQmQ==
+  dependencies:
+    prop-types "^15.5.10"
+
 react-native-chart-kit@^6.11.0:
   version "6.11.0"
   resolved "https://registry.yarnpkg.com/react-native-chart-kit/-/react-native-chart-kit-6.11.0.tgz#513e0944cd8f946e1827facc17fe766ae487d91b"
@@ -5706,6 +5700,13 @@ react-native-screens@^3.4.0:
   integrity sha512-cg+q9MRnVdeOcJyvJtqffoXLur/C2wHA/7IO2+FAipzTlgHbbM1mTuSM7qG+SeiQjoIs4mHOEf7A0ziPKW04sA==
   dependencies:
     warn-once "^0.1.0"
+
+react-native-simple-action-button@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-simple-action-button/-/react-native-simple-action-button-1.0.1.tgz#cbcbfa337b8f751bf8d6de26e9926ea739c4ab24"
+  integrity sha512-ffuMq18/8q04DaSvVN6lYdfptKlPt/9TeeIfnNssMxI6zxdx5G0nWG1xxnvPeSDwLohac4FNUk2LOPYU7nqtJA==
+  dependencies:
+    prop-types "^15.5.10"
 
 react-native-svg-transformer@^0.14.3:
   version "0.14.3"

@@ -10,7 +10,7 @@ const MhsSuksesDaftarSidang = ({navigation}) => {
       <Result
         ilustration={<IlBerhasilKirim />}
         title="Yeay! Berhasil"
-        desc="kamu berhasil mengajukan pendaftaran sidang, tunggu jadwalmu ya"
+        desc="kamu berhasil mengajukan pendaftaran seminar proposal (SemPro), tunggu jadwalmu ya"
       />
       <Gap height={10} />
       <Button
