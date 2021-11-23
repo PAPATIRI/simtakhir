@@ -1,11 +1,11 @@
-import React, {useEffect, useState} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, {useEffect} from 'react';
+import {StyleSheet, View} from 'react-native';
+import DocumentPicker from 'react-native-document-picker';
+import {useDispatch} from 'react-redux';
 import {IcArrowBack} from '../../../assets';
 import {Button, FileInput, Gap, TopNavbar} from '../../../components';
 import {colors, useForm} from '../../../utils';
-import DocumentPicker from 'react-native-document-picker';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import {useDispatch} from 'react-redux';
 
 const MhsDaftarSidangSempro = ({navigation}) => {
   const [form, setForm] = useForm({
@@ -19,7 +19,6 @@ const MhsDaftarSidangSempro = ({navigation}) => {
   const dispatch = useDispatch();
 
   const onSubmit = () => {
-    console.log('form sempro: ', form);
     dispatch({type: 'SET_DAFTARSEMPRO1', value: form});
     navigation.navigate('MhsDaftarSidangSemproNext');
   };
@@ -28,7 +27,6 @@ const MhsDaftarSidangSempro = ({navigation}) => {
   const getMahasiswaPengaju = async () => {
     let idMahasiswa = await getIdMhs();
     let idku = JSON.parse(idMahasiswa);
-    console.log('email pengaju: ', idku.value.email);
     return setForm('mahasiswapengaju', idku.value.email);
   };
 
@@ -44,13 +42,9 @@ const MhsDaftarSidangSempro = ({navigation}) => {
       const res = await DocumentPicker.pick({
         type: [DocumentPicker.types.pdf],
       });
-      console.log('path bukti bayar: ', res[0].uri);
-      console.log('file bukti: ', res);
       setForm('buktipembayaran', res);
-      // setForm('pathbuktipembayaran', res[0].uri);
     } catch (err) {
       setForm('buktipembayaran', null);
-      setForm('pathbuktipembayaran', null);
       if (DocumentPicker.isCancel(err)) {
         alert('dibatalkan');
       } else {
@@ -66,10 +60,8 @@ const MhsDaftarSidangSempro = ({navigation}) => {
         type: [DocumentPicker.types.pdf],
       });
       setForm('toefl', res);
-      // setForm('pathtoefl', res[0].uri);
     } catch (err) {
       setForm('toefl', null);
-      setForm('pathtoefl', null);
       if (DocumentPicker.isCancel(err)) {
         alert('dibatalkan');
       } else {
@@ -125,8 +117,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'space-between',
     backgroundColor: colors.primary,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
+    borderTopLeftRadius: 15,
+    borderTopRightRadius: 15,
     padding: 20,
   },
 });

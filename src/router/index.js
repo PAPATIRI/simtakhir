@@ -26,6 +26,8 @@ import {
   Login,
   MhsAjukanTopik,
   MhsAjukanTopikNext,
+  MhsDaftarPendadaran,
+  MhsDaftarPendadaranNext,
   MhsDaftarSidang,
   MhsDaftarSidangSempro,
   MhsDaftarSidangSemproNext,
@@ -37,6 +39,7 @@ import {
   MhsHome,
   MhsLogbook,
   MhsSuksesAjukanTopik,
+  MhsSuksesDaftarPendadaran,
   MhsSuksesDaftarSidang,
   MhsSuksesTambahLogbook,
   MhsTambahLogbook,
@@ -332,6 +335,16 @@ const Router = () => {
         component={MhsDetailHasilAjuan}
         options={{headerShown: false}}
       />
+      <Stack.Screen
+        name="MhsDaftarPendadaran"
+        component={MhsDaftarPendadaran}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="MhsDaftarPendadaranNext"
+        component={MhsDaftarPendadaranNext}
+        options={{headerShown: false}}
+      />
 
       {/* dosen stack navigation */}
       <Stack.Screen
@@ -433,6 +446,11 @@ const Router = () => {
       <Stack.Screen
         name="MhsSuksesAjukanTopik"
         component={MhsSuksesAjukanTopik}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="MhsSuksesDaftarPendadaran"
+        component={MhsSuksesDaftarPendadaran}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

@@ -5,6 +5,7 @@ import {logbookReducer} from './logbook';
 import {topikDosenReducer} from './topikdosen';
 import {tambahTopikReducer} from './topikskripsi';
 import {daftarSemproReducer} from './daftarsempro';
+import {daftarPendadaranReducer} from './daftarpendadaran';
 
 const reducer = combineReducers({
   ajukanTopikReducer,
@@ -13,6 +14,7 @@ const reducer = combineReducers({
   topikDosenReducer,
   tambahTopikReducer,
   daftarSemproReducer,
+  daftarPendadaranReducer,
 });
 
 export default reducer;

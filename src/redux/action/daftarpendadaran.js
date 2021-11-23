@@ -1,9 +1,9 @@
 import axios from 'axios';
 import {setLoading} from '.';
 
-const url = 'https://project.syaripedia.net/daftarsidang/public/api/sempro';
+const url = 'https://project.syaripedia.net/daftarsidang/public/api/pendadaran';
 
-export const daftarSemproAction = (form, navigation) => dispatch => {
+export const daftarPendadaranAction = (form, navigation) => dispatch => {
   const data = new FormData();
   console.log('naskah path: ', form.naskahbab123);
   data.append('mahasiswapengaju', form.mahasiswapengaju);
@@ -15,6 +15,8 @@ export const daftarSemproAction = (form, navigation) => dispatch => {
   data.append('pathnaskahbab123', form.naskahbab123[0].uri);
   data.append('transkipnilai', form.transkipnilai[0]);
   data.append('pathtranskipnilai', form.transkipnilai[0].uri);
+  data.append('buktibebasspp', form.buktibebasspp[0]);
+  data.append('pathbuktibebasspp', form.buktibebasspp[0].uri);
 
   axios
     .post(url, data, {
@@ -23,9 +25,8 @@ export const daftarSemproAction = (form, navigation) => dispatch => {
       },
     })
     .then(res => {
-      console.log(res);
       dispatch(setLoading(false));
-      navigation.navigate('MhsSuksesDaftarSidang');
+      navigation.navigate('MhsSuksesDaftarPendadaran');
     })
     .catch(err => {
       console.log(err);

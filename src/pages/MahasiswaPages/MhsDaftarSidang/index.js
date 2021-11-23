@@ -38,6 +38,9 @@ const MhsDaftarSidang = ({navigation}) => {
             fontsfamily={fonts.primary[400]}
             fontsize={20}
             lineheight={30}
+            onPress={() => {
+              navigation.navigate('MhsDaftarPendadaran');
+            }}
           />
         </View>
       </View>

@@ -33,8 +33,9 @@ export default FileInput;
 
 const styles = StyleSheet.create({
   label: {
-    fontFamily: fonts.primary[400],
+    fontFamily: fonts.primary[600],
     fontSize: 16,
+    lineHeight: 16 * 1.5,
     color: colors.text.primary,
   },
   formInputWrapper: {

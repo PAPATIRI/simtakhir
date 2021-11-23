@@ -1,14 +1,14 @@
-import React from 'react';
-import {StyleSheet, View} from 'react-native';
-import DocumentPicker from 'react-native-document-picker';
-import {useDispatch, useSelector} from 'react-redux';
+import React, {useState} from 'react';
+import {StyleSheet, Text, View} from 'react-native';
 import {IcArrowBack} from '../../../assets';
 import {Button, FileInput, Gap, TopNavbar} from '../../../components';
-import {setLoading} from '../../../redux/action';
-import {daftarSemproAction} from '../../../redux/action/daftarsempro';
 import {colors, useForm} from '../../../utils';
+import DocumentPicker from 'react-native-document-picker';
+import {useDispatch, useSelector} from 'react-redux';
+import {daftarSemproAction} from '../../../redux/action/daftarsempro';
+import {daftarPendadaranAction, setLoading} from '../../../redux/action';
 
-const MhsDaftarSidangSemproNext = ({navigation}) => {
+const MhsDaftarPendadaranNext = ({navigation}) => {
   const [form, setForm] = useForm({
     naskahbab123: null,
     pathnaskahbab123: null,
@@ -16,16 +16,19 @@ const MhsDaftarSidangSemproNext = ({navigation}) => {
     pathtranskipnilai: null,
   });
   const dispatch = useDispatch();
-  const daftarSemproReducer = useSelector(state => state.daftarSemproReducer);
+  const daftarPendadaranReducer = useSelector(
+    state => state.daftarPendadaranReducer,
+  );
 
   const data = {
     ...form,
-    ...daftarSemproReducer,
+    ...daftarPendadaranReducer,
   };
   const onSubmit = () => {
-    dispatch({type: 'SET_DAFTARSEMPRO2', value: form});
+    console.log('form data: ', data);
+    dispatch({type: 'SET_DAFTARPENDADARAN2', value: form});
     dispatch(setLoading(true));
-    dispatch(daftarSemproAction(data, navigation));
+    dispatch(daftarPendadaranAction(data, navigation));
   };
 
   const selectNaskah = async () => {
@@ -33,6 +36,7 @@ const MhsDaftarSidangSemproNext = ({navigation}) => {
       const res = await DocumentPicker.pick({
         type: [DocumentPicker.types.pdf],
       });
+      console.log('naskah: ', res);
       setForm('naskahbab123', res);
     } catch (err) {
       setForm('naskahbab123', null);
@@ -50,6 +54,7 @@ const MhsDaftarSidangSemproNext = ({navigation}) => {
       const res = await DocumentPicker.pick({
         type: [DocumentPicker.types.pdf],
       });
+      console.log('transkip: ', res);
       setForm('transkipnilai', res);
     } catch (err) {
       setForm('transkipnilai', null);
@@ -93,7 +98,7 @@ const MhsDaftarSidangSemproNext = ({navigation}) => {
   );
 };
 
-export default MhsDaftarSidangSemproNext;
+export default MhsDaftarPendadaranNext;
 
 const styles = StyleSheet.create({
   page: {
