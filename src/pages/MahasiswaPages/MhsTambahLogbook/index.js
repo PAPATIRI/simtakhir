@@ -1,6 +1,8 @@
-import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import {useDispatch, useSelector} from 'react-redux';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, {useEffect} from 'react';
+import {StyleSheet, View} from 'react-native';
+import DocumentPicker from 'react-native-document-picker';
+import {useDispatch} from 'react-redux';
 import {IcArrowBack} from '../../../assets';
 import {
   Button,
@@ -9,23 +11,59 @@ import {
   TextInput,
   TopNavbar,
 } from '../../../components';
-import {addLogbookAction} from '../../../redux/action';
+import {setLoading, tambahLogbookAction} from '../../../redux/action';
 import {colors, useForm} from '../../../utils';
 
 const MhsTambahLogbook = ({navigation}) => {
   const [form, setForm] = useForm({
-    kegiatan: '',
+    bimbingan: '',
     catatankemajuan: '',
-    filetambahan: '',
+    emailmahasiswa: '',
+    filetambahan: null,
   });
-
   const dispatch = useDispatch();
-  const logbookReducer = useSelector(state => state.logbookReducer);
+
+  //set state mahasiswapengaju
+  const getMahasiswaPengaju = async () => {
+    let idMahasiswa = await getIdMhs();
+    let idku = JSON.parse(idMahasiswa);
+    return setForm('emailmahasiswa', idku.value.email);
+  };
+
+  const getIdMhs = () => {
+    return new Promise(function (resolve, reject) {
+      const id = AsyncStorage.getItem('userProfile');
+      resolve(id);
+    });
+  };
 
   const onsubmit = () => {
     console.log('form data: ', form);
-    dispatch(addLogbookAction(navigation, form));
+    dispatch(setLoading(true));
+    dispatch({type: 'SET_TAMBAHLOGBOOK', value: form});
+    dispatch(tambahLogbookAction(form, navigation));
   };
+
+  const selectFile = async () => {
+    try {
+      const res = await DocumentPicker.pick({
+        type: [DocumentPicker.types.images],
+      });
+      setForm('file', res);
+    } catch (err) {
+      setForm('file', null);
+      if (DocumentPicker.isCancel(err)) {
+        alert('dibatalkan');
+      } else {
+        alert('Unknown Error: ' + JSON.stringify(err));
+        throw err;
+      }
+    }
+  };
+
+  useEffect(() => {
+    getMahasiswaPengaju();
+  }, []);
 
   return (
     <View style={styles.page}>
@@ -39,8 +77,8 @@ const MhsTambahLogbook = ({navigation}) => {
           <TextInput
             label="Kegiatan"
             placeholder="masukkan kegiatan"
-            value={form.kegiatn}
-            onChangeText={value => setForm('kegiatan', value)}
+            value={form.bimbingan}
+            onChangeText={value => setForm('bimbingan', value)}
           />
           <Gap height={20} />
           <TextInput
@@ -53,10 +91,14 @@ const MhsTambahLogbook = ({navigation}) => {
             textAlignVertical="top"
           />
           <Gap height={20} />
-          <FileInput label="File Tambahan (optional)" />
+          <FileInput
+            label="File Tambahan (foto)"
+            namefile={form.file}
+            onPress={selectFile}
+          />
         </View>
         <View>
-          <Button label="Tambah Logbook" onPress={onsubmit} />
+          <Button label="Kirim" onPress={onsubmit} />
         </View>
       </View>
     </View>

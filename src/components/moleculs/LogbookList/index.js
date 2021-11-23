@@ -12,7 +12,7 @@ const LogbookList = ({iconStatus, titleLogbook, dateLogbook, onPress}) => {
           <Text numberOfLines={1} style={styles.titleItem}>
             {titleLogbook}..
           </Text>
-          <Gap height={5} />
+          <Gap height={2} />
           <Text style={styles.dateItem}>{dateLogbook}</Text>
         </View>
         <View style={styles.iconItem}>

@@ -12,7 +12,7 @@ const MhsDetailLogbook = ({navigation, route}) => {
   const {bimbingan, catatankemajuan, updated_at, status, filetambahan, path} =
     route.params;
   const prefixUrl =
-    'https://project.syaripedia.net/apiuploadfile/storage/app/public/';
+    'https://project.syaripedia.net/daftarsidang/storage/app/public/';
 
   return (
     <View style={styles.page}>
@@ -76,8 +76,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.primary,
     padding: 20,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
+    borderTopLeftRadius: 15,
+    borderTopRightRadius: 15,
   },
   date: {
     flexDirection: 'row',

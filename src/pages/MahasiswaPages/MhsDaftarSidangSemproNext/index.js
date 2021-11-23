@@ -23,8 +23,8 @@ const MhsDaftarSidangSemproNext = ({navigation}) => {
     ...daftarSemproReducer,
   };
   const onSubmit = () => {
-    dispatch({type: 'SET_DAFTARSEMPRO2', value: form});
     dispatch(setLoading(true));
+    dispatch({type: 'SET_DAFTARSEMPRO2', value: form});
     dispatch(daftarSemproAction(data, navigation));
   };
 

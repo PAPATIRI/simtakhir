@@ -16,14 +16,16 @@ const MhsSuksesTambahLogbook = ({navigation}) => {
       <Button
         label="OK"
         onPress={() => {
-          navigation.navigate('MhsDaftarSidang');
+          navigation.replace('MhsLogbook');
         }}
       />
       <Gap height={10} />
       <Button
         type="secondaryAccent"
         label="Tambah Logbook Lainnya"
-        onPress={() => navigation.navigate('MhsTambahLogbook')}
+        onPress={() =>
+          navigation.reset({index: 0, routes: [{name: 'MhsTambahLogbook'}]})
+        }
       />
     </View>
   );

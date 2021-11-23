@@ -1,5 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import {
   IcAcceptedLogbook,
   IcArrowBack,
@@ -8,7 +14,13 @@ import {
   IcPlus,
   IcWaitingLogbook,
 } from '../../../assets';
-import {Gap, LoadingSpinner, LogbookList, TopNavbar} from '../../../components';
+import {
+  Button,
+  Gap,
+  LoadingSpinner,
+  LogbookList,
+  TopNavbar,
+} from '../../../components';
 import {colors} from '../../../utils';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -18,9 +30,8 @@ import ActionButton from 'react-native-action-button';
 const MhsLogbook = ({navigation}) => {
   const [isLoading, setIsLoading] = useState(true);
   const [dataLogbook, setDataLogbook] = useState([]);
-  const [idMhs, setIdMhs] = useState('');
 
-  const url = 'https://project.syaripedia.net/apiuploadfile/public/api/logbook';
+  const url = 'https://project.syaripedia.net/daftarsidang/public/api/logbook';
 
   const getLogbookData = async () => {
     let idMahasiswa = await getIdMhs();
@@ -49,6 +60,9 @@ const MhsLogbook = ({navigation}) => {
   };
 
   useEffect(() => {
+    const willFocusSubscription = navigation.addListener('focus', () => {
+      getLogbookData();
+    });
     getLogbookData();
   }, []);
 
@@ -57,50 +71,48 @@ const MhsLogbook = ({navigation}) => {
       <TopNavbar
         iconLeft={<IcArrowBack />}
         titleBar="Logbook"
-        onPress={() => navigation.goBack()}
+        onPress={() => navigation.navigate('MhsHome')}
       />
       <View style={styles.content}>
-        <Gap height={20} />
         <View style={styles.bottomContent}>
-          {isLoading ? (
-            <LoadingSpinner />
-          ) : (
-            dataLogbook.map(itemLogbook => {
-              return (
-                <LogbookList
-                  titleLogbook={itemLogbook.bimbingan}
-                  key={itemLogbook.id}
-                  dateLogbook={new Date(itemLogbook.updated_at).toDateString()}
-                  iconStatus={
-                    itemLogbook.status == 'menunggu' ? (
-                      <IcWaitingLogbook />
-                    ) : (
-                      <IcAcceptedLogbook />
-                    )
-                  }
-                  onPress={() =>
-                    navigation.navigate('MhsDetailLogbook', itemLogbook)
-                  }
-                />
-              );
-            })
-          )}
+          <ScrollView showsVerticalScrollIndicator={false}>
+            {isLoading ? (
+              <LoadingSpinner />
+            ) : (
+              dataLogbook.map(itemLogbook => {
+                return (
+                  <LogbookList
+                    titleLogbook={itemLogbook.bimbingan}
+                    key={itemLogbook.id}
+                    dateLogbook={new Date(
+                      itemLogbook.updated_at,
+                    ).toDateString()}
+                    iconStatus={
+                      itemLogbook.status == 'menunggu' ? (
+                        <IcWaitingLogbook />
+                      ) : (
+                        <IcAcceptedLogbook />
+                      )
+                    }
+                    onPress={() =>
+                      navigation.navigate('MhsDetailLogbook', itemLogbook)
+                    }
+                  />
+                );
+              })
+            )}
+          </ScrollView>
         </View>
         <View style={styles.actionbutton}>
-          <ActionButton buttonColor="rgba(231,76,60,1)">
-            <ActionButton.Item
-              buttonColor="#9b59b6"
-              title="New Task"
-              onPress={() => console.log('notes tapped!')}>
-              <IcDownload />
-            </ActionButton.Item>
-            <ActionButton.Item
-              buttonColor="#3498db"
-              title="Notifications"
-              onPress={() => {}}>
-              <IcPlus />
-            </ActionButton.Item>
-          </ActionButton>
+          <Button
+            label="Tambah Logbook"
+            onPress={() => {
+              navigation.reset({
+                index: 0,
+                routes: [{name: 'MhsTambahLogbook'}],
+              });
+            }}
+          />
         </View>
       </View>
     </View>
@@ -117,14 +129,11 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
     backgroundColor: colors.primary,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
+    borderTopLeftRadius: 15,
+    borderTopRightRadius: 15,
     padding: 20,
   },
   bottomContent: {
-    flex: 1,
-  },
-  actionbutton: {
     flex: 1,
   },
 });

@@ -24,10 +24,10 @@ const MhsDaftarPendadaranNext = ({navigation}) => {
     ...form,
     ...daftarPendadaranReducer,
   };
+
   const onSubmit = () => {
-    console.log('form data: ', data);
-    dispatch({type: 'SET_DAFTARPENDADARAN2', value: form});
     dispatch(setLoading(true));
+    dispatch({type: 'SET_DAFTARPENDADARAN2', value: form});
     dispatch(daftarPendadaranAction(data, navigation));
   };
 
