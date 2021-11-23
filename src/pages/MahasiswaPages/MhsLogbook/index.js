@@ -64,6 +64,8 @@ const MhsLogbook = ({navigation}) => {
       getLogbookData();
     });
     getLogbookData();
+
+    return willFocusSubscription;
   }, []);
 
   return (
@@ -71,7 +73,7 @@ const MhsLogbook = ({navigation}) => {
       <TopNavbar
         iconLeft={<IcArrowBack />}
         titleBar="Logbook"
-        onPress={() => navigation.navigate('MhsHome')}
+        onPress={() => navigation.navigate('MhsDrawer')}
       />
       <View style={styles.content}>
         <View style={styles.bottomContent}>

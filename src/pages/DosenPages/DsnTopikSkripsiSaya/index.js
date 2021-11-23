@@ -11,7 +11,12 @@ import {
 } from 'react-native';
 import {useDispatch} from 'react-redux';
 import {IcArrowBack} from '../../../assets';
-import {CardTopikSkripsiDsn, Gap, TopNavbarSearch} from '../../../components';
+import {
+  CardTopikSkripsiDsn,
+  Gap,
+  LoadingSpinner,
+  TopNavbarSearch,
+} from '../../../components';
 import {API_HOST} from '../../../config';
 import {setLoading} from '../../../redux/action';
 import {colors, fonts, getData} from '../../../utils';
@@ -19,6 +24,7 @@ import {colors, fonts, getData} from '../../../utils';
 const DsnTopikSkripsiSaya = ({navigation}) => {
   const [data, setData] = useState([]);
   const [idDosen, setIdDosen] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
   // searching state
   const [filteredData, setFilteredData] = useState([]);
   const [search, setSearch] = useState('');
@@ -45,13 +51,13 @@ const DsnTopikSkripsiSaya = ({navigation}) => {
           },
         })
         .then(res => {
+          setIsLoading(false);
           setData(res.data);
           setFilteredData(res.data);
-          dispatch(setLoading(false));
         })
         .catch(err => {
+          setIsLoading(false);
           console.log(err);
-          dispatch(setLoading(false));
         });
     });
   };
@@ -72,7 +78,6 @@ const DsnTopikSkripsiSaya = ({navigation}) => {
   };
 
   useEffect(() => {
-    dispatch(setLoading(true));
     const willFocusSubscription = navigation.addListener('focus', () => {
       getDataTopik();
     });
@@ -104,24 +109,28 @@ const DsnTopikSkripsiSaya = ({navigation}) => {
         <ScrollView
           showsVerticalScrollIndicator={false}
           contentContainerStyle={styles.scrollist}>
-          {filteredData.map(data => {
-            if (data.dosenpenawar == idDosen) {
-              return (
-                <CardTopikSkripsiDsn
-                  color={colors.text.accent}
-                  title={data.judultopik}
-                  key={data.id}
-                  bidang={data.bidangtopik}
-                  tanggal={new Date(data.updated_at).toDateString()}
-                  pendaftar={2}
-                  status="open"
-                  onPress={() =>
-                    navigation.navigate('DsnDetailTopikSaya', data)
-                  }
-                />
-              );
-            }
-          })}
+          {isLoading ? (
+            <LoadingSpinner />
+          ) : (
+            filteredData.map(data => {
+              if (data.dosenpenawar == idDosen) {
+                return (
+                  <CardTopikSkripsiDsn
+                    color={colors.text.accent}
+                    title={data.judultopik}
+                    key={data.id}
+                    bidang={data.bidangtopik}
+                    tanggal={new Date(data.updated_at).toDateString()}
+                    pendaftar={2}
+                    status="open"
+                    onPress={() =>
+                      navigation.navigate('DsnDetailTopikSaya', data)
+                    }
+                  />
+                );
+              }
+            })
+          )}
         </ScrollView>
       </View>
     </View>

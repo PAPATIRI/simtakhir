@@ -11,14 +11,14 @@ import {
 } from 'react-native';
 import {useDispatch} from 'react-redux';
 import {IcArrowBack, Mhs1} from '../../../assets';
-import {CardTopikAjuan, TopNavbar} from '../../../components';
+import {CardTopikAjuan, LoadingSpinner, TopNavbar} from '../../../components';
 import {API_HOST} from '../../../config';
-import {setLoading} from '../../../redux/action';
 import {colors, getData} from '../../../utils';
 
 const DsnRequestMhs = ({navigation}) => {
   const [data, setData] = useState([]);
   const [idDosen, setIdDosen] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
 
   const getIdDosen = async () => {
@@ -44,18 +44,17 @@ const DsnRequestMhs = ({navigation}) => {
             },
           })
           .then(res => {
+            setIsLoading(false);
             setData(res.data);
             console.log('data ajuan: ', res.data);
-            dispatch(setLoading(false));
           })
           .catch(err => {
+            setIsLoading(false);
             console.log(err);
-            dispatch(setLoading(false));
           });
       })
       .catch(err => {
         console.log(err);
-        dispatch(setLoading(false));
       });
   };
 
@@ -63,7 +62,6 @@ const DsnRequestMhs = ({navigation}) => {
     const willFocusSubscription = navigation.addListener('focus', () => {
       getTopikAjuan();
     });
-    dispatch(setLoading(true));
     getIdDosen();
     getTopikAjuan();
 
@@ -79,22 +77,26 @@ const DsnRequestMhs = ({navigation}) => {
       />
       <View style={styles.content}>
         <ScrollView showsVerticalScrollIndicator={false}>
-          {data.map(itemtopik => {
-            if (itemtopik.dosentujuan == idDosen) {
-              return (
-                <CardTopikAjuan
-                  key={itemtopik.id}
-                  titleCard={itemtopik.judultopik}
-                  name={itemtopik.mahasiswapengaju}
-                  periode={itemtopik.periode}
-                  status={itemtopik.status}
-                  onPress={() =>
-                    navigation.navigate('DsnDetailRequestMhs', itemtopik)
-                  }
-                />
-              );
-            }
-          })}
+          {isLoading ? (
+            <LoadingSpinner />
+          ) : (
+            data.map(itemtopik => {
+              if (itemtopik.dosentujuan == idDosen) {
+                return (
+                  <CardTopikAjuan
+                    key={itemtopik.id}
+                    titleCard={itemtopik.judultopik}
+                    name={itemtopik.mahasiswapengaju}
+                    periode={itemtopik.periode}
+                    status={itemtopik.status}
+                    onPress={() =>
+                      navigation.navigate('DsnDetailRequestMhs', itemtopik)
+                    }
+                  />
+                );
+              }
+            })
+          )}
         </ScrollView>
       </View>
     </View>
