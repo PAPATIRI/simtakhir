@@ -153,8 +153,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.primary,
     padding: 20,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
+    borderTopLeftRadius: 15,
+    borderTopRightRadius: 15,
   },
   header: {
     flexDirection: 'row',

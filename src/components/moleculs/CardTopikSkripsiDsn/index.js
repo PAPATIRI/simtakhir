@@ -49,14 +49,14 @@ const styles = StyleSheet.create({
   title: {
     fontFamily: fonts.primary[600],
     fontSize: 16,
-    color: colors.text.blue,
+    color: colors.text.primary,
     lineHeight: 16 * 1.5,
   },
   bidang: {
     fontFamily: fonts.primary[400],
     fontSize: 14,
     lineHeight: 14 * 1.5,
-    color: colors.text.primary,
+    color: colors.text.secondary,
   },
   bottomContent: {
     flexDirection: 'row',
@@ -69,13 +69,7 @@ const styles = StyleSheet.create({
     fontFamily: fonts.primary[400],
     fontSize: 14,
     lineHeight: 14 * 1.5,
-    color: colors.text.primary,
-  },
-  pendaftar: {
-    fontFamily: fonts.primary[400],
-    fontSize: 14,
-    lineHeight: 14 * 1.5,
-    color: colors.text.primary,
+    color: colors.text.secondary,
   },
   status: color => ({
     fontFamily: fonts.primary[400],

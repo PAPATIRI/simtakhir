@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Image,
   ImageBackground,
   StyleSheet,
   Text,
@@ -8,16 +7,14 @@ import {
   View,
 } from 'react-native';
 import {Gap} from '../..';
-import {ProfilImg} from '../../../assets';
 import {colors, fonts} from '../../../utils';
 
-const CardMhsBimbingan = ({nama, status, periode, onPress}) => {
+const CardMhsBimbingan = ({nama, status, profileImg, periode, onPress}) => {
   return (
     <TouchableOpacity activeOpacity={0.9} onPress={onPress}>
       <View style={styles.cardWrapper}>
-        {/* <Image source={ProfilImg} style={styles.image} /> */}
         <ImageBackground
-          source={ProfilImg}
+          source={{uri: profileImg}}
           resizeMode="cover"
           imageStyle={{borderRadius: 10}}
           style={styles.imgcard}>
@@ -40,7 +37,7 @@ const styles = StyleSheet.create({
   cardWrapper: {
     backgroundColor: colors.primary,
     height: 220,
-    width: 150,
+    width: 160,
     elevation: 2,
     borderRadius: 10,
     marginVertical: 10,
@@ -49,8 +46,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'space-between',
     padding: 15,
-    backgroundColor: colors.primary,
-    marginTop: '85%',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    marginTop: '60%',
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
     borderTopRightRadius: 40,
@@ -61,18 +58,22 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   nama: {
-    fontFamily: fonts.primary[400],
+    fontFamily: fonts.primary[600],
     fontSize: 16,
-    color: colors.text.accent,
+    lineHeight: 16 * 1.5,
+    color: colors.text.white,
+    textTransform: 'capitalize',
   },
   status: {
     fontFamily: fonts.primary[400],
     fontSize: 14,
-    color: colors.text.primary,
+    lineHeight: 14 * 1.5,
+    color: colors.text.white,
   },
   periode: {
-    fontFamily: fonts.primary[300],
+    fontFamily: fonts.primary[400],
     fontSize: 14,
-    color: colors.text.primary,
+    lineHeight: 14 * 1.5,
+    color: colors.text.white,
   },
 });

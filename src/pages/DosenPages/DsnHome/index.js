@@ -30,8 +30,8 @@ const DsnHome = ({navigation}) => {
 
   const getDataUser = async () => {
     try {
-      const name = await AsyncStorage.getItem('userProfile');
-      const data = JSON.parse(name);
+      const datauser = await AsyncStorage.getItem('userProfile');
+      const data = JSON.parse(datauser);
 
       if (data != null) {
         setUserName(data.value.username);
@@ -118,8 +118,8 @@ const styles = StyleSheet.create({
   content: {
     flex: 3,
     backgroundColor: colors.primary,
-    borderTopStartRadius: 20,
-    borderTopEndRadius: 20,
+    borderTopStartRadius: 15,
+    borderTopEndRadius: 15,
   },
   cardWrapper: {
     marginTop: -75,
