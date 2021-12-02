@@ -50,7 +50,7 @@ const DsnTambahTopik = ({navigation}) => {
     <View style={styles.page}>
       <TopNavbar
         iconLeft={<IcArrowBack />}
-        titleBar="Tambah Topik Tugas Akhir"
+        titleBar="Tambah Topik"
         onPress={() => {
           navigation.goBack();
         }}

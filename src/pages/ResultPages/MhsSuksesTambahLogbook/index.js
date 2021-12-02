@@ -16,7 +16,8 @@ const MhsSuksesTambahLogbook = ({navigation}) => {
       <Button
         label="OK"
         onPress={() => {
-          navigation.replace('MhsLogbook');
+          // navigation.replace('MhsLogbook');
+          navigation.reset({index: 0, routes: [{name: 'MhsLogbook'}]});
         }}
       />
       <Gap height={10} />

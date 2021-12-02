@@ -13,6 +13,12 @@ export const tambahTopikReducer = (state = initStateTambahTopik, action) => {
       ...state,
       judultopik: action.value.judultopik,
       deskripsitopik: action.value.deskripsitopik,
+    };
+  }
+
+  if (action.type === 'SET_TAMBAHTOPIK2') {
+    return {
+      ...state,
       bidangtopik: action.value.bidangtopik,
       periode: action.value.periode,
       dosenpenawar: action.value.dosenpenawar,

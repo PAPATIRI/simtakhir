@@ -22,19 +22,16 @@ const DsnRequestMhs = ({navigation}) => {
   const dispatch = useDispatch();
 
   const getIdDosen = async () => {
-    try {
-      const id = await AsyncStorage.getItem('userProfile');
-      const dataId = JSON.parse(id);
-      console.log('data user: ', dataId.value.dosen.nama);
-
-      dataId ? setIdDosen(dataId.value.dosen.nama) : 'error id';
-      console.log('data id dosen: ', idDosen);
-    } catch (err) {
-      console.log(err);
-    }
+    return new Promise(function (resolve, reject) {
+      const id = AsyncStorage.getItem('userProfile');
+      resolve(id);
+    });
   };
 
   const getTopikAjuan = async () => {
+    let idDosen = await getIdDosen();
+    let idku = JSON.parse(idDosen);
+
     await getData('token')
       .then(async res => {
         await axios
@@ -45,8 +42,8 @@ const DsnRequestMhs = ({navigation}) => {
           })
           .then(res => {
             setIsLoading(false);
+            setIdDosen(idku.value.dosen.nama);
             setData(res.data);
-            console.log('data ajuan: ', res.data);
           })
           .catch(err => {
             setIsLoading(false);
@@ -62,7 +59,6 @@ const DsnRequestMhs = ({navigation}) => {
     const willFocusSubscription = navigation.addListener('focus', () => {
       getTopikAjuan();
     });
-    getIdDosen();
     getTopikAjuan();
 
     return willFocusSubscription;

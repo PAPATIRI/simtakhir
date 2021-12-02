@@ -30,7 +30,7 @@ export default TextInput;
 
 const styles = StyleSheet.create({
   label: {
-    fontFamily: fonts.primary[400],
+    fontFamily: fonts.primary[600],
     fontSize: 16,
     textTransform: 'capitalize',
     lineHeight: 16 * 1.5,

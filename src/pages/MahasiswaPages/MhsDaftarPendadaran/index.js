@@ -1,11 +1,11 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, {useEffect} from 'react';
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {ScrollView, StyleSheet, View} from 'react-native';
+import DocumentPicker from 'react-native-document-picker';
+import {useDispatch} from 'react-redux';
 import {IcArrowBack} from '../../../assets';
 import {Button, FileInput, Gap, TopNavbar} from '../../../components';
 import {colors, useForm} from '../../../utils';
-import DocumentPicker from 'react-native-document-picker';
-import {useDispatch} from 'react-redux';
 
 const MhsDaftarPendadaran = ({navigation}) => {
   const [form, setForm] = useForm({

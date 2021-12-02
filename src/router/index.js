@@ -23,6 +23,7 @@ import {
   DsnSuksesTerimaAjuan,
   DsnSuksesTerimaPendaftar,
   DsnTambahTopik,
+  DsnTambahTopikNext,
   Login,
   MhsAjukanTopik,
   MhsAjukanTopikNext,
@@ -133,7 +134,6 @@ const CustomDrawer = props => {
     try {
       const name = await AsyncStorage.getItem('userProfile');
       const data = JSON.parse(name);
-      console.log(data);
 
       if (data.value.role.name == 'dosen') {
         setUserName(data.value.username);
@@ -395,6 +395,11 @@ const Router = () => {
       <Stack.Screen
         name="DsnDetailTambahTopik"
         component={DsnDetailTambahTopik}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="DsnTambahTopikNext"
+        component={DsnTambahTopikNext}
         options={{headerShown: false}}
       />
       <Stack.Screen

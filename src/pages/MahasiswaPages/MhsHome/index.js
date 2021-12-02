@@ -6,12 +6,9 @@ import {
   IcHamburgerMenu,
   IcLogBook,
   IcTopikSkripsi,
-  Mhs1,
-  ProfilImg,
 } from '../../../assets';
 import {CardProfile, Menu, TopNavbar} from '../../../components';
-import {API_HOST} from '../../../config/API';
-import {colors, getData} from '../../../utils';
+import {colors} from '../../../utils';
 
 const MhsHome = ({navigation}) => {
   const [userName, setUserName] = useState('');
@@ -24,7 +21,6 @@ const MhsHome = ({navigation}) => {
   const getDataUser = async () => {
     try {
       const name = await AsyncStorage.getItem('userProfile');
-      console.log('data user: ', name);
       const data = JSON.parse(name);
 
       if (data != null) {

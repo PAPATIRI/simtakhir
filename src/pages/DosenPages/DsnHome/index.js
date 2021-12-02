@@ -1,25 +1,10 @@
-import React, {useState, useEffect} from 'react';
-import {
-  ColorPropType,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
-import {
-  ArdiansyahImg,
-  IcBimbingan,
-  IcCalender,
-  IcHamburgerMenu,
-  IcLogBook,
-  IcSkripsi,
-  IcTopikSkripsi,
-} from '../../../assets';
-import {colors, fonts, getData} from '../../../utils';
-import {CardMenu, CardProfile, Gap, Menu, TopNavbar} from '../../../components';
-import CardMenuDosen from '../../../components/moleculs/CardMenuDosen';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import axios from 'axios';
+import React, {useEffect, useState} from 'react';
+import {StyleSheet, View} from 'react-native';
+import {IcBimbingan, IcHamburgerMenu, IcSkripsi} from '../../../assets';
+import {CardProfile, Gap, TopNavbar} from '../../../components';
+import CardMenuDosen from '../../../components/moleculs/CardMenuDosen';
+import {colors, fonts} from '../../../utils';
 
 const DsnHome = ({navigation}) => {
   const [userName, setUserName] = useState('');

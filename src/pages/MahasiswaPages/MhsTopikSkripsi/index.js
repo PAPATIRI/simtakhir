@@ -22,7 +22,8 @@ const MhsTopikSkripsi = ({navigation}) => {
         <View style={styles.topContent}>
           <CardMenu
             iconCard={<IcAjukanTopik />}
-            title="Ajukan Topik ke Dosen"
+            title="Ajukan Topik"
+            title2="Ke Dosen"
             bgCardColor={colors.primary}
             fontsfamily={fonts.primary[400]}
             fontsize={20}
@@ -32,7 +33,8 @@ const MhsTopikSkripsi = ({navigation}) => {
           <Gap width={20} />
           <CardMenu
             iconCard={<IcAmbilTopik />}
-            title="Ambil Topik dari Dosen"
+            title="Ambil"
+            title2="Topik Dosen"
             bgCardColor={colors.primary}
             fontsfamily={fonts.primary[400]}
             fontsize={20}
@@ -44,7 +46,8 @@ const MhsTopikSkripsi = ({navigation}) => {
         <View style={styles.bottomContent}>
           <CardMenu
             iconCard={<IcHasilAjuan />}
-            title="Hasil Ajuan Topik"
+            title="Hasil"
+            title2="Ajuan Topik"
             bgCardColor={colors.primary}
             fontsfamily={fonts.primary[400]}
             fontsize={20}

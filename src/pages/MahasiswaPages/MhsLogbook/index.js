@@ -1,31 +1,19 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from 'axios';
 import React, {useEffect, useState} from 'react';
-import {
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {ScrollView, StyleSheet, View} from 'react-native';
 import {
   IcAcceptedLogbook,
   IcArrowBack,
-  IcDownload,
-  IcDropDown,
-  IcPlus,
   IcWaitingLogbook,
 } from '../../../assets';
 import {
   Button,
-  Gap,
   LoadingSpinner,
   LogbookList,
   TopNavbar,
 } from '../../../components';
 import {colors} from '../../../utils';
-import axios from 'axios';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-// import ActionButton from 'react-native-simple-action-button';
-import ActionButton from 'react-native-action-button';
 
 const MhsLogbook = ({navigation}) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -40,7 +28,6 @@ const MhsLogbook = ({navigation}) => {
     await axios
       .get(`${url}`)
       .then(async res => {
-        console.log('logbook data: ', res.data);
         setIsLoading(false);
         setDataLogbook(
           res.data.data.filter(i => i.emailmahasiswa == idku.value.email),
@@ -63,7 +50,6 @@ const MhsLogbook = ({navigation}) => {
     const willFocusSubscription = navigation.addListener('focus', () => {
       getLogbookData();
     });
-    getLogbookData();
 
     return willFocusSubscription;
   }, []);

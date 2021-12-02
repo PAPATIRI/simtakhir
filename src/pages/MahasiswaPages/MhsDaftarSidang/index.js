@@ -1,13 +1,7 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import {
-  IcArrowBack,
-  IcPendadaran,
-  IcSempro,
-  IlPendadaran,
-  IlSempro,
-} from '../../../assets';
-import {CardMenu, Gap, TopNavbar} from '../../../components';
+import {StyleSheet, View} from 'react-native';
+import {IcArrowBack, IcPendadaran, IcSempro} from '../../../assets';
+import {CardMenu, TopNavbar} from '../../../components';
 import {colors, fonts} from '../../../utils';
 
 const MhsDaftarSidang = ({navigation}) => {
@@ -22,7 +16,8 @@ const MhsDaftarSidang = ({navigation}) => {
         <View style={styles.topContent}>
           <CardMenu
             iconCard={<IcSempro />}
-            title="Daftar Sempro"
+            title="Daftar"
+            title2="Sempro"
             bgCardColor={colors.primary}
             fontsfamily={fonts.primary[400]}
             fontsize={20}
@@ -33,7 +28,8 @@ const MhsDaftarSidang = ({navigation}) => {
           />
           <CardMenu
             iconCard={<IcPendadaran />}
-            title="Daftar Pendadaran"
+            title="Daftar"
+            title2="Pendadaran"
             bgCardColor={colors.primary}
             fontsfamily={fonts.primary[400]}
             fontsize={20}

@@ -1,15 +1,9 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
+import {useDispatch} from 'react-redux';
 import {IcArrowBack} from '../../../assets';
-import {
-  Button,
-  Gap,
-  ModalPicker,
-  TextInput,
-  TopNavbar,
-} from '../../../components';
+import {Button, Gap, TextInput, TopNavbar} from '../../../components';
 import {colors, useForm} from '../../../utils';
-import {useSelector, useDispatch} from 'react-redux';
 
 const MhsAjukanTopik = ({navigation}) => {
   const [form, setForm] = useForm({

@@ -1,7 +1,6 @@
 import axios from 'axios';
 import {setLoading} from '.';
-import {API_HOST} from '../../config';
-import {getData, showMessage} from '../../utils';
+import {showMessage} from '../../utils';
 
 const url = 'https://project.syaripedia.net/daftarsidang/public/api/logbook';
 

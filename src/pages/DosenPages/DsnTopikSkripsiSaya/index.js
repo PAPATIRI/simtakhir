@@ -32,17 +32,17 @@ const DsnTopikSkripsiSaya = ({navigation}) => {
   const dispatch = useDispatch();
 
   const getIdDosen = async () => {
-    try {
-      const id = await AsyncStorage.getItem('userProfile');
-      const dataId = JSON.parse(id);
-
-      dataId ? setIdDosen(dataId.value.dosen.nama) : 'error id';
-    } catch (err) {
-      console.log(err);
-    }
+    return new Promise(function (resolve, reject) {
+      const id = AsyncStorage.getItem('userProfile');
+      resolve(id);
+    });
   };
 
   const getDataTopik = async () => {
+    let getId = await getIdDosen();
+    let idku = JSON.parse(getId);
+    console.log('dosen id: ', idku);
+
     await getData('token').then(async res => {
       await axios
         .get(`${API_HOST.url}/topikskripsis?_sort=created_at:DESC`, {
@@ -52,6 +52,7 @@ const DsnTopikSkripsiSaya = ({navigation}) => {
         })
         .then(res => {
           setIsLoading(false);
+          setIdDosen(idku.value.username);
           setData(res.data);
           setFilteredData(res.data);
         })
@@ -81,9 +82,6 @@ const DsnTopikSkripsiSaya = ({navigation}) => {
     const willFocusSubscription = navigation.addListener('focus', () => {
       getDataTopik();
     });
-    getIdDosen();
-    getDataTopik();
-
     return willFocusSubscription;
   }, []);
 
@@ -113,6 +111,7 @@ const DsnTopikSkripsiSaya = ({navigation}) => {
             <LoadingSpinner />
           ) : (
             filteredData.map(data => {
+              console.log('data topik: ', data);
               if (data.dosenpenawar == idDosen) {
                 return (
                   <CardTopikSkripsiDsn
