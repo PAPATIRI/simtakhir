@@ -25,7 +25,8 @@ const DsnTopikSkripsi = ({navigation}) => {
       <View style={styles.content}>
         <View style={styles.topContent}>
           <CardMenu
-            title="Tambah Topik Skripsi"
+            title="Tambah"
+            title2="Topik Skripsi"
             bgCardColor={colors.white}
             iconCard={<IcTambahTopikDosen />}
             fontsfamily={fonts.primary[600]}
@@ -36,7 +37,8 @@ const DsnTopikSkripsi = ({navigation}) => {
             }}
           />
           <CardMenu
-            title="Request Mahasiswa"
+            title="Request"
+            title2="Mahasiswa"
             bgCardColor={colors.white}
             iconCard={<IcRequestMhs />}
             fontsfamily={fonts.primary[600]}
@@ -49,7 +51,8 @@ const DsnTopikSkripsi = ({navigation}) => {
         </View>
         <View style={styles.bottomContent}>
           <CardMenu
-            title="Topik Skripsi Saya"
+            title="Topik"
+            title2="Skripsi Saya"
             bgCardColor={colors.white}
             iconCard={<IcTopikSayaDosen />}
             fontsfamily={fonts.primary[600]}

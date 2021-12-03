@@ -34,6 +34,7 @@ const DsnDetailRequestMhs = ({navigation, route}) => {
         })
         .then(res => {
           dispatch(setLoading(false));
+          showMessage('berhasil menolak topik ajuan mahasiswa', 'success');
           navigation.navigate('DsnRequestMhs');
         })
         .catch(err => {
@@ -55,6 +56,7 @@ const DsnDetailRequestMhs = ({navigation, route}) => {
         })
         .then(res => {
           dispatch(setLoading(false));
+          showMessage('berhasil menerima topik ajuan mahasiswa', 'success');
           navigation.navigate('DsnRequestMhs');
         })
         .catch(err => {
@@ -118,7 +120,7 @@ const DsnDetailRequestMhs = ({navigation, route}) => {
             <View>
               <Text style={styles.labelData}>status</Text>
               <Gap height={2} />
-              <Text style={styles.descData}>{status}</Text>
+              <Text style={styles.statusText(status)}>{status}</Text>
             </View>
           </ScrollView>
           <Gap height={10} />
@@ -146,9 +148,9 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   labelTitle: {
-    fontFamily: fonts.primary[400],
+    fontFamily: fonts.primary[600],
     fontSize: 16,
-    color: colors.text.blue,
+    color: colors.text.primary,
     lineHeight: 16 * 1.5,
   },
   botHeader: {
@@ -177,4 +179,10 @@ const styles = StyleSheet.create({
     color: colors.text.primary,
     lineHeight: 16 * 1.5,
   },
+  statusText: status => ({
+    fontFamily: fonts.primary[400],
+    fontSize: 16,
+    color: status == 'menunggu' ? colors.text.warning : colors.text.accent,
+    lineHeight: 16 * 1.5,
+  }),
 });

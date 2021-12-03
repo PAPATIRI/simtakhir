@@ -21,7 +21,7 @@ const CardTopikSkripsiDsn = ({
         <Text style={styles.title} numberOfLines={2}>
           {title}
         </Text>
-        <Gap height={5} />
+        <Gap height={2} />
         <Text style={styles.bidang}>{bidang}</Text>
       </View>
       <Gap height={20} />
@@ -54,8 +54,8 @@ const styles = StyleSheet.create({
   },
   bidang: {
     fontFamily: fonts.primary[400],
-    fontSize: 14,
-    lineHeight: 14 * 1.5,
+    fontSize: 16,
+    lineHeight: 16 * 1.5,
     color: colors.text.secondary,
   },
   bottomContent: {
@@ -67,8 +67,8 @@ const styles = StyleSheet.create({
   },
   tanggal: {
     fontFamily: fonts.primary[400],
-    fontSize: 14,
-    lineHeight: 14 * 1.5,
+    fontSize: 16,
+    lineHeight: 16 * 1.5,
     color: colors.text.secondary,
   },
   status: color => ({

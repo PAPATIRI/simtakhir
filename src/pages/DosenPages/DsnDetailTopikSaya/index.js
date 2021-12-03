@@ -1,17 +1,17 @@
 import React from 'react';
 import {
+  Alert,
+  ScrollView,
   StyleSheet,
   Text,
-  View,
   TouchableOpacity,
-  ScrollView,
-  Alert,
+  View,
 } from 'react-native';
-import {colors, fonts} from '../../../utils';
-import {Button, ButtonDangerSedond, Gap, TopNavbar} from '../../../components';
-import {IcArrowBack} from '../../../assets';
 import {useDispatch} from 'react-redux';
+import {IcArrowBack} from '../../../assets';
+import {Button, ButtonDangerSedond, Gap, TopNavbar} from '../../../components';
 import {hapusTopikAction, setLoading} from '../../../redux/action';
+import {colors, fonts} from '../../../utils';
 
 const DsnDetailTopikSaya = ({navigation, route}) => {
   const {
@@ -49,50 +49,45 @@ const DsnDetailTopikSaya = ({navigation, route}) => {
               <Text style={styles.labelData}>Judul</Text>
               <Gap height={2} />
               <Text style={styles.descData}>{judultopik}</Text>
-              <Gap height={20} />
+              <Gap height={16} />
             </View>
             <View>
               <Text style={styles.labelData}>deskripsi topik</Text>
               <Gap height={2} />
               <Text style={styles.descData}>{deskripsitopik}</Text>
-              <Gap height={20} />
+              <Gap height={16} />
             </View>
-            <View style={styles.dataDouble}>
-              <View style={styles.dataDoubleLeft}>
-                <Text style={styles.labelData}>Bidang Topik</Text>
-                <Gap height={2} />
-                <Text style={styles.descData}>{bidangtopik}</Text>
-                <Gap height={20} />
-              </View>
-              <View style={styles.dataDoubleRight}>
-                <Text style={styles.labelData}>Periode</Text>
-                <Gap height={2} />
-                <Text style={styles.descData}>{periode}</Text>
-                <Gap height={20} />
-              </View>
+            <View>
+              <Text style={styles.labelData}>Bidang Topik</Text>
+              <Gap height={2} />
+              <Text style={styles.descData}>{bidangtopik}</Text>
+              <Gap height={16} />
             </View>
-            <View style={styles.dataDouble}>
-              <View style={styles.dataDoubleLeft}>
-                <Text style={styles.labelData}>Mahasiswa Terpilih</Text>
-                <Gap height={2} />
-                <Text style={styles.descData}>
-                  {mahasiswa ? mahasiswa : 'belum ada'}
-                </Text>
-                <Gap height={20} />
-              </View>
-              <View style={styles.dataDoubleRight}>
-                <Text style={styles.labelData}>Penguji 1 & 2</Text>
-                <Gap height={2} />
-                <Text style={styles.descData}>
-                  {
-                    (penguji1 && penguji2
-                      ? `${penguji1} ${penguji2}`
-                      : 'belum ada',
-                    penguji2 ? penguji2 : 'belum ada')
-                  }
-                </Text>
-                <Gap height={20} />
-              </View>
+            <View>
+              <Text style={styles.labelData}>Periode</Text>
+              <Gap height={2} />
+              <Text style={styles.descData}>{periode}</Text>
+              <Gap height={16} />
+            </View>
+            <View>
+              <Text style={styles.labelData}>Mahasiswa Terpilih</Text>
+              <Gap height={2} />
+              <Text style={styles.descData}>
+                {mahasiswa ? mahasiswa : 'belum ada'}
+              </Text>
+              <Gap height={16} />
+            </View>
+            <View>
+              <Text style={styles.labelData}>Penguji 1 & 2</Text>
+              <Gap height={2} />
+              <Text style={styles.descData}>
+                {
+                  (penguji1 && penguji2
+                    ? `${penguji1} ${penguji2}`
+                    : 'belum ada',
+                  penguji2 ? penguji2 : 'belum ada')
+                }
+              </Text>
             </View>
             <Gap height={40} />
             <View style={styles.header}>
@@ -107,6 +102,7 @@ const DsnDetailTopikSaya = ({navigation, route}) => {
               </TouchableOpacity>
             </View>
           </ScrollView>
+          <Gap height={40} />
           <View>
             <Button
               label="Edit Topik"
@@ -200,14 +196,5 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: colors.text.primary,
     lineHeight: 16 * 1.5,
-  },
-  dataDouble: {
-    flexDirection: 'row',
-  },
-  dataDoubleLeft: {
-    flex: 1,
-  },
-  dataDoubleRight: {
-    flex: 1,
   },
 });

@@ -72,12 +72,18 @@ const DsnRequestMhs = ({navigation}) => {
         onPress={() => navigation.navigate('DsnTopikSkripsi')}
       />
       <View style={styles.content}>
-        <ScrollView showsVerticalScrollIndicator={false}>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{paddingHorizontal: 20, paddingVertical: 5}}>
           {isLoading ? (
             <LoadingSpinner />
           ) : (
             data.map(itemtopik => {
-              if (itemtopik.dosentujuan == idDosen) {
+              console.log(itemtopik);
+              if (
+                itemtopik.dosentujuan == idDosen &&
+                itemtopik.status != 'ditolak'
+              ) {
                 return (
                   <CardTopikAjuan
                     key={itemtopik.id}
@@ -111,6 +117,6 @@ const styles = StyleSheet.create({
     backgroundColor: colors.primary,
     borderTopLeftRadius: 15,
     borderTopRightRadius: 15,
-    padding: 20,
+    paddingVertical: 15,
   },
 });

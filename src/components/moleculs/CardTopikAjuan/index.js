@@ -19,13 +19,7 @@ const CardTopikAjuan = ({titleCard, name, periode, status, onPress}) => {
         </View>
         <View style={styles.bottomContent}>
           <Text style={styles.dataText}>{periode}</Text>
-          <Text
-            style={[
-              styles.waiting,
-              status == 'diterima' ? styles.accepted : styles.rejected,
-            ]}>
-            {status}
-          </Text>
+          <Text style={[styles.statusText(status)]}>{status}</Text>
         </View>
       </View>
     </TouchableOpacity>
@@ -62,30 +56,23 @@ const styles = StyleSheet.create({
   },
   dataText: {
     fontFamily: fonts.primary[400],
-    fontSize: 14,
+    fontSize: 16,
     color: colors.text.secondary,
-    lineHeight: 14 * 1.5,
+    lineHeight: 16 * 1.5,
     textTransform: 'capitalize',
   },
   waiting: {
     fontFamily: fonts.primary[400],
-    fontSize: 14,
+    fontSize: 16,
     color: colors.text.secondary,
-    lineHeight: 14 * 1.5,
+    lineHeight: 16 * 1.5,
     textTransform: 'lowercase',
   },
-  accepted: {
+  statusText: status => ({
     fontFamily: fonts.primary[400],
-    fontSize: 14,
-    color: colors.text.accent,
-    lineHeight: 14 * 1.5,
+    fontSize: 16,
+    color: status == 'menunggu' ? colors.text.warning : colors.text.accent,
+    lineHeight: 16 * 1.5,
     textTransform: 'lowercase',
-  },
-  rejected: {
-    fontFamily: fonts.primary[400],
-    fontSize: 14,
-    color: colors.text.danger,
-    lineHeight: 14 * 1.5,
-    textTransform: 'lowercase',
-  },
+  }),
 });

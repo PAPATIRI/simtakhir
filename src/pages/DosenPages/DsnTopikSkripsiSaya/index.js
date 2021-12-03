@@ -4,22 +4,15 @@ import React, {useEffect, useState} from 'react';
 import {
   ScrollView,
   StyleSheet,
-  Text,
   TextInput,
   TouchableOpacity,
   View,
 } from 'react-native';
 import {useDispatch} from 'react-redux';
 import {IcArrowBack} from '../../../assets';
-import {
-  CardTopikSkripsiDsn,
-  Gap,
-  LoadingSpinner,
-  TopNavbarSearch,
-} from '../../../components';
+import {CardTopikSkripsiDsn, LoadingSpinner} from '../../../components';
 import {API_HOST} from '../../../config';
-import {setLoading} from '../../../redux/action';
-import {colors, fonts, getData} from '../../../utils';
+import {colors, getData} from '../../../utils';
 
 const DsnTopikSkripsiSaya = ({navigation}) => {
   const [data, setData] = useState([]);
@@ -41,7 +34,6 @@ const DsnTopikSkripsiSaya = ({navigation}) => {
   const getDataTopik = async () => {
     let getId = await getIdDosen();
     let idku = JSON.parse(getId);
-    console.log('dosen id: ', idku);
 
     await getData('token').then(async res => {
       await axios
@@ -102,8 +94,6 @@ const DsnTopikSkripsiSaya = ({navigation}) => {
         />
       </View>
       <View style={styles.content}>
-        <Text style={styles.title}>daftar tawaran topik kamu</Text>
-        <Gap height={10} />
         <ScrollView
           showsVerticalScrollIndicator={false}
           contentContainerStyle={styles.scrollist}>
@@ -111,7 +101,6 @@ const DsnTopikSkripsiSaya = ({navigation}) => {
             <LoadingSpinner />
           ) : (
             filteredData.map(data => {
-              console.log('data topik: ', data);
               if (data.dosenpenawar == idDosen) {
                 return (
                   <CardTopikSkripsiDsn
@@ -144,7 +133,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.secondary,
   },
   scrollist: {
-    paddingHorizontal: 5,
+    paddingHorizontal: 20,
     paddingVertical: 5,
   },
   navWrapper: {
@@ -171,15 +160,6 @@ const styles = StyleSheet.create({
     backgroundColor: colors.primary,
     borderTopLeftRadius: 15,
     borderTopRightRadius: 15,
-    paddingHorizontal: 15,
     paddingVertical: 20,
-  },
-  title: {
-    fontFamily: fonts.primary[400],
-    fontSize: 16,
-    paddingLeft: 20,
-    textTransform: 'capitalize',
-    color: colors.text.primary,
-    lineHeight: 16 * 1.5,
   },
 });

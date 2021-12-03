@@ -4,15 +4,26 @@ import {useDispatch, useSelector} from 'react-redux';
 import {IcArrowBack} from '../../../assets';
 import {Button, ButtonDangerSedond, Gap, TopNavbar} from '../../../components';
 import {setLoading, tambahTopikAction} from '../../../redux/action';
-import {colors, fonts} from '../../../utils';
+import {colors, fonts, showMessage} from '../../../utils';
 
 const DsnDetailTambahTopik = ({navigation}) => {
   const tambahTopikReducer = useSelector(state => state.tambahTopikReducer);
   const dispatch = useDispatch();
 
   const onSubmit = () => {
-    dispatch(setLoading(true));
-    dispatch(tambahTopikAction(navigation, tambahTopikReducer));
+    if (
+      tambahTopikReducer.bidangtopik != '' &&
+      tambahTopikReducer.deskripsitopik != '' &&
+      tambahTopikReducer.dosenpenawar != '' &&
+      tambahTopikReducer.judultopik != '' &&
+      tambahTopikReducer.periode != '' &&
+      tambahTopikReducer.status != ''
+    ) {
+      dispatch(setLoading(true));
+      dispatch(tambahTopikAction(navigation, tambahTopikReducer));
+    } else {
+      showMessage('isi data dengan lengkap', 'danger');
+    }
   };
 
   return (
