@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
   dateText: {
     fontFamily: fonts.primary[400],
     fontSize: 16,
-    color: colors.text.accent,
+    color: colors.text.primary,
   },
   labelData: {
     fontFamily: fonts.primary[600],

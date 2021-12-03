@@ -93,8 +93,7 @@ function MhsDrawer() {
         },
       }}
       drawerContent={props => <CustomDrawer {...props} />}>
-      <Drawer.Screen name="MhsHome" component={MhsHome} />
-      <Drawer.Screen name="Profile" component={Profile} />
+      <Drawer.Screen name="Home" component={MhsHome} />
     </Drawer.Navigator>
   );
 }
@@ -120,7 +119,6 @@ const DsnDrawer = ({navigation}) => {
       }}
       drawerContent={props => <CustomDrawer {...props} />}>
       <Drawer.Screen name="Home" component={DsnHome} />
-      <Drawer.Screen name="Profile" component={DsnProfile} />
     </Drawer.Navigator>
   );
 };
@@ -357,11 +355,7 @@ const Router = () => {
         component={DsnHome}
         options={{headerShown: false}}
       />
-      <Stack.Screen
-        name="DsnProfile"
-        component={DsnProfile}
-        options={{headerShown: false}}
-      />
+
       <Stack.Screen
         name="DsnBimbingan"
         component={DsnBimbingan}

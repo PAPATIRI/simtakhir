@@ -1,10 +1,10 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 import React, {useEffect, useState} from 'react';
-import {StyleSheet, Text, View, TextInput} from 'react-native';
+import {StyleSheet, Text, TextInput, View} from 'react-native';
 import {ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
 import {IcArrowBack} from '../../../assets';
-import {CardMhsBimbingan, LoadingSpinner, TopNavbar} from '../../../components';
+import {CardMhsBimbingan, LoadingSpinner} from '../../../components';
 import {API_HOST} from '../../../config';
 import {colors, fonts, getData} from '../../../utils';
 
@@ -19,7 +19,6 @@ const DsnBimbingan = ({navigation}) => {
   const getDataBimbingan = async () => {
     let idDosen = await getDataDosen();
     let idku = JSON.parse(idDosen);
-    console.log('data user: ', idku);
 
     await getData('token').then(async res => {
       await axios
@@ -93,9 +92,7 @@ const DsnBimbingan = ({navigation}) => {
           ) : (
             filteredData.map(data => {
               if (data.dosen != null) {
-                console.log('data bim not null :', data);
                 if (data.dosen.nama == idDosen) {
-                  console.log('data bim: ', data);
                   return (
                     <CardMhsBimbingan
                       profileImg={data.avatar.formats.thumbnail.url}

@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  Dimensions,
   ImageBackground,
   StyleSheet,
   Text,
@@ -37,7 +38,7 @@ const styles = StyleSheet.create({
   cardWrapper: {
     backgroundColor: colors.primary,
     height: 220,
-    width: 160,
+    width: Dimensions.get('window').width * 0.38,
     elevation: 2,
     borderRadius: 10,
     marginVertical: 10,

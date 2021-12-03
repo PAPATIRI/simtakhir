@@ -1,10 +1,17 @@
 import React from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {
+  Dimensions,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import {colors, fonts} from '../../../utils';
 
 const CardMenuDosen = ({
   iconCard,
   title,
+  title2,
   bgCardColor,
   onPress,
   fontsize,
@@ -22,6 +29,9 @@ const CardMenuDosen = ({
         <Text style={styles.title(fontsize, fontsfamily, color, lineheight)}>
           {title}
         </Text>
+        <Text style={styles.title(fontsize, fontsfamily, color, lineheight)}>
+          {title2}
+        </Text>
       </View>
     </TouchableOpacity>
   );
@@ -33,7 +43,7 @@ const styles = StyleSheet.create({
   cardWrapper: bgCardColor => ({
     backgroundColor: bgCardColor,
     height: 190,
-    width: 130,
+    width: Dimensions.get('window').width * 0.36,
     borderRadius: 8,
     justifyContent: 'space-between',
     elevation: 2,

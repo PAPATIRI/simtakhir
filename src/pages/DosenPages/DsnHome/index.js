@@ -57,7 +57,8 @@ const DsnHome = ({navigation}) => {
         </View>
         <View style={styles.menuWrapper}>
           <CardMenuDosen
-            title="Bimbingan    ku"
+            title="Bimbingan"
+            title2="Ku"
             bgCardColor={colors.secondary}
             iconCard={<IcBimbingan />}
             fontsfamily={fonts.primary[600]}
@@ -70,7 +71,8 @@ const DsnHome = ({navigation}) => {
           />
           <Gap width={40} />
           <CardMenuDosen
-            title="Topik    Skripsi"
+            title="Topik"
+            title2="Skripsi"
             bgCardColor={colors.secondary}
             iconCard={<IcSkripsi />}
             fontsfamily={fonts.primary[600]}
