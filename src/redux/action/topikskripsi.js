@@ -13,8 +13,7 @@ export const tambahTopikAction = (navigation, form) => dispatch => {
         },
       })
       .then(resp => {
-        showMessage('success tambah topik', 'success');
-        navigation.navigate('DsnTopikSkripsi');
+        navigation.navigate('DsnSuksesTambahTopik');
         dispatch(setLoading(false));
       })
       .catch(err => {

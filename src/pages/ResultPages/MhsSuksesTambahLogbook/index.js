@@ -1,7 +1,7 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import {IlBerhasilKirim, IlSuksesTambah} from '../../../assets';
-import {Button, ButtonDangerSedond, Gap, Result} from '../../../components';
+import {StyleSheet, View} from 'react-native';
+import {IlBerhasilKirim} from '../../../assets';
+import {Button, Gap, Result} from '../../../components';
 import {colors} from '../../../utils';
 
 const MhsSuksesTambahLogbook = ({navigation}) => {
@@ -16,7 +16,6 @@ const MhsSuksesTambahLogbook = ({navigation}) => {
       <Button
         label="OK"
         onPress={() => {
-          // navigation.replace('MhsLogbook');
           navigation.reset({index: 0, routes: [{name: 'MhsLogbook'}]});
         }}
       />

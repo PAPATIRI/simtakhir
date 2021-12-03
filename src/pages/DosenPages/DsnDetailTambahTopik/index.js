@@ -27,7 +27,7 @@ const DsnDetailTambahTopik = ({navigation}) => {
       <View style={styles.content}>
         <ScrollView showsVerticalScrollIndicator={false}>
           <View>
-            <Text style={styles.labelData}>email pengaju</Text>
+            <Text style={styles.labelData}>dosen pengaju</Text>
             <Gap height={5} />
             <Text style={styles.descData}>
               {tambahTopikReducer.dosenpenawar}

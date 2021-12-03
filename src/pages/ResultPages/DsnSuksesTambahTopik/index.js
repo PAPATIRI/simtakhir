@@ -16,7 +16,7 @@ const DsnSuksesTambahTopik = ({navigation}) => {
       <Button
         label="OK"
         onPress={() => {
-          navigation.navigate('DsnTopikSkripsi');
+          navigation.reset({index: 0, routes: [{name: 'DsnTopikSkripsi'}]});
         }}
       />
       <Gap height={10} />
@@ -24,7 +24,7 @@ const DsnSuksesTambahTopik = ({navigation}) => {
         type="secondaryAccent"
         label="Tambah Topik Lainnya"
         onPress={() => {
-          navigation.navigate('DsnTambahTopik');
+          navigation.reset({index: 0, routes: [{name: 'DsnTambahTopik'}]});
         }}
       />
     </View>

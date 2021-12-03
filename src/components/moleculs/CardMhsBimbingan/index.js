@@ -7,7 +7,6 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import {Gap} from '../..';
 import {colors, fonts} from '../../../utils';
 
 const CardMhsBimbingan = ({nama, status, profileImg, periode, onPress}) => {

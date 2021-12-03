@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {Dimensions, StyleSheet, Text, View} from 'react-native';
 import {Button, Gap} from '../..';
 import {IlSuksesTambah} from '../../../assets';
 import {colors, fonts} from '../../../utils';
@@ -7,7 +7,7 @@ import {colors, fonts} from '../../../utils';
 const Result = ({title, desc, ilustration}) => {
   return (
     <View style={styles.resultWrapper}>
-      <Gap height={40} />
+      <Gap height={60} />
       <View style={styles.ilusWrapper}>{ilustration}</View>
       <View style={styles.detail}>
         <View style={styles.textWrapper}>
