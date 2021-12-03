@@ -13,7 +13,6 @@ import CardPendaftarTopik from './CardPendaftarTopik';
 import Result from './Result';
 import Loading from './Loading';
 import CardUserProfile from './CardUserProfile';
-import ModalLogout from './ModalLogout';
 import LoadingSpinner from './LoadingSpinner';
 import CardHasilAjuan from './CardHasilAjuan';
 
@@ -33,7 +32,6 @@ export {
   Result,
   Loading,
   CardUserProfile,
-  ModalLogout,
   LoadingSpinner,
   CardHasilAjuan,
 };

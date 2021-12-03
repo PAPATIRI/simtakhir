@@ -36,7 +36,7 @@ export default CardMhsBimbingan;
 const styles = StyleSheet.create({
   cardWrapper: {
     backgroundColor: colors.primary,
-    height: 220,
+    height: Dimensions.get('window').height * 0.28,
     width: Dimensions.get('window').width * 0.38,
     elevation: 2,
     borderRadius: 10,

@@ -42,7 +42,7 @@ export default CardMenuDosen;
 const styles = StyleSheet.create({
   cardWrapper: bgCardColor => ({
     backgroundColor: bgCardColor,
-    height: 190,
+    height: Dimensions.get('window').height * 0.28,
     width: Dimensions.get('window').width * 0.36,
     borderRadius: 8,
     justifyContent: 'space-between',

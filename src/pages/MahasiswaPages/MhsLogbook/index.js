@@ -9,6 +9,7 @@ import {
 } from '../../../assets';
 import {
   Button,
+  Gap,
   LoadingSpinner,
   LogbookList,
   TopNavbar,
@@ -63,7 +64,12 @@ const MhsLogbook = ({navigation}) => {
       />
       <View style={styles.content}>
         <View style={styles.bottomContent}>
-          <ScrollView showsVerticalScrollIndicator={false}>
+          <ScrollView
+            showsVerticalScrollIndicator={false}
+            contentContainerStyle={{
+              paddingHorizontal: 20,
+              paddingBottom: 5,
+            }}>
             {isLoading ? (
               <LoadingSpinner />
             ) : (
@@ -91,6 +97,7 @@ const MhsLogbook = ({navigation}) => {
             )}
           </ScrollView>
         </View>
+        <Gap height={20} />
         <View style={styles.actionbutton}>
           <Button
             label="Tambah Logbook"
@@ -119,9 +126,12 @@ const styles = StyleSheet.create({
     backgroundColor: colors.primary,
     borderTopLeftRadius: 15,
     borderTopRightRadius: 15,
-    padding: 20,
+    paddingVertical: 20,
   },
   bottomContent: {
     flex: 1,
+  },
+  actionbutton: {
+    paddingHorizontal: 20,
   },
 });

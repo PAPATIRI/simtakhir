@@ -1,5 +1,4 @@
 import DsnHome from './DsnHome';
-import DsnProfile from './DsnProfile';
 import DsnBimbingan from './DsnBimbingan';
 import DsnRequestMhs from './DsnRequestMhs';
 import DsnDetailRequestMhs from './DsnDetailRequestMhs';
@@ -12,7 +11,6 @@ import DsnPendaftarTopikSaya from './DsnPendaftarTopikSaya';
 
 export {
   DsnHome,
-  DsnProfile,
   DsnBimbingan,
   DsnRequestMhs,
   DsnDetailRequestMhs,

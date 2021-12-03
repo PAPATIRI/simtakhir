@@ -1,12 +1,13 @@
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
   createDrawerNavigator,
-  DrawerItem,
-  DrawerActions,
+  DrawerContentScrollView,
+  DrawerItemList,
 } from '@react-navigation/drawer';
 import {createStackNavigator} from '@react-navigation/stack';
-import React, {useState, useEffect} from 'react';
-import {BottomNavigator, Gap, ModalLogout} from '../components';
+import React, {useEffect, useState} from 'react';
+import {Alert, Image, Text, TouchableOpacity, View} from 'react-native';
+import {Gap} from '../components';
 import {
   DsnBimbingan,
   DsnDetailBimbingan,
@@ -14,9 +15,7 @@ import {
   DsnDetailTambahTopik,
   DsnDetailTopikSaya,
   DsnHome,
-  DsnNotif,
   DsnPendaftarTopikSaya,
-  DsnProfile,
   DsnRequestMhs,
   DsnSuksesEditTopik,
   DsnSuksesTambahTopik,
@@ -46,29 +45,11 @@ import {
   MhsTambahLogbook,
   MhsTopikDosen,
   MhsTopikSkripsi,
-  Notification,
-  Profile,
 } from '../pages';
 import DsnTopikSkripsi from '../pages/DosenPages/DsnTopikSkripsi';
 import DsnTopikSkripsiSaya from '../pages/DosenPages/DsnTopikSkripsiSaya';
 import SplashScreen from '../pages/SplashScreen';
-import {
-  DrawerContentScrollView,
-  DrawerItemList,
-} from '@react-navigation/drawer';
-import {
-  Text,
-  View,
-  Image,
-  StyleSheet,
-  TouchableOpacity,
-  Pressable,
-  Alert,
-} from 'react-native';
 import {colors, fonts} from '../utils';
-import {ArdiansyahImg, IcPlus} from '../assets';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import {NavigationContainer} from '@react-navigation/native';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -238,11 +219,6 @@ const CustomDrawer = props => {
 const Router = () => {
   return (
     <Stack.Navigator initialRouteName="SplashScreen">
-      <Stack.Screen
-        name="ModalLogout"
-        component={ModalLogout}
-        options={{headerShown: false}}
-      />
       <Stack.Screen
         name="SplashScreen"
         component={SplashScreen}

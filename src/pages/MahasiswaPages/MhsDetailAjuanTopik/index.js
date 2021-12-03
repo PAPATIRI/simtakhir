@@ -1,12 +1,11 @@
 import React from 'react';
-import {StyleSheet, Text, View, ScrollView, Alert} from 'react-native';
-import {IcArrowBack} from '../../../assets';
-import {TopNavbar, Gap, Button, ButtonDangerSedond} from '../../../components';
-import {colors, fonts} from '../../../utils';
+import {Alert, ScrollView, StyleSheet, Text, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import axios from 'axios';
-import {ajukanTopikAction} from '../../../redux/action/ajukantopik';
+import {IcArrowBack} from '../../../assets';
+import {Button, ButtonDangerSedond, Gap, TopNavbar} from '../../../components';
 import {setLoading} from '../../../redux/action';
+import {ajukanTopikAction} from '../../../redux/action/ajukantopik';
+import {colors, fonts, showMessage} from '../../../utils';
 
 const MhsDetailAjuanTopik = ({navigation}) => {
   const ajukanTopikReducer = useSelector(state => state.ajukanTopikReducer);
@@ -15,8 +14,21 @@ const MhsDetailAjuanTopik = ({navigation}) => {
 
   const onSubmit = () => {
     console.log('form data: ', ajukanTopikReducer);
-    dispatch(setLoading(true));
-    dispatch(ajukanTopikAction(navigation, ajukanTopikReducer));
+    if (
+      ajukanTopikReducer.bidangtopik != '' &&
+      ajukanTopikReducer.dekripsitopik != '' &&
+      ajukanTopikReducer.dosentujuan != '' &&
+      ajukanTopikReducer.judultopik != '' &&
+      ajukanTopikReducer.mahasiswapengaju != '' &&
+      ajukanTopikReducer.periode != '' &&
+      ajukanTopikReducer.status != ''
+    ) {
+      console.log('ok');
+      dispatch(setLoading(true));
+      dispatch(ajukanTopikAction(navigation, ajukanTopikReducer));
+    } else {
+      showMessage('pastikan semua data sudah lengkap', 'danger');
+    }
   };
 
   return (

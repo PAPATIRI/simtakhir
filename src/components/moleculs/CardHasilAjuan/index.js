@@ -42,8 +42,8 @@ const styles = StyleSheet.create({
   },
   descCard: {
     fontFamily: fonts.primary[400],
-    fontSize: 14,
-    lineHeight: 14 * 1.5,
+    fontSize: 16,
+    lineHeight: 16 * 1.5,
     color: colors.text.secondary,
   },
   botCard: {
@@ -53,9 +53,9 @@ const styles = StyleSheet.create({
   },
   dosenName: {
     fontFamily: fonts.primary[400],
-    fontSize: 14,
+    fontSize: 16,
     color: colors.text.secondary,
-    lineHeight: 14 * 1.5,
+    lineHeight: 16 * 1.5,
   },
   status: status => ({
     backgroundColor: status == 'ditolak' ? colors.error : colors.secondary,
@@ -66,8 +66,8 @@ const styles = StyleSheet.create({
   textStatus: {
     fontFamily: fonts.primary[400],
     textAlign: 'center',
-    fontSize: 14,
-    lineHeight: 14 * 1.5,
+    fontSize: 16,
+    lineHeight: 16 * 1.5,
     color: colors.text.white,
   },
 });

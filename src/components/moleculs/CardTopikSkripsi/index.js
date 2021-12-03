@@ -55,20 +55,20 @@ const styles = StyleSheet.create({
   },
   dosen: {
     fontFamily: fonts.primary[400],
-    fontSize: 14,
-    lineHeight: 14 * 1.5,
+    fontSize: 16,
+    lineHeight: 16 * 1.5,
     color: colors.text.secondary,
   },
   bidang: {
     fontFamily: fonts.primary[400],
-    fontSize: 14,
-    lineHeight: 14 * 1.5,
+    fontSize: 16,
+    lineHeight: 16 * 1.5,
     color: colors.text.secondary,
   },
   periode: {
     fontFamily: fonts.primary[400],
-    fontSize: 14,
-    lineHeight: 14 * 1.5,
+    fontSize: 16,
+    lineHeight: 16 * 1.5,
     color: colors.text.secondary,
   },
   statusWrapper: status => ({

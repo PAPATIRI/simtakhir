@@ -40,7 +40,7 @@ export default CardMenu;
 const styles = StyleSheet.create({
   cardWrapper: bgCardColor => ({
     backgroundColor: bgCardColor,
-    height: 200,
+    height: Dimensions.get('window').height * 0.28,
     width: Dimensions.get('window').width * 0.36,
     borderRadius: 8,
     padding: 12,
