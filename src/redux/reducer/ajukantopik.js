@@ -27,11 +27,5 @@ export const ajukanTopikReducer = (state = initStateAjukanTopik, action) => {
     };
   }
 
-  if (action.type === 'SET_BIDANGTOPIK') {
-    return {
-      ...state,
-      bidangtopik: action.value,
-    };
-  }
   return state;
 };

@@ -1,22 +1,11 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
-import {useDispatch} from 'react-redux';
-import {ArdiansyahImg, IcArrowBack} from '../../../assets';
-import {
-  Button,
-  ButtonDangerSedond,
-  CardProfile,
-  Gap,
-  LoadingSpinner,
-  TopNavbar,
-} from '../../../components';
+import {IcArrowBack} from '../../../assets';
+import {Button, CardProfile, Gap, TopNavbar} from '../../../components';
 import {API_HOST} from '../../../config';
-import {setLoading} from '../../../redux/action';
 import {colors, fonts, getData} from '../../../utils';
-import {dosenImg} from '../MhsTopikDosen/dosenImg';
 
 const MhsDetailTopikDosen = ({navigation, route}) => {
   const {
@@ -42,7 +31,6 @@ const MhsDetailTopikDosen = ({navigation, route}) => {
           },
         })
         .then(res => {
-          console.log('data dosen: ', res.data);
           setImageDosen(res.data[0].avatar.url);
           setNamaDosen(res.data[0].nama);
           setEmailDosen(res.data[0].user.email);
@@ -56,7 +44,7 @@ const MhsDetailTopikDosen = ({navigation, route}) => {
 
   useEffect(() => {
     getDataTopik();
-  });
+  }, []);
 
   return (
     <View style={styles.page}>

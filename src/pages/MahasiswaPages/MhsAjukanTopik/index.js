@@ -1,4 +1,5 @@
-import React from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, {useEffect} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {useDispatch} from 'react-redux';
 import {IcArrowBack} from '../../../assets';
@@ -13,11 +14,28 @@ const MhsAjukanTopik = ({navigation}) => {
   });
   const dispatch = useDispatch();
 
+  const getMahasiswaPengaju = async () => {
+    let idMahasiswa = await getIdMhs();
+    let idku = JSON.parse(idMahasiswa);
+    return setForm('mahasiswapengaju', idku.value.email);
+  };
+
+  const getIdMhs = () => {
+    return new Promise(function (resolve, reject) {
+      const id = AsyncStorage.getItem('userProfile');
+      resolve(id);
+    });
+  };
+
   const onSubmit = () => {
     console.log('form', form);
     dispatch({type: 'SET_JUDUL', value: form});
     navigation.navigate('MhsAjukanTopikNext');
   };
+
+  useEffect(() => {
+    getMahasiswaPengaju();
+  }, []);
 
   return (
     <View style={styles.page}>
@@ -46,13 +64,6 @@ const MhsAjukanTopik = ({navigation}) => {
             textAlignVertical="top"
             value={form.dekripsitopik}
             onChangeText={value => setForm('dekripsitopik', value)}
-          />
-          <Gap height={20} />
-          <TextInput
-            label="email mahasiswa pengaju"
-            placeholder="masukkan email pengaju"
-            value={form.mahasiswapengaju}
-            onChangeText={value => setForm('mahasiswapengaju', value)}
           />
         </View>
         <View>

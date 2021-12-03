@@ -4,23 +4,6 @@ import {API_HOST} from '../../config';
 import {showMessage} from '../../utils';
 import {getData} from '../../utils';
 
-export const getBidangTopikAction = () => dispatch => {
-  getData('token').then(res => {
-    axios
-      .get(`${API_HOST.url}/bidangtopiks`, {
-        headers: {
-          Authorization: `Bearer ${res.value}`,
-        },
-      })
-      .then(res => {
-        dispatch({type: 'SET_BIDANGTOPIK', value: res.data});
-      })
-      .catch(err => {
-        console.log('err: ', err);
-      });
-  });
-};
-
 export const ajukanTopikAction = (navigation, form) => dispatch => {
   getData('token').then(res => {
     axios

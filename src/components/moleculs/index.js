@@ -15,6 +15,7 @@ import Loading from './Loading';
 import CardUserProfile from './CardUserProfile';
 import ModalLogout from './ModalLogout';
 import LoadingSpinner from './LoadingSpinner';
+import CardHasilAjuan from './CardHasilAjuan';
 
 export {
   CardProfile,
@@ -34,4 +35,5 @@ export {
   CardUserProfile,
   ModalLogout,
   LoadingSpinner,
+  CardHasilAjuan,
 };

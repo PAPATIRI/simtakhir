@@ -1,4 +1,3 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 import React, {useEffect, useState} from 'react';
 import {
@@ -10,20 +9,16 @@ import {
 } from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import {useDispatch, useSelector} from 'react-redux';
-import {IcArrowBack, IlUserDefault} from '../../../assets';
-import {Gap, LoadingSpinner, TopNavbarSearch} from '../../../components';
+import {IcArrowBack} from '../../../assets';
+import {Gap, LoadingSpinner} from '../../../components';
 import CardTopikSkripsi from '../../../components/moleculs/CardTopikSkripsi';
 import {API_HOST} from '../../../config';
-import {setLoading} from '../../../redux/action';
-import {getTopikDosenAction} from '../../../redux/action/topikdosen';
 import {colors, fonts, getData} from '../../../utils';
-import {dosenImg} from './dosenImg';
 
 const MhsTopikDosen = ({navigation}) => {
   const dispatch = useDispatch();
   const {topikdosens} = useSelector(state => state.topikDosenReducer);
   const [isLoading, setIsLoading] = useState(true);
-  //new
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [search, setSearch] = useState('');
@@ -89,9 +84,12 @@ const MhsTopikDosen = ({navigation}) => {
         />
       </View>
       <View style={styles.content}>
-        <Text style={styles.title}>Daftar Topik Tugas Akhir</Text>
-        <Gap height={10} />
-        <ScrollView showsVerticalScrollIndicator={false}>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{
+            paddingHorizontal: 20,
+            paddingVertical: 2,
+          }}>
           {isLoading ? (
             <LoadingSpinner />
           ) : (
@@ -125,17 +123,12 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.secondary,
   },
-  title: {
-    fontFamily: fonts.primary[400],
-    fontSize: 16,
-    color: colors.text.primary,
-  },
   content: {
     flex: 1,
     backgroundColor: colors.primary,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
-    padding: 20,
+    paddingVertical: 18,
   },
   navWrapper: {
     flexDirection: 'row',

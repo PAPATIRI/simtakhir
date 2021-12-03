@@ -12,9 +12,6 @@ const MhsSuksesAjukanTopik = ({navigation}) => {
         title="Yeay! Berhasil"
         desc="kamu berhasil mengajukan topik tugas akhirmu ke dosen pilihanmu, tunggu hingga notifikasi hasilnya keluar"
       />
-      {/* <View style={styles.ilustrationWrapper}>
-        <LottieView source={SuksesLottie} />
-      </View> */}
       <Gap height={10} />
       <Button
         label="OK"
@@ -34,9 +31,4 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: colors.primary,
   },
-  // ilustrationWrapper: {
-  //   flex: 1,
-  //   height: 250,
-  //   width: 250,
-  // },
 });

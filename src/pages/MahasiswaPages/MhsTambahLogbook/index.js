@@ -38,7 +38,6 @@ const MhsTambahLogbook = ({navigation}) => {
   };
 
   const onsubmit = () => {
-    console.log('form data: ', form);
     dispatch(setLoading(true));
     dispatch({type: 'SET_TAMBAHLOGBOOK', value: form});
     dispatch(tambahLogbookAction(form, navigation));
