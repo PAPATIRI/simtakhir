@@ -15,6 +15,7 @@ import Loading from './Loading';
 import CardUserProfile from './CardUserProfile';
 import LoadingSpinner from './LoadingSpinner';
 import CardHasilAjuan from './CardHasilAjuan';
+import DataKosong from './DataKosong';
 
 export {
   CardProfile,
@@ -34,4 +35,5 @@ export {
   CardUserProfile,
   LoadingSpinner,
   CardHasilAjuan,
+  DataKosong,
 };

@@ -8,6 +8,8 @@ import DsnDetailTambahTopik from './DsnDetailTambahTopik';
 import DsnDetailTopikSaya from './DsnDetailTopikSaya';
 import DsnDetailBimbingan from './DsnDetailBimbingan';
 import DsnPendaftarTopikSaya from './DsnPendaftarTopikSaya';
+import DsnLogbookBimbingan from './DsnLogbookBimbingan';
+import DsnDetailLogbookBimbingan from './DsnDetailLogbookBimbingan';
 
 export {
   DsnHome,
@@ -20,4 +22,6 @@ export {
   DsnDetailTopikSaya,
   DsnDetailBimbingan,
   DsnPendaftarTopikSaya,
+  DsnLogbookBimbingan,
+  DsnDetailLogbookBimbingan,
 };

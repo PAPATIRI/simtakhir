@@ -3,7 +3,12 @@ import axios from 'axios';
 import React, {useEffect, useState} from 'react';
 import {Dimensions, ScrollView, StyleSheet, View} from 'react-native';
 import {IcArrowBack} from '../../../assets';
-import {CardHasilAjuan, LoadingSpinner, TopNavbar} from '../../../components';
+import {
+  CardHasilAjuan,
+  DataKosong,
+  LoadingSpinner,
+  TopNavbar,
+} from '../../../components';
 import {API_HOST} from '../../../config';
 import {colors, getData} from '../../../utils';
 
@@ -44,8 +49,21 @@ const MhsHasilAjuanTopik = ({navigation}) => {
     });
   };
 
+  function getRandomString(length) {
+    var randomChars =
+      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var result = '';
+    for (var i = 0; i < length; i++) {
+      result += randomChars.charAt(
+        Math.floor(Math.random() * randomChars.length),
+      );
+    }
+    return result;
+  }
+
   useEffect(() => {
     getDataTopikAjuan();
+    console.log('data ajuan: ', data);
   }, []);
 
   return (
@@ -78,6 +96,14 @@ const MhsHasilAjuanTopik = ({navigation}) => {
                     onPress={() =>
                       navigation.navigate('MhsDetailHasilAjuan', item)
                     }
+                  />
+                );
+              } else {
+                return (
+                  <DataKosong
+                    key={getRandomString(3)}
+                    title="opps"
+                    desc="sepertinya kamu belum pernah mengajukan topik ke dosen"
                   />
                 );
               }

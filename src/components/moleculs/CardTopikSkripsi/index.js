@@ -23,13 +23,10 @@ const CardTopikSkripsi = ({
       <Gap height={2} />
       <Text style={styles.dosen}>{dosen}</Text>
       <Gap height={20} />
-      <View style={styles.bottomCard}>
+      <View style={styles.bottom}>
         <Text style={styles.bidang}>{bidang}</Text>
-        <View style={styles.bottom}>
-          <Text style={styles.periode}>{periode}</Text>
-          <View style={styles.statusWrapper(status)}>
-            <Text style={styles.status}>{status}</Text>
-          </View>
+        <View style={styles.statusWrapper(status)}>
+          <Text style={styles.status}>{status}</Text>
         </View>
       </View>
     </TouchableOpacity>
@@ -65,12 +62,6 @@ const styles = StyleSheet.create({
     lineHeight: 16 * 1.5,
     color: colors.text.secondary,
   },
-  periode: {
-    fontFamily: fonts.primary[400],
-    fontSize: 16,
-    lineHeight: 16 * 1.5,
-    color: colors.text.secondary,
-  },
   statusWrapper: status => ({
     backgroundColor: status == 'open' ? colors.accent : colors.error,
     width: 64,
@@ -84,9 +75,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 16 * 1.5,
     color: colors.text.white,
-  },
-  bottomCard: {
-    justifyContent: 'space-between',
   },
   bottom: {
     flexDirection: 'row',

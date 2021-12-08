@@ -9,6 +9,7 @@ import {
 } from '../../../assets';
 import {
   Button,
+  DataKosong,
   Gap,
   LoadingSpinner,
   LogbookList,
@@ -27,7 +28,7 @@ const MhsLogbook = ({navigation}) => {
     let idku = JSON.parse(idMahasiswa);
 
     await axios
-      .get(`${url}`)
+      .get(url)
       .then(async res => {
         setIsLoading(false);
         setDataLogbook(
@@ -51,7 +52,7 @@ const MhsLogbook = ({navigation}) => {
     const willFocusSubscription = navigation.addListener('focus', () => {
       getLogbookData();
     });
-
+    console.log('data logbook: ', dataLogbook);
     return willFocusSubscription;
   }, []);
 
@@ -72,6 +73,11 @@ const MhsLogbook = ({navigation}) => {
             }}>
             {isLoading ? (
               <LoadingSpinner />
+            ) : dataLogbook.length == 0 ? (
+              <DataKosong
+                title="opps"
+                desc="sepertinya kamu belum memiliki logbook sama sekali"
+              />
             ) : (
               dataLogbook.map(itemLogbook => {
                 return (

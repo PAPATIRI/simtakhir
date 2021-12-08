@@ -10,7 +10,7 @@ import {
 import {ScrollView} from 'react-native-gesture-handler';
 import {useDispatch, useSelector} from 'react-redux';
 import {IcArrowBack} from '../../../assets';
-import {Gap, LoadingSpinner} from '../../../components';
+import {DataKosong, Gap, LoadingSpinner} from '../../../components';
 import CardTopikSkripsi from '../../../components/moleculs/CardTopikSkripsi';
 import {API_HOST} from '../../../config';
 import {colors, fonts, getData} from '../../../utils';
@@ -62,7 +62,6 @@ const MhsTopikDosen = ({navigation}) => {
     const willFocusSubscription = navigation.addListener('focus', () => {
       getDataTopik();
     });
-    getDataTopik();
 
     return willFocusSubscription;
   }, []);
@@ -92,6 +91,11 @@ const MhsTopikDosen = ({navigation}) => {
           }}>
           {isLoading ? (
             <LoadingSpinner />
+          ) : filteredData.length == 0 ? (
+            <DataKosong
+              title="kosong"
+              desc="sepertinya belum ada tawaran topik dari dosen untuk sekarang"
+            />
           ) : (
             filteredData.map(itemtopik => {
               return (
@@ -101,7 +105,6 @@ const MhsTopikDosen = ({navigation}) => {
                   dosen={itemtopik.dosenpenawar}
                   bidang={itemtopik.bidangtopik}
                   status={itemtopik.status}
-                  periode={itemtopik.periode}
                   status={itemtopik.status}
                   onPress={() =>
                     navigation.navigate('MhsDetailTopikDosen', itemtopik)

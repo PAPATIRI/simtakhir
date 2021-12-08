@@ -5,7 +5,7 @@ import {Button, Gap, TopNavbar} from '../../../components';
 import {colors, fonts} from '../../../utils';
 
 const DsnDetailBimbingan = ({navigation, route}) => {
-  const {nama, status, nim, topikskripsi, avatar} = route.params;
+  const {nama, status, nim, topikskripsi, avatar, user} = route.params;
 
   return (
     <View style={styles.page}>
@@ -62,7 +62,12 @@ const DsnDetailBimbingan = ({navigation, route}) => {
           </View>
         </View>
         <Gap height={15} />
-        <Button label="Lihat Logbook" />
+        <Button
+          label="Lihat Logbook"
+          onPress={() => {
+            navigation.navigate('DsnLogbookBimbingan', {user});
+          }}
+        />
       </View>
     </View>
   );

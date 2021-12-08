@@ -9,6 +9,7 @@ import IlYakinHapus from './il-yakin-hapus.svg';
 import IlBerhasilKirim from './il-berhasil-kirim.svg';
 import IlLogo from './il-logo.svg';
 import IlUserDefault from './userdefault.svg';
+import IlEmptyList from './empty-list2.svg';
 
 export {
   BgCard,
@@ -22,4 +23,5 @@ export {
   IlBerhasilKirim,
   IlLogo,
   IlUserDefault,
+  IlEmptyList,
 };

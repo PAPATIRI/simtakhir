@@ -11,10 +11,12 @@ import {Gap} from '../components';
 import {
   DsnBimbingan,
   DsnDetailBimbingan,
+  DsnDetailLogbookBimbingan,
   DsnDetailRequestMhs,
   DsnDetailTambahTopik,
   DsnDetailTopikSaya,
   DsnHome,
+  DsnLogbookBimbingan,
   DsnPendaftarTopikSaya,
   DsnRequestMhs,
   DsnSuksesEditTopik,
@@ -399,6 +401,17 @@ const Router = () => {
         component={DsnPendaftarTopikSaya}
         options={{headerShown: false}}
       />
+      <Stack.Screen
+        name="DsnLogbookBimbingan"
+        component={DsnLogbookBimbingan}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="DsnDetailLogbookBimbingan"
+        component={DsnDetailLogbookBimbingan}
+        options={{headerShown: false}}
+      />
+
       {/* result pages router */}
       <Stack.Screen
         name="DsnSuksesTambahTopik"

@@ -83,7 +83,6 @@ const DsnBimbingan = ({navigation}) => {
         />
       </View>
       <View style={styles.content}>
-        <Text style={styles.title}>daftar mahasiswa bimbingan</Text>
         <ScrollView
           contentContainerStyle={styles.scroll}
           showsVerticalScrollIndicator={false}>
@@ -130,13 +129,6 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     paddingBottom: 20,
     paddingHorizontal: 20,
-  },
-  title: {
-    fontFamily: fonts.primary[400],
-    fontSize: 16,
-    color: colors.text.primary,
-    lineHeight: 16 * 1.5,
-    marginBottom: 5,
   },
   scroll: {
     flexDirection: 'row',

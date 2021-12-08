@@ -59,7 +59,6 @@ const DsnRequestMhs = ({navigation}) => {
     const willFocusSubscription = navigation.addListener('focus', () => {
       getTopikAjuan();
     });
-    getTopikAjuan();
 
     return willFocusSubscription;
   }, []);
