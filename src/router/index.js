@@ -32,6 +32,8 @@ import {
   MhsDaftarSidangSempro,
   MhsDaftarSidangSemproNext,
   MhsDetailAjuanTopik,
+  MhsDetailDaftarPendadaran,
+  MhsDetailDaftarSidangSempro,
   MhsDetailHasilAjuan,
   MhsDetailLogbook,
   MhsDetailTopikDosen,
@@ -290,6 +292,11 @@ const Router = () => {
         options={{headerShown: false}}
       />
       <Stack.Screen
+        name="MhsDetailDaftarSidangSempro"
+        component={MhsDetailDaftarSidangSempro}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
         name="MhsDaftarSidangSemproNext"
         component={MhsDaftarSidangSemproNext}
         options={{headerShown: false}}
@@ -317,6 +324,11 @@ const Router = () => {
       <Stack.Screen
         name="MhsDaftarPendadaranNext"
         component={MhsDaftarPendadaranNext}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="MhsDetailDaftarPendadaran"
+        component={MhsDetailDaftarPendadaran}
         options={{headerShown: false}}
       />
 

@@ -18,14 +18,9 @@ const MhsDaftarSidangSemproNext = ({navigation}) => {
   const dispatch = useDispatch();
   const daftarSemproReducer = useSelector(state => state.daftarSemproReducer);
 
-  const data = {
-    ...form,
-    ...daftarSemproReducer,
-  };
   const onSubmit = () => {
-    dispatch(setLoading(true));
     dispatch({type: 'SET_DAFTARSEMPRO2', value: form});
-    dispatch(daftarSemproAction(data, navigation));
+    navigation.navigate('MhsDetailDaftarSidangSempro');
   };
 
   const selectNaskah = async () => {
@@ -86,7 +81,7 @@ const MhsDaftarSidangSemproNext = ({navigation}) => {
           />
         </View>
         <View>
-          <Button label="Daftar" onPress={onSubmit} />
+          <Button label="selanjutnya" onPress={onSubmit} />
         </View>
       </View>
     </View>

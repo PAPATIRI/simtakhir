@@ -38,8 +38,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   titleBar: {
-    fontFamily: fonts.primary[400],
-    fontSize: 20,
+    fontFamily: fonts.primary[600],
+    fontSize: 18,
+    lineHeight: 18 * 1.5,
+    textTransform: 'capitalize',
     color: colors.text.white,
   },
   iconRight: {

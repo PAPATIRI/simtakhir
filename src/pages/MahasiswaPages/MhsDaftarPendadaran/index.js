@@ -99,17 +99,17 @@ const MhsDaftarPendadaran = ({navigation}) => {
   }, []);
 
   return (
-    <ScrollView
-      contentContainerStyle={{flex: 1, justifyContent: 'space-between'}}
-      showsVerticalScrollIndicator={false}>
-      <View style={styles.page}>
-        <TopNavbar
-          titleBar="Daftar Sempro"
-          iconLeft={<IcArrowBack />}
-          onPress={() => {
-            navigation.goBack();
-          }}
-        />
+    <View style={styles.page}>
+      <TopNavbar
+        titleBar="Daftar Sempro"
+        iconLeft={<IcArrowBack />}
+        onPress={() => {
+          navigation.goBack();
+        }}
+      />
+      <ScrollView
+        contentContainerStyle={{flex: 1, justifyContent: 'space-between'}}
+        showsVerticalScrollIndicator={false}>
         <View style={styles.content}>
           <View>
             <FileInput
@@ -130,12 +130,10 @@ const MhsDaftarPendadaran = ({navigation}) => {
               namefile={form.buktibebasspp}
             />
           </View>
+          <Button label="Selanjutnya" onPress={onSubmit} />
         </View>
-      </View>
-      <View style={styles.buttonWrapper}>
-        <Button label="Selanjutnya" onPress={onSubmit} />
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 };
 
@@ -148,13 +146,10 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
+    justifyContent: 'space-between',
     backgroundColor: colors.primary,
     borderTopLeftRadius: 15,
     borderTopRightRadius: 15,
     padding: 20,
-  },
-  buttonWrapper: {
-    marginHorizontal: 20,
-    marginBottom: 20,
   },
 });

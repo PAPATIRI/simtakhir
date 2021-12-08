@@ -16,6 +16,8 @@ import MhsDetailTopikDosen from './MhsDetailTopikDosen';
 import MhsDetailHasilAjuan from './MhsDetailHasilAjuan';
 import MhsDaftarPendadaran from './MhsDaftarPendadaran';
 import MhsDaftarPendadaranNext from './MhsDaftarPendadaranNext';
+import MhsDetailDaftarSidangSempro from './MhsDetailDaftarSidangSempro';
+import MhsDetailDaftarPendadaran from './MhsDetailDaftarPendadaran';
 
 export {
   Login,
@@ -36,4 +38,6 @@ export {
   MhsDetailHasilAjuan,
   MhsDaftarPendadaran,
   MhsDaftarPendadaranNext,
+  MhsDetailDaftarSidangSempro,
+  MhsDetailDaftarPendadaran,
 };

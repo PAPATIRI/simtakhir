@@ -30,10 +30,9 @@ const styles = StyleSheet.create({
   logbookWrapper: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 20,
-    paddingBottom: 4,
-    borderRadius: 4,
-    borderBottomWidth: 2,
+    paddingBottom: 5,
+    paddingTop: 5,
+    borderBottomWidth: 1,
     borderBottomColor: colors.blackDisabled,
   },
   contentItem: {

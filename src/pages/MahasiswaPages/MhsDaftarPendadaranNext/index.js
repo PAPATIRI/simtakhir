@@ -1,12 +1,10 @@
-import React, {useState} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import React from 'react';
+import {StyleSheet, View} from 'react-native';
+import DocumentPicker from 'react-native-document-picker';
+import {useDispatch, useSelector} from 'react-redux';
 import {IcArrowBack} from '../../../assets';
 import {Button, FileInput, Gap, TopNavbar} from '../../../components';
 import {colors, useForm} from '../../../utils';
-import DocumentPicker from 'react-native-document-picker';
-import {useDispatch, useSelector} from 'react-redux';
-import {daftarSemproAction} from '../../../redux/action/daftarsempro';
-import {daftarPendadaranAction, setLoading} from '../../../redux/action';
 
 const MhsDaftarPendadaranNext = ({navigation}) => {
   const [form, setForm] = useForm({
@@ -20,15 +18,9 @@ const MhsDaftarPendadaranNext = ({navigation}) => {
     state => state.daftarPendadaranReducer,
   );
 
-  const data = {
-    ...form,
-    ...daftarPendadaranReducer,
-  };
-
   const onSubmit = () => {
-    dispatch(setLoading(true));
     dispatch({type: 'SET_DAFTARPENDADARAN2', value: form});
-    dispatch(daftarPendadaranAction(data, navigation));
+    navigation.navigate('MhsDetailDaftarPendadaran');
   };
 
   const selectNaskah = async () => {
@@ -91,7 +83,7 @@ const MhsDaftarPendadaranNext = ({navigation}) => {
           />
         </View>
         <View>
-          <Button label="Daftar" onPress={onSubmit} />
+          <Button label="Selanjutnya" onPress={onSubmit} />
         </View>
       </View>
     </View>
