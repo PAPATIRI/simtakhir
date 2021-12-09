@@ -94,7 +94,7 @@ function MhsDrawer() {
         options={{
           drawerIcon: ({focused, size}) => (
             <Image
-              source={require('../assets/Icons/logout.png')}
+              source={require('../assets/Icons/home.png')}
               style={[
                 focused ? styles.drawerActive : styles.drawerInactive,
                 {height: 24, width: 24},
@@ -150,7 +150,7 @@ const DsnDrawer = ({navigation}) => {
         options={{
           drawerIcon: ({focused, size}) => (
             <Image
-              source={require('../assets/Icons/logout.png')}
+              source={require('../assets/Icons/home.png')}
               style={[
                 focused ? styles.drawerActive : styles.drawerInactive,
                 {height: 24, width: 24},

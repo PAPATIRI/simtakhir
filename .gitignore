@@ -60,7 +60,4 @@ buck-out/
 
 #file hprof
 android/
-
 *.hprof
-java_pid12960.hprof
-java_pid19936.hprof
