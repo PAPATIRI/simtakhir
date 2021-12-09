@@ -69,7 +69,6 @@ const DsnHome = ({navigation}) => {
               navigation.navigate('DsnBimbingan');
             }}
           />
-          <Gap width={40} />
           <CardMenuDosen
             title="Topik"
             title2="Skripsi"
@@ -116,8 +115,8 @@ const styles = StyleSheet.create({
   menuWrapper: {
     flex: 2,
     paddingVertical: 20,
-    paddingHorizontal: 25,
+    paddingHorizontal: 30,
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
   },
 });

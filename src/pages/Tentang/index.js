@@ -15,11 +15,11 @@ const Tentang = ({navigation}) => {
         }}
       />
       <View style={styles.content}>
-        <Text style={styles.title}>SIMTAKHIR MOBILE APP</Text>
+        <Text style={styles.title}>SIMTAKHIR Mobile App</Text>
         <Text style={styles.data}>1.0.0</Text>
-        <Gap height={15} />
+        <Gap height={25} />
         <IlLogoNew />
-        <Gap height={15} />
+        <Gap height={25} />
         <Text style={styles.data}>2020-2021</Text>
         <Text style={styles.data}>tugas akhir Syarif Tofik Hidayat</Text>
       </View>
@@ -44,11 +44,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   title: {
-    fontFamily: fonts.primary[600],
+    fontFamily: fonts.primary[400],
     fontSize: 20,
     lineHeight: 20 * 1.5,
     color: colors.text.primary,
-    textTransform: 'uppercase',
   },
   data: {
     fontFamily: fonts.primary[400],

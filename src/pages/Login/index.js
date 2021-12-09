@@ -41,7 +41,7 @@ const Login = ({navigation}) => {
               label="Email"
               placeholder="masukan email akun anda"
               onChangeText={value => setForm('identifier', value)}
-              value={form.identifier.replace(/\s+/g, '')}
+              value={form.identifier}
             />
             <Gap height={20} />
             <TextInput

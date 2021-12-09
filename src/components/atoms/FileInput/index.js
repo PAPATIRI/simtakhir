@@ -12,7 +12,6 @@ import {colors, fonts} from '../../../utils';
 import Gap from '../Gap';
 
 const FileInput = ({label, onPress, namefile}) => {
-  // console.log(namefile[0].name);
   return (
     <View style={styles.inputWrapper}>
       <Text style={styles.label}>{label}</Text>
@@ -47,7 +46,7 @@ const styles = StyleSheet.create({
   formInputWrapper: {
     alignItems: 'center',
     justifyContent: 'center',
-    height: Dimensions.get('window').width * 0.25,
+    height: Dimensions.get('window').width * 0.27,
     borderRadius: 5,
     borderColor: colors.blackPrimary,
     borderStyle: 'dashed',
@@ -65,7 +64,6 @@ const styles = StyleSheet.create({
   textNameFile: {
     fontFamily: fonts.primary[400],
     fontSize: 16,
-    marginTop: 5,
     lineHeight: 16 * 1.5,
     color: colors.text.primary,
   },

@@ -62,7 +62,7 @@ const MhsDaftarPendadaranNext = ({navigation}) => {
   return (
     <View style={styles.page}>
       <TopNavbar
-        titleBar="Daftar Sempro"
+        titleBar="Daftar Pendadaran"
         iconLeft={<IcArrowBack />}
         onPress={() => {
           navigation.goBack();
