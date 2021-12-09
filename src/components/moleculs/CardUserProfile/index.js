@@ -1,6 +1,5 @@
 import React from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {ArdiansyahImg, IcSignOut} from '../../../assets';
 import {colors, fonts} from '../../../utils';
 
 const CardUserProfile = ({onPress, nama, nim, image}) => {

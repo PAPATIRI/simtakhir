@@ -1,5 +1,11 @@
 import React from 'react';
-import {ImageBackground, StyleSheet, Text, View} from 'react-native';
+import {
+  Dimensions,
+  ImageBackground,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 import {useDispatch} from 'react-redux';
 import {BgGraduate} from '../../assets';
 import {Button, Gap, TextInput} from '../../components';
@@ -35,7 +41,7 @@ const Login = ({navigation}) => {
               label="Email"
               placeholder="masukan email akun anda"
               onChangeText={value => setForm('identifier', value)}
-              value={form.identifier}
+              value={form.identifier.replace(/\s+/g, '')}
             />
             <Gap height={20} />
             <TextInput
@@ -63,8 +69,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   imageBg: {
-    width: '100%',
-    height: '100%',
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
   },
   topPage: {
     flex: 1,

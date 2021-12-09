@@ -10,6 +10,7 @@ import IlBerhasilKirim from './il-berhasil-kirim.svg';
 import IlLogo from './il-logo.svg';
 import IlUserDefault from './userdefault.svg';
 import IlEmptyList from './empty-list2.svg';
+import IlLogoNew from './logo.svg';
 
 export {
   BgCard,
@@ -24,4 +25,5 @@ export {
   IlLogo,
   IlUserDefault,
   IlEmptyList,
+  IlLogoNew,
 };

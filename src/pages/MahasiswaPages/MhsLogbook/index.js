@@ -52,7 +52,6 @@ const MhsLogbook = ({navigation}) => {
     const willFocusSubscription = navigation.addListener('focus', () => {
       getLogbookData();
     });
-    console.log('data logbook: ', dataLogbook);
     return willFocusSubscription;
   }, []);
 

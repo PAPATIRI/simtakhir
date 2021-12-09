@@ -42,14 +42,15 @@ export default CardMenuDosen;
 const styles = StyleSheet.create({
   cardWrapper: bgCardColor => ({
     backgroundColor: bgCardColor,
-    height: Dimensions.get('window').height * 0.28,
-    width: Dimensions.get('window').width * 0.36,
+    height: Dimensions.get('window').height * 0.29,
+    width: Dimensions.get('window').width * 0.38,
     borderRadius: 8,
     justifyContent: 'space-between',
     elevation: 2,
   }),
   iconWrapper: {
-    padding: 15,
+    marginLeft: 20,
+    marginTop: 20,
   },
   title: (fontsize, fontsfamily, color, lineheight) => ({
     fontFamily: fontsfamily,
@@ -61,7 +62,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
     paddingHorizontal: 15,
     paddingBottom: 15,
-    paddingTop: 25,
+    paddingTop: 30,
     borderTopRightRadius: 40,
     borderBottomLeftRadius: 8,
     borderBottomRightRadius: 8,

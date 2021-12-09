@@ -1,16 +1,9 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
-import QueryString from 'qs';
 import React, {useEffect, useState} from 'react';
-import {
-  ActivityIndicator,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import {ScrollView, StyleSheet, View} from 'react-native';
 import {useDispatch} from 'react-redux';
-import {IcArrowBack, Mhs1} from '../../../assets';
+import {IcArrowBack} from '../../../assets';
 import {CardTopikAjuan, LoadingSpinner, TopNavbar} from '../../../components';
 import {API_HOST} from '../../../config';
 import {colors, getData} from '../../../utils';
@@ -78,7 +71,6 @@ const DsnRequestMhs = ({navigation}) => {
             <LoadingSpinner />
           ) : (
             data.map(itemtopik => {
-              console.log(itemtopik);
               if (
                 itemtopik.dosentujuan == idDosen &&
                 itemtopik.status != 'ditolak'

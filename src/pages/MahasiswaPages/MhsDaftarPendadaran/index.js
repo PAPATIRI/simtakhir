@@ -107,10 +107,10 @@ const MhsDaftarPendadaran = ({navigation}) => {
           navigation.goBack();
         }}
       />
-      <ScrollView
-        contentContainerStyle={{flex: 1, justifyContent: 'space-between'}}
-        showsVerticalScrollIndicator={false}>
-        <View style={styles.content}>
+      <View style={styles.content}>
+        <ScrollView
+          contentContainerStyle={styles.scrollStyle}
+          showsVerticalScrollIndicator={false}>
           <View>
             <FileInput
               label="Bukti Pembayaran"
@@ -130,9 +130,10 @@ const MhsDaftarPendadaran = ({navigation}) => {
               namefile={form.buktibebasspp}
             />
           </View>
-          <Button label="Selanjutnya" onPress={onSubmit} />
-        </View>
-      </ScrollView>
+        </ScrollView>
+        <Gap height={20} />
+        <Button label="Selanjutnya" onPress={onSubmit} />
+      </View>
     </View>
   );
 };
@@ -150,6 +151,12 @@ const styles = StyleSheet.create({
     backgroundColor: colors.primary,
     borderTopLeftRadius: 15,
     borderTopRightRadius: 15,
-    padding: 20,
+    paddingBottom: 20,
+    paddingHorizontal: 20,
+  },
+  scrollStyle: {
+    flex: 1,
+    justifyContent: 'space-between',
+    paddingTop: 20,
   },
 });

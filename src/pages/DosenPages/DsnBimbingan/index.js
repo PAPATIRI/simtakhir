@@ -1,12 +1,12 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 import React, {useEffect, useState} from 'react';
-import {StyleSheet, Text, TextInput, View} from 'react-native';
+import {StyleSheet, TextInput, View} from 'react-native';
 import {ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
 import {IcArrowBack} from '../../../assets';
 import {CardMhsBimbingan, LoadingSpinner} from '../../../components';
 import {API_HOST} from '../../../config';
-import {colors, fonts, getData} from '../../../utils';
+import {colors, getData} from '../../../utils';
 
 const DsnBimbingan = ({navigation}) => {
   const [data, setData] = useState([]);
@@ -43,7 +43,7 @@ const DsnBimbingan = ({navigation}) => {
   const searchFilter = text => {
     if (text) {
       const newData = data.filter(item => {
-        const itemData = item.nama ? item.nama : '';
+        const itemData = item.nama ? item.nama.toLowerCase() : '';
         const textData = text;
         return itemData.indexOf(textData) > -1;
       });
@@ -146,6 +146,7 @@ const styles = StyleSheet.create({
   },
   iconLeft: {
     padding: 5,
+    marginRight: 5,
   },
   textInput: {
     flex: 1,
@@ -153,5 +154,6 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     paddingHorizontal: 10,
     paddingVertical: 10,
+    marginRight: 5,
   },
 });

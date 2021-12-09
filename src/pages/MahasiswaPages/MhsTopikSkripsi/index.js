@@ -72,8 +72,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.primary,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
-    paddingVertical: 40,
-    paddingHorizontal: 40,
+    paddingVertical: 30,
+    paddingHorizontal: 30,
   },
   topContent: {
     flexDirection: 'row',

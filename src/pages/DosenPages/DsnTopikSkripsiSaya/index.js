@@ -10,7 +10,11 @@ import {
 } from 'react-native';
 import {useDispatch} from 'react-redux';
 import {IcArrowBack} from '../../../assets';
-import {CardTopikSkripsiDsn, LoadingSpinner} from '../../../components';
+import {
+  CardTopikSkripsiDsn,
+  DataKosong,
+  LoadingSpinner,
+} from '../../../components';
 import {API_HOST} from '../../../config';
 import {colors, getData} from '../../../utils';
 
@@ -47,6 +51,7 @@ const DsnTopikSkripsiSaya = ({navigation}) => {
           setIdDosen(idku.value.username);
           setData(res.data);
           setFilteredData(res.data);
+          console.log('data: ', filteredData);
         })
         .catch(err => {
           setIsLoading(false);
@@ -88,7 +93,7 @@ const DsnTopikSkripsiSaya = ({navigation}) => {
         </TouchableOpacity>
         <TextInput
           style={styles.input}
-          placeholder="cari topik dosen"
+          placeholder="cari topik tawaranmu"
           onChangeText={text => searchFilter(text)}
           value={search}
         />
@@ -99,6 +104,11 @@ const DsnTopikSkripsiSaya = ({navigation}) => {
           contentContainerStyle={styles.scrollist}>
           {isLoading ? (
             <LoadingSpinner />
+          ) : filteredData.length < 1 ? (
+            <DataKosong
+              title="opps"
+              desc="sepertinya kamu belum memiliki topik untuk mahasiswamu"
+            />
           ) : (
             filteredData.map(data => {
               if (data.dosenpenawar == idDosen) {
@@ -110,7 +120,7 @@ const DsnTopikSkripsiSaya = ({navigation}) => {
                     bidang={data.bidangtopik}
                     tanggal={new Date(data.updated_at).toDateString()}
                     pendaftar={2}
-                    status="open"
+                    status={data.status}
                     onPress={() =>
                       navigation.navigate('DsnDetailTopikSaya', data)
                     }

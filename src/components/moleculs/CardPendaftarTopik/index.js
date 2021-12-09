@@ -1,14 +1,13 @@
 import React from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {Gap} from '../..';
-import {ProfilImg} from '../../../assets';
 import {colors, fonts} from '../../../utils';
 
 const CardPendaftarTopik = ({onPress, nameCard, nim, imageCard}) => {
   return (
     <View style={styles.cardWrapper}>
       <View style={styles.idWrapper}>
-        <Image source={imageCard} style={styles.imgCard}></Image>
+        <Image source={{uri: imageCard}} style={styles.imgCard}></Image>
         <Gap width={15} />
         <View>
           <Text style={styles.nameCard}>{nameCard}</Text>

@@ -1,5 +1,11 @@
 import React, {useState} from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {
+  Dimensions,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import DocumentPicker from 'react-native-document-picker';
 import {IcDownload} from '../../../assets';
 import {colors, fonts} from '../../../utils';
@@ -40,8 +46,8 @@ const styles = StyleSheet.create({
   },
   formInputWrapper: {
     alignItems: 'center',
-    paddingVertical: 15,
     justifyContent: 'center',
+    height: Dimensions.get('window').width * 0.25,
     borderRadius: 5,
     borderColor: colors.blackPrimary,
     borderStyle: 'dashed',

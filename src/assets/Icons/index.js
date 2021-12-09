@@ -34,6 +34,7 @@ import IcSempro from './sempro.svg';
 import IcTambahTopikDosen from './tambahtopik2.svg';
 import IcRequestMhs from './hasilajuan2.svg';
 import IcTopikSayaDosen from './topiksaya2.svg';
+import IcLogout from './logout.png';
 
 export {
   IcCalender,
@@ -72,4 +73,5 @@ export {
   IcTambahTopikDosen,
   IcRequestMhs,
   IcTopikSayaDosen,
+  IcLogout,
 };

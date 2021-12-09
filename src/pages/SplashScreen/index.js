@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import {IlLogo} from '../../assets';
-import {colors, getData} from '../../utils';
+import {StyleSheet, View, Text} from 'react-native';
+import {IlLogoNew} from '../../assets';
+import {colors, fonts, getData} from '../../utils';
 
 const SplashScreen = ({navigation}) => {
   useEffect(() => {
@@ -32,7 +32,10 @@ const SplashScreen = ({navigation}) => {
 
   return (
     <View style={styles.page}>
-      <IlLogo />
+      <View style={styles.logo}>
+        <IlLogoNew />
+      </View>
+      <Text style={styles.title}>simtakhir</Text>
     </View>
   );
 };
@@ -42,8 +45,19 @@ export default SplashScreen;
 const styles = StyleSheet.create({
   page: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
     backgroundColor: colors.primary,
+    alignItems: 'center',
+    paddingBottom: 40,
+  },
+  logo: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+  title: {
+    fontFamily: fonts.primary[600],
+    fontSize: 22,
+    lineHeight: 22 * 1.5,
+    color: colors.secondary,
+    textTransform: 'uppercase',
   },
 });

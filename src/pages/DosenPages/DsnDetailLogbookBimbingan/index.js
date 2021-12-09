@@ -60,7 +60,7 @@ const DsnDetailLogbookBimbingan = ({navigation, route}) => {
         }}
       />
       <View style={styles.content}>
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
           <View style={styles.date}>
             <Text style={styles.dateText}>
               {new Date(updated_at).toDateString()}
@@ -100,7 +100,14 @@ const DsnDetailLogbookBimbingan = ({navigation, route}) => {
             </View>
           </View>
         </ScrollView>
-        <Button label="verifikasi Logbook" onPress={onSubmit} />
+        {status == 'terverifikasi' ? (
+          <Text></Text>
+        ) : (
+          <View>
+            <Gap height={20} />
+            <Button label="verifikasi Logbook" onPress={onSubmit} />
+          </View>
+        )}
       </View>
     </View>
   );

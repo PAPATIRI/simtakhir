@@ -1,12 +1,19 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {IcArrowBack} from '../../../assets';
 import {Gap, TopNavbar} from '../../../components';
 import {colors, fonts} from '../../../utils';
 
 const MhsDetailHasilAjuan = ({navigation, route}) => {
-  const {judultopik, dekripsitopik, bidangtopik, status, dosentujuan, periode} =
-    route.params;
+  const {
+    judultopik,
+    dekripsitopik,
+    deskripsitopik,
+    bidangtopik,
+    status,
+    dosentujuan,
+    periode,
+  } = route.params;
 
   return (
     <View style={styles.page}>
@@ -25,7 +32,9 @@ const MhsDetailHasilAjuan = ({navigation, route}) => {
         <View>
           <Text style={styles.label}>deskripsi topik</Text>
           <Gap height={2} />
-          <Text style={styles.data}>{dekripsitopik}</Text>
+          <Text style={styles.data}>
+            {dekripsitopik ? dekripsitopik : deskripsitopik}
+          </Text>
           <Gap height={16} />
         </View>
         <View>
@@ -37,7 +46,7 @@ const MhsDetailHasilAjuan = ({navigation, route}) => {
         <View>
           <Text style={styles.label}>dosen tujuan</Text>
           <Gap height={2} />
-          <Text style={styles.data}>{dosentujuan}</Text>
+          <Text style={styles.data}>{dosentujuan ? dosentujuan : '-'}</Text>
           <Gap height={16} />
         </View>
         <View>
@@ -93,7 +102,7 @@ const styles = StyleSheet.create({
     color: colors.text.white,
   },
   statusWrapper: status => ({
-    backgroundColor: status == 'ditolak' ? colors.error : colors.secondary,
+    backgroundColor: status == 'menunggu' ? colors.secondary : colors.error,
     paddingHorizontal: 8,
     paddingVertical: 5,
     borderRadius: 5,

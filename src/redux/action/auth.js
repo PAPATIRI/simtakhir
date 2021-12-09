@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {setLoading} from '.';
-import {showMessage, storeData} from '../../utils';
 import {API_HOST} from '../../config';
+import {showMessage, storeData} from '../../utils';
 
 export const signInAction = (navigation, form) => dispatch => {
   axios

@@ -1,14 +1,18 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
+import {useDispatch} from 'react-redux';
 import {IcArrowBack} from '../../../assets';
 import {Button, CardProfile, Gap, TopNavbar} from '../../../components';
 import {API_HOST} from '../../../config';
-import {colors, fonts, getData} from '../../../utils';
+import {setLoading} from '../../../redux/action';
+import {colors, fonts, getData, showMessage} from '../../../utils';
 
 const MhsDetailTopikDosen = ({navigation, route}) => {
   const {
+    id,
     judultopik,
     deskripsitopik,
     bidangtopik,
@@ -16,13 +20,16 @@ const MhsDetailTopikDosen = ({navigation, route}) => {
     dosen,
     dosenpenawar,
     status,
+    mahasiswapendaftar,
   } = route.params;
   const [imageDosen, setImageDosen] = useState(null);
   const [namaDosen, setNamaDosen] = useState('');
   const [emailDosen, setEmailDosen] = useState('');
   const [nidn, setNidn] = useState('');
 
-  const getDataTopik = async () => {
+  const dispatch = useDispatch();
+
+  const getDataDosen = async () => {
     await getData('token').then(async res => {
       await axios
         .get(`${API_HOST.url}/dosens?nama_eq=${dosenpenawar}`, {
@@ -41,9 +48,46 @@ const MhsDetailTopikDosen = ({navigation, route}) => {
         });
     });
   };
+  const daftarTopikDosen = async () => {
+    let idMahasiswa = await getIdMhs();
+    let idku = JSON.parse(idMahasiswa);
+
+    const data = {mahasiswapendaftar: idku.value.username};
+
+    await getData('token').then(async res => {
+      await axios
+        .put(`${API_HOST.url}/topikskripsis/${id}`, data, {
+          headers: {
+            Authorization: `Bearer ${res.value}`,
+          },
+        })
+        .then(res => {
+          console.log(res);
+          dispatch(setLoading(false));
+          showMessage('berhasil mendaftar topik dosen', 'success');
+        })
+        .catch(err => {
+          console.log(err);
+          dispatch(setLoading(false));
+          showMessage('gagal mendaftar topik dosen', 'danger');
+        });
+    });
+  };
+
+  const onSubmit = async () => {
+    dispatch(setLoading(true));
+    daftarTopikDosen();
+  };
+
+  const getIdMhs = () => {
+    return new Promise(function (resolve, reject) {
+      const id = AsyncStorage.getItem('userProfile');
+      resolve(id);
+    });
+  };
 
   useEffect(() => {
-    getDataTopik();
+    getDataDosen();
   }, []);
 
   return (
@@ -89,7 +133,7 @@ const MhsDetailTopikDosen = ({navigation, route}) => {
           </ScrollView>
           <Gap height={15} />
           {status == 'open' ? (
-            <Button label="Ambil Topik" />
+            <Button label="Ambil Topik" onPress={onSubmit} />
           ) : (
             <Text style={styles.anounctext}>
               topik ini sudah tidak bisa diambil!

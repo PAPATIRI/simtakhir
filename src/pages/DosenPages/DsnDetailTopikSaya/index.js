@@ -23,6 +23,7 @@ const DsnDetailTopikSaya = ({navigation, route}) => {
     penguji1,
     penguji2,
     id,
+    mahasiswapendaftar,
   } = route.params;
 
   const dispatch = useDispatch();
@@ -94,7 +95,10 @@ const DsnDetailTopikSaya = ({navigation, route}) => {
               <TouchableOpacity
                 activeOpacity={0.7}
                 onPress={() => {
-                  navigation.navigate('DsnPendaftarTopikSaya');
+                  navigation.navigate('DsnPendaftarTopikSaya', {
+                    mahasiswapendaftar,
+                    id,
+                  });
                 }}>
                 <View style={styles.btnHeader}>
                   <Text style={styles.textBtnHeader}>lihat pendaftar</Text>
@@ -104,11 +108,6 @@ const DsnDetailTopikSaya = ({navigation, route}) => {
           </ScrollView>
           <Gap height={40} />
           <View>
-            <Button
-              label="Edit Topik"
-              onPress={() => navigation.navigate('DsnSuksesEditTopik')}
-            />
-            <Gap height={10} />
             <ButtonDangerSedond
               label="Hapus Topik"
               onPress={() => {

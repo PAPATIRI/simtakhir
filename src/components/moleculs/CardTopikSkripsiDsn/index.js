@@ -28,7 +28,7 @@ const CardTopikSkripsiDsn = ({
       <View style={styles.bottomContent}>
         <Text style={styles.tanggal}>{tanggal}</Text>
         <View style={styles.botRightContent}>
-          <Text style={styles.status(color)}>{status}</Text>
+          <Text style={styles.statusStyle(status)}>{status}</Text>
         </View>
       </View>
     </TouchableOpacity>
@@ -71,10 +71,10 @@ const styles = StyleSheet.create({
     lineHeight: 16 * 1.5,
     color: colors.text.secondary,
   },
-  status: color => ({
+  statusStyle: status => ({
     fontFamily: fonts.primary[400],
     fontSize: 14,
     lineHeight: 14 * 1.5,
-    color: color,
+    color: status == 'open' ? colors.text.accent : colors.text.danger,
   }),
 });

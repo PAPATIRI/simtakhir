@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
   },
   ilustrationWrapper: {
     flex: 1,
-    paddingTop: 100,
+    paddingTop: 50,
   },
   textWrapper: {
     paddingHorizontal: Dimensions.get('window').width * 0.1,

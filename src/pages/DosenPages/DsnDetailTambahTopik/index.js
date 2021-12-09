@@ -32,7 +32,7 @@ const DsnDetailTambahTopik = ({navigation}) => {
         iconLeft={<IcArrowBack />}
         titleBar="Konfirmasi Data Topik"
         onPress={() => {
-          navigation.navigate('DsnTambahTopik');
+          navigation.navigate('DsnTambahTopikNext');
         }}
       />
       <View style={styles.content}>

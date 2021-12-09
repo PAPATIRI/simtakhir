@@ -1,5 +1,4 @@
-import {assertBlock} from '@babel/types';
-import React, {useEffect} from 'react';
+import React from 'react';
 import {Alert, ScrollView, StyleSheet, Text, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {IcArrowBack} from '../../../assets';

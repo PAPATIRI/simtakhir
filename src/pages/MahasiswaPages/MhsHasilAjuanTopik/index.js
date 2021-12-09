@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 import React, {useEffect, useState} from 'react';
-import {Dimensions, ScrollView, StyleSheet, View} from 'react-native';
+import {ScrollView, StyleSheet, View} from 'react-native';
 import {IcArrowBack} from '../../../assets';
 import {
   CardHasilAjuan,
@@ -14,6 +14,7 @@ import {colors, getData} from '../../../utils';
 
 const MhsHasilAjuanTopik = ({navigation}) => {
   const [data, setData] = useState([]);
+  const [topikTerdaftar, setTopikTerdaftar] = useState([]);
   const [idMhs, setIdMhs] = useState('');
   const [isLoading, setIsLoading] = useState(true);
 
@@ -27,17 +28,18 @@ const MhsHasilAjuanTopik = ({navigation}) => {
   const getDataTopikAjuan = async () => {
     let idMahasiswa = await getIdMhs();
     let idku = JSON.parse(idMahasiswa);
-    console.log('mahasiswa: ', idku.value.email);
 
     await getData('token').then(async res => {
       await axios
-        .get(`${API_HOST.url}/ajukantopiks?_sort=created_at:DESC`, {
-          headers: {
-            Authorization: `Bearer ${res.value}`,
+        .get(
+          `${API_HOST.url}/ajukantopiks?mahasiswapengaju_eq=${idku.value.email}`,
+          {
+            headers: {
+              Authorization: `Bearer ${res.value}`,
+            },
           },
-        })
+        )
         .then(res => {
-          console.log('data ajuan: ', res.data);
           setIsLoading(false);
           setIdMhs(idku.value.email);
           setData(res.data);
@@ -49,21 +51,36 @@ const MhsHasilAjuanTopik = ({navigation}) => {
     });
   };
 
-  function getRandomString(length) {
-    var randomChars =
-      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    var result = '';
-    for (var i = 0; i < length; i++) {
-      result += randomChars.charAt(
-        Math.floor(Math.random() * randomChars.length),
-      );
-    }
-    return result;
-  }
+  const getDataTopikTerdaftar = async () => {
+    let idMahasiswa = await getIdMhs();
+    let idku = JSON.parse(idMahasiswa);
+
+    await getData('token').then(async res => {
+      await axios
+        .get(
+          `${API_HOST.url}/topikskripsis?mahasiswaterpilih_eq=${idku.value.username}`,
+          {
+            headers: {
+              Authorization: `Bearer ${res.value}`,
+            },
+          },
+        )
+        .then(res => {
+          setIsLoading(false);
+          setTopikTerdaftar(res.data);
+        })
+        .catch(err => {
+          setIsLoading(false);
+          console.log(err);
+        });
+    });
+  };
+
+  const allData = data.concat(topikTerdaftar);
 
   useEffect(() => {
     getDataTopikAjuan();
-    console.log('data ajuan: ', data);
+    getDataTopikTerdaftar();
   }, []);
 
   return (
@@ -83,30 +100,25 @@ const MhsHasilAjuanTopik = ({navigation}) => {
           }}>
           {isLoading ? (
             <LoadingSpinner />
+          ) : allData.length == 0 ? (
+            <DataKosong
+              title="opps"
+              desc="kamu belum mengajukan topik ke dosen, pilih topikmu dari milik dosen atau ajukan sekarang"
+            />
           ) : (
-            data.map(item => {
-              if (item.mahasiswapengaju == idMhs) {
-                return (
-                  <CardHasilAjuan
-                    key={item.id}
-                    titleCard={item.judultopik}
-                    descCard={item.bidangtopik}
-                    dosenName={item.dosentujuan}
-                    status={item.status}
-                    onPress={() =>
-                      navigation.navigate('MhsDetailHasilAjuan', item)
-                    }
-                  />
-                );
-              } else {
-                return (
-                  <DataKosong
-                    key={getRandomString(3)}
-                    title="opps"
-                    desc="sepertinya kamu belum pernah mengajukan topik ke dosen"
-                  />
-                );
-              }
+            allData.map(item => {
+              return (
+                <CardHasilAjuan
+                  key={item.id}
+                  titleCard={item.judultopik}
+                  descCard={item.bidangtopik}
+                  dosenName={item.dosentujuan}
+                  status={item.status}
+                  onPress={() =>
+                    navigation.navigate('MhsDetailHasilAjuan', item)
+                  }
+                />
+              );
             })
           )}
         </ScrollView>

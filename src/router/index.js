@@ -6,7 +6,16 @@ import {
 } from '@react-navigation/drawer';
 import {createStackNavigator} from '@react-navigation/stack';
 import React, {useEffect, useState} from 'react';
-import {Alert, Image, Text, TouchableOpacity, View} from 'react-native';
+import {
+  Alert,
+  Image,
+  Text,
+  TouchableOpacity,
+  View,
+  StyleSheet,
+  Dimensions,
+} from 'react-native';
+import {IcArrowBack, IcLogout} from '../assets';
 import {Gap} from '../components';
 import {
   DsnBimbingan,
@@ -53,7 +62,9 @@ import {
 import DsnTopikSkripsi from '../pages/DosenPages/DsnTopikSkripsi';
 import DsnTopikSkripsiSaya from '../pages/DosenPages/DsnTopikSkripsiSaya';
 import SplashScreen from '../pages/SplashScreen';
+import Tentang from '../pages/Tentang';
 import {colors, fonts} from '../utils';
+import '../assets/Icons/logout.png';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -78,7 +89,38 @@ function MhsDrawer() {
         },
       }}
       drawerContent={props => <CustomDrawer {...props} />}>
-      <Drawer.Screen name="Home" component={MhsHome} />
+      <Drawer.Screen
+        name="Home"
+        options={{
+          drawerIcon: ({focused, size}) => (
+            <Image
+              source={require('../assets/Icons/logout.png')}
+              style={[
+                focused ? styles.drawerActive : styles.drawerInactive,
+                {height: 24, width: 24},
+              ]}
+            />
+          ),
+          drawerLabel: 'Beranda',
+        }}
+        component={MhsHome}
+      />
+      <Drawer.Screen
+        name="Tentang"
+        options={{
+          drawerIcon: ({focused, size}) => (
+            <Image
+              source={require('../assets/Icons/about.png')}
+              style={[
+                focused ? styles.drawerActive : styles.drawerInactive,
+                {width: 24, height: 24},
+              ]}
+            />
+          ),
+          drawerLabel: 'Tentang',
+        }}
+        component={Tentang}
+      />
     </Drawer.Navigator>
   );
 }
@@ -103,10 +145,49 @@ const DsnDrawer = ({navigation}) => {
         },
       }}
       drawerContent={props => <CustomDrawer {...props} />}>
-      <Drawer.Screen name="Home" component={DsnHome} />
+      <Drawer.Screen
+        name="Home"
+        options={{
+          drawerIcon: ({focused, size}) => (
+            <Image
+              source={require('../assets/Icons/logout.png')}
+              style={[
+                focused ? styles.drawerActive : styles.drawerInactive,
+                {height: 24, width: 24},
+              ]}
+            />
+          ),
+          drawerLabel: 'Beranda',
+        }}
+        component={DsnHome}
+      />
+      <Drawer.Screen
+        name="Tentang"
+        options={{
+          drawerIcon: ({focused, size}) => (
+            <Image
+              source={require('../assets/Icons/about.png')}
+              style={[
+                focused ? styles.drawerActive : styles.drawerInactive,
+                {width: 24, height: 24},
+              ]}
+            />
+          ),
+          drawerLabel: 'Tentang',
+        }}
+        component={Tentang}
+      />
     </Drawer.Navigator>
   );
 };
+const styles = StyleSheet.create({
+  drawerActive: {
+    tintColor: colors.primary,
+  },
+  drawerInactive: {
+    tintColor: colors.blackPrimary,
+  },
+});
 
 const CustomDrawer = props => {
   const [userName, setUserName] = useState('');
@@ -199,19 +280,24 @@ const CustomDrawer = props => {
           );
         }}
         style={{
-          backgroundColor: 'rgba(255, 100, 85, 0.5)',
-          opacity: 0.9,
+          flexDirection: 'row',
           marginHorizontal: 10,
-          paddingHorizontal: 12,
+          paddingHorizontal: 10,
           paddingVertical: 8,
           borderRadius: 5,
         }}>
+        <Image
+          source={require('../assets/Icons/logout.png')}
+          style={{tintColor: colors.error, width: 24, height: 24}}
+        />
+        <Gap width={Dimensions.get('window').width * 0.1} />
         <Text
           style={{
             fontFamily: fonts.primary[400],
             fontSize: 16,
             lineHeight: 16 * 1.5,
-            color: colors.text.white,
+            color: colors.text.danger,
+            textTransform: 'capitalize',
           }}>
           keluar
         </Text>

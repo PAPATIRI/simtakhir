@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     lineHeight: 16 * 1.5,
   },
   status: status => ({
-    backgroundColor: status == 'ditolak' ? colors.error : colors.secondary,
+    backgroundColor: status == 'menunggu' ? colors.secondary : colors.error,
     paddingVertical: 4,
     width: 85,
     borderRadius: 4,

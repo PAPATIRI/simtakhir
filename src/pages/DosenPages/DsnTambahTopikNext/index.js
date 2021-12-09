@@ -1,15 +1,14 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
 import {IcArrowBack} from '../../../assets';
 import {Button, Gap, ModalPicker, TopNavbar} from '../../../components';
-import {colors, fonts, useForm} from '../../../utils';
 import {
   bidang as dataBidang,
   periode as dataPeriode,
-  dosenpengaju as dosen,
 } from '../../../Databases/dropdownData';
-import {useDispatch, useSelector} from 'react-redux';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import {colors, fonts, useForm} from '../../../utils';
 
 const DsnTambahTopikNext = ({navigation}) => {
   const [bidang, setBidang] = useState('');
@@ -76,7 +75,7 @@ const DsnTambahTopikNext = ({navigation}) => {
             </View>
           </View>
         </View>
-        <Button label="Kirim" onPress={onSubmit} />
+        <Button label="Selanjutnya" onPress={onSubmit} />
       </View>
     </View>
   );
