@@ -59,4 +59,6 @@ buck-out/
 /ios/Pods/
 
 #file hprof
+android/
+
 *.hprof
